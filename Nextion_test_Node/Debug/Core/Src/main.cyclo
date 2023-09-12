@@ -1,0 +1,13 @@
+main.c:96:6:NEXTION_ChangeVal	1
+main.c:103:6:NEXTION_Changefloat	1
+main.c:110:6:NEXTION_UpdateDriveSelectButton	1
+main.c:117:6:HAL_CAN_RxFifo0MsgPendingCallback	16
+main.c:202:6:HAL_UARTEx_RxEventCallback	8
+main.c:303:5:main	1
+main.c:379:6:SystemClock_Config	4
+main.c:425:13:MX_CAN_Init	2
+main.c:475:13:MX_USART1_UART_Init	2
+main.c:510:13:MX_USART3_UART_Init	2
+main.c:543:13:MX_DMA_Init	1
+main.c:564:13:MX_GPIO_Init	1
+main.c:592:6:Error_Handler	1

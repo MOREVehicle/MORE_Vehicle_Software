@@ -1,0 +1,5 @@
+../Core/Src/BMS_CAN.c:69:6:Diagnostic_Codes_Decoder	40	static
+../Core/Src/BMS_CAN.c:102:6:Individual_Cell_Voltages_G0_Decoder	24	static
+../Core/Src/BMS_CAN.c:132:6:Individual_Cell_Voltages_G1_Decoder	24	static
+../Core/Src/BMS_CAN.c:163:6:Individual_Cell_Voltages_G2_Decoder	24	static
+../Core/Src/BMS_CAN.c:187:6:State_Of_Charge_Decoder	24	static

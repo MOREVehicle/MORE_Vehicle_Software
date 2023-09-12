@@ -1,0 +1,8 @@
+../Core/Src/main.c:71:6:NEXTION_ChangeVal	40	static
+../Core/Src/main.c:77:6:HAL_CAN_RxFifo0MsgPendingCallback	16	static
+../Core/Src/main.c:104:5:main	8	static
+../Core/Src/main.c:164:6:SystemClock_Config	128	static
+../Core/Src/main.c:210:13:MX_CAN_Init	48	static
+../Core/Src/main.c:260:13:MX_USART3_UART_Init	8	static
+../Core/Src/main.c:295:13:MX_GPIO_Init	40	static
+../Core/Src/main.c:331:6:Error_Handler	4	static,ignoring_inline_asm
