@@ -216,14 +216,19 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
 		if ((WheelThrottleRight < 9) || (WheelThrottleLeft < 9))
 		{
 			NEXTION_SendErrorMessage(dpObj_ThrottleErr, "Throttle Open Loop!");
+			int ErrFlag = 1;
 		}
 		else if ((WheelThrottleRight > 98) || (WheelThrottleLeft > 98))
 		{
 			NEXTION_SendErrorMessage(dpObj_ThrottleErr, "Throttle Short to 3.3V!");
+			ErrFlag = 1;
 		}
 		else
 		{
-			NEXTION_SendErrorMessage(dpObj_ThrottleErr, "");
+			if(ErrFlag == 0)
+			{
+				NEXTION_SendErrorMessage(dpObj_ThrottleErr, "");
+			}
 			uint16_t MappedWheelThrottleLeft = ((WheelThrottleLeft - 11) * (100 - 0)) / (97 - 11) + 0;
 			uint16_t MappedWheelThrottleRight = ((WheelThrottleRight - 11) * (100 - 0)) / (97 - 11) + 0;
 			NEXTION_ChangeVal(dpObj_ThrottleL, MappedWheelThrottleLeft);
