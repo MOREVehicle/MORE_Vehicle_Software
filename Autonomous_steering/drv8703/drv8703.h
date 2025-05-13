@@ -7,19 +7,19 @@
 #ifndef __DRV8703_H_
 #define __DRV8703_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "stm32g4xx_hal.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @def Register Map
  * @brief general macro's about register map for the driver
  */
-#define DRV_REG_MAP_SIZE                0x05
+#define DRV_REG_MAP_SIZE                (uint8_t)0x05
 
 /** 
  * @def Fault status
@@ -27,7 +27,7 @@ extern "C" {
  * Provides information regarding general errors and warnings
  * READ-ONLY
  */ 
-#define DRV_FAULT_STATUS                (0x00) 
+#define DRV_FAULT_STATUS                (uint8_t)(0x00) 
 #define DRV_FAULT_STATUS_FAULT_MASK     (1U<<7) 
 #define DRV_FAULT_STATUS_WDFLT_MASK     (1U<<6) 
 #define DRV_FAULT_STATUS_GDF_MASK       (1U<<5) 
@@ -43,7 +43,7 @@ extern "C" {
  * Provides information regarding errors and warnings for the MOSFETs
  * READ-ONLY
  */ 
-#define DRV_VDS_GDF                     (0x01) 
+#define DRV_VDS_GDF                     (uint8_t)(0x01) 
 #define DRV_VDS_GDF_H2_GDF_MASK         (1U<<7)
 #define DRV_VDS_GDF_L2_GDF_MASK         (1U<<6)
 #define DRV_VDS_GDF_H1_GDF_MASK         (1U<<5)
@@ -59,7 +59,7 @@ extern "C" {
  * Used for settings and clearing fault 
  * READ-WRITE
  */ 
-#define DRV_MAIN                        (0x02)
+#define DRV_MAIN                        (uint8_t)(0x02)
 #define DRV_MAIN_RESERVED_MASK(x)       ((((uint8_t)x) & 0x03) << 6)
 #define DRV_MAIN_LOCK_MASK(x)           ((((uint8_t)x) & 0x07) << 3)
 #define DRV_MAIN_UNLOCK					DRV_MAIN_LOCK_MASK((0b011))
@@ -74,7 +74,7 @@ extern "C" {
  * Used for settings deadtime, watchdogs timeout and peak source and peak sink current.
  * READ-WRITE
  */ 
-#define DRV_IDRIVE_WD                   (0x03)
+#define DRV_IDRIVE_WD                   (uint8_t)(0x03)
 #define DRV_IDRIVE_WD_TDEAD_MASK(x)     ((((uint8_t)x) & 0x03) << 6)
 #define DRV_IDRIVE_WD_WD_EN_MASK        (1U<<5)
 #define DRV_IDRIVE_WD_WD_DLY_MASK(x)    ((((uint8_t)x) & 0x03) << 3)
@@ -85,7 +85,7 @@ extern "C" {
  * @brief VDS register on Driver
  * READ-WRITE
  */ 
-#define DRV_VDS                         (0x04)
+#define DRV_VDS                         (uint8_t)(0x04)
 #define DRV_VDS_SO_LIM_MASK             (1U<<7)
 #define DRV_VDS_VDS_MASK(x)             ((((uint8_t)x) & 0x07) << 4)
 #define DRV_VDS_DIS_H2_VDS_MASK         (1U<<3)
@@ -99,7 +99,7 @@ extern "C" {
  * Used to set Vds, limit SO output and turning of monitors
  * READ-WRITE
  */ 
-#define DRV_CONFIG                      (0x05)
+#define DRV_CONFIG                      (uint8_t)(0x05)
 #define DRV_CONFIG_TOFF_MASK(x)         ((((uint8_t)x) & 0x03) << 6)
 #define DRV_CONFIG_CHOP_IDS_MASK        (1U<<5)
 #define DRV_CONFIG_VREF_SCL_MASK(x)     ((((uint8_t)x) & 0x03) << 3)
@@ -112,21 +112,22 @@ extern "C" {
 * Configure PWM, VREF, shunt amplifier gain.
 * message format - 2 bytes:
 * MSB --- LSB
-* |READ/WRITE|  ADRESS_3|  ADRESS_2|  ADRESS_1|  ADRESS_0| 		   X|         X|         X|
+* |READ/WRITE|  ADRESS_3|  ADRESS_2|  ADRESS_1|  ADRESS_0| 		 X_1|       X_1|       X_1|
 * |    DATA_7|    DATA_6|    DATA_5|    DATA_4|    DATA_3|    DATA_2|    DATA_1|    DATA_0|
 */ 
-#define DRV_MSG_SIZE                    8
-#define DRV_DATA_SIZE                   8
-#define DRV_ADDR_SIZE                   4
+#define DRV_MSG_SIZE                    (uint8_t)8
+#define DRV_DATA_SIZE                   (uint8_t)8
+#define DRV_ADDR_SIZE                   (uint8_t)4
 #define DRV_READWRITE_MASK              (1U<<7)						 //byte #1
 #define DRV_ADDR_MASK(x)                ((((uint8_t)x) & 0x0F) << 3) //byte #1
 #define DRV_RESERVED_MASK(x)            ((((uint8_t)x) & 0x0F) << 0) //byte #1
 #define DRV_DATA_MASK(x)                ((((uint8_t)x) & 0xFF) << 0) //byte #2
-#define DRV_SPI_TIMEOUT                 10  
+#define DRV_SPI_TIMEOUT                 (uint8_t)10  
 
 /**
  * @def Spi interface
  * @brief used spi channel on mcu.
+ * Rest of the settings for setup of driver should be here too?
  */
 #define DRV_SPI_INTERFACE               hspi3
 extern SPI_HandleTypeDef 				DRV_SPI_INTERFACE;

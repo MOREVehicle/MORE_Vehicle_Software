@@ -16,7 +16,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <stdbool.h>
-// #include "stm32g4xx_hal.h"
+#include "stm32g4xx_hal.h"
 
 #define TMP_REG_MAP_SIZE       0x04
 
@@ -71,7 +71,7 @@ extern "C" {
 #define TMP_DEFAULT_ADDR       0x48
 #define TMP_ADDR_SIZE          2
 #define TMP_DEV_ADDR_MASK(x)   ((((uint8_t)x) & 0x7F) << 1) //byte #1
-#define DRV_READWRITE_MASK     (1U << 0)                    //byte #1
+#define TMP_READWRITE_MASK     (1U << 0)                    //byte #1
 #define TMP_REG_ADDR_MASK(x)   ((((uint8_t)x) & 0x03) << 0) //byte #2
 #define TMP_DATA_1_MASK(x)     ((((uint8_t)x) & 0xFF) << 0) //byte #3
 #define TMP_DATA_2_MASK(x)     ((((uint8_t)x) & 0xFF) << 0) //byte #4
@@ -82,6 +82,7 @@ extern "C" {
 
 /** @brief used i2c channel on mcu.*/
 #define TMP_I2C_INTERFACE      hi2c1
+extern I2C_HandleTypeDef 	   TMP_I2C_INTERFACE;
 
 /**
  * @brief Initializes the TMP112 sensor.
@@ -138,6 +139,16 @@ float TMP_data_to_celcius(uint16_t data);
 * @return digital data in TMP_RESOLUTION amount of bits
 */
 uint16_t TMP_celcius_to_data(float celcius);
+
+/**
+ * Error state function
+ */
+void TMP_error(void);
+
+/**
+ * AUTOGEN DO NOT CHANGE THIS
+ */
+void MX_I2C_Init(void);
 
 #ifdef __cplusplus
 }
