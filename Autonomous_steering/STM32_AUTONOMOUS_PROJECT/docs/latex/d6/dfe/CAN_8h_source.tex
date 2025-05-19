@@ -1,0 +1,51 @@
+\doxysection{CAN.\+h}
+\hypertarget{CAN_8h_source}{}\label{CAN_8h_source}\index{Inc/CAN.h@{Inc/CAN.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*\ Define\ to\ prevent\ recursive\ inclusion\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifndef\ \_\_CAN\_H}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ \_\_CAN\_H}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/*\ Includes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}stm32g4xx\_hal.h"{}}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{/*\ Exported\ functions\ prototypes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ Error\_Handler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ SystemClock\_Config(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ MX\_GPIO\_Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ MX\_FDCAN1\_Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ MX\_FDCAN2\_Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ FDCAN\_Config(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ CAN\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{/*\ Private\ defines\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ B1\_Pin\ GPIO\_PIN\_13}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ B1\_GPIO\_Port\ GPIOC}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ B1\_EXTI\_IRQn\ EXTI15\_10\_IRQn}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ LPUART1\_TX\_Pin\ GPIO\_PIN\_2}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ LPUART1\_TX\_GPIO\_Port\ GPIOA}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ LPUART1\_RX\_Pin\ GPIO\_PIN\_3}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ LPUART1\_RX\_GPIO\_Port\ GPIOA}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ LD2\_Pin\ GPIO\_PIN\_5}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ LD2\_GPIO\_Port\ GPIOA}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ T\_SWDIO\_Pin\ GPIO\_PIN\_13}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ T\_SWDIO\_GPIO\_Port\ GPIOA}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ T\_SWCLK\_Pin\ GPIO\_PIN\_14}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ T\_SWCLK\_GPIO\_Port\ GPIOA}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ T\_SWO\_Pin\ GPIO\_PIN\_3}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ T\_SWO\_GPIO\_Port\ GPIOB}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_CAN\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

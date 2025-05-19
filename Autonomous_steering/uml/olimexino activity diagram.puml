@@ -1,0 +1,12 @@
+@startuml
+start
+:Olimexino Init;
+
+repeat
+  :Interrupt CAN1 bus;
+  :Send PWM signal to Driver;
+repeat while (car is running)
+
+stop
+@enduml
+

@@ -1,0 +1,5 @@
+<map id="DRV_readRegister" name="DRV_readRegister">
+<area shape="rect" id="Node000001" title="Reads data from all registers in the DRV8703 driver." alt="" coords="5,5,136,32"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#ae0903f440d0fa565fd3947ee31c70a31" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="184,5,265,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,16,168,16,168,21,136,21"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="DRV_modify_set" name="DRV_modify_set">
+<area shape="rect" id="Node000001" title="modifies register with only bits mentioned and the rest unchanged." alt="" coords="5,31,126,57"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#ae0903f440d0fa565fd3947ee31c70a31" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="175,5,256,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,31,159,25,160,31,126,36"/>
+<area shape="rect" id="Node000003" href="$dc/d85/drv8703_8c.html#ac5040b78f563159a60fefa0191052830" title="Writes data to a specific register in the DRV8703 driver." alt="" coords="174,56,258,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="126,52,159,57,158,62,126,57"/>
+</map>

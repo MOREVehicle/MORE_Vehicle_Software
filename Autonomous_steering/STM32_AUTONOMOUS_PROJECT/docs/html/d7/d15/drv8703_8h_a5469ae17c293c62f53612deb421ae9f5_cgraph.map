@@ -1,0 +1,7 @@
+<map id="DRV_modify_reset" name="DRV_modify_reset">
+<area shape="rect" id="Node000001" title="Modifies data in specific register in the DRV8703 driver." alt="" coords="5,31,137,57"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#ae0903f440d0fa565fd3947ee31c70a31" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="186,5,268,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,31,170,25,171,30,138,36"/>
+<area shape="rect" id="Node000003" href="$dc/d85/drv8703_8c.html#ac5040b78f563159a60fefa0191052830" title="Writes data to a specific register in the DRV8703 driver." alt="" coords="185,56,269,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,52,170,57,169,63,137,57"/>
+</map>

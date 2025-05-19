@@ -1,0 +1,30 @@
+@startuml
+start
+
+:Nucleo Init;
+
+split
+Partition #red "transmit loop" {
+  repeat
+    :Interrupt from Angle Sensor;
+    :Read Angle Sensor (CAN2);
+    :Read Temperature Sensor (I2C);
+    :Read Current (ADC);
+    :Read Driver (SPI);
+    :Change CAN message ID;
+    :Pack and Send Data (CAN1);
+  repeat while (car is running)
+}
+
+split again
+Partition #yellow "receive loop" {
+  repeat
+    :Interrupt from CAN1;
+    :Read Data;
+    :Process Data (SPI, I2C);
+  repeat while (car is running)
+}
+end split
+
+stop
+@enduml

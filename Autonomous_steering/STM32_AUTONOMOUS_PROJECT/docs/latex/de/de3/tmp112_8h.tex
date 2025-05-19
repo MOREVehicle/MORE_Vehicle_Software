@@ -1,0 +1,418 @@
+\doxysection{Inc/tmp112.h File Reference}
+\hypertarget{tmp112_8h}{}\label{tmp112_8h}\index{Inc/tmp112.h@{Inc/tmp112.h}}
+
+
+Driver for TMP112 Temperature Sensor.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}stm32g4xx\+\_\+hal.\+h"{}}\newline
+Include dependency graph for tmp112.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{d5/d57/tmp112_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{d7/dc6/tmp112_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tmp112_8h_aa9be576442fd7e6624ec9519d62c59b2}\label{tmp112_8h_aa9be576442fd7e6624ec9519d62c59b2} 
+\#define {\bfseries TMP\+\_\+\+REG\+\_\+\+MAP\+\_\+\+SIZE}~0x04
+\item 
+\Hypertarget{tmp112_8h_a2546fd5927af88d6a5a6fa76a41e8887}\label{tmp112_8h_a2546fd5927af88d6a5a6fa76a41e8887} 
+\#define {\bfseries TMP\+\_\+\+TEMPERATURE}~0x00
+\item 
+\Hypertarget{tmp112_8h_a5f0d6c0b74a5603bd5c95615143dfdbe}\label{tmp112_8h_a5f0d6c0b74a5603bd5c95615143dfdbe} 
+\#define {\bfseries TMP\+\_\+\+CONFIG}~0x01
+\item 
+\Hypertarget{tmp112_8h_a7dedc1249b5cb5549a512e5c2450f287}\label{tmp112_8h_a7dedc1249b5cb5549a512e5c2450f287} 
+\#define {\bfseries TMP\+\_\+\+TLOW}~0x02
+\item 
+\Hypertarget{tmp112_8h_ac79470ff0348aa12b1f287b114ac7321}\label{tmp112_8h_ac79470ff0348aa12b1f287b114ac7321} 
+\#define {\bfseries TMP\+\_\+\+THIGH}~0x03
+\item 
+\Hypertarget{tmp112_8h_ad2fbabb3bc9f3129e896f57590e7ccee}\label{tmp112_8h_ad2fbabb3bc9f3129e896f57590e7ccee} 
+\#define {\bfseries TMP\+\_\+\+CONFIG\+\_\+\+ONES\+\_\+\+SHOT\+\_\+\+MASK}~(1U $<$$<$ 15)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_af670c4050fa21e36ebae2d20459e9929}{TMP\+\_\+\+CONFIG\+\_\+\+CONVERTER\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_abd48003c19ce42dacf83df426f84ee09}{TMP\+\_\+\+CONFIG\+\_\+\+FAULT\+\_\+\+QUEUE\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{tmp112_8h_a0b5435f36f47a6dc1fc1650acb896552}\label{tmp112_8h_a0b5435f36f47a6dc1fc1650acb896552} 
+\#define {\bfseries TMP\+\_\+\+CONFIG\+\_\+\+POLARITY\+\_\+\+MASK}~(1U $<$$<$ 10)
+\item 
+\Hypertarget{tmp112_8h_a3fc2767aae83ce5a6ca76cd0a1134282}\label{tmp112_8h_a3fc2767aae83ce5a6ca76cd0a1134282} 
+\#define {\bfseries TMP\+\_\+\+CONFIG\+\_\+\+THERMOSTAT\+\_\+\+MASK}~(1U $<$$<$ 9)
+\item 
+\Hypertarget{tmp112_8h_a96a15fd934ca2b8ff1fe38dab9f85d4e}\label{tmp112_8h_a96a15fd934ca2b8ff1fe38dab9f85d4e} 
+\#define {\bfseries TMP\+\_\+\+CONFIG\+\_\+\+SHUTDOWN\+\_\+\+MASK}~(1U $<$$<$ 8)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a3a857f5c9134d11e59b0171d8391daba}{TMP\+\_\+\+CONFIG\+\_\+\+CONVERSION\+\_\+\+RATE\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{tmp112_8h_ab3ead5fdf994b7e2355490b96c9cf073}\label{tmp112_8h_ab3ead5fdf994b7e2355490b96c9cf073} 
+\#define {\bfseries TMP\+\_\+\+CONFIG\+\_\+\+ALERT\+\_\+\+MASK}~(1U $<$$<$ 5)
+\item 
+\Hypertarget{tmp112_8h_a46094bf198affdd9346fca1ea53e261e}\label{tmp112_8h_a46094bf198affdd9346fca1ea53e261e} 
+\#define {\bfseries TMP\+\_\+\+CONFIG\+\_\+\+RESOLUTION\+\_\+\+MASK}~(1U $<$$<$ 4)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a1bdb0b03d0e4cc741693dfe96d571f0c}{TMP\+\_\+\+RESOLUTION}}~12
+\item 
+\Hypertarget{tmp112_8h_aba60ea3aa60946d99be696ed9d2d1feb}\label{tmp112_8h_aba60ea3aa60946d99be696ed9d2d1feb} 
+\#define {\bfseries TMP\+\_\+\+MAX\+\_\+\+DEGREE}~125
+\item 
+\Hypertarget{tmp112_8h_ad6cc3fe23b625a7aa8d3869f125e5fbf}\label{tmp112_8h_ad6cc3fe23b625a7aa8d3869f125e5fbf} 
+\#define {\bfseries TMP\+\_\+\+MIN\+\_\+\+DEGREE}~-\/40
+\item 
+\Hypertarget{tmp112_8h_aeb90637efe48382b852fd5d774c17603}\label{tmp112_8h_aeb90637efe48382b852fd5d774c17603} 
+\#define {\bfseries TMP\+\_\+\+ABSOLUTE\+\_\+\+RANGE}~256
+\item 
+\Hypertarget{tmp112_8h_ab21934e4859d920b12b549da07bf2eea}\label{tmp112_8h_ab21934e4859d920b12b549da07bf2eea} 
+\#define {\bfseries TMP\+\_\+\+DEGREE\+\_\+\+RESOLUTION}~(float)(TMP\+\_\+\+ABSOLUTE\+\_\+\+RANGE / (float)(1$<$$<$\mbox{\hyperlink{tmp112_8h_a1bdb0b03d0e4cc741693dfe96d571f0c}{TMP\+\_\+\+RESOLUTION}}))
+\item 
+\Hypertarget{tmp112_8h_a8330d736cbce70c6e66383838e4a90d5}\label{tmp112_8h_a8330d736cbce70c6e66383838e4a90d5} 
+\#define {\bfseries TMP\+\_\+\+DEFAULT\+\_\+\+ADDR}~0x48
+\item 
+\Hypertarget{tmp112_8h_aa4a689c232207e6dee9bf59bd955a0dd}\label{tmp112_8h_aa4a689c232207e6dee9bf59bd955a0dd} 
+\#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+SIZE}~2
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a9beb7fd16b5142e661eb9c070615edee}{TMP\+\_\+\+DEV\+\_\+\+ADDR\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{tmp112_8h_aa496a9e8bb4d6b4695b58ec4245389da}\label{tmp112_8h_aa496a9e8bb4d6b4695b58ec4245389da} 
+\#define {\bfseries TMP\+\_\+\+READWRITE\+\_\+\+MASK}~(1U $<$$<$ 0)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a0ea182457f9b937f8846537d749e024f}{TMP\+\_\+\+REG\+\_\+\+ADDR\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a57bfbc3af265244234dfb171305a515d}{TMP\+\_\+\+DATA\+\_\+1\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_afb740195560188d80cf626cc21f3506b}{TMP\+\_\+\+DATA\+\_\+2\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a02796926466f844e855116276e45bf4e}{TMP\+\_\+\+ADDR}}~((TMP\+\_\+\+DEFAULT\+\_\+\+ADDR) $<$$<$ 1)
+\item 
+\Hypertarget{tmp112_8h_a6334a57bafb12c780994bc7f79addad6}\label{tmp112_8h_a6334a57bafb12c780994bc7f79addad6} 
+\#define {\bfseries TMP\+\_\+\+I2\+C\+\_\+\+INTERFACE}~hi2c1
+\begin{DoxyCompactList}\small\item\em used i2c channel on mcu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}{TMP\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communication. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{tmp112_8h_aaf42426edd437c424624a73df238134c}{TMP\+\_\+get\+Temperature}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit temperature value from the TMP112 and converts it to Celsius. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93}{TMP\+\_\+write}} (uint8\+\_\+t reg, uint16\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em basic function to write to TMP112 \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2}{TMP\+\_\+read}} (uint8\+\_\+t reg)
+\begin{DoxyCompactList}\small\item\em basic function to read to TMP112 \end{DoxyCompactList}\item 
+\Hypertarget{tmp112_8h_a53e8a9a536535b0d052aeda72cd268b8}\label{tmp112_8h_a53e8a9a536535b0d052aeda72cd268b8} 
+uint8\+\_\+t {\bfseries TMP\+\_\+set\+TLow} (float celcius)
+\begin{DoxyCompactList}\small\item\em wrapper of write to set the TLOW and THIGH regisers return success \end{DoxyCompactList}\item 
+\Hypertarget{tmp112_8h_a27d2e5f9f8f1024928af7c203753b69d}\label{tmp112_8h_a27d2e5f9f8f1024928af7c203753b69d} 
+uint8\+\_\+t {\bfseries TMP\+\_\+set\+THigh} (float celcius)
+\item 
+\Hypertarget{tmp112_8h_af7b836277f7e32d85ebd88101fb4088c}\label{tmp112_8h_af7b836277f7e32d85ebd88101fb4088c} 
+uint8\+\_\+t {\bfseries TMP\+\_\+set\+Config} (uint16\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em wrapper of write to write to config register return success \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5}{TMP\+\_\+data\+\_\+to\+\_\+celcius}} (uint16\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Converts digital data to degrees celcius. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{tmp112_8h_a29f64ae56085637e163d9b7b4894f0e4}{TMP\+\_\+celcius\+\_\+to\+\_\+data}} (float celcius)
+\begin{DoxyCompactList}\small\item\em Converts celcius to digital data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tmp112_8h_ab734280be7c71b47e4182f47756226d8}{TMP\+\_\+error}} (void)
+\item 
+void \mbox{\hyperlink{tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3}{MX\+\_\+\+I2\+C\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em THIS IS AUTOGENERATED BY STM32\+MX, it overides the \+\_\+\+\_\+weak verions defined in the stm HAL via linker and is used in HAL\+\_\+\+SPI\+\_\+\+Init used in DRV\+\_\+init. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tmp112_8h_ae5b77e75ce770bc2b7fbb9fd11ffbc85}\label{tmp112_8h_ae5b77e75ce770bc2b7fbb9fd11ffbc85} 
+I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries TMP\+\_\+\+I2\+C\+\_\+\+INTERFACE}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Driver for TMP112 Temperature Sensor. 
+
+This file provides functions to interact with the TMP112 temperature sensor over I2C, including reading temperature values and configuring sensor settings. Everything is MSB to LSB 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tmp112_8h_a02796926466f844e855116276e45bf4e}\index{tmp112.h@{tmp112.h}!TMP\_ADDR@{TMP\_ADDR}}
+\index{TMP\_ADDR@{TMP\_ADDR}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_ADDR}{TMP\_ADDR}}
+{\footnotesize\ttfamily \label{tmp112_8h_a02796926466f844e855116276e45bf4e} 
+\#define TMP\+\_\+\+ADDR~((TMP\+\_\+\+DEFAULT\+\_\+\+ADDR) $<$$<$ 1)}
+
+Used address defined by project, default is default TMP112 address \Hypertarget{tmp112_8h_a3a857f5c9134d11e59b0171d8391daba}\index{tmp112.h@{tmp112.h}!TMP\_CONFIG\_CONVERSION\_RATE\_MASK@{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}}
+\index{TMP\_CONFIG\_CONVERSION\_RATE\_MASK@{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_a3a857f5c9134d11e59b0171d8391daba} 
+\#define TMP\+\_\+\+CONFIG\+\_\+\+CONVERSION\+\_\+\+RATE\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_af670c4050fa21e36ebae2d20459e9929}\index{tmp112.h@{tmp112.h}!TMP\_CONFIG\_CONVERTER\_MASK@{TMP\_CONFIG\_CONVERTER\_MASK}}
+\index{TMP\_CONFIG\_CONVERTER\_MASK@{TMP\_CONFIG\_CONVERTER\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_CONFIG\_CONVERTER\_MASK}{TMP\_CONFIG\_CONVERTER\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_af670c4050fa21e36ebae2d20459e9929} 
+\#define TMP\+\_\+\+CONFIG\+\_\+\+CONVERTER\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 13)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_abd48003c19ce42dacf83df426f84ee09}\index{tmp112.h@{tmp112.h}!TMP\_CONFIG\_FAULT\_QUEUE\_MASK@{TMP\_CONFIG\_FAULT\_QUEUE\_MASK}}
+\index{TMP\_CONFIG\_FAULT\_QUEUE\_MASK@{TMP\_CONFIG\_FAULT\_QUEUE\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_CONFIG\_FAULT\_QUEUE\_MASK}{TMP\_CONFIG\_FAULT\_QUEUE\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_abd48003c19ce42dacf83df426f84ee09} 
+\#define TMP\+\_\+\+CONFIG\+\_\+\+FAULT\+\_\+\+QUEUE\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 11)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_a57bfbc3af265244234dfb171305a515d}\index{tmp112.h@{tmp112.h}!TMP\_DATA\_1\_MASK@{TMP\_DATA\_1\_MASK}}
+\index{TMP\_DATA\_1\_MASK@{TMP\_DATA\_1\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_DATA\_1\_MASK}{TMP\_DATA\_1\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_a57bfbc3af265244234dfb171305a515d} 
+\#define TMP\+\_\+\+DATA\+\_\+1\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0xFF)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_afb740195560188d80cf626cc21f3506b}\index{tmp112.h@{tmp112.h}!TMP\_DATA\_2\_MASK@{TMP\_DATA\_2\_MASK}}
+\index{TMP\_DATA\_2\_MASK@{TMP\_DATA\_2\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_DATA\_2\_MASK}{TMP\_DATA\_2\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_afb740195560188d80cf626cc21f3506b} 
+\#define TMP\+\_\+\+DATA\+\_\+2\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0xFF)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_a9beb7fd16b5142e661eb9c070615edee}\index{tmp112.h@{tmp112.h}!TMP\_DEV\_ADDR\_MASK@{TMP\_DEV\_ADDR\_MASK}}
+\index{TMP\_DEV\_ADDR\_MASK@{TMP\_DEV\_ADDR\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_DEV\_ADDR\_MASK}{TMP\_DEV\_ADDR\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_a9beb7fd16b5142e661eb9c070615edee} 
+\#define TMP\+\_\+\+DEV\+\_\+\+ADDR\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x7F)\ <<\ 1)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_a0ea182457f9b937f8846537d749e024f}\index{tmp112.h@{tmp112.h}!TMP\_REG\_ADDR\_MASK@{TMP\_REG\_ADDR\_MASK}}
+\index{TMP\_REG\_ADDR\_MASK@{TMP\_REG\_ADDR\_MASK}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_REG\_ADDR\_MASK}{TMP\_REG\_ADDR\_MASK}}
+{\footnotesize\ttfamily \label{tmp112_8h_a0ea182457f9b937f8846537d749e024f} 
+\#define TMP\+\_\+\+REG\+\_\+\+ADDR\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_a1bdb0b03d0e4cc741693dfe96d571f0c}\index{tmp112.h@{tmp112.h}!TMP\_RESOLUTION@{TMP\_RESOLUTION}}
+\index{TMP\_RESOLUTION@{TMP\_RESOLUTION}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_RESOLUTION}{TMP\_RESOLUTION}}
+{\footnotesize\ttfamily \label{tmp112_8h_a1bdb0b03d0e4cc741693dfe96d571f0c} 
+\#define TMP\+\_\+\+RESOLUTION~12}
+
+12 bit resolution, two\textquotesingle{}s complement, left justified 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3}\index{tmp112.h@{tmp112.h}!MX\_I2C\_Init@{MX\_I2C\_Init}}
+\index{MX\_I2C\_Init@{MX\_I2C\_Init}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{MX\_I2C\_Init()}{MX\_I2C\_Init()}}
+{\footnotesize\ttfamily \label{tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3} 
+void MX\+\_\+\+I2\+C\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+THIS IS AUTOGENERATED BY STM32\+MX, it overides the \+\_\+\+\_\+weak verions defined in the stm HAL via linker and is used in HAL\+\_\+\+SPI\+\_\+\+Init used in DRV\+\_\+init. 
+
+AUTOGEN DO NOT CHANGE THIS Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{de/de3/tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{de/de3/tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_a29f64ae56085637e163d9b7b4894f0e4}\index{tmp112.h@{tmp112.h}!TMP\_celcius\_to\_data@{TMP\_celcius\_to\_data}}
+\index{TMP\_celcius\_to\_data@{TMP\_celcius\_to\_data}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_celcius\_to\_data()}{TMP\_celcius\_to\_data()}}
+{\footnotesize\ttfamily \label{tmp112_8h_a29f64ae56085637e163d9b7b4894f0e4} 
+uint16\+\_\+t TMP\+\_\+celcius\+\_\+to\+\_\+data (\begin{DoxyParamCaption}\item[{float}]{celcius}{}\end{DoxyParamCaption})}
+
+
+
+Converts celcius to digital data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temperature} & in degree celcius between TMP\+\_\+\+MAX\+\_\+\+DEGREE AND TMP\+\_\+\+MIN\+\_\+\+DEGREE \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+digital data in TMP\+\_\+\+RESOLUTION amount of bits 
+\end{DoxyReturn}
+\Hypertarget{tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5}\index{tmp112.h@{tmp112.h}!TMP\_data\_to\_celcius@{TMP\_data\_to\_celcius}}
+\index{TMP\_data\_to\_celcius@{TMP\_data\_to\_celcius}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_data\_to\_celcius()}{TMP\_data\_to\_celcius()}}
+{\footnotesize\ttfamily \label{tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5} 
+float TMP\+\_\+data\+\_\+to\+\_\+celcius (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Converts digital data to degrees celcius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em TMP\+\_\+\+RESOLUTION} & bits of sensor data in two\textquotesingle{}s complement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+temperature in degree celcius 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/de3/tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_ab734280be7c71b47e4182f47756226d8}\index{tmp112.h@{tmp112.h}!TMP\_error@{TMP\_error}}
+\index{TMP\_error@{TMP\_error}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_error()}{TMP\_error()}}
+{\footnotesize\ttfamily \label{tmp112_8h_ab734280be7c71b47e4182f47756226d8} 
+void TMP\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Error state function Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{de/de3/tmp112_8h_ab734280be7c71b47e4182f47756226d8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_aaf42426edd437c424624a73df238134c}\index{tmp112.h@{tmp112.h}!TMP\_getTemperature@{TMP\_getTemperature}}
+\index{TMP\_getTemperature@{TMP\_getTemperature}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_getTemperature()}{TMP\_getTemperature()}}
+{\footnotesize\ttfamily \label{tmp112_8h_aaf42426edd437c424624a73df238134c} 
+int16\+\_\+t TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit temperature value from the TMP112 and converts it to Celsius. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in Celsius as a 16-\/bit signed integer. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{de/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}\index{tmp112.h@{tmp112.h}!TMP\_init@{TMP\_init}}
+\index{TMP\_init@{TMP\_init}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_init()}{TMP\_init()}}
+{\footnotesize\ttfamily \label{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff} 
+void TMP\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communication. 
+
+\begin{DoxyReturn}{Returns}
+0 if initialization is successful, non-\/zero if an error occurs. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2}\index{tmp112.h@{tmp112.h}!TMP\_read@{TMP\_read}}
+\index{TMP\_read@{TMP\_read}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_read()}{TMP\_read()}}
+{\footnotesize\ttfamily \label{tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2} 
+uint16\+\_\+t TMP\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{}\end{DoxyParamCaption})}
+
+
+
+basic function to read to TMP112 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & register to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data or 0x\+FFFF if fail 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{de/de3/tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93}\index{tmp112.h@{tmp112.h}!TMP\_write@{TMP\_write}}
+\index{TMP\_write@{TMP\_write}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_write()}{TMP\_write()}}
+{\footnotesize\ttfamily \label{tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93} 
+uint8\+\_\+t TMP\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{, }\item[{uint16\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+basic function to write to TMP112 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & register to be written \\
+\hline
+{\em data} & data to be written to register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/de3/tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93_icgraph}
+\end{center}
+\end{figure}

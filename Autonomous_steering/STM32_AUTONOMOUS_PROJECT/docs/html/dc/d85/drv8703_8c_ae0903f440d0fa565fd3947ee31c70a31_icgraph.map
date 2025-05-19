@@ -1,0 +1,13 @@
+<map id="DRV_read" name="DRV_read">
+<area shape="rect" id="Node000001" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="306,57,387,83"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="5,82,79,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,50,287,34,257,22,221,13,192,8,163,11,128,22,105,34,85,50,55,83,51,80,81,46,102,29,126,17,162,6,192,3,222,7,259,17,290,29,317,45"/>
+<area shape="rect" id="Node000003" href="$dc/d85/drv8703_8c.html#a5469ae17c293c62f53612deb421ae9f5" title="Modifies data in specific register in the DRV8703 driver." alt="" coords="127,31,258,58"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="290,63,258,58,259,53,291,58"/>
+<area shape="rect" id="Node000004" href="$dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="132,82,252,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="291,82,253,88,252,83,290,77"/>
+<area shape="rect" id="Node000005" href="$dc/d85/drv8703_8c.html#a680b2474db7711bf8c58319f4b2adcc1" title="Reads data from all registers in the DRV8703 driver." alt="" coords="127,133,258,159"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="312,94,259,123,233,134,231,130,257,118,309,89"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="117,98,79,98,79,93,117,93"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="135,130,78,110,80,105,137,125"/>
+</map>

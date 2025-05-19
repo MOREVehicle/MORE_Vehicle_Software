@@ -1,0 +1,9 @@
+<map id="TMP_data_to_celcius" name="TMP_data_to_celcius">
+<area shape="rect" id="Node000001" title="Converts digital data to degrees celcius." alt="" coords="321,31,468,57"/>
+<area shape="rect" id="Node000002" href="$dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="127,5,273,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="305,35,273,31,274,26,306,30"/>
+<area shape="rect" id="Node000003" href="$dd/dd0/tmp112_8c.html#a53e8a9a536535b0d052aeda72cd268b8" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="147,56,253,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="306,58,254,65,253,60,305,53"/>
+<area shape="rect" id="Node000004" href="$dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="5,56,79,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="131,72,79,72,79,67,131,67"/>
+</map>
