@@ -1,0 +1,13 @@
+<map id="DRV_write" name="DRV_write">
+<area shape="rect" id="Node000001" title="General low level abstraction to communicate with drivers. Basically wrappers for HAL_SPI_...." alt="" coords="405,56,490,83"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#a5469ae17c293c62f53612deb421ae9f5" title="Modifies data in specific register in the DRV8703 driver." alt="" coords="225,5,356,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="390,54,334,35,335,30,391,49"/>
+<area shape="rect" id="Node000003" href="$dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="230,56,351,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,72,351,72,351,67,390,67"/>
+<area shape="rect" id="Node000006" href="$dc/d85/drv8703_8c.html#a5a80a0e31e16e54224183cd2721308eb" title="Writes data to multiple registers in the DRV8703 driver." alt="" coords="224,107,357,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="391,90,335,109,334,103,390,85"/>
+<area shape="rect" id="Node000004" href="$dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="103,56,176,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="215,72,177,72,177,67,215,67"/>
+<area shape="rect" id="Node000005" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,56,55,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="87,72,55,72,55,67,87,67"/>
+</map>

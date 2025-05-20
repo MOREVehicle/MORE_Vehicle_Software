@@ -1,0 +1,596 @@
+\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/\+Inc/drv8703.h File Reference}
+\hypertarget{drv8703_8h}{}\label{drv8703_8h}\index{STM32\_AUTONOMOUS\_PROJECT/Inc/drv8703.h@{STM32\_AUTONOMOUS\_PROJECT/Inc/drv8703.h}}
+
+
+Header file for library definitions Everything is MSB to LSB.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}stm32g4xx\+\_\+hal.\+h"{}}\newline
+Include dependency graph for drv8703.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{d7/df3/drv8703_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d3d/drv8703_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{drv8703_8h_a2f9a351e291058f26cab6f073b1a46cf}\label{drv8703_8h_a2f9a351e291058f26cab6f073b1a46cf} 
+\#define {\bfseries DRV\+\_\+\+REG\+\_\+\+MAP\+\_\+\+SIZE}~(uint8\+\_\+t)0x05
+\item 
+\Hypertarget{drv8703_8h_ae02c2f042e2f423fbc9dd2f59b95fd17}\label{drv8703_8h_ae02c2f042e2f423fbc9dd2f59b95fd17} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS}~(uint8\+\_\+t)(0x00)
+\item 
+\Hypertarget{drv8703_8h_a075ba53f4e46b3fd54b0420d1e52c64b}\label{drv8703_8h_a075ba53f4e46b3fd54b0420d1e52c64b} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+FAULT\+\_\+\+MASK}~(1U$<$$<$7)
+\item 
+\Hypertarget{drv8703_8h_a15ab81b87159d6ec32443d4ad06d38cd}\label{drv8703_8h_a15ab81b87159d6ec32443d4ad06d38cd} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+WDFLT\+\_\+\+MASK}~(1U$<$$<$6)
+\item 
+\Hypertarget{drv8703_8h_aa30770154aafd94628852997bc84a940}\label{drv8703_8h_aa30770154aafd94628852997bc84a940} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+GDF\+\_\+\+MASK}~(1U$<$$<$5)
+\item 
+\Hypertarget{drv8703_8h_aa6bcc4249c6722866c26b8785c8627af}\label{drv8703_8h_aa6bcc4249c6722866c26b8785c8627af} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+OCP\+\_\+\+MASK}~(1U$<$$<$4)
+\item 
+\Hypertarget{drv8703_8h_a2dc307ac9e85ef98e169a9e09f4a6482}\label{drv8703_8h_a2dc307ac9e85ef98e169a9e09f4a6482} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+VM\+\_\+\+UVFL\+\_\+\+MASK}~(1U$<$$<$3)
+\item 
+\Hypertarget{drv8703_8h_a2af00e3ca7ed3e5900b3c82e720f0672}\label{drv8703_8h_a2af00e3ca7ed3e5900b3c82e720f0672} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+VCP\+\_\+\+UVFL\+\_\+\+MASK}~(1U$<$$<$2)
+\item 
+\Hypertarget{drv8703_8h_a2137fd75b450cd777ae1462b57637d7b}\label{drv8703_8h_a2137fd75b450cd777ae1462b57637d7b} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+OTSD\+\_\+\+MASK}~(1U$<$$<$1)
+\item 
+\Hypertarget{drv8703_8h_ae9ec394d87b3b3835b3a3887f324a95c}\label{drv8703_8h_ae9ec394d87b3b3835b3a3887f324a95c} 
+\#define {\bfseries DRV\+\_\+\+FAULT\+\_\+\+STATUS\+\_\+\+OTW\+\_\+\+MASK}~(1U$<$$<$0)
+\item 
+\Hypertarget{drv8703_8h_a8ce1df25d104d5f99a00f1f38a3cc5fc}\label{drv8703_8h_a8ce1df25d104d5f99a00f1f38a3cc5fc} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF}~(uint8\+\_\+t)(0x01)
+\item 
+\Hypertarget{drv8703_8h_a03ebee0c5cc9961dc0a920a58e35f1be}\label{drv8703_8h_a03ebee0c5cc9961dc0a920a58e35f1be} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+H2\+\_\+\+GDF\+\_\+\+MASK}~(1U$<$$<$7)
+\item 
+\Hypertarget{drv8703_8h_a070f1879d4a469542da9a604ce8df16f}\label{drv8703_8h_a070f1879d4a469542da9a604ce8df16f} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+L2\+\_\+\+GDF\+\_\+\+MASK}~(1U$<$$<$6)
+\item 
+\Hypertarget{drv8703_8h_a02053b07ffc08d47ba47d1ed32e50e73}\label{drv8703_8h_a02053b07ffc08d47ba47d1ed32e50e73} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+H1\+\_\+\+GDF\+\_\+\+MASK}~(1U$<$$<$5)
+\item 
+\Hypertarget{drv8703_8h_af1fadfd1864388f7d9aab502da5df7a4}\label{drv8703_8h_af1fadfd1864388f7d9aab502da5df7a4} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+L1\+\_\+\+GDF\+\_\+\+MASK}~(1U$<$$<$4)
+\item 
+\Hypertarget{drv8703_8h_adc92db86069edfbff71a9665baa7cd5e}\label{drv8703_8h_adc92db86069edfbff71a9665baa7cd5e} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+H2\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$3)
+\item 
+\Hypertarget{drv8703_8h_aeb7a722d57a34601b9b8d3f5b7a429e3}\label{drv8703_8h_aeb7a722d57a34601b9b8d3f5b7a429e3} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+L2\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$2)
+\item 
+\Hypertarget{drv8703_8h_a91980d2b3250db35e96f90923141d0f9}\label{drv8703_8h_a91980d2b3250db35e96f90923141d0f9} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+H1\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$1)
+\item 
+\Hypertarget{drv8703_8h_aa3f686d065192f8d670725ea4c41d672}\label{drv8703_8h_aa3f686d065192f8d670725ea4c41d672} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+GDF\+\_\+\+L1\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$0)
+\item 
+\Hypertarget{drv8703_8h_a117c2f72b62d85cbaff8aef37fc9829c}\label{drv8703_8h_a117c2f72b62d85cbaff8aef37fc9829c} 
+\#define {\bfseries DRV\+\_\+\+MAIN}~(uint8\+\_\+t)(0x02)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a878a3848c5cf1b31aafc68e0c6a7ef96}{DRV\+\_\+\+MAIN\+\_\+\+RESERVED\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a6307d46373c6c5c40aa72abb8713d6c7}{DRV\+\_\+\+MAIN\+\_\+\+LOCK\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a857168f0c4facaaa07c6381bb1fa9801}\label{drv8703_8h_a857168f0c4facaaa07c6381bb1fa9801} 
+\#define {\bfseries DRV\+\_\+\+MAIN\+\_\+\+UNLOCK}~DRV\+\_\+\+MAIN\+\_\+\+LOCK\+\_\+\+MASK((0b011))
+\item 
+\Hypertarget{drv8703_8h_abcc5e06bf67030738110ef3fa0123513}\label{drv8703_8h_abcc5e06bf67030738110ef3fa0123513} 
+\#define {\bfseries DRV\+\_\+\+MAIN\+\_\+\+LOCK}~DRV\+\_\+\+MAIN\+\_\+\+LOCK\+\_\+\+MASK((0b110))
+\item 
+\Hypertarget{drv8703_8h_a6b4683e503d173871b4c3dc6a00f5fa1}\label{drv8703_8h_a6b4683e503d173871b4c3dc6a00f5fa1} 
+\#define {\bfseries DRV\+\_\+\+MAIN\+\_\+\+IN1\+\_\+\+PH\+\_\+\+MASK}~(1U$<$$<$2)
+\item 
+\Hypertarget{drv8703_8h_ad158bc8fd32619a674cbdb56b624d20f}\label{drv8703_8h_ad158bc8fd32619a674cbdb56b624d20f} 
+\#define {\bfseries DRV\+\_\+\+MAIN\+\_\+\+IN2\+\_\+\+EN\+\_\+\+MASK}~(1U$<$$<$1)
+\item 
+\Hypertarget{drv8703_8h_acac5a5208606d882b93762b09f932371}\label{drv8703_8h_acac5a5208606d882b93762b09f932371} 
+\#define {\bfseries DRV\+\_\+\+MAIN\+\_\+\+CLR\+\_\+\+FLT\+\_\+\+MASK}~(1U$<$$<$0)
+\item 
+\Hypertarget{drv8703_8h_ab643c6f210611487f0f393e10c5e5928}\label{drv8703_8h_ab643c6f210611487f0f393e10c5e5928} 
+\#define {\bfseries DRV\+\_\+\+IDRIVE\+\_\+\+WD}~(uint8\+\_\+t)(0x03)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_ac537aac528d4d3822d5ab11c151e6cb0}{DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+TDEAD\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a9a92b06f178f0c9d62207e7ba3e6e76a}\label{drv8703_8h_a9a92b06f178f0c9d62207e7ba3e6e76a} 
+\#define {\bfseries DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+WD\+\_\+\+EN\+\_\+\+MASK}~(1U$<$$<$5)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a3843ef19a8cc800d7290268e91060939}{DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+WD\+\_\+\+DLY\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a568e27acf86f9ff6b625580a8b2d167f}{DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+IDRIVE\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_ad6b254dcde914cb478f3101344bed013}\label{drv8703_8h_ad6b254dcde914cb478f3101344bed013} 
+\#define {\bfseries DRV\+\_\+\+VDS}~(uint8\+\_\+t)(0x04)
+\item 
+\Hypertarget{drv8703_8h_a718bf9e7d896d0e1b98b9e7ac7353c74}\label{drv8703_8h_a718bf9e7d896d0e1b98b9e7ac7353c74} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+SO\+\_\+\+LIM\+\_\+\+MASK}~(1U$<$$<$7)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a2995dae71477a2e24339d1c14e30269c}{DRV\+\_\+\+VDS\+\_\+\+VDS\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a2fa2ce8cdb023a7c4d0e37882dd7979f}\label{drv8703_8h_a2fa2ce8cdb023a7c4d0e37882dd7979f} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+DIS\+\_\+\+H2\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$3)
+\item 
+\Hypertarget{drv8703_8h_a70e96663a8c9bd3d66de835779d42d08}\label{drv8703_8h_a70e96663a8c9bd3d66de835779d42d08} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+DIS\+\_\+\+L2\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$2)
+\item 
+\Hypertarget{drv8703_8h_a9b421322fcd0cfc5d16b55baf6d62f13}\label{drv8703_8h_a9b421322fcd0cfc5d16b55baf6d62f13} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+DIS\+\_\+\+H1\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$1)
+\item 
+\Hypertarget{drv8703_8h_af4199f68f0dc8665b938274f02545c91}\label{drv8703_8h_af4199f68f0dc8665b938274f02545c91} 
+\#define {\bfseries DRV\+\_\+\+VDS\+\_\+\+DIS\+\_\+\+L1\+\_\+\+VDS\+\_\+\+MASK}~(1U$<$$<$0)
+\item 
+\Hypertarget{drv8703_8h_a5ccd9963b64c47458b39cfe4ef47abdc}\label{drv8703_8h_a5ccd9963b64c47458b39cfe4ef47abdc} 
+\#define {\bfseries DRV\+\_\+\+CONFIG}~(uint8\+\_\+t)(0x05)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_ac9237b1db60071b89694ca1ebf8117b7}{DRV\+\_\+\+CONFIG\+\_\+\+TOFF\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a47f8b4985dfc2e64e00ed598660701f4}\label{drv8703_8h_a47f8b4985dfc2e64e00ed598660701f4} 
+\#define {\bfseries DRV\+\_\+\+CONFIG\+\_\+\+CHOP\+\_\+\+IDS\+\_\+\+MASK}~(1U$<$$<$5)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a3f6f11d8a1db377b0237bde20d08f376}{DRV\+\_\+\+CONFIG\+\_\+\+VREF\+\_\+\+SCL\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a0b01f8a11eeda6c633d209abbc017217}\label{drv8703_8h_a0b01f8a11eeda6c633d209abbc017217} 
+\#define {\bfseries DRV\+\_\+\+CONFIG\+\_\+\+SH\+\_\+\+EN\+\_\+\+MASK}~(1U$<$$<$2)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_acaac89836605d311f97c5e3ba573860c}{DRV\+\_\+\+CONFIG\+\_\+\+GAIN\+\_\+\+CS\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a1f6ec2835ed1be78cd0db336c4dbea33}\label{drv8703_8h_a1f6ec2835ed1be78cd0db336c4dbea33} 
+\#define {\bfseries DRV\+\_\+\+MSG\+\_\+\+SIZE}~(uint8\+\_\+t)8
+\item 
+\Hypertarget{drv8703_8h_a6b5ec0e7c64173b13cf430961fe8b9ce}\label{drv8703_8h_a6b5ec0e7c64173b13cf430961fe8b9ce} 
+\#define {\bfseries DRV\+\_\+\+DATA\+\_\+\+SIZE}~(uint8\+\_\+t)8
+\item 
+\Hypertarget{drv8703_8h_ac3c65423a26966cb50bfd646ce572aad}\label{drv8703_8h_ac3c65423a26966cb50bfd646ce572aad} 
+\#define {\bfseries DRV\+\_\+\+ADDR\+\_\+\+SIZE}~(uint8\+\_\+t)4
+\item 
+\Hypertarget{drv8703_8h_a11d5c4db4a54f0bc1449c72f53224944}\label{drv8703_8h_a11d5c4db4a54f0bc1449c72f53224944} 
+\#define {\bfseries DRV\+\_\+\+READWRITE\+\_\+\+MASK}~(1U$<$$<$7)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_ac8b30ef5d3c93f81aedcd8363b14fd4c}{DRV\+\_\+\+ADDR\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_ad54d52e8511155803a55b72273925c18}{DRV\+\_\+\+RESERVED\+\_\+\+MASK}}(x)
+\item 
+\#define \mbox{\hyperlink{drv8703_8h_a24e2e39dcf7b4c44bc80eeab499d8d1e}{DRV\+\_\+\+DATA\+\_\+\+MASK}}(x)
+\item 
+\Hypertarget{drv8703_8h_a13bcac670bed604b773ea00207c5c47b}\label{drv8703_8h_a13bcac670bed604b773ea00207c5c47b} 
+\#define {\bfseries DRV\+\_\+\+SPI\+\_\+\+TIMEOUT}~(uint8\+\_\+t)10
+\item 
+\Hypertarget{drv8703_8h_a6635c478bbe0fe6d8061519625c81f24}\label{drv8703_8h_a6635c478bbe0fe6d8061519625c81f24} 
+\#define {\bfseries DRV\+\_\+\+SPI\+\_\+\+INTERFACE}~hspi3
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{drv8703_8h_aacbd29ce1823b0224c877c38603f093a}{DRV\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialisation according to SPI settings defined earlier. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{drv8703_8h_ac5040b78f563159a60fefa0191052830}{DRV\+\_\+write}} (uint8\+\_\+t address, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em General low level abstraction to communicate with drivers. Basically wrappers for HAL\+\_\+\+SPI\+\_\+... functions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{drv8703_8h_ae0903f440d0fa565fd3947ee31c70a31}{DRV\+\_\+read}} (uint8\+\_\+t address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Reads data from a specific register in the DRV8703 driver. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{drv8703_8h_a530f2207deecc88721dacf30cbec7936}{DRV\+\_\+modify\+\_\+set}} (uint8\+\_\+t address, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em modifies register with only bits mentioned and the rest unchanged. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{drv8703_8h_a5469ae17c293c62f53612deb421ae9f5}{DRV\+\_\+modify\+\_\+reset}} (uint8\+\_\+t address, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Modifies data in specific register in the DRV8703 driver. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{drv8703_8h_a5a80a0e31e16e54224183cd2721308eb}{DRV\+\_\+write\+Register}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t filter)
+\begin{DoxyCompactList}\small\item\em Write/\+Read all registers and returns them from highest address to lowest address. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{drv8703_8h_a680b2474db7711bf8c58319f4b2adcc1}{DRV\+\_\+read\+Register}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t filter)
+\begin{DoxyCompactList}\small\item\em Reads data from all registers in the DRV8703 driver. \end{DoxyCompactList}\item 
+\Hypertarget{drv8703_8h_adc50917bef3b15ac8dd7e70c889b94ad}\label{drv8703_8h_adc50917bef3b15ac8dd7e70c889b94ad} 
+int {\bfseries MX\+\_\+\+SPI\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em THIS IS AUTOGENERATED BY STM32\+MX, it overides the \+\_\+\+\_\+weak verions defined in the stm HAL via linker and is used in HAL\+\_\+\+SPI\+\_\+\+Init used in DRV\+\_\+init. \end{DoxyCompactList}\item 
+\Hypertarget{drv8703_8h_a59d2982228a1cda521592874d2c4e53a}\label{drv8703_8h_a59d2982228a1cda521592874d2c4e53a} 
+void {\bfseries MX\+\_\+\+GPIO\+\_\+init} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{drv8703_8h_acda378a580a67de3a9d0bc82830404bc}\label{drv8703_8h_acda378a580a67de3a9d0bc82830404bc} 
+SPI\+\_\+\+Handle\+Type\+Def {\bfseries DRV\+\_\+\+SPI\+\_\+\+INTERFACE}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for library definitions Everything is MSB to LSB. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{drv8703_8h_ac8b30ef5d3c93f81aedcd8363b14fd4c}\index{drv8703.h@{drv8703.h}!DRV\_ADDR\_MASK@{DRV\_ADDR\_MASK}}
+\index{DRV\_ADDR\_MASK@{DRV\_ADDR\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_ADDR\_MASK}{DRV\_ADDR\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_ac8b30ef5d3c93f81aedcd8363b14fd4c} 
+\#define DRV\+\_\+\+ADDR\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x0F)\ <<\ 3)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_acaac89836605d311f97c5e3ba573860c}\index{drv8703.h@{drv8703.h}!DRV\_CONFIG\_GAIN\_CS\_MASK@{DRV\_CONFIG\_GAIN\_CS\_MASK}}
+\index{DRV\_CONFIG\_GAIN\_CS\_MASK@{DRV\_CONFIG\_GAIN\_CS\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_CONFIG\_GAIN\_CS\_MASK}{DRV\_CONFIG\_GAIN\_CS\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_acaac89836605d311f97c5e3ba573860c} 
+\#define DRV\+\_\+\+CONFIG\+\_\+\+GAIN\+\_\+\+CS\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_ac9237b1db60071b89694ca1ebf8117b7}\index{drv8703.h@{drv8703.h}!DRV\_CONFIG\_TOFF\_MASK@{DRV\_CONFIG\_TOFF\_MASK}}
+\index{DRV\_CONFIG\_TOFF\_MASK@{DRV\_CONFIG\_TOFF\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_CONFIG\_TOFF\_MASK}{DRV\_CONFIG\_TOFF\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_ac9237b1db60071b89694ca1ebf8117b7} 
+\#define DRV\+\_\+\+CONFIG\+\_\+\+TOFF\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a3f6f11d8a1db377b0237bde20d08f376}\index{drv8703.h@{drv8703.h}!DRV\_CONFIG\_VREF\_SCL\_MASK@{DRV\_CONFIG\_VREF\_SCL\_MASK}}
+\index{DRV\_CONFIG\_VREF\_SCL\_MASK@{DRV\_CONFIG\_VREF\_SCL\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_CONFIG\_VREF\_SCL\_MASK}{DRV\_CONFIG\_VREF\_SCL\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a3f6f11d8a1db377b0237bde20d08f376} 
+\#define DRV\+\_\+\+CONFIG\+\_\+\+VREF\+\_\+\+SCL\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 3)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a24e2e39dcf7b4c44bc80eeab499d8d1e}\index{drv8703.h@{drv8703.h}!DRV\_DATA\_MASK@{DRV\_DATA\_MASK}}
+\index{DRV\_DATA\_MASK@{DRV\_DATA\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_DATA\_MASK}{DRV\_DATA\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a24e2e39dcf7b4c44bc80eeab499d8d1e} 
+\#define DRV\+\_\+\+DATA\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0xFF)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a568e27acf86f9ff6b625580a8b2d167f}\index{drv8703.h@{drv8703.h}!DRV\_IDRIVE\_WD\_IDRIVE\_MASK@{DRV\_IDRIVE\_WD\_IDRIVE\_MASK}}
+\index{DRV\_IDRIVE\_WD\_IDRIVE\_MASK@{DRV\_IDRIVE\_WD\_IDRIVE\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_IDRIVE\_WD\_IDRIVE\_MASK}{DRV\_IDRIVE\_WD\_IDRIVE\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a568e27acf86f9ff6b625580a8b2d167f} 
+\#define DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+IDRIVE\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x07)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_ac537aac528d4d3822d5ab11c151e6cb0}\index{drv8703.h@{drv8703.h}!DRV\_IDRIVE\_WD\_TDEAD\_MASK@{DRV\_IDRIVE\_WD\_TDEAD\_MASK}}
+\index{DRV\_IDRIVE\_WD\_TDEAD\_MASK@{DRV\_IDRIVE\_WD\_TDEAD\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_IDRIVE\_WD\_TDEAD\_MASK}{DRV\_IDRIVE\_WD\_TDEAD\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_ac537aac528d4d3822d5ab11c151e6cb0} 
+\#define DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+TDEAD\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a3843ef19a8cc800d7290268e91060939}\index{drv8703.h@{drv8703.h}!DRV\_IDRIVE\_WD\_WD\_DLY\_MASK@{DRV\_IDRIVE\_WD\_WD\_DLY\_MASK}}
+\index{DRV\_IDRIVE\_WD\_WD\_DLY\_MASK@{DRV\_IDRIVE\_WD\_WD\_DLY\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_IDRIVE\_WD\_WD\_DLY\_MASK}{DRV\_IDRIVE\_WD\_WD\_DLY\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a3843ef19a8cc800d7290268e91060939} 
+\#define DRV\+\_\+\+IDRIVE\+\_\+\+WD\+\_\+\+WD\+\_\+\+DLY\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 3)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a6307d46373c6c5c40aa72abb8713d6c7}\index{drv8703.h@{drv8703.h}!DRV\_MAIN\_LOCK\_MASK@{DRV\_MAIN\_LOCK\_MASK}}
+\index{DRV\_MAIN\_LOCK\_MASK@{DRV\_MAIN\_LOCK\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_MAIN\_LOCK\_MASK}{DRV\_MAIN\_LOCK\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a6307d46373c6c5c40aa72abb8713d6c7} 
+\#define DRV\+\_\+\+MAIN\+\_\+\+LOCK\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x07)\ <<\ 3)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a878a3848c5cf1b31aafc68e0c6a7ef96}\index{drv8703.h@{drv8703.h}!DRV\_MAIN\_RESERVED\_MASK@{DRV\_MAIN\_RESERVED\_MASK}}
+\index{DRV\_MAIN\_RESERVED\_MASK@{DRV\_MAIN\_RESERVED\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_MAIN\_RESERVED\_MASK}{DRV\_MAIN\_RESERVED\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a878a3848c5cf1b31aafc68e0c6a7ef96} 
+\#define DRV\+\_\+\+MAIN\+\_\+\+RESERVED\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_ad54d52e8511155803a55b72273925c18}\index{drv8703.h@{drv8703.h}!DRV\_RESERVED\_MASK@{DRV\_RESERVED\_MASK}}
+\index{DRV\_RESERVED\_MASK@{DRV\_RESERVED\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_RESERVED\_MASK}{DRV\_RESERVED\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_ad54d52e8511155803a55b72273925c18} 
+\#define DRV\+\_\+\+RESERVED\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x0F)\ <<\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{drv8703_8h_a2995dae71477a2e24339d1c14e30269c}\index{drv8703.h@{drv8703.h}!DRV\_VDS\_VDS\_MASK@{DRV\_VDS\_VDS\_MASK}}
+\index{DRV\_VDS\_VDS\_MASK@{DRV\_VDS\_VDS\_MASK}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_VDS\_VDS\_MASK}{DRV\_VDS\_VDS\_MASK}}
+{\footnotesize\ttfamily \label{drv8703_8h_a2995dae71477a2e24339d1c14e30269c} 
+\#define DRV\+\_\+\+VDS\+\_\+\+VDS\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((uint8\_t)x)\ \&\ 0x07)\ <<\ 4)}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{drv8703_8h_aacbd29ce1823b0224c877c38603f093a}\index{drv8703.h@{drv8703.h}!DRV\_init@{DRV\_init}}
+\index{DRV\_init@{DRV\_init}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_init()}{DRV\_init()}}
+{\footnotesize\ttfamily \label{drv8703_8h_aacbd29ce1823b0224c877c38603f093a} 
+void DRV\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialisation according to SPI settings defined earlier. 
+
+Initialisation according to SPI settings defined earlier.
+
+\begin{DoxyReturn}{Returns}
+true if initialization is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d15/drv8703_8h_aacbd29ce1823b0224c877c38603f093a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{d7/d15/drv8703_8h_aacbd29ce1823b0224c877c38603f093a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{drv8703_8h_a5469ae17c293c62f53612deb421ae9f5}\index{drv8703.h@{drv8703.h}!DRV\_modify\_reset@{DRV\_modify\_reset}}
+\index{DRV\_modify\_reset@{DRV\_modify\_reset}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_modify\_reset()}{DRV\_modify\_reset()}}
+{\footnotesize\ttfamily \label{drv8703_8h_a5469ae17c293c62f53612deb421ae9f5} 
+bool DRV\+\_\+modify\+\_\+reset (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Modifies data in specific register in the DRV8703 driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & 4-\/bit register address. \\
+\hline
+{\em data} & to be reset, all unmentioned bits will remain unchanged. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write operation is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{d7/d15/drv8703_8h_a5469ae17c293c62f53612deb421ae9f5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{drv8703_8h_a530f2207deecc88721dacf30cbec7936}\index{drv8703.h@{drv8703.h}!DRV\_modify\_set@{DRV\_modify\_set}}
+\index{DRV\_modify\_set@{DRV\_modify\_set}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_modify\_set()}{DRV\_modify\_set()}}
+{\footnotesize\ttfamily \label{drv8703_8h_a530f2207deecc88721dacf30cbec7936} 
+bool DRV\+\_\+modify\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+modifies register with only bits mentioned and the rest unchanged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & 4 bits \\
+\hline
+{\em data} & 8 bit. For set function, sets masked bits to 1 For reset function, sets masked bits to 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success
+\end{DoxyReturn}
+modifies register with only bits mentioned and the rest unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & 4-\/bit register address. \\
+\hline
+{\em data} & to be set, all unmentioned bits will remain unchanged. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write operation is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{d7/d15/drv8703_8h_a530f2207deecc88721dacf30cbec7936_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{d7/d15/drv8703_8h_a530f2207deecc88721dacf30cbec7936_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{drv8703_8h_ae0903f440d0fa565fd3947ee31c70a31}\index{drv8703.h@{drv8703.h}!DRV\_read@{DRV\_read}}
+\index{DRV\_read@{DRV\_read}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_read()}{DRV\_read()}}
+{\footnotesize\ttfamily \label{drv8703_8h_ae0903f440d0fa565fd3947ee31c70a31} 
+bool DRV\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Reads data from a specific register in the DRV8703 driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & 4-\/bit register address. \\
+\hline
+{\em data} & Pointer to store the read 8-\/bit data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if read operation is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d15/drv8703_8h_ae0903f440d0fa565fd3947ee31c70a31_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{drv8703_8h_a680b2474db7711bf8c58319f4b2adcc1}\index{drv8703.h@{drv8703.h}!DRV\_readRegister@{DRV\_readRegister}}
+\index{DRV\_readRegister@{DRV\_readRegister}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_readRegister()}{DRV\_readRegister()}}
+{\footnotesize\ttfamily \label{drv8703_8h_a680b2474db7711bf8c58319f4b2adcc1} 
+bool DRV\+\_\+read\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint8\+\_\+t}]{filter}{}\end{DoxyParamCaption})}
+
+
+
+Reads data from all registers in the DRV8703 driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to an array where register data will be stored. \\
+\hline
+{\em filter} & Bit mask to filter out specific registers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if read operation is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{d7/d15/drv8703_8h_a680b2474db7711bf8c58319f4b2adcc1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{d7/d15/drv8703_8h_a680b2474db7711bf8c58319f4b2adcc1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{drv8703_8h_ac5040b78f563159a60fefa0191052830}\index{drv8703.h@{drv8703.h}!DRV\_write@{DRV\_write}}
+\index{DRV\_write@{DRV\_write}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_write()}{DRV\_write()}}
+{\footnotesize\ttfamily \label{drv8703_8h_ac5040b78f563159a60fefa0191052830} 
+bool DRV\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+General low level abstraction to communicate with drivers. Basically wrappers for HAL\+\_\+\+SPI\+\_\+... functions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & 4 bits ~\newline
+ \\
+\hline
+{\em data} & 8 bit. For write register write value For read returns value of register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success
+\end{DoxyReturn}
+General low level abstraction to communicate with drivers. Basically wrappers for HAL\+\_\+\+SPI\+\_\+... functions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & 4-\/bit register address. \\
+\hline
+{\em data} & 8-\/bit data to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write operation is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d15/drv8703_8h_ac5040b78f563159a60fefa0191052830_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{drv8703_8h_a5a80a0e31e16e54224183cd2721308eb}\index{drv8703.h@{drv8703.h}!DRV\_writeRegister@{DRV\_writeRegister}}
+\index{DRV\_writeRegister@{DRV\_writeRegister}!drv8703.h@{drv8703.h}}
+\doxysubsubsection{\texorpdfstring{DRV\_writeRegister()}{DRV\_writeRegister()}}
+{\footnotesize\ttfamily \label{drv8703_8h_a5a80a0e31e16e54224183cd2721308eb} 
+bool DRV\+\_\+write\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint8\+\_\+t}]{filter}{}\end{DoxyParamCaption})}
+
+
+
+Write/\+Read all registers and returns them from highest address to lowest address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data must be big enough to hold all filtered registers. data array will be loaded into this. \\
+\hline
+{\em filter} & bit mask to filter out unwanted registers. 2 MSB are don\textquotesingle{}t cares. in case of write, 2 LSB are don\textquotesingle{}t care too. 0 = means filter in 1 = filter out based on MSB to LSB of registry map. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success
+\end{DoxyReturn}
+Write/\+Read all registers and returns them from highest address to lowest address.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to an array containing data for registers. \\
+\hline
+{\em filter} & Bit mask to filter out specific registers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write operation is successful, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{d7/d15/drv8703_8h_a5a80a0e31e16e54224183cd2721308eb_cgraph}
+\end{center}
+\end{figure}

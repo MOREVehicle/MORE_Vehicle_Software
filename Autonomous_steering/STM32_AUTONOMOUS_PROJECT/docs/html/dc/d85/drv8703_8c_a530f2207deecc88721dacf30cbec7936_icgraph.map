@@ -1,5 +1,0 @@
-<map id="DRV_modify_set" name="DRV_modify_set">
-<area shape="rect" id="Node000001" title="Sets data in specific register in the DRV8703 driver." alt="" coords="127,5,247,32"/>
-<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="5,5,79,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,21,79,21,79,16,111,16"/>
-</map>

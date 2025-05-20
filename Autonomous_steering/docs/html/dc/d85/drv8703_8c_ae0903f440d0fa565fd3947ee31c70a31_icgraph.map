@@ -1,0 +1,16 @@
+<map id="DRV_read" name="DRV_read">
+<area shape="rect" id="Node000001" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="403,51,485,77"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="103,51,176,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,49,355,41,290,35,224,41,177,53,176,48,224,36,290,30,356,36,390,43"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,25,55,52"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="409,44,383,30,355,20,313,12,270,9,185,12,110,23,56,35,54,30,109,18,184,7,270,4,314,7,356,15,385,26,412,40"/>
+<area shape="rect" id="Node000004" href="$dc/d85/drv8703_8c.html#a5469ae17c293c62f53612deb421ae9f5" title="Modifies data in specific register in the DRV8703 driver." alt="" coords="224,51,355,77"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="388,67,356,67,356,61,388,61"/>
+<area shape="rect" id="Node000005" href="$dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="230,101,350,128"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="389,85,334,103,332,98,388,80"/>
+<area shape="rect" id="Node000006" href="$dc/d85/drv8703_8c.html#a680b2474db7711bf8c58319f4b2adcc1" title="Reads data from all registers in the DRV8703 driver." alt="" coords="224,152,355,179"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="421,91,391,117,357,142,334,154,331,149,354,138,388,113,417,87"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,55,55,47,56,42,88,50"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="233,98,175,79,177,74,234,93"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="231,147,223,142,181,110,151,79,154,76,185,106,225,138,234,143"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="STM32_AUTONOMOUS_PROJECT/Src/tmp112.c" name="STM32_AUTONOMOUS_PROJECT/Src/tmp112.c">
+<area shape="rect" id="Node000001" title="Source file for TMP112 temperature sensor driver functions Handles I2C communication and driver confi..." alt="" coords="12,5,250,48"/>
+<area shape="rect" id="Node000002" href="$de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="94,96,168,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,49,134,80,128,80,128,49"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,171,70,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="116,125,67,163,64,159,113,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="94,171,168,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="134,123,134,155,128,155,128,123"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="192,171,312,197"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="153,121,219,160,216,165,151,126"/>
+</map>

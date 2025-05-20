@@ -1,7 +1,0 @@
-<map id="Inc/drv8703.h" name="Inc/drv8703.h">
-<area shape="rect" id="Node000001" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="65,5,165,32"/>
-<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html" title="Source file for DRV8703 driver functions Handles SPI communication and driver configuration." alt="" coords="5,80,108,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,46,69,81,65,78,93,43"/>
-<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html" title=": Main program body" alt="" coords="132,80,216,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,43,166,78,162,81,133,46"/>
-</map>

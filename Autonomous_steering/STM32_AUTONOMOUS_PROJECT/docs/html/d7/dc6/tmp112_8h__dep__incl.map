@@ -1,7 +1,0 @@
-<map id="Inc/tmp112.h" name="Inc/tmp112.h">
-<area shape="rect" id="Node000001" title="Driver for TMP112 Temperature Sensor." alt="" coords="57,5,153,32"/>
-<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html" title=": Main program body" alt="" coords="5,80,90,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,46,59,81,55,78,83,43"/>
-<area shape="rect" id="Node000003" href="$dd/dd0/tmp112_8c.html" title="Source file for TMP112 temperature sensor driver functions Handles I2C communication and driver confi..." alt="" coords="114,80,213,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,43,155,78,151,81,123,46"/>
-</map>

@@ -1,0 +1,102 @@
+\doxysection{drv8703.\+h}
+\hypertarget{drv8703_8h_source}{}\label{drv8703_8h_source}\index{STM32\_AUTONOMOUS\_PROJECT/Inc/drv8703.h@{STM32\_AUTONOMOUS\_PROJECT/Inc/drv8703.h}}
+\mbox{\hyperlink{drv8703_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ \_\_DRV8703\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ \_\_DRV8703\_H\_}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}stm32g4xx\_hal.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ DRV\_REG\_MAP\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)0x05}}
+\DoxyCodeLine{00023\ \ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)(0x00)\ }}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_FAULT\_MASK\ \ \ \ \ (1U<<7)\ }}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_WDFLT\_MASK\ \ \ \ \ (1U<<6)\ }}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_GDF\_MASK\ \ \ \ \ \ \ (1U<<5)\ }}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_OCP\_MASK\ \ \ \ \ \ \ (1U<<4)\ }}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_VM\_UVFL\_MASK\ \ \ (1U<<3)\ }}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_VCP\_UVFL\_MASK\ \ (1U<<2)\ }}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_OTSD\_MASK\ \ \ \ \ \ (1U<<1)\ }}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ DRV\_FAULT\_STATUS\_OTW\_MASK\ \ \ \ \ \ \ (1U<<0)\ }}
+\DoxyCodeLine{00039\ \ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)(0x01)\ }}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_H2\_GDF\_MASK\ \ \ \ \ \ \ \ \ (1U<<7)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_L2\_GDF\_MASK\ \ \ \ \ \ \ \ \ (1U<<6)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_H1\_GDF\_MASK\ \ \ \ \ \ \ \ \ (1U<<5)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_L1\_GDF\_MASK\ \ \ \ \ \ \ \ \ (1U<<4)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_H2\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<3)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_L2\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<2)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_H1\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<1)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_GDF\_L1\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<0)}}
+\DoxyCodeLine{00055\ \ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)(0x02)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_RESERVED\_MASK(x)\ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_LOCK\_MASK(x)\ \ \ \ \ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x07)\ <<\ 3)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_UNLOCK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DRV\_MAIN\_LOCK\_MASK((0b011))}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_LOCK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DRV\_MAIN\_LOCK\_MASK((0b110))}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_IN1\_PH\_MASK\ \ \ \ \ \ \ \ \ \ \ \ (1U<<2)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_IN2\_EN\_MASK\ \ \ \ \ \ \ \ \ \ \ \ (1U<<1)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ DRV\_MAIN\_CLR\_FLT\_MASK\ \ \ \ \ \ \ \ \ \ \ (1U<<0)}}
+\DoxyCodeLine{00070\ \ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ DRV\_IDRIVE\_WD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)(0x03)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ DRV\_IDRIVE\_WD\_TDEAD\_MASK(x)\ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ DRV\_IDRIVE\_WD\_WD\_EN\_MASK\ \ \ \ \ \ \ \ (1U<<5)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ DRV\_IDRIVE\_WD\_WD\_DLY\_MASK(x)\ \ \ \ ((((uint8\_t)x)\ \&\ 0x03)\ <<\ 3)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ DRV\_IDRIVE\_WD\_IDRIVE\_MASK(x)\ \ \ \ ((((uint8\_t)x)\ \&\ 0x07)\ <<\ 0)\ }}
+\DoxyCodeLine{00082\ \ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ DRV\_VDS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)(0x04)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_SO\_LIM\_MASK\ \ \ \ \ \ \ \ \ \ \ \ \ (1U<<7)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_VDS\_MASK(x)\ \ \ \ \ \ \ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x07)\ <<\ 4)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_DIS\_H2\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<3)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_DIS\_L2\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<2)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_DIS\_H1\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<1)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ DRV\_VDS\_DIS\_L1\_VDS\_MASK\ \ \ \ \ \ \ \ \ (1U<<0)}}
+\DoxyCodeLine{00095\ \ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ DRV\_CONFIG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)(0x05)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ DRV\_CONFIG\_TOFF\_MASK(x)\ \ \ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x03)\ <<\ 6)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ DRV\_CONFIG\_CHOP\_IDS\_MASK\ \ \ \ \ \ \ \ (1U<<5)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ DRV\_CONFIG\_VREF\_SCL\_MASK(x)\ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x03)\ <<\ 3)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ DRV\_CONFIG\_SH\_EN\_MASK\ \ \ \ \ \ \ \ \ \ \ (1U<<2)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ DRV\_CONFIG\_GAIN\_CS\_MASK(x)\ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x03)\ <<\ 0)\ }}
+\DoxyCodeLine{00108\ \ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ DRV\_MSG\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)8}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ DRV\_DATA\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)8}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ DRV\_ADDR\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)4}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ DRV\_READWRITE\_MASK\ \ \ \ \ \ \ \ \ \ \ \ \ \ (1U<<7)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//byte\ \#1}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ DRV\_ADDR\_MASK(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x0F)\ <<\ 3)\ }\textcolor{comment}{//byte\ \#1}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ DRV\_RESERVED\_MASK(x)\ \ \ \ \ \ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0x0F)\ <<\ 0)\ }\textcolor{comment}{//byte\ \#1}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ DRV\_DATA\_MASK(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((((uint8\_t)x)\ \&\ 0xFF)\ <<\ 0)\ }\textcolor{comment}{//byte\ \#2}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ DRV\_SPI\_TIMEOUT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (uint8\_t)10\ \ }}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ DRV\_SPI\_INTERFACE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hspi3}}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ SPI\_HandleTypeDef\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DRV\_SPI\_INTERFACE;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00138\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{drv8703_8h_aacbd29ce1823b0224c877c38603f093a}{DRV\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{drv8703_8h_ac5040b78f563159a60fefa0191052830}{DRV\_write}}(uint8\_t\ address,\ uint8\_t\ data);}
+\DoxyCodeLine{00150\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{drv8703_8h_ae0903f440d0fa565fd3947ee31c70a31}{DRV\_read}}(uint8\_t\ address,\ uint8\_t*\ data);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{drv8703_8h_a530f2207deecc88721dacf30cbec7936}{DRV\_modify\_set}}(uint8\_t\ address,\ uint8\_t\ data);}
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{drv8703_8h_a5469ae17c293c62f53612deb421ae9f5}{DRV\_modify\_reset}}(uint8\_t\ address,\ uint8\_t\ data);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00173\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{drv8703_8h_a5a80a0e31e16e54224183cd2721308eb}{DRV\_writeRegister}}(uint8\_t*\ data,\ uint8\_t\ filter);}
+\DoxyCodeLine{00174\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{drv8703_8h_a680b2474db7711bf8c58319f4b2adcc1}{DRV\_readRegister}}(uint8\_t*\ data,\ uint8\_t\ filter);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{drv8703_8h_adc50917bef3b15ac8dd7e70c889b94ad}{MX\_SPI\_init}}();}
+\DoxyCodeLine{00177\ \textcolor{keywordtype}{void}\ MX\_GPIO\_init();}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00180\ \}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

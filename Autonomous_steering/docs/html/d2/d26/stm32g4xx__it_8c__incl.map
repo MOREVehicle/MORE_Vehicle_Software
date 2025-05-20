@@ -1,0 +1,7 @@
+<map id="STM32_AUTONOMOUS_PROJECT/Src/stm32g4xx_it.c" name="STM32_AUTONOMOUS_PROJECT/Src/stm32g4xx_it.c">
+<area shape="rect" id="Node000001" title="Interrupt Service Routines." alt="" coords="5,5,243,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="39,96,100,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,50,89,85,84,82,108,47"/>
+<area shape="rect" id="Node000003" href="$d9/d3a/stm32g4xx__it_8h.html" title="This file contains the headers of the interrupt handlers." alt="" coords="124,96,234,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,47,164,82,159,85,136,50"/>
+</map>

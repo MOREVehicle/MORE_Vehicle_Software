@@ -1,0 +1,21 @@
+<map id="STM32_AUTONOMOUS_PROJECT/Inc/stm32g4xx_hal_conf.h" name="STM32_AUTONOMOUS_PROJECT/Inc/stm32g4xx_hal_conf.h">
+<area shape="rect" id="Node000001" title="HAL configuration file." alt="" coords="669,5,906,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,96,151,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="669,42,166,98,166,93,668,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="174,96,326,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="668,48,342,97,341,92,668,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="350,96,502,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="695,51,499,95,498,89,694,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="526,96,689,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="742,51,651,92,648,87,740,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="713,96,862,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="790,49,790,80,785,80,785,49"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="886,96,1041,123"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="834,46,923,87,921,92,832,51"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="1065,96,1214,123"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="879,46,1069,89,1068,95,877,51"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1238,96,1382,123"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="907,44,1223,92,1222,97,906,49"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1406,96,1555,123"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="907,38,1391,93,1390,98,906,43"/>
+</map>
