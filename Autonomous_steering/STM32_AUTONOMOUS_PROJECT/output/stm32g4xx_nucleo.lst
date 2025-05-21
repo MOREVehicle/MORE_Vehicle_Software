@@ -1,0 +1,2223 @@
+ARM GAS  /tmp/ccTVROKY.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32g4xx_nucleo.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "platform/BSP/stm32g4xx_nucleo.c"
+  20              		.section	.text.COM1_MspInit,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	COM1_MspInit:
+  27              	.LVL0:
+  28              	.LFB152:
+   1:platform/BSP/stm32g4xx_nucleo.c **** /**
+   2:platform/BSP/stm32g4xx_nucleo.c ****   ******************************************************************************
+   3:platform/BSP/stm32g4xx_nucleo.c ****   * @file    stm32g4xx_nucleo.c
+   4:platform/BSP/stm32g4xx_nucleo.c ****   * @author  MCD Application Team
+   5:platform/BSP/stm32g4xx_nucleo.c ****   * @brief   This file provides set of firmware functions to manage:
+   6:platform/BSP/stm32g4xx_nucleo.c ****   *          - LEDs and push-button available on STM32G4xx-Nucleo Kit
+   7:platform/BSP/stm32g4xx_nucleo.c ****   *            from STMicroelectronics
+   8:platform/BSP/stm32g4xx_nucleo.c ****   ******************************************************************************
+   9:platform/BSP/stm32g4xx_nucleo.c ****   * @attention
+  10:platform/BSP/stm32g4xx_nucleo.c ****   *
+  11:platform/BSP/stm32g4xx_nucleo.c ****   * Copyright (c) 2019 STMicroelectronics.
+  12:platform/BSP/stm32g4xx_nucleo.c ****   * All rights reserved.
+  13:platform/BSP/stm32g4xx_nucleo.c ****   *
+  14:platform/BSP/stm32g4xx_nucleo.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  15:platform/BSP/stm32g4xx_nucleo.c ****   * in the root directory of this software component.
+  16:platform/BSP/stm32g4xx_nucleo.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  17:platform/BSP/stm32g4xx_nucleo.c ****   *
+  18:platform/BSP/stm32g4xx_nucleo.c ****   ******************************************************************************
+  19:platform/BSP/stm32g4xx_nucleo.c ****   */
+  20:platform/BSP/stm32g4xx_nucleo.c **** 
+  21:platform/BSP/stm32g4xx_nucleo.c **** /* Includes ------------------------------------------------------------------*/
+  22:platform/BSP/stm32g4xx_nucleo.c **** #include "stm32g4xx_nucleo.h"
+  23:platform/BSP/stm32g4xx_nucleo.c **** #if defined(__ICCARM__)
+  24:platform/BSP/stm32g4xx_nucleo.c **** #include <LowLevelIOInterface.h>
+  25:platform/BSP/stm32g4xx_nucleo.c **** #endif /* __ICCARM__ */
+  26:platform/BSP/stm32g4xx_nucleo.c **** 
+  27:platform/BSP/stm32g4xx_nucleo.c **** /** @addtogroup BSP
+  28:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  29:platform/BSP/stm32g4xx_nucleo.c ****   */
+  30:platform/BSP/stm32g4xx_nucleo.c **** 
+ARM GAS  /tmp/ccTVROKY.s 			page 2
+
+
+  31:platform/BSP/stm32g4xx_nucleo.c **** /** @addtogroup STM32G4XX_NUCLEO
+  32:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  33:platform/BSP/stm32g4xx_nucleo.c ****   */
+  34:platform/BSP/stm32g4xx_nucleo.c **** 
+  35:platform/BSP/stm32g4xx_nucleo.c **** /** @addtogroup STM32G4XX_NUCLEO_LOW_LEVEL
+  36:platform/BSP/stm32g4xx_nucleo.c ****   * @brief This file provides set of firmware functions to manage Leds and push-button
+  37:platform/BSP/stm32g4xx_nucleo.c ****   *        available on STM32G4xx-Nucleo Kit from STMicroelectronics.
+  38:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  39:platform/BSP/stm32g4xx_nucleo.c ****   */
+  40:platform/BSP/stm32g4xx_nucleo.c **** 
+  41:platform/BSP/stm32g4xx_nucleo.c **** 
+  42:platform/BSP/stm32g4xx_nucleo.c **** /** @defgroup STM32G4XX_NUCLEO_LOW_LEVEL_Exported_Variables LOW LEVEL Exported Variables
+  43:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  44:platform/BSP/stm32g4xx_nucleo.c ****   */
+  45:platform/BSP/stm32g4xx_nucleo.c **** #if defined (USE_NUCLEO_64)
+  46:platform/BSP/stm32g4xx_nucleo.c **** EXTI_HandleTypeDef hpb_exti[BUTTONn];
+  47:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+  48:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_BSP_COM_FEATURE > 0)
+  49:platform/BSP/stm32g4xx_nucleo.c **** UART_HandleTypeDef hcom_uart[COMn];
+  50:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_BSP_COM_FEATURE > 0) */
+  51:platform/BSP/stm32g4xx_nucleo.c **** /**
+  52:platform/BSP/stm32g4xx_nucleo.c ****   * @}
+  53:platform/BSP/stm32g4xx_nucleo.c ****   */
+  54:platform/BSP/stm32g4xx_nucleo.c **** 
+  55:platform/BSP/stm32g4xx_nucleo.c **** /** @defgroup STM32G4XX_NUCLEO_LOW_LEVEL_Private_Defines LOW LEVEL Private Defines
+  56:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  57:platform/BSP/stm32g4xx_nucleo.c ****   */
+  58:platform/BSP/stm32g4xx_nucleo.c **** 
+  59:platform/BSP/stm32g4xx_nucleo.c **** /**
+  60:platform/BSP/stm32g4xx_nucleo.c ****   * @}
+  61:platform/BSP/stm32g4xx_nucleo.c ****   */
+  62:platform/BSP/stm32g4xx_nucleo.c **** 
+  63:platform/BSP/stm32g4xx_nucleo.c **** /** @defgroup STM32G4XX_NUCLEO_LOW_LEVEL_Private_TypesDefinitions LOW LEVEL Private Typedef
+  64:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  65:platform/BSP/stm32g4xx_nucleo.c ****   */
+  66:platform/BSP/stm32g4xx_nucleo.c **** #if defined (USE_NUCLEO_64)
+  67:platform/BSP/stm32g4xx_nucleo.c **** typedef void (* BSP_EXTI_LineCallback) (void);
+  68:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+  69:platform/BSP/stm32g4xx_nucleo.c **** /**
+  70:platform/BSP/stm32g4xx_nucleo.c ****   * @}
+  71:platform/BSP/stm32g4xx_nucleo.c ****   */
+  72:platform/BSP/stm32g4xx_nucleo.c **** 
+  73:platform/BSP/stm32g4xx_nucleo.c **** /** @defgroup STM32G4XX_NUCLEO_LOW_LEVEL_Private_Variables LOW LEVEL Private Variables
+  74:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+  75:platform/BSP/stm32g4xx_nucleo.c ****   */
+  76:platform/BSP/stm32g4xx_nucleo.c **** static GPIO_TypeDef*   LED_PORT[LEDn] = {LED2_GPIO_PORT};
+  77:platform/BSP/stm32g4xx_nucleo.c **** 
+  78:platform/BSP/stm32g4xx_nucleo.c **** static const uint16_t  LED_PIN[LEDn] = {LED2_PIN};
+  79:platform/BSP/stm32g4xx_nucleo.c **** 
+  80:platform/BSP/stm32g4xx_nucleo.c **** #if defined (USE_NUCLEO_64)
+  81:platform/BSP/stm32g4xx_nucleo.c **** static GPIO_TypeDef*   BUTTON_PORT[BUTTONn] = {USER_BUTTON_GPIO_PORT};
+  82:platform/BSP/stm32g4xx_nucleo.c **** 
+  83:platform/BSP/stm32g4xx_nucleo.c **** static const uint16_t  BUTTON_PIN[BUTTONn] = {USER_BUTTON_PIN};
+  84:platform/BSP/stm32g4xx_nucleo.c **** 
+  85:platform/BSP/stm32g4xx_nucleo.c **** static const IRQn_Type BUTTON_IRQn[BUTTONn] = {USER_BUTTON_EXTI_IRQn};
+  86:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+  87:platform/BSP/stm32g4xx_nucleo.c **** 
+ARM GAS  /tmp/ccTVROKY.s 			page 3
+
+
+  88:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_BSP_COM_FEATURE > 0)
+  89:platform/BSP/stm32g4xx_nucleo.c **** static USART_TypeDef*  COM_USART[COMn] = {COM1_UART};
+  90:platform/BSP/stm32g4xx_nucleo.c **** 
+  91:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_COM_LOG > 0)
+  92:platform/BSP/stm32g4xx_nucleo.c **** static COM_TypeDef COM_ActiveLogPort = COM1;
+  93:platform/BSP/stm32g4xx_nucleo.c **** #endif
+  94:platform/BSP/stm32g4xx_nucleo.c **** 
+  95:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
+  96:platform/BSP/stm32g4xx_nucleo.c **** static uint32_t IsComMspCbValid[COMn] = {0};
+  97:platform/BSP/stm32g4xx_nucleo.c **** #endif
+  98:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_BSP_COM_FEATURE > 0) */
+  99:platform/BSP/stm32g4xx_nucleo.c **** 
+ 100:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 101:platform/BSP/stm32g4xx_nucleo.c ****   * @}
+ 102:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 103:platform/BSP/stm32g4xx_nucleo.c **** 
+ 104:platform/BSP/stm32g4xx_nucleo.c **** /** @defgroup STM32G4XX_NUCLEO_LOW_LEVEL_Private_Functions LOW LEVEL Private Functions
+ 105:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+ 106:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 107:platform/BSP/stm32g4xx_nucleo.c **** #if defined (USE_NUCLEO_64)
+ 108:platform/BSP/stm32g4xx_nucleo.c **** static void BUTTON_USER_EXTI_Callback(void);
+ 109:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+ 110:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_BSP_COM_FEATURE > 0)
+ 111:platform/BSP/stm32g4xx_nucleo.c **** static void COM1_MspInit(UART_HandleTypeDef *huart);
+ 112:platform/BSP/stm32g4xx_nucleo.c **** static void COM1_MspDeInit(UART_HandleTypeDef *huart);
+ 113:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_BSP_COM_FEATURE > 0) */
+ 114:platform/BSP/stm32g4xx_nucleo.c **** 
+ 115:platform/BSP/stm32g4xx_nucleo.c **** #if defined(__ICCARM__)
+ 116:platform/BSP/stm32g4xx_nucleo.c **** /* New definition from EWARM V9, compatible with EWARM8 */
+ 117:platform/BSP/stm32g4xx_nucleo.c **** int iar_fputc(int ch);
+ 118:platform/BSP/stm32g4xx_nucleo.c **** #define PUTCHAR_PROTOTYPE int iar_fputc(int ch)
+ 119:platform/BSP/stm32g4xx_nucleo.c **** #elif defined ( __CC_ARM ) || defined(__ARMCC_VERSION)
+ 120:platform/BSP/stm32g4xx_nucleo.c **** /* ARM Compiler 5/6*/
+ 121:platform/BSP/stm32g4xx_nucleo.c **** #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+ 122:platform/BSP/stm32g4xx_nucleo.c **** #elif defined(__GNUC__)
+ 123:platform/BSP/stm32g4xx_nucleo.c **** #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+ 124:platform/BSP/stm32g4xx_nucleo.c **** #endif /* __ICCARM__ */
+ 125:platform/BSP/stm32g4xx_nucleo.c **** 
+ 126:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 127:platform/BSP/stm32g4xx_nucleo.c ****   * @}
+ 128:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 129:platform/BSP/stm32g4xx_nucleo.c **** 
+ 130:platform/BSP/stm32g4xx_nucleo.c **** /** @addtogroup STM32G4XX_NUCLEO_LOW_LEVEL_Exported_Functions
+ 131:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+ 132:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 133:platform/BSP/stm32g4xx_nucleo.c **** 
+ 134:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 135:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  This method returns the STM32G4xx NUCLEO BSP Driver revision
+ 136:platform/BSP/stm32g4xx_nucleo.c ****   * @retval version 0xXYZR (8bits for each decimal, R for RC)
+ 137:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 138:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_GetVersion(void)
+ 139:platform/BSP/stm32g4xx_nucleo.c **** {
+ 140:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)STM32G4XX_NUCLEO_BSP_VERSION;
+ 141:platform/BSP/stm32g4xx_nucleo.c **** }
+ 142:platform/BSP/stm32g4xx_nucleo.c **** 
+ 143:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 144:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  This method returns the board name
+ARM GAS  /tmp/ccTVROKY.s 			page 4
+
+
+ 145:platform/BSP/stm32g4xx_nucleo.c ****   * @retval pointer to the board name string
+ 146:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 147:platform/BSP/stm32g4xx_nucleo.c **** const uint8_t* BSP_GetBoardName(void)
+ 148:platform/BSP/stm32g4xx_nucleo.c **** {
+ 149:platform/BSP/stm32g4xx_nucleo.c ****   return (const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_NAME;
+ 150:platform/BSP/stm32g4xx_nucleo.c **** }
+ 151:platform/BSP/stm32g4xx_nucleo.c **** 
+ 152:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 153:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  This method returns the board ID
+ 154:platform/BSP/stm32g4xx_nucleo.c ****   * @retval pointer to the board ID string
+ 155:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 156:platform/BSP/stm32g4xx_nucleo.c **** const uint8_t* BSP_GetBoardID(void)
+ 157:platform/BSP/stm32g4xx_nucleo.c **** {
+ 158:platform/BSP/stm32g4xx_nucleo.c ****   return (const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_ID;
+ 159:platform/BSP/stm32g4xx_nucleo.c **** }
+ 160:platform/BSP/stm32g4xx_nucleo.c **** 
+ 161:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 162:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Configures LED GPIO.
+ 163:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Led Specifies the Led to be configured.
+ 164:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of following parameters:
+ 165:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  LED2
+ 166:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 167:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 168:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_LED_Init(Led_TypeDef Led)
+ 169:platform/BSP/stm32g4xx_nucleo.c **** {
+ 170:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef  gpio_init_structure;
+ 171:platform/BSP/stm32g4xx_nucleo.c **** 
+ 172:platform/BSP/stm32g4xx_nucleo.c ****   /* Enable the GPIO LED Clock */
+ 173:platform/BSP/stm32g4xx_nucleo.c ****   LED2_GPIO_CLK_ENABLE();
+ 174:platform/BSP/stm32g4xx_nucleo.c **** 
+ 175:platform/BSP/stm32g4xx_nucleo.c ****   /* Configure the GPIO_LED pin */
+ 176:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pin   = LED_PIN[Led];
+ 177:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Mode  = GPIO_MODE_OUTPUT_PP;
+ 178:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull  = GPIO_NOPULL;
+ 179:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 180:platform/BSP/stm32g4xx_nucleo.c **** 
+ 181:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_Init(LED_PORT[Led], &gpio_init_structure);
+ 182:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 183:platform/BSP/stm32g4xx_nucleo.c **** 
+ 184:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 185:platform/BSP/stm32g4xx_nucleo.c **** }
+ 186:platform/BSP/stm32g4xx_nucleo.c **** 
+ 187:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 188:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  DeInit LEDs.
+ 189:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Led Specifies the Led to be de-init.
+ 190:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of the following values:
+ 191:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  LED2
+ 192:platform/BSP/stm32g4xx_nucleo.c ****   * @note Led DeInit does not disable the GPIO clock
+ 193:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 194:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 195:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_LED_DeInit(Led_TypeDef Led)
+ 196:platform/BSP/stm32g4xx_nucleo.c **** {
+ 197:platform/BSP/stm32g4xx_nucleo.c ****   /* Turn off LED */
+ 198:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 199:platform/BSP/stm32g4xx_nucleo.c **** 
+ 200:platform/BSP/stm32g4xx_nucleo.c ****   /* DeInit the GPIO_LED pin */
+ 201:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_DeInit(LED_PORT[Led], LED_PIN[Led]);
+ARM GAS  /tmp/ccTVROKY.s 			page 5
+
+
+ 202:platform/BSP/stm32g4xx_nucleo.c **** 
+ 203:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 204:platform/BSP/stm32g4xx_nucleo.c **** }
+ 205:platform/BSP/stm32g4xx_nucleo.c **** 
+ 206:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 207:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Turns selected LED On.
+ 208:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Led Specifies the Led to be set on.
+ 209:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of following parameters:
+ 210:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  LED2
+ 211:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 212:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 213:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_LED_On(Led_TypeDef Led)
+ 214:platform/BSP/stm32g4xx_nucleo.c **** {
+ 215:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_SET);
+ 216:platform/BSP/stm32g4xx_nucleo.c **** 
+ 217:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 218:platform/BSP/stm32g4xx_nucleo.c **** }
+ 219:platform/BSP/stm32g4xx_nucleo.c **** 
+ 220:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 221:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Turns selected LED Off.
+ 222:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Led Specifies the Led to be set off.
+ 223:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of following parameters:
+ 224:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  LED2
+ 225:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 226:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 227:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_LED_Off(Led_TypeDef Led)
+ 228:platform/BSP/stm32g4xx_nucleo.c **** {
+ 229:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 230:platform/BSP/stm32g4xx_nucleo.c **** 
+ 231:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 232:platform/BSP/stm32g4xx_nucleo.c **** }
+ 233:platform/BSP/stm32g4xx_nucleo.c **** 
+ 234:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 235:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Toggles the selected LED.
+ 236:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Led Specifies the Led to be toggled.
+ 237:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of following parameters:
+ 238:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  LED2
+ 239:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 240:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 241:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_LED_Toggle(Led_TypeDef Led)
+ 242:platform/BSP/stm32g4xx_nucleo.c **** {
+ 243:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_TogglePin(LED_PORT[Led], LED_PIN[Led]);
+ 244:platform/BSP/stm32g4xx_nucleo.c **** 
+ 245:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 246:platform/BSP/stm32g4xx_nucleo.c **** }
+ 247:platform/BSP/stm32g4xx_nucleo.c **** 
+ 248:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 249:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Get the status of the selected LED.
+ 250:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Led Specifies the Led to get its state.
+ 251:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of following parameters:
+ 252:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  LED2
+ 253:platform/BSP/stm32g4xx_nucleo.c ****   * @retval LED status
+ 254:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 255:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_LED_GetState(Led_TypeDef Led)
+ 256:platform/BSP/stm32g4xx_nucleo.c **** {
+ 257:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)HAL_GPIO_ReadPin(LED_PORT[Led], LED_PIN[Led]);
+ 258:platform/BSP/stm32g4xx_nucleo.c **** }
+ARM GAS  /tmp/ccTVROKY.s 			page 6
+
+
+ 259:platform/BSP/stm32g4xx_nucleo.c **** 
+ 260:platform/BSP/stm32g4xx_nucleo.c **** #if defined (USE_NUCLEO_64)
+ 261:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 262:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Configures Button GPIO and EXTI Line.
+ 263:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Button Button to be configured.
+ 264:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of the following values:
+ 265:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg  BUTTON_USER: User Push Button
+ 266:platform/BSP/stm32g4xx_nucleo.c ****   * @param  ButtonMode Button mode.
+ 267:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be one of following parameters:
+ 268:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg BUTTON_MODE_GPIO: Button will be used as simple IO
+ 269:platform/BSP/stm32g4xx_nucleo.c ****   *           @arg BUTTON_MODE_EXTI: Button will be connected to EXTI line
+ 270:platform/BSP/stm32g4xx_nucleo.c ****   *                                  with interrupt generation capability
+ 271:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 272:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 273:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)
+ 274:platform/BSP/stm32g4xx_nucleo.c **** {
+ 275:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef gpio_init_structure;
+ 276:platform/BSP/stm32g4xx_nucleo.c ****   static BSP_EXTI_LineCallback ButtonCallback[BUTTONn] = {BUTTON_USER_EXTI_Callback};
+ 277:platform/BSP/stm32g4xx_nucleo.c ****   static uint32_t BSP_BUTTON_PRIO [BUTTONn] = {BSP_BUTTON_USER_IT_PRIORITY};
+ 278:platform/BSP/stm32g4xx_nucleo.c ****   static const uint32_t BUTTON_EXTI_LINE[BUTTONn] = {USER_BUTTON_EXTI_LINE};
+ 279:platform/BSP/stm32g4xx_nucleo.c **** 
+ 280:platform/BSP/stm32g4xx_nucleo.c ****   /* Enable the BUTTON Clock */
+ 281:platform/BSP/stm32g4xx_nucleo.c ****   USER_BUTTON_GPIO_CLK_ENABLE();
+ 282:platform/BSP/stm32g4xx_nucleo.c **** 
+ 283:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pin = BUTTON_PIN[Button];
+ 284:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull = GPIO_PULLDOWN;
+ 285:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed = GPIO_SPEED_FREQ_HIGH;
+ 286:platform/BSP/stm32g4xx_nucleo.c **** 
+ 287:platform/BSP/stm32g4xx_nucleo.c ****   if(ButtonMode == BUTTON_MODE_GPIO)
+ 288:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 289:platform/BSP/stm32g4xx_nucleo.c ****     /* Configure Button pin as input */
+ 290:platform/BSP/stm32g4xx_nucleo.c ****     gpio_init_structure.Mode = GPIO_MODE_INPUT;
+ 291:platform/BSP/stm32g4xx_nucleo.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &gpio_init_structure);
+ 292:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 293:platform/BSP/stm32g4xx_nucleo.c ****   else /* (ButtonMode == BUTTON_MODE_EXTI) */
+ 294:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 295:platform/BSP/stm32g4xx_nucleo.c ****     /* Configure Button pin as input with External interrupt */
+ 296:platform/BSP/stm32g4xx_nucleo.c ****     gpio_init_structure.Mode = GPIO_MODE_IT_RISING;
+ 297:platform/BSP/stm32g4xx_nucleo.c **** 
+ 298:platform/BSP/stm32g4xx_nucleo.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &gpio_init_structure);
+ 299:platform/BSP/stm32g4xx_nucleo.c **** 
+ 300:platform/BSP/stm32g4xx_nucleo.c ****     (void)HAL_EXTI_GetHandle(&hpb_exti[Button], BUTTON_EXTI_LINE[Button]);
+ 301:platform/BSP/stm32g4xx_nucleo.c ****     (void)HAL_EXTI_RegisterCallback(&hpb_exti[Button],  HAL_EXTI_COMMON_CB_ID, ButtonCallback[Butto
+ 302:platform/BSP/stm32g4xx_nucleo.c **** 
+ 303:platform/BSP/stm32g4xx_nucleo.c ****     /* Enable and set Button EXTI Interrupt to the lowest priority */
+ 304:platform/BSP/stm32g4xx_nucleo.c ****     HAL_NVIC_SetPriority((BUTTON_IRQn[Button]), BSP_BUTTON_PRIO[Button], 0x00);
+ 305:platform/BSP/stm32g4xx_nucleo.c ****     HAL_NVIC_EnableIRQ((BUTTON_IRQn[Button]));
+ 306:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 307:platform/BSP/stm32g4xx_nucleo.c **** 
+ 308:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 309:platform/BSP/stm32g4xx_nucleo.c **** }
+ 310:platform/BSP/stm32g4xx_nucleo.c **** 
+ 311:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 312:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Push Button DeInit.
+ 313:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Button Button to be configured
+ 314:platform/BSP/stm32g4xx_nucleo.c ****   *          This parameter can be one of the following values:
+ 315:platform/BSP/stm32g4xx_nucleo.c ****   *            @arg  BUTTON_USER: User Push Button
+ARM GAS  /tmp/ccTVROKY.s 			page 7
+
+
+ 316:platform/BSP/stm32g4xx_nucleo.c ****   * @note PB DeInit does not disable the GPIO clock
+ 317:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 318:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 319:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_PB_DeInit(Button_TypeDef Button)
+ 320:platform/BSP/stm32g4xx_nucleo.c **** {
+ 321:platform/BSP/stm32g4xx_nucleo.c ****   HAL_NVIC_DisableIRQ((BUTTON_IRQn[Button]));
+ 322:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_DeInit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 323:platform/BSP/stm32g4xx_nucleo.c **** 
+ 324:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 325:platform/BSP/stm32g4xx_nucleo.c **** }
+ 326:platform/BSP/stm32g4xx_nucleo.c **** 
+ 327:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 328:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Returns the selected Button state.
+ 329:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Button Button to be checked.
+ 330:platform/BSP/stm32g4xx_nucleo.c ****   *          This parameter can be one of the following values:
+ 331:platform/BSP/stm32g4xx_nucleo.c ****   *            @arg  BUTTON_USER: User Push Button
+ 332:platform/BSP/stm32g4xx_nucleo.c ****   * @retval The Button GPIO pin value
+ 333:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 334:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_PB_GetState(Button_TypeDef Button)
+ 335:platform/BSP/stm32g4xx_nucleo.c **** {
+ 336:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 337:platform/BSP/stm32g4xx_nucleo.c **** }
+ 338:platform/BSP/stm32g4xx_nucleo.c **** 
+ 339:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 340:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  This function handles Push-Button interrupt requests.
+ 341:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Button Specifies the pin connected EXTI line
+ 342:platform/BSP/stm32g4xx_nucleo.c ****   * @retval None
+ 343:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 344:platform/BSP/stm32g4xx_nucleo.c **** void BSP_PB_IRQHandler(Button_TypeDef Button)
+ 345:platform/BSP/stm32g4xx_nucleo.c **** {
+ 346:platform/BSP/stm32g4xx_nucleo.c ****   HAL_EXTI_IRQHandler(&hpb_exti[Button]);
+ 347:platform/BSP/stm32g4xx_nucleo.c **** }
+ 348:platform/BSP/stm32g4xx_nucleo.c **** 
+ 349:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 350:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  BSP Push Button callback
+ 351:platform/BSP/stm32g4xx_nucleo.c ****   * @param  Button Specifies the pin connected EXTI line
+ 352:platform/BSP/stm32g4xx_nucleo.c ****   * @retval None.
+ 353:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 354:platform/BSP/stm32g4xx_nucleo.c **** __weak void BSP_PB_Callback(Button_TypeDef Button)
+ 355:platform/BSP/stm32g4xx_nucleo.c **** {
+ 356:platform/BSP/stm32g4xx_nucleo.c ****   /* Prevent unused argument(s) compilation warning */
+ 357:platform/BSP/stm32g4xx_nucleo.c ****   UNUSED(Button);
+ 358:platform/BSP/stm32g4xx_nucleo.c **** 
+ 359:platform/BSP/stm32g4xx_nucleo.c ****   /* This function should be implemented by the user application.
+ 360:platform/BSP/stm32g4xx_nucleo.c ****      It is called into this driver when an event on Button is triggered. */
+ 361:platform/BSP/stm32g4xx_nucleo.c **** }
+ 362:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+ 363:platform/BSP/stm32g4xx_nucleo.c **** 
+ 364:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_BSP_COM_FEATURE > 0)
+ 365:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 366:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Configures COM port.
+ 367:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM COM port to be configured.
+ 368:platform/BSP/stm32g4xx_nucleo.c ****   *         This parameter can be COM1
+ 369:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM_Init Pointer to a UART_HandleTypeDef structure that contains the
+ 370:platform/BSP/stm32g4xx_nucleo.c ****   *                  configuration information for the specified USART peripheral.
+ 371:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP error code
+ 372:platform/BSP/stm32g4xx_nucleo.c ****   */
+ARM GAS  /tmp/ccTVROKY.s 			page 8
+
+
+ 373:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_COM_Init(COM_TypeDef COM, COM_InitTypeDef *COM_Init)
+ 374:platform/BSP/stm32g4xx_nucleo.c **** {
+ 375:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 376:platform/BSP/stm32g4xx_nucleo.c **** 
+ 377:platform/BSP/stm32g4xx_nucleo.c ****   if(COM > COMn)
+ 378:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 379:platform/BSP/stm32g4xx_nucleo.c ****     ret = BSP_ERROR_WRONG_PARAM;
+ 380:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 381:platform/BSP/stm32g4xx_nucleo.c ****   else
+ 382:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 383:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_HAL_UART_REGISTER_CALLBACKS == 0)
+ 384:platform/BSP/stm32g4xx_nucleo.c ****     /* Init the UART Msp */
+ 385:platform/BSP/stm32g4xx_nucleo.c ****     COM1_MspInit(&hcom_uart[COM]);
+ 386:platform/BSP/stm32g4xx_nucleo.c **** #else
+ 387:platform/BSP/stm32g4xx_nucleo.c ****     if(IsComMspCbValid == 0U)
+ 388:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 389:platform/BSP/stm32g4xx_nucleo.c ****       if(BSP_COM_RegisterDefaultMspCallbacks(COM) != BSP_ERROR_NONE)
+ 390:platform/BSP/stm32g4xx_nucleo.c ****       {
+ 391:platform/BSP/stm32g4xx_nucleo.c ****         return BSP_ERROR_MSP_FAILURE;
+ 392:platform/BSP/stm32g4xx_nucleo.c ****       }
+ 393:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 394:platform/BSP/stm32g4xx_nucleo.c **** #endif
+ 395:platform/BSP/stm32g4xx_nucleo.c **** 
+ 396:platform/BSP/stm32g4xx_nucleo.c ****     if(MX_LPUART1_Init(&hcom_uart[COM], COM_Init) != HAL_OK)
+ 397:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 398:platform/BSP/stm32g4xx_nucleo.c ****       return BSP_ERROR_PERIPH_FAILURE;
+ 399:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 400:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 401:platform/BSP/stm32g4xx_nucleo.c **** 
+ 402:platform/BSP/stm32g4xx_nucleo.c ****   return ret;
+ 403:platform/BSP/stm32g4xx_nucleo.c **** }
+ 404:platform/BSP/stm32g4xx_nucleo.c **** 
+ 405:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 406:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  DeInit COM port.
+ 407:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM COM port to be configured.
+ 408:platform/BSP/stm32g4xx_nucleo.c ****   *          This parameter can be COM1
+ 409:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 410:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 411:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_COM_DeInit(COM_TypeDef COM)
+ 412:platform/BSP/stm32g4xx_nucleo.c **** {
+ 413:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 414:platform/BSP/stm32g4xx_nucleo.c **** 
+ 415:platform/BSP/stm32g4xx_nucleo.c ****   if(COM >= COMn)
+ 416:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 417:platform/BSP/stm32g4xx_nucleo.c ****     ret = BSP_ERROR_WRONG_PARAM;
+ 418:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 419:platform/BSP/stm32g4xx_nucleo.c ****   else
+ 420:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 421:platform/BSP/stm32g4xx_nucleo.c ****     /* USART configuration */
+ 422:platform/BSP/stm32g4xx_nucleo.c ****     hcom_uart[COM].Instance = COM_USART[COM];
+ 423:platform/BSP/stm32g4xx_nucleo.c **** 
+ 424:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_HAL_UART_REGISTER_CALLBACKS == 0)
+ 425:platform/BSP/stm32g4xx_nucleo.c ****     COM1_MspDeInit(&hcom_uart[COM]);
+ 426:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_HAL_UART_REGISTER_CALLBACKS == 0) */
+ 427:platform/BSP/stm32g4xx_nucleo.c **** 
+ 428:platform/BSP/stm32g4xx_nucleo.c ****     if(HAL_UART_DeInit(&hcom_uart[COM]) != HAL_OK)
+ 429:platform/BSP/stm32g4xx_nucleo.c ****     {
+ARM GAS  /tmp/ccTVROKY.s 			page 9
+
+
+ 430:platform/BSP/stm32g4xx_nucleo.c ****       return BSP_ERROR_PERIPH_FAILURE;
+ 431:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 432:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 433:platform/BSP/stm32g4xx_nucleo.c **** 
+ 434:platform/BSP/stm32g4xx_nucleo.c ****   return ret;
+ 435:platform/BSP/stm32g4xx_nucleo.c **** }
+ 436:platform/BSP/stm32g4xx_nucleo.c **** 
+ 437:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 438:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Configures COM port.
+ 439:platform/BSP/stm32g4xx_nucleo.c ****   * @param  huart USART handle
+ 440:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM_Init Pointer to a UART_HandleTypeDef structure that contains the
+ 441:platform/BSP/stm32g4xx_nucleo.c ****   *                  configuration information for the specified USART peripheral.
+ 442:platform/BSP/stm32g4xx_nucleo.c ****   * @retval HAL error code
+ 443:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 444:platform/BSP/stm32g4xx_nucleo.c **** __weak HAL_StatusTypeDef MX_LPUART1_Init(UART_HandleTypeDef *huart, MX_UART_InitTypeDef *COM_Init)
+ 445:platform/BSP/stm32g4xx_nucleo.c **** {
+ 446:platform/BSP/stm32g4xx_nucleo.c ****   /* USART configuration */
+ 447:platform/BSP/stm32g4xx_nucleo.c ****  huart->Instance          = COM_USART[COM1];
+ 448:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.BaudRate     = COM_Init->BaudRate;
+ 449:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Mode         = UART_MODE_TX_RX;
+ 450:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Parity       = (uint32_t)COM_Init->Parity;
+ 451:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.WordLength   = COM_Init->WordLength;
+ 452:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.StopBits     = (uint32_t)COM_Init->StopBits;
+ 453:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.HwFlowCtl    = (uint32_t)COM_Init->HwFlowCtl;
+ 454:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.OverSampling = UART_OVERSAMPLING_8;
+ 455:platform/BSP/stm32g4xx_nucleo.c **** 
+ 456:platform/BSP/stm32g4xx_nucleo.c ****  return HAL_UART_Init(huart);
+ 457:platform/BSP/stm32g4xx_nucleo.c **** }
+ 458:platform/BSP/stm32g4xx_nucleo.c **** 
+ 459:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
+ 460:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 461:platform/BSP/stm32g4xx_nucleo.c ****   * @brief Register Default COM Msp Callbacks
+ 462:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM COM port to be configured.
+ 463:platform/BSP/stm32g4xx_nucleo.c ****   *          This parameter can be COM1
+ 464:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 465:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 466:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_COM_RegisterDefaultMspCallbacks(COM_TypeDef COM)
+ 467:platform/BSP/stm32g4xx_nucleo.c **** {
+ 468:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 469:platform/BSP/stm32g4xx_nucleo.c **** 
+ 470:platform/BSP/stm32g4xx_nucleo.c ****   if(COM >= COMn)
+ 471:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 472:platform/BSP/stm32g4xx_nucleo.c ****     ret = BSP_ERROR_WRONG_PARAM;
+ 473:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 474:platform/BSP/stm32g4xx_nucleo.c ****   else
+ 475:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 476:platform/BSP/stm32g4xx_nucleo.c ****     __HAL_UART_RESET_HANDLE_STATE(&hcom_uart[COM]);
+ 477:platform/BSP/stm32g4xx_nucleo.c **** 
+ 478:platform/BSP/stm32g4xx_nucleo.c ****     /* Register default MspInit/MspDeInit Callback */
+ 479:platform/BSP/stm32g4xx_nucleo.c ****     if(HAL_UART_RegisterCallback(&hcom_uart[COM], HAL_UART_MSPINIT_CB_ID, COM1_MspInit) != HAL_OK)
+ 480:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 481:platform/BSP/stm32g4xx_nucleo.c ****       ret = BSP_ERROR_PERIPH_FAILURE;
+ 482:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 483:platform/BSP/stm32g4xx_nucleo.c ****     else if(HAL_UART_RegisterCallback(&hcom_uart[COM], HAL_UART_MSPDEINIT_CB_ID, COM1_MspDeInit) !=
+ 484:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 485:platform/BSP/stm32g4xx_nucleo.c ****       ret = BSP_ERROR_PERIPH_FAILURE;
+ 486:platform/BSP/stm32g4xx_nucleo.c ****     }
+ARM GAS  /tmp/ccTVROKY.s 			page 10
+
+
+ 487:platform/BSP/stm32g4xx_nucleo.c ****     else
+ 488:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 489:platform/BSP/stm32g4xx_nucleo.c ****       IsComMspCbValid[COM] = 1U;
+ 490:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 491:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 492:platform/BSP/stm32g4xx_nucleo.c **** 
+ 493:platform/BSP/stm32g4xx_nucleo.c ****   /* BSP status */
+ 494:platform/BSP/stm32g4xx_nucleo.c ****   return ret;
+ 495:platform/BSP/stm32g4xx_nucleo.c **** }
+ 496:platform/BSP/stm32g4xx_nucleo.c **** 
+ 497:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 498:platform/BSP/stm32g4xx_nucleo.c ****   * @brief Register COM Msp Callback registering
+ 499:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM COM port to be configured.
+ 500:platform/BSP/stm32g4xx_nucleo.c ****   *          This parameter can be COM1
+ 501:platform/BSP/stm32g4xx_nucleo.c ****   * @param Callbacks     pointer to COM1 MspInit/MspDeInit callback functions
+ 502:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 503:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 504:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback)
+ 505:platform/BSP/stm32g4xx_nucleo.c **** {
+ 506:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 507:platform/BSP/stm32g4xx_nucleo.c **** 
+ 508:platform/BSP/stm32g4xx_nucleo.c ****   if(COM >= COMn)
+ 509:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 510:platform/BSP/stm32g4xx_nucleo.c ****     ret = BSP_ERROR_WRONG_PARAM;
+ 511:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 512:platform/BSP/stm32g4xx_nucleo.c ****   else
+ 513:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 514:platform/BSP/stm32g4xx_nucleo.c ****     __HAL_UART_RESET_HANDLE_STATE(&hcom_uart[COM]);
+ 515:platform/BSP/stm32g4xx_nucleo.c **** 
+ 516:platform/BSP/stm32g4xx_nucleo.c ****     /* Register MspInit/MspDeInit Callbacks */
+ 517:platform/BSP/stm32g4xx_nucleo.c ****     if(HAL_UART_RegisterCallback(&hcom_uart[COM], HAL_UART_MSPINIT_CB_ID, Callback->pMspInitCb) != 
+ 518:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 519:platform/BSP/stm32g4xx_nucleo.c ****       ret = BSP_ERROR_PERIPH_FAILURE;
+ 520:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 521:platform/BSP/stm32g4xx_nucleo.c ****     else if(HAL_UART_RegisterCallback(&hcom_uart[COM], HAL_UART_MSPDEINIT_CB_ID, Callback->pMspDeIn
+ 522:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 523:platform/BSP/stm32g4xx_nucleo.c ****       ret = BSP_ERROR_PERIPH_FAILURE;
+ 524:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 525:platform/BSP/stm32g4xx_nucleo.c ****     else
+ 526:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 527:platform/BSP/stm32g4xx_nucleo.c ****       IsComMspCbValid[COM] = 1U;
+ 528:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 529:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 530:platform/BSP/stm32g4xx_nucleo.c ****   /* BSP status */
+ 531:platform/BSP/stm32g4xx_nucleo.c ****   return ret;
+ 532:platform/BSP/stm32g4xx_nucleo.c **** }
+ 533:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
+ 534:platform/BSP/stm32g4xx_nucleo.c **** 
+ 535:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_COM_LOG > 0)
+ 536:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 537:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Select the active COM port.
+ 538:platform/BSP/stm32g4xx_nucleo.c ****   * @param  COM COM port to be activated.
+ 539:platform/BSP/stm32g4xx_nucleo.c ****   *          This parameter can be COM1
+ 540:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 541:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 542:platform/BSP/stm32g4xx_nucleo.c **** int32_t BSP_COM_SelectLogPort(COM_TypeDef COM)
+ 543:platform/BSP/stm32g4xx_nucleo.c **** {
+ARM GAS  /tmp/ccTVROKY.s 			page 11
+
+
+ 544:platform/BSP/stm32g4xx_nucleo.c ****   if(COM_ActiveLogPort != COM)
+ 545:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 546:platform/BSP/stm32g4xx_nucleo.c ****     COM_ActiveLogPort = COM;
+ 547:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 548:platform/BSP/stm32g4xx_nucleo.c ****   return BSP_ERROR_NONE;
+ 549:platform/BSP/stm32g4xx_nucleo.c **** }
+ 550:platform/BSP/stm32g4xx_nucleo.c **** 
+ 551:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 552:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Retargets the C library __write function to the IAR function iar_fputc.
+ 553:platform/BSP/stm32g4xx_nucleo.c ****   * @param  file: file descriptor.
+ 554:platform/BSP/stm32g4xx_nucleo.c ****   * @param  ptr: pointer to the buffer where the data is stored.
+ 555:platform/BSP/stm32g4xx_nucleo.c ****   * @param  len: length of the data to write in bytes.
+ 556:platform/BSP/stm32g4xx_nucleo.c ****   * @retval length of the written data in bytes.
+ 557:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 558:platform/BSP/stm32g4xx_nucleo.c **** #if defined(__ICCARM__)
+ 559:platform/BSP/stm32g4xx_nucleo.c **** size_t __write(int file, unsigned char const *ptr, size_t len)
+ 560:platform/BSP/stm32g4xx_nucleo.c **** {
+ 561:platform/BSP/stm32g4xx_nucleo.c ****   size_t idx;
+ 562:platform/BSP/stm32g4xx_nucleo.c ****   unsigned char const *pdata = ptr;
+ 563:platform/BSP/stm32g4xx_nucleo.c **** 
+ 564:platform/BSP/stm32g4xx_nucleo.c ****   for (idx = 0; idx < len; idx++)
+ 565:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 566:platform/BSP/stm32g4xx_nucleo.c ****     iar_fputc((int)*pdata);
+ 567:platform/BSP/stm32g4xx_nucleo.c ****     pdata++;
+ 568:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 569:platform/BSP/stm32g4xx_nucleo.c ****   return len;
+ 570:platform/BSP/stm32g4xx_nucleo.c **** }
+ 571:platform/BSP/stm32g4xx_nucleo.c **** #endif /* __ICCARM__ */
+ 572:platform/BSP/stm32g4xx_nucleo.c **** 
+ 573:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 574:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Redirect console output to COM
+ 575:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 576:platform/BSP/stm32g4xx_nucleo.c **** PUTCHAR_PROTOTYPE
+ 577:platform/BSP/stm32g4xx_nucleo.c **** {
+ 578:platform/BSP/stm32g4xx_nucleo.c ****   (void) HAL_UART_Transmit(&hcom_uart [COM_ActiveLogPort], (uint8_t *) &ch, 1, COM_POLL_TIMEOUT);
+ 579:platform/BSP/stm32g4xx_nucleo.c ****   return ch;
+ 580:platform/BSP/stm32g4xx_nucleo.c **** }
+ 581:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_COM_LOG */
+ 582:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_BSP_COM_FEATURE > 0) */
+ 583:platform/BSP/stm32g4xx_nucleo.c **** 
+ 584:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 585:platform/BSP/stm32g4xx_nucleo.c ****   * @}
+ 586:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 587:platform/BSP/stm32g4xx_nucleo.c **** 
+ 588:platform/BSP/stm32g4xx_nucleo.c **** /** @addtogroup STM32G4XX_NUCLEO_LOW_LEVEL_Private_Functions
+ 589:platform/BSP/stm32g4xx_nucleo.c ****   * @{
+ 590:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 591:platform/BSP/stm32g4xx_nucleo.c **** #if defined (USE_NUCLEO_64)
+ 592:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 593:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Key EXTI line detection callbacks.
+ 594:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 595:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 596:platform/BSP/stm32g4xx_nucleo.c **** static void BUTTON_USER_EXTI_Callback(void)
+ 597:platform/BSP/stm32g4xx_nucleo.c **** {
+ 598:platform/BSP/stm32g4xx_nucleo.c ****   BSP_PB_Callback(BUTTON_USER);
+ 599:platform/BSP/stm32g4xx_nucleo.c **** }
+ 600:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+ARM GAS  /tmp/ccTVROKY.s 			page 12
+
+
+ 601:platform/BSP/stm32g4xx_nucleo.c **** 
+ 602:platform/BSP/stm32g4xx_nucleo.c **** #if (USE_BSP_COM_FEATURE > 0)
+ 603:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 604:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  Initializes COM1 MSP.
+ 605:platform/BSP/stm32g4xx_nucleo.c ****   * @param  huart UART handle
+ 606:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 607:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 608:platform/BSP/stm32g4xx_nucleo.c **** static void COM1_MspInit(UART_HandleTypeDef *huart)
+ 609:platform/BSP/stm32g4xx_nucleo.c **** {
+  29              		.loc 1 609 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 32
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 609 1 is_stmt 0 view .LVU1
+  34 0000 70B5     		push	{r4, r5, r6, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 4, -16
+  38              		.cfi_offset 5, -12
+  39              		.cfi_offset 6, -8
+  40              		.cfi_offset 14, -4
+  41 0002 88B0     		sub	sp, sp, #32
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 48
+ 610:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef gpio_init_structure;
+  44              		.loc 1 610 3 is_stmt 1 view .LVU2
+ 611:platform/BSP/stm32g4xx_nucleo.c **** 
+ 612:platform/BSP/stm32g4xx_nucleo.c ****   /* Prevent unused argument(s) compilation warning */
+ 613:platform/BSP/stm32g4xx_nucleo.c ****   UNUSED(huart);
+  45              		.loc 1 613 3 view .LVU3
+ 614:platform/BSP/stm32g4xx_nucleo.c **** 
+ 615:platform/BSP/stm32g4xx_nucleo.c ****   /* Enable GPIO clock */
+ 616:platform/BSP/stm32g4xx_nucleo.c ****   COM1_TX_GPIO_CLK_ENABLE();
+  46              		.loc 1 616 3 view .LVU4
+  47              	.LBB2:
+  48              		.loc 1 616 3 view .LVU5
+  49              		.loc 1 616 3 view .LVU6
+  50 0004 1B4B     		ldr	r3, .L3
+  51 0006 DA6C     		ldr	r2, [r3, #76]
+  52 0008 42F00102 		orr	r2, r2, #1
+  53 000c DA64     		str	r2, [r3, #76]
+  54              		.loc 1 616 3 view .LVU7
+  55 000e DA6C     		ldr	r2, [r3, #76]
+  56 0010 02F00102 		and	r2, r2, #1
+  57 0014 0092     		str	r2, [sp]
+  58              		.loc 1 616 3 view .LVU8
+  59 0016 009A     		ldr	r2, [sp]
+  60              	.LBE2:
+  61              		.loc 1 616 3 view .LVU9
+ 617:platform/BSP/stm32g4xx_nucleo.c ****   COM1_RX_GPIO_CLK_ENABLE();
+  62              		.loc 1 617 3 view .LVU10
+  63              	.LBB3:
+  64              		.loc 1 617 3 view .LVU11
+  65              		.loc 1 617 3 view .LVU12
+  66 0018 DA6C     		ldr	r2, [r3, #76]
+  67 001a 42F00102 		orr	r2, r2, #1
+  68 001e DA64     		str	r2, [r3, #76]
+ARM GAS  /tmp/ccTVROKY.s 			page 13
+
+
+  69              		.loc 1 617 3 view .LVU13
+  70 0020 DA6C     		ldr	r2, [r3, #76]
+  71 0022 02F00102 		and	r2, r2, #1
+  72 0026 0192     		str	r2, [sp, #4]
+  73              		.loc 1 617 3 view .LVU14
+  74 0028 019A     		ldr	r2, [sp, #4]
+  75              	.LBE3:
+  76              		.loc 1 617 3 view .LVU15
+ 618:platform/BSP/stm32g4xx_nucleo.c **** 
+ 619:platform/BSP/stm32g4xx_nucleo.c ****   /* Enable USART clock */
+ 620:platform/BSP/stm32g4xx_nucleo.c ****   COM1_CLK_ENABLE();
+  77              		.loc 1 620 3 view .LVU16
+  78              	.LBB4:
+  79              		.loc 1 620 3 view .LVU17
+  80              		.loc 1 620 3 view .LVU18
+  81 002a DA6D     		ldr	r2, [r3, #92]
+  82 002c 42F00102 		orr	r2, r2, #1
+  83 0030 DA65     		str	r2, [r3, #92]
+  84              		.loc 1 620 3 view .LVU19
+  85 0032 DB6D     		ldr	r3, [r3, #92]
+  86 0034 03F00103 		and	r3, r3, #1
+  87 0038 0293     		str	r3, [sp, #8]
+  88              		.loc 1 620 3 view .LVU20
+  89 003a 029B     		ldr	r3, [sp, #8]
+  90              	.LBE4:
+  91              		.loc 1 620 3 view .LVU21
+ 621:platform/BSP/stm32g4xx_nucleo.c **** 
+ 622:platform/BSP/stm32g4xx_nucleo.c ****   /* Configure USART Tx as alternate function */
+ 623:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pin       = COM1_TX_PIN;
+  92              		.loc 1 623 3 view .LVU22
+  93              		.loc 1 623 33 is_stmt 0 view .LVU23
+  94 003c 0423     		movs	r3, #4
+  95 003e 0393     		str	r3, [sp, #12]
+ 624:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Mode      = GPIO_MODE_AF_PP;
+  96              		.loc 1 624 3 is_stmt 1 view .LVU24
+  97              		.loc 1 624 33 is_stmt 0 view .LVU25
+  98 0040 0224     		movs	r4, #2
+  99 0042 0494     		str	r4, [sp, #16]
+ 625:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed     = GPIO_SPEED_FREQ_HIGH;
+ 100              		.loc 1 625 3 is_stmt 1 view .LVU26
+ 101              		.loc 1 625 33 is_stmt 0 view .LVU27
+ 102 0044 0694     		str	r4, [sp, #24]
+ 626:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull      = GPIO_PULLUP;
+ 103              		.loc 1 626 3 is_stmt 1 view .LVU28
+ 104              		.loc 1 626 33 is_stmt 0 view .LVU29
+ 105 0046 0123     		movs	r3, #1
+ 106 0048 0593     		str	r3, [sp, #20]
+ 627:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Alternate = COM1_TX_AF;
+ 107              		.loc 1 627 3 is_stmt 1 view .LVU30
+ 108              		.loc 1 627 33 is_stmt 0 view .LVU31
+ 109 004a 0C26     		movs	r6, #12
+ 110 004c 0796     		str	r6, [sp, #28]
+ 628:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_Init(COM1_TX_GPIO_PORT, &gpio_init_structure);
+ 111              		.loc 1 628 3 is_stmt 1 view .LVU32
+ 112 004e 0DEB0605 		add	r5, sp, r6
+ 113 0052 2946     		mov	r1, r5
+ 114 0054 4FF09040 		mov	r0, #1207959552
+ARM GAS  /tmp/ccTVROKY.s 			page 14
+
+
+ 115              	.LVL1:
+ 116              		.loc 1 628 3 is_stmt 0 view .LVU33
+ 117 0058 FFF7FEFF 		bl	HAL_GPIO_Init
+ 118              	.LVL2:
+ 629:platform/BSP/stm32g4xx_nucleo.c **** 
+ 630:platform/BSP/stm32g4xx_nucleo.c ****   /* Configure USART Rx as alternate function */
+ 631:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pin = COM1_RX_PIN;
+ 119              		.loc 1 631 3 is_stmt 1 view .LVU34
+ 120              		.loc 1 631 27 is_stmt 0 view .LVU35
+ 121 005c 0823     		movs	r3, #8
+ 122 005e 0393     		str	r3, [sp, #12]
+ 632:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Mode = GPIO_MODE_AF_PP;
+ 123              		.loc 1 632 3 is_stmt 1 view .LVU36
+ 124              		.loc 1 632 28 is_stmt 0 view .LVU37
+ 125 0060 0494     		str	r4, [sp, #16]
+ 633:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Alternate = COM1_RX_AF;
+ 126              		.loc 1 633 3 is_stmt 1 view .LVU38
+ 127              		.loc 1 633 33 is_stmt 0 view .LVU39
+ 128 0062 0796     		str	r6, [sp, #28]
+ 634:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_Init(COM1_RX_GPIO_PORT, &gpio_init_structure);
+ 129              		.loc 1 634 3 is_stmt 1 view .LVU40
+ 130 0064 2946     		mov	r1, r5
+ 131 0066 4FF09040 		mov	r0, #1207959552
+ 132 006a FFF7FEFF 		bl	HAL_GPIO_Init
+ 133              	.LVL3:
+ 635:platform/BSP/stm32g4xx_nucleo.c **** }
+ 134              		.loc 1 635 1 is_stmt 0 view .LVU41
+ 135 006e 08B0     		add	sp, sp, #32
+ 136              	.LCFI2:
+ 137              		.cfi_def_cfa_offset 16
+ 138              		@ sp needed
+ 139 0070 70BD     		pop	{r4, r5, r6, pc}
+ 140              	.L4:
+ 141 0072 00BF     		.align	2
+ 142              	.L3:
+ 143 0074 00100240 		.word	1073876992
+ 144              		.cfi_endproc
+ 145              	.LFE152:
+ 147              		.section	.text.COM1_MspDeInit,"ax",%progbits
+ 148              		.align	1
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	COM1_MspDeInit:
+ 154              	.LVL4:
+ 155              	.LFB153:
+ 636:platform/BSP/stm32g4xx_nucleo.c **** 
+ 637:platform/BSP/stm32g4xx_nucleo.c **** /**
+ 638:platform/BSP/stm32g4xx_nucleo.c ****   * @brief  DeInitialize COM1 MSP part
+ 639:platform/BSP/stm32g4xx_nucleo.c ****   * @param  huart UART handle
+ 640:platform/BSP/stm32g4xx_nucleo.c ****   * @retval BSP status
+ 641:platform/BSP/stm32g4xx_nucleo.c ****   */
+ 642:platform/BSP/stm32g4xx_nucleo.c **** static void COM1_MspDeInit(UART_HandleTypeDef *huart)
+ 643:platform/BSP/stm32g4xx_nucleo.c **** {
+ 156              		.loc 1 643 1 is_stmt 1 view -0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 24
+ARM GAS  /tmp/ccTVROKY.s 			page 15
+
+
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		.loc 1 643 1 is_stmt 0 view .LVU43
+ 161 0000 00B5     		push	{lr}
+ 162              	.LCFI3:
+ 163              		.cfi_def_cfa_offset 4
+ 164              		.cfi_offset 14, -4
+ 165 0002 87B0     		sub	sp, sp, #28
+ 166              	.LCFI4:
+ 167              		.cfi_def_cfa_offset 32
+ 644:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef gpio_init_structure;
+ 168              		.loc 1 644 3 is_stmt 1 view .LVU44
+ 645:platform/BSP/stm32g4xx_nucleo.c **** 
+ 646:platform/BSP/stm32g4xx_nucleo.c ****   /* Prevent unused argument(s) compilation warning */
+ 647:platform/BSP/stm32g4xx_nucleo.c ****   UNUSED(huart);
+ 169              		.loc 1 647 3 view .LVU45
+ 648:platform/BSP/stm32g4xx_nucleo.c **** 
+ 649:platform/BSP/stm32g4xx_nucleo.c ****   /* COM GPIO pin configuration */
+ 650:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pin  = COM1_TX_PIN;
+ 170              		.loc 1 650 3 view .LVU46
+ 171              		.loc 1 650 28 is_stmt 0 view .LVU47
+ 172 0004 0421     		movs	r1, #4
+ 173 0006 0191     		str	r1, [sp, #4]
+ 651:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_DeInit(COM1_TX_GPIO_PORT, gpio_init_structure.Pin);
+ 174              		.loc 1 651 3 is_stmt 1 view .LVU48
+ 175 0008 4FF09040 		mov	r0, #1207959552
+ 176              	.LVL5:
+ 177              		.loc 1 651 3 is_stmt 0 view .LVU49
+ 178 000c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 179              	.LVL6:
+ 652:platform/BSP/stm32g4xx_nucleo.c **** 
+ 653:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pin  = COM1_RX_PIN;
+ 180              		.loc 1 653 3 is_stmt 1 view .LVU50
+ 181              		.loc 1 653 28 is_stmt 0 view .LVU51
+ 182 0010 0821     		movs	r1, #8
+ 183 0012 0191     		str	r1, [sp, #4]
+ 654:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_DeInit(COM1_RX_GPIO_PORT, gpio_init_structure.Pin);
+ 184              		.loc 1 654 3 is_stmt 1 view .LVU52
+ 185 0014 4FF09040 		mov	r0, #1207959552
+ 186 0018 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 187              	.LVL7:
+ 655:platform/BSP/stm32g4xx_nucleo.c **** 
+ 656:platform/BSP/stm32g4xx_nucleo.c ****   /* Disable USART clock */
+ 657:platform/BSP/stm32g4xx_nucleo.c ****   COM1_CLK_DISABLE();
+ 188              		.loc 1 657 3 view .LVU53
+ 189 001c 034A     		ldr	r2, .L7
+ 190 001e D36D     		ldr	r3, [r2, #92]
+ 191 0020 23F00103 		bic	r3, r3, #1
+ 192 0024 D365     		str	r3, [r2, #92]
+ 658:platform/BSP/stm32g4xx_nucleo.c **** }
+ 193              		.loc 1 658 1 is_stmt 0 view .LVU54
+ 194 0026 07B0     		add	sp, sp, #28
+ 195              	.LCFI5:
+ 196              		.cfi_def_cfa_offset 4
+ 197              		@ sp needed
+ 198 0028 5DF804FB 		ldr	pc, [sp], #4
+ 199              	.L8:
+ 200              		.align	2
+ARM GAS  /tmp/ccTVROKY.s 			page 16
+
+
+ 201              	.L7:
+ 202 002c 00100240 		.word	1073876992
+ 203              		.cfi_endproc
+ 204              	.LFE153:
+ 206              		.section	.text.BSP_GetVersion,"ax",%progbits
+ 207              		.align	1
+ 208              		.global	BSP_GetVersion
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	BSP_GetVersion:
+ 214              	.LFB132:
+ 139:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)STM32G4XX_NUCLEO_BSP_VERSION;
+ 215              		.loc 1 139 1 is_stmt 1 view -0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219              		@ link register save eliminated.
+ 140:platform/BSP/stm32g4xx_nucleo.c **** }
+ 220              		.loc 1 140 3 view .LVU56
+ 141:platform/BSP/stm32g4xx_nucleo.c **** 
+ 221              		.loc 1 141 1 is_stmt 0 view .LVU57
+ 222 0000 0048     		ldr	r0, .L10
+ 223 0002 7047     		bx	lr
+ 224              	.L11:
+ 225              		.align	2
+ 226              	.L10:
+ 227 0004 00050001 		.word	16778496
+ 228              		.cfi_endproc
+ 229              	.LFE132:
+ 231              		.section	.rodata.BSP_GetBoardName.str1.4,"aMS",%progbits,1
+ 232              		.align	2
+ 233              	.LC0:
+ 234 0000 53544D33 		.ascii	"STM32G474-NUCLEO\000"
+ 234      32473437 
+ 234      342D4E55 
+ 234      434C454F 
+ 234      00
+ 235              		.section	.text.BSP_GetBoardName,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	BSP_GetBoardName
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 242              	BSP_GetBoardName:
+ 243              	.LFB133:
+ 148:platform/BSP/stm32g4xx_nucleo.c ****   return (const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_NAME;
+ 244              		.loc 1 148 1 is_stmt 1 view -0
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248              		@ link register save eliminated.
+ 149:platform/BSP/stm32g4xx_nucleo.c **** }
+ 249              		.loc 1 149 3 view .LVU59
+ 150:platform/BSP/stm32g4xx_nucleo.c **** 
+ 250              		.loc 1 150 1 is_stmt 0 view .LVU60
+ 251 0000 0048     		ldr	r0, .L13
+ARM GAS  /tmp/ccTVROKY.s 			page 17
+
+
+ 252 0002 7047     		bx	lr
+ 253              	.L14:
+ 254              		.align	2
+ 255              	.L13:
+ 256 0004 00000000 		.word	.LC0
+ 257              		.cfi_endproc
+ 258              	.LFE133:
+ 260              		.section	.rodata.BSP_GetBoardID.str1.4,"aMS",%progbits,1
+ 261              		.align	2
+ 262              	.LC1:
+ 263 0000 4D423133 		.ascii	"MB1367\000"
+ 263      363700
+ 264              		.section	.text.BSP_GetBoardID,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	BSP_GetBoardID
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	BSP_GetBoardID:
+ 272              	.LFB134:
+ 157:platform/BSP/stm32g4xx_nucleo.c ****   return (const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_ID;
+ 273              		.loc 1 157 1 is_stmt 1 view -0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 0
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277              		@ link register save eliminated.
+ 158:platform/BSP/stm32g4xx_nucleo.c **** }
+ 278              		.loc 1 158 3 view .LVU62
+ 159:platform/BSP/stm32g4xx_nucleo.c **** 
+ 279              		.loc 1 159 1 is_stmt 0 view .LVU63
+ 280 0000 0048     		ldr	r0, .L16
+ 281 0002 7047     		bx	lr
+ 282              	.L17:
+ 283              		.align	2
+ 284              	.L16:
+ 285 0004 00000000 		.word	.LC1
+ 286              		.cfi_endproc
+ 287              	.LFE134:
+ 289              		.section	.text.BSP_LED_Init,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	BSP_LED_Init
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 296              	BSP_LED_Init:
+ 297              	.LVL8:
+ 298              	.LFB135:
+ 169:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef  gpio_init_structure;
+ 299              		.loc 1 169 1 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 24
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef  gpio_init_structure;
+ 303              		.loc 1 169 1 is_stmt 0 view .LVU65
+ 304 0000 30B5     		push	{r4, r5, lr}
+ 305              	.LCFI6:
+ 306              		.cfi_def_cfa_offset 12
+ARM GAS  /tmp/ccTVROKY.s 			page 18
+
+
+ 307              		.cfi_offset 4, -12
+ 308              		.cfi_offset 5, -8
+ 309              		.cfi_offset 14, -4
+ 310 0002 87B0     		sub	sp, sp, #28
+ 311              	.LCFI7:
+ 312              		.cfi_def_cfa_offset 40
+ 170:platform/BSP/stm32g4xx_nucleo.c **** 
+ 313              		.loc 1 170 3 is_stmt 1 view .LVU66
+ 173:platform/BSP/stm32g4xx_nucleo.c **** 
+ 314              		.loc 1 173 3 view .LVU67
+ 315              	.LBB5:
+ 173:platform/BSP/stm32g4xx_nucleo.c **** 
+ 316              		.loc 1 173 3 view .LVU68
+ 173:platform/BSP/stm32g4xx_nucleo.c **** 
+ 317              		.loc 1 173 3 view .LVU69
+ 318 0004 0F4B     		ldr	r3, .L20
+ 319 0006 DA6C     		ldr	r2, [r3, #76]
+ 320 0008 42F00102 		orr	r2, r2, #1
+ 321 000c DA64     		str	r2, [r3, #76]
+ 173:platform/BSP/stm32g4xx_nucleo.c **** 
+ 322              		.loc 1 173 3 view .LVU70
+ 323 000e DB6C     		ldr	r3, [r3, #76]
+ 324 0010 03F00103 		and	r3, r3, #1
+ 325 0014 0093     		str	r3, [sp]
+ 173:platform/BSP/stm32g4xx_nucleo.c **** 
+ 326              		.loc 1 173 3 view .LVU71
+ 327 0016 009B     		ldr	r3, [sp]
+ 328              	.LBE5:
+ 173:platform/BSP/stm32g4xx_nucleo.c **** 
+ 329              		.loc 1 173 3 view .LVU72
+ 176:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Mode  = GPIO_MODE_OUTPUT_PP;
+ 330              		.loc 1 176 3 view .LVU73
+ 176:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Mode  = GPIO_MODE_OUTPUT_PP;
+ 331              		.loc 1 176 29 is_stmt 0 view .LVU74
+ 332 0018 2025     		movs	r5, #32
+ 333 001a 0195     		str	r5, [sp, #4]
+ 177:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull  = GPIO_NOPULL;
+ 334              		.loc 1 177 3 is_stmt 1 view .LVU75
+ 177:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull  = GPIO_NOPULL;
+ 335              		.loc 1 177 29 is_stmt 0 view .LVU76
+ 336 001c 0123     		movs	r3, #1
+ 337 001e 0293     		str	r3, [sp, #8]
+ 178:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 338              		.loc 1 178 3 is_stmt 1 view .LVU77
+ 178:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 339              		.loc 1 178 29 is_stmt 0 view .LVU78
+ 340 0020 0024     		movs	r4, #0
+ 341 0022 0394     		str	r4, [sp, #12]
+ 179:platform/BSP/stm32g4xx_nucleo.c **** 
+ 342              		.loc 1 179 3 is_stmt 1 view .LVU79
+ 179:platform/BSP/stm32g4xx_nucleo.c **** 
+ 343              		.loc 1 179 29 is_stmt 0 view .LVU80
+ 344 0024 0323     		movs	r3, #3
+ 345 0026 0493     		str	r3, [sp, #16]
+ 181:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 346              		.loc 1 181 3 is_stmt 1 view .LVU81
+ 347 0028 01A9     		add	r1, sp, #4
+ARM GAS  /tmp/ccTVROKY.s 			page 19
+
+
+ 348 002a 4FF09040 		mov	r0, #1207959552
+ 349              	.LVL9:
+ 181:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 350              		.loc 1 181 3 is_stmt 0 view .LVU82
+ 351 002e FFF7FEFF 		bl	HAL_GPIO_Init
+ 352              	.LVL10:
+ 182:platform/BSP/stm32g4xx_nucleo.c **** 
+ 353              		.loc 1 182 3 is_stmt 1 view .LVU83
+ 354 0032 2246     		mov	r2, r4
+ 355 0034 2946     		mov	r1, r5
+ 356 0036 4FF09040 		mov	r0, #1207959552
+ 357 003a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 358              	.LVL11:
+ 184:platform/BSP/stm32g4xx_nucleo.c **** }
+ 359              		.loc 1 184 3 view .LVU84
+ 185:platform/BSP/stm32g4xx_nucleo.c **** 
+ 360              		.loc 1 185 1 is_stmt 0 view .LVU85
+ 361 003e 2046     		mov	r0, r4
+ 362 0040 07B0     		add	sp, sp, #28
+ 363              	.LCFI8:
+ 364              		.cfi_def_cfa_offset 12
+ 365              		@ sp needed
+ 366 0042 30BD     		pop	{r4, r5, pc}
+ 367              	.L21:
+ 368              		.align	2
+ 369              	.L20:
+ 370 0044 00100240 		.word	1073876992
+ 371              		.cfi_endproc
+ 372              	.LFE135:
+ 374              		.section	.text.BSP_LED_DeInit,"ax",%progbits
+ 375              		.align	1
+ 376              		.global	BSP_LED_DeInit
+ 377              		.syntax unified
+ 378              		.thumb
+ 379              		.thumb_func
+ 381              	BSP_LED_DeInit:
+ 382              	.LVL12:
+ 383              	.LFB136:
+ 196:platform/BSP/stm32g4xx_nucleo.c ****   /* Turn off LED */
+ 384              		.loc 1 196 1 is_stmt 1 view -0
+ 385              		.cfi_startproc
+ 386              		@ args = 0, pretend = 0, frame = 0
+ 387              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196:platform/BSP/stm32g4xx_nucleo.c ****   /* Turn off LED */
+ 388              		.loc 1 196 1 is_stmt 0 view .LVU87
+ 389 0000 08B5     		push	{r3, lr}
+ 390              	.LCFI9:
+ 391              		.cfi_def_cfa_offset 8
+ 392              		.cfi_offset 3, -8
+ 393              		.cfi_offset 14, -4
+ 198:platform/BSP/stm32g4xx_nucleo.c **** 
+ 394              		.loc 1 198 3 is_stmt 1 view .LVU88
+ 395 0002 0022     		movs	r2, #0
+ 396 0004 2021     		movs	r1, #32
+ 397 0006 4FF09040 		mov	r0, #1207959552
+ 398              	.LVL13:
+ 198:platform/BSP/stm32g4xx_nucleo.c **** 
+ARM GAS  /tmp/ccTVROKY.s 			page 20
+
+
+ 399              		.loc 1 198 3 is_stmt 0 view .LVU89
+ 400 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 401              	.LVL14:
+ 201:platform/BSP/stm32g4xx_nucleo.c **** 
+ 402              		.loc 1 201 3 is_stmt 1 view .LVU90
+ 403 000e 2021     		movs	r1, #32
+ 404 0010 4FF09040 		mov	r0, #1207959552
+ 405 0014 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 406              	.LVL15:
+ 203:platform/BSP/stm32g4xx_nucleo.c **** }
+ 407              		.loc 1 203 3 view .LVU91
+ 204:platform/BSP/stm32g4xx_nucleo.c **** 
+ 408              		.loc 1 204 1 is_stmt 0 view .LVU92
+ 409 0018 0020     		movs	r0, #0
+ 410 001a 08BD     		pop	{r3, pc}
+ 411              		.cfi_endproc
+ 412              	.LFE136:
+ 414              		.section	.text.BSP_LED_On,"ax",%progbits
+ 415              		.align	1
+ 416              		.global	BSP_LED_On
+ 417              		.syntax unified
+ 418              		.thumb
+ 419              		.thumb_func
+ 421              	BSP_LED_On:
+ 422              	.LVL16:
+ 423              	.LFB137:
+ 214:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_SET);
+ 424              		.loc 1 214 1 is_stmt 1 view -0
+ 425              		.cfi_startproc
+ 426              		@ args = 0, pretend = 0, frame = 0
+ 427              		@ frame_needed = 0, uses_anonymous_args = 0
+ 214:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_SET);
+ 428              		.loc 1 214 1 is_stmt 0 view .LVU94
+ 429 0000 08B5     		push	{r3, lr}
+ 430              	.LCFI10:
+ 431              		.cfi_def_cfa_offset 8
+ 432              		.cfi_offset 3, -8
+ 433              		.cfi_offset 14, -4
+ 215:platform/BSP/stm32g4xx_nucleo.c **** 
+ 434              		.loc 1 215 3 is_stmt 1 view .LVU95
+ 435 0002 0122     		movs	r2, #1
+ 436 0004 2021     		movs	r1, #32
+ 437 0006 4FF09040 		mov	r0, #1207959552
+ 438              	.LVL17:
+ 215:platform/BSP/stm32g4xx_nucleo.c **** 
+ 439              		.loc 1 215 3 is_stmt 0 view .LVU96
+ 440 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 441              	.LVL18:
+ 217:platform/BSP/stm32g4xx_nucleo.c **** }
+ 442              		.loc 1 217 3 is_stmt 1 view .LVU97
+ 218:platform/BSP/stm32g4xx_nucleo.c **** 
+ 443              		.loc 1 218 1 is_stmt 0 view .LVU98
+ 444 000e 0020     		movs	r0, #0
+ 445 0010 08BD     		pop	{r3, pc}
+ 446              		.cfi_endproc
+ 447              	.LFE137:
+ 449              		.section	.text.BSP_LED_Off,"ax",%progbits
+ARM GAS  /tmp/ccTVROKY.s 			page 21
+
+
+ 450              		.align	1
+ 451              		.global	BSP_LED_Off
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 456              	BSP_LED_Off:
+ 457              	.LVL19:
+ 458              	.LFB138:
+ 228:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 459              		.loc 1 228 1 is_stmt 1 view -0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 0
+ 462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
+ 463              		.loc 1 228 1 is_stmt 0 view .LVU100
+ 464 0000 08B5     		push	{r3, lr}
+ 465              	.LCFI11:
+ 466              		.cfi_def_cfa_offset 8
+ 467              		.cfi_offset 3, -8
+ 468              		.cfi_offset 14, -4
+ 229:platform/BSP/stm32g4xx_nucleo.c **** 
+ 469              		.loc 1 229 3 is_stmt 1 view .LVU101
+ 470 0002 0022     		movs	r2, #0
+ 471 0004 2021     		movs	r1, #32
+ 472 0006 4FF09040 		mov	r0, #1207959552
+ 473              	.LVL20:
+ 229:platform/BSP/stm32g4xx_nucleo.c **** 
+ 474              		.loc 1 229 3 is_stmt 0 view .LVU102
+ 475 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 476              	.LVL21:
+ 231:platform/BSP/stm32g4xx_nucleo.c **** }
+ 477              		.loc 1 231 3 is_stmt 1 view .LVU103
+ 232:platform/BSP/stm32g4xx_nucleo.c **** 
+ 478              		.loc 1 232 1 is_stmt 0 view .LVU104
+ 479 000e 0020     		movs	r0, #0
+ 480 0010 08BD     		pop	{r3, pc}
+ 481              		.cfi_endproc
+ 482              	.LFE138:
+ 484              		.section	.text.BSP_LED_Toggle,"ax",%progbits
+ 485              		.align	1
+ 486              		.global	BSP_LED_Toggle
+ 487              		.syntax unified
+ 488              		.thumb
+ 489              		.thumb_func
+ 491              	BSP_LED_Toggle:
+ 492              	.LVL22:
+ 493              	.LFB139:
+ 242:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_TogglePin(LED_PORT[Led], LED_PIN[Led]);
+ 494              		.loc 1 242 1 is_stmt 1 view -0
+ 495              		.cfi_startproc
+ 496              		@ args = 0, pretend = 0, frame = 0
+ 497              		@ frame_needed = 0, uses_anonymous_args = 0
+ 242:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_TogglePin(LED_PORT[Led], LED_PIN[Led]);
+ 498              		.loc 1 242 1 is_stmt 0 view .LVU106
+ 499 0000 08B5     		push	{r3, lr}
+ 500              	.LCFI12:
+ 501              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccTVROKY.s 			page 22
+
+
+ 502              		.cfi_offset 3, -8
+ 503              		.cfi_offset 14, -4
+ 243:platform/BSP/stm32g4xx_nucleo.c **** 
+ 504              		.loc 1 243 3 is_stmt 1 view .LVU107
+ 505 0002 2021     		movs	r1, #32
+ 506 0004 4FF09040 		mov	r0, #1207959552
+ 507              	.LVL23:
+ 243:platform/BSP/stm32g4xx_nucleo.c **** 
+ 508              		.loc 1 243 3 is_stmt 0 view .LVU108
+ 509 0008 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 510              	.LVL24:
+ 245:platform/BSP/stm32g4xx_nucleo.c **** }
+ 511              		.loc 1 245 3 is_stmt 1 view .LVU109
+ 246:platform/BSP/stm32g4xx_nucleo.c **** 
+ 512              		.loc 1 246 1 is_stmt 0 view .LVU110
+ 513 000c 0020     		movs	r0, #0
+ 514 000e 08BD     		pop	{r3, pc}
+ 515              		.cfi_endproc
+ 516              	.LFE139:
+ 518              		.section	.text.BSP_LED_GetState,"ax",%progbits
+ 519              		.align	1
+ 520              		.global	BSP_LED_GetState
+ 521              		.syntax unified
+ 522              		.thumb
+ 523              		.thumb_func
+ 525              	BSP_LED_GetState:
+ 526              	.LVL25:
+ 527              	.LFB140:
+ 256:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)HAL_GPIO_ReadPin(LED_PORT[Led], LED_PIN[Led]);
+ 528              		.loc 1 256 1 is_stmt 1 view -0
+ 529              		.cfi_startproc
+ 530              		@ args = 0, pretend = 0, frame = 0
+ 531              		@ frame_needed = 0, uses_anonymous_args = 0
+ 256:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)HAL_GPIO_ReadPin(LED_PORT[Led], LED_PIN[Led]);
+ 532              		.loc 1 256 1 is_stmt 0 view .LVU112
+ 533 0000 08B5     		push	{r3, lr}
+ 534              	.LCFI13:
+ 535              		.cfi_def_cfa_offset 8
+ 536              		.cfi_offset 3, -8
+ 537              		.cfi_offset 14, -4
+ 257:platform/BSP/stm32g4xx_nucleo.c **** }
+ 538              		.loc 1 257 3 is_stmt 1 view .LVU113
+ 257:platform/BSP/stm32g4xx_nucleo.c **** }
+ 539              		.loc 1 257 19 is_stmt 0 view .LVU114
+ 540 0002 2021     		movs	r1, #32
+ 541 0004 4FF09040 		mov	r0, #1207959552
+ 542              	.LVL26:
+ 257:platform/BSP/stm32g4xx_nucleo.c **** }
+ 543              		.loc 1 257 19 view .LVU115
+ 544 0008 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 545              	.LVL27:
+ 258:platform/BSP/stm32g4xx_nucleo.c **** 
+ 546              		.loc 1 258 1 view .LVU116
+ 547 000c 08BD     		pop	{r3, pc}
+ 548              		.cfi_endproc
+ 549              	.LFE140:
+ 551              		.section	.text.BSP_PB_Init,"ax",%progbits
+ARM GAS  /tmp/ccTVROKY.s 			page 23
+
+
+ 552              		.align	1
+ 553              		.global	BSP_PB_Init
+ 554              		.syntax unified
+ 555              		.thumb
+ 556              		.thumb_func
+ 558              	BSP_PB_Init:
+ 559              	.LVL28:
+ 560              	.LFB141:
+ 274:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef gpio_init_structure;
+ 561              		.loc 1 274 1 is_stmt 1 view -0
+ 562              		.cfi_startproc
+ 563              		@ args = 0, pretend = 0, frame = 24
+ 564              		@ frame_needed = 0, uses_anonymous_args = 0
+ 274:platform/BSP/stm32g4xx_nucleo.c ****   GPIO_InitTypeDef gpio_init_structure;
+ 565              		.loc 1 274 1 is_stmt 0 view .LVU118
+ 566 0000 10B5     		push	{r4, lr}
+ 567              	.LCFI14:
+ 568              		.cfi_def_cfa_offset 8
+ 569              		.cfi_offset 4, -8
+ 570              		.cfi_offset 14, -4
+ 571 0002 86B0     		sub	sp, sp, #24
+ 572              	.LCFI15:
+ 573              		.cfi_def_cfa_offset 32
+ 275:platform/BSP/stm32g4xx_nucleo.c ****   static BSP_EXTI_LineCallback ButtonCallback[BUTTONn] = {BUTTON_USER_EXTI_Callback};
+ 574              		.loc 1 275 3 is_stmt 1 view .LVU119
+ 276:platform/BSP/stm32g4xx_nucleo.c ****   static uint32_t BSP_BUTTON_PRIO [BUTTONn] = {BSP_BUTTON_USER_IT_PRIORITY};
+ 575              		.loc 1 276 3 view .LVU120
+ 277:platform/BSP/stm32g4xx_nucleo.c ****   static const uint32_t BUTTON_EXTI_LINE[BUTTONn] = {USER_BUTTON_EXTI_LINE};
+ 576              		.loc 1 277 3 view .LVU121
+ 278:platform/BSP/stm32g4xx_nucleo.c **** 
+ 577              		.loc 1 278 3 view .LVU122
+ 281:platform/BSP/stm32g4xx_nucleo.c **** 
+ 578              		.loc 1 281 3 view .LVU123
+ 579              	.LBB6:
+ 281:platform/BSP/stm32g4xx_nucleo.c **** 
+ 580              		.loc 1 281 3 view .LVU124
+ 281:platform/BSP/stm32g4xx_nucleo.c **** 
+ 581              		.loc 1 281 3 view .LVU125
+ 582 0004 1B4B     		ldr	r3, .L36
+ 583 0006 DA6C     		ldr	r2, [r3, #76]
+ 584 0008 42F00402 		orr	r2, r2, #4
+ 585 000c DA64     		str	r2, [r3, #76]
+ 281:platform/BSP/stm32g4xx_nucleo.c **** 
+ 586              		.loc 1 281 3 view .LVU126
+ 587 000e DB6C     		ldr	r3, [r3, #76]
+ 588 0010 03F00403 		and	r3, r3, #4
+ 589 0014 0093     		str	r3, [sp]
+ 281:platform/BSP/stm32g4xx_nucleo.c **** 
+ 590              		.loc 1 281 3 view .LVU127
+ 591 0016 009B     		ldr	r3, [sp]
+ 592              	.LBE6:
+ 281:platform/BSP/stm32g4xx_nucleo.c **** 
+ 593              		.loc 1 281 3 view .LVU128
+ 283:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull = GPIO_PULLDOWN;
+ 594              		.loc 1 283 3 view .LVU129
+ 283:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Pull = GPIO_PULLDOWN;
+ 595              		.loc 1 283 27 is_stmt 0 view .LVU130
+ARM GAS  /tmp/ccTVROKY.s 			page 24
+
+
+ 596 0018 4FF40053 		mov	r3, #8192
+ 597 001c 0193     		str	r3, [sp, #4]
+ 284:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed = GPIO_SPEED_FREQ_HIGH;
+ 598              		.loc 1 284 3 is_stmt 1 view .LVU131
+ 284:platform/BSP/stm32g4xx_nucleo.c ****   gpio_init_structure.Speed = GPIO_SPEED_FREQ_HIGH;
+ 599              		.loc 1 284 28 is_stmt 0 view .LVU132
+ 600 001e 0223     		movs	r3, #2
+ 601 0020 0393     		str	r3, [sp, #12]
+ 285:platform/BSP/stm32g4xx_nucleo.c **** 
+ 602              		.loc 1 285 3 is_stmt 1 view .LVU133
+ 285:platform/BSP/stm32g4xx_nucleo.c **** 
+ 603              		.loc 1 285 29 is_stmt 0 view .LVU134
+ 604 0022 0493     		str	r3, [sp, #16]
+ 287:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 605              		.loc 1 287 3 is_stmt 1 view .LVU135
+ 287:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 606              		.loc 1 287 5 is_stmt 0 view .LVU136
+ 607 0024 41B9     		cbnz	r1, .L33
+ 290:platform/BSP/stm32g4xx_nucleo.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &gpio_init_structure);
+ 608              		.loc 1 290 5 is_stmt 1 view .LVU137
+ 290:platform/BSP/stm32g4xx_nucleo.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &gpio_init_structure);
+ 609              		.loc 1 290 30 is_stmt 0 view .LVU138
+ 610 0026 0023     		movs	r3, #0
+ 611 0028 0293     		str	r3, [sp, #8]
+ 291:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 612              		.loc 1 291 5 is_stmt 1 view .LVU139
+ 613 002a 01A9     		add	r1, sp, #4
+ 614              	.LVL29:
+ 291:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 615              		.loc 1 291 5 is_stmt 0 view .LVU140
+ 616 002c 1248     		ldr	r0, .L36+4
+ 617              	.LVL30:
+ 291:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 618              		.loc 1 291 5 view .LVU141
+ 619 002e FFF7FEFF 		bl	HAL_GPIO_Init
+ 620              	.LVL31:
+ 621              	.L34:
+ 308:platform/BSP/stm32g4xx_nucleo.c **** }
+ 622              		.loc 1 308 3 is_stmt 1 view .LVU142
+ 309:platform/BSP/stm32g4xx_nucleo.c **** 
+ 623              		.loc 1 309 1 is_stmt 0 view .LVU143
+ 624 0032 0020     		movs	r0, #0
+ 625 0034 06B0     		add	sp, sp, #24
+ 626              	.LCFI16:
+ 627              		.cfi_remember_state
+ 628              		.cfi_def_cfa_offset 8
+ 629              		@ sp needed
+ 630 0036 10BD     		pop	{r4, pc}
+ 631              	.LVL32:
+ 632              	.L33:
+ 633              	.LCFI17:
+ 634              		.cfi_restore_state
+ 309:platform/BSP/stm32g4xx_nucleo.c **** 
+ 635              		.loc 1 309 1 view .LVU144
+ 636 0038 0446     		mov	r4, r0
+ 296:platform/BSP/stm32g4xx_nucleo.c **** 
+ 637              		.loc 1 296 5 is_stmt 1 view .LVU145
+ARM GAS  /tmp/ccTVROKY.s 			page 25
+
+
+ 296:platform/BSP/stm32g4xx_nucleo.c **** 
+ 638              		.loc 1 296 30 is_stmt 0 view .LVU146
+ 639 003a 4FF48813 		mov	r3, #1114112
+ 640 003e 0293     		str	r3, [sp, #8]
+ 298:platform/BSP/stm32g4xx_nucleo.c **** 
+ 641              		.loc 1 298 5 is_stmt 1 view .LVU147
+ 642 0040 01A9     		add	r1, sp, #4
+ 643              	.LVL33:
+ 298:platform/BSP/stm32g4xx_nucleo.c **** 
+ 644              		.loc 1 298 5 is_stmt 0 view .LVU148
+ 645 0042 0D48     		ldr	r0, .L36+4
+ 646              	.LVL34:
+ 298:platform/BSP/stm32g4xx_nucleo.c **** 
+ 647              		.loc 1 298 5 view .LVU149
+ 648 0044 FFF7FEFF 		bl	HAL_GPIO_Init
+ 649              	.LVL35:
+ 300:platform/BSP/stm32g4xx_nucleo.c ****     (void)HAL_EXTI_RegisterCallback(&hpb_exti[Button],  HAL_EXTI_COMMON_CB_ID, ButtonCallback[Butto
+ 650              		.loc 1 300 5 is_stmt 1 view .LVU150
+ 300:platform/BSP/stm32g4xx_nucleo.c ****     (void)HAL_EXTI_RegisterCallback(&hpb_exti[Button],  HAL_EXTI_COMMON_CB_ID, ButtonCallback[Butto
+ 651              		.loc 1 300 11 is_stmt 0 view .LVU151
+ 652 0048 0C4B     		ldr	r3, .L36+8
+ 653 004a 03EBC404 		add	r4, r3, r4, lsl #3
+ 654 004e 0C49     		ldr	r1, .L36+12
+ 655 0050 2046     		mov	r0, r4
+ 656 0052 FFF7FEFF 		bl	HAL_EXTI_GetHandle
+ 657              	.LVL36:
+ 301:platform/BSP/stm32g4xx_nucleo.c **** 
+ 658              		.loc 1 301 5 is_stmt 1 view .LVU152
+ 301:platform/BSP/stm32g4xx_nucleo.c **** 
+ 659              		.loc 1 301 11 is_stmt 0 view .LVU153
+ 660 0056 0B4A     		ldr	r2, .L36+16
+ 661 0058 0021     		movs	r1, #0
+ 662 005a 2046     		mov	r0, r4
+ 663 005c FFF7FEFF 		bl	HAL_EXTI_RegisterCallback
+ 664              	.LVL37:
+ 304:platform/BSP/stm32g4xx_nucleo.c ****     HAL_NVIC_EnableIRQ((BUTTON_IRQn[Button]));
+ 665              		.loc 1 304 5 is_stmt 1 view .LVU154
+ 666 0060 0022     		movs	r2, #0
+ 667 0062 0F21     		movs	r1, #15
+ 668 0064 2820     		movs	r0, #40
+ 669 0066 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 670              	.LVL38:
+ 305:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 671              		.loc 1 305 5 view .LVU155
+ 672 006a 2820     		movs	r0, #40
+ 673 006c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 674              	.LVL39:
+ 675 0070 DFE7     		b	.L34
+ 676              	.L37:
+ 677 0072 00BF     		.align	2
+ 678              	.L36:
+ 679 0074 00100240 		.word	1073876992
+ 680 0078 00080048 		.word	1207961600
+ 681 007c 00000000 		.word	hpb_exti
+ 682 0080 0D000006 		.word	100663309
+ 683 0084 00000000 		.word	BUTTON_USER_EXTI_Callback
+ 684              		.cfi_endproc
+ARM GAS  /tmp/ccTVROKY.s 			page 26
+
+
+ 685              	.LFE141:
+ 687              		.section	.text.BSP_PB_DeInit,"ax",%progbits
+ 688              		.align	1
+ 689              		.global	BSP_PB_DeInit
+ 690              		.syntax unified
+ 691              		.thumb
+ 692              		.thumb_func
+ 694              	BSP_PB_DeInit:
+ 695              	.LVL40:
+ 696              	.LFB142:
+ 320:platform/BSP/stm32g4xx_nucleo.c ****   HAL_NVIC_DisableIRQ((BUTTON_IRQn[Button]));
+ 697              		.loc 1 320 1 view -0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320:platform/BSP/stm32g4xx_nucleo.c ****   HAL_NVIC_DisableIRQ((BUTTON_IRQn[Button]));
+ 701              		.loc 1 320 1 is_stmt 0 view .LVU157
+ 702 0000 08B5     		push	{r3, lr}
+ 703              	.LCFI18:
+ 704              		.cfi_def_cfa_offset 8
+ 705              		.cfi_offset 3, -8
+ 706              		.cfi_offset 14, -4
+ 321:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_DeInit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 707              		.loc 1 321 3 is_stmt 1 view .LVU158
+ 708 0002 2820     		movs	r0, #40
+ 709              	.LVL41:
+ 321:platform/BSP/stm32g4xx_nucleo.c ****   HAL_GPIO_DeInit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 710              		.loc 1 321 3 is_stmt 0 view .LVU159
+ 711 0004 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 712              	.LVL42:
+ 322:platform/BSP/stm32g4xx_nucleo.c **** 
+ 713              		.loc 1 322 3 is_stmt 1 view .LVU160
+ 714 0008 4FF40051 		mov	r1, #8192
+ 715 000c 0248     		ldr	r0, .L40
+ 716 000e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 717              	.LVL43:
+ 324:platform/BSP/stm32g4xx_nucleo.c **** }
+ 718              		.loc 1 324 3 view .LVU161
+ 325:platform/BSP/stm32g4xx_nucleo.c **** 
+ 719              		.loc 1 325 1 is_stmt 0 view .LVU162
+ 720 0012 0020     		movs	r0, #0
+ 721 0014 08BD     		pop	{r3, pc}
+ 722              	.L41:
+ 723 0016 00BF     		.align	2
+ 724              	.L40:
+ 725 0018 00080048 		.word	1207961600
+ 726              		.cfi_endproc
+ 727              	.LFE142:
+ 729              		.section	.text.BSP_PB_GetState,"ax",%progbits
+ 730              		.align	1
+ 731              		.global	BSP_PB_GetState
+ 732              		.syntax unified
+ 733              		.thumb
+ 734              		.thumb_func
+ 736              	BSP_PB_GetState:
+ 737              	.LVL44:
+ 738              	.LFB143:
+ARM GAS  /tmp/ccTVROKY.s 			page 27
+
+
+ 335:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 739              		.loc 1 335 1 is_stmt 1 view -0
+ 740              		.cfi_startproc
+ 741              		@ args = 0, pretend = 0, frame = 0
+ 742              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335:platform/BSP/stm32g4xx_nucleo.c ****   return (int32_t)HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 743              		.loc 1 335 1 is_stmt 0 view .LVU164
+ 744 0000 08B5     		push	{r3, lr}
+ 745              	.LCFI19:
+ 746              		.cfi_def_cfa_offset 8
+ 747              		.cfi_offset 3, -8
+ 748              		.cfi_offset 14, -4
+ 336:platform/BSP/stm32g4xx_nucleo.c **** }
+ 749              		.loc 1 336 3 is_stmt 1 view .LVU165
+ 336:platform/BSP/stm32g4xx_nucleo.c **** }
+ 750              		.loc 1 336 19 is_stmt 0 view .LVU166
+ 751 0002 4FF40051 		mov	r1, #8192
+ 752 0006 0248     		ldr	r0, .L44
+ 753              	.LVL45:
+ 336:platform/BSP/stm32g4xx_nucleo.c **** }
+ 754              		.loc 1 336 19 view .LVU167
+ 755 0008 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 756              	.LVL46:
+ 337:platform/BSP/stm32g4xx_nucleo.c **** 
+ 757              		.loc 1 337 1 view .LVU168
+ 758 000c 08BD     		pop	{r3, pc}
+ 759              	.L45:
+ 760 000e 00BF     		.align	2
+ 761              	.L44:
+ 762 0010 00080048 		.word	1207961600
+ 763              		.cfi_endproc
+ 764              	.LFE143:
+ 766              		.section	.text.BSP_PB_IRQHandler,"ax",%progbits
+ 767              		.align	1
+ 768              		.global	BSP_PB_IRQHandler
+ 769              		.syntax unified
+ 770              		.thumb
+ 771              		.thumb_func
+ 773              	BSP_PB_IRQHandler:
+ 774              	.LVL47:
+ 775              	.LFB144:
+ 345:platform/BSP/stm32g4xx_nucleo.c ****   HAL_EXTI_IRQHandler(&hpb_exti[Button]);
+ 776              		.loc 1 345 1 is_stmt 1 view -0
+ 777              		.cfi_startproc
+ 778              		@ args = 0, pretend = 0, frame = 0
+ 779              		@ frame_needed = 0, uses_anonymous_args = 0
+ 345:platform/BSP/stm32g4xx_nucleo.c ****   HAL_EXTI_IRQHandler(&hpb_exti[Button]);
+ 780              		.loc 1 345 1 is_stmt 0 view .LVU170
+ 781 0000 08B5     		push	{r3, lr}
+ 782              	.LCFI20:
+ 783              		.cfi_def_cfa_offset 8
+ 784              		.cfi_offset 3, -8
+ 785              		.cfi_offset 14, -4
+ 346:platform/BSP/stm32g4xx_nucleo.c **** }
+ 786              		.loc 1 346 3 is_stmt 1 view .LVU171
+ 787 0002 034B     		ldr	r3, .L48
+ 788 0004 03EBC000 		add	r0, r3, r0, lsl #3
+ARM GAS  /tmp/ccTVROKY.s 			page 28
+
+
+ 789              	.LVL48:
+ 346:platform/BSP/stm32g4xx_nucleo.c **** }
+ 790              		.loc 1 346 3 is_stmt 0 view .LVU172
+ 791 0008 FFF7FEFF 		bl	HAL_EXTI_IRQHandler
+ 792              	.LVL49:
+ 347:platform/BSP/stm32g4xx_nucleo.c **** 
+ 793              		.loc 1 347 1 view .LVU173
+ 794 000c 08BD     		pop	{r3, pc}
+ 795              	.L49:
+ 796 000e 00BF     		.align	2
+ 797              	.L48:
+ 798 0010 00000000 		.word	hpb_exti
+ 799              		.cfi_endproc
+ 800              	.LFE144:
+ 802              		.section	.text.BSP_PB_Callback,"ax",%progbits
+ 803              		.align	1
+ 804              		.weak	BSP_PB_Callback
+ 805              		.syntax unified
+ 806              		.thumb
+ 807              		.thumb_func
+ 809              	BSP_PB_Callback:
+ 810              	.LVL50:
+ 811              	.LFB145:
+ 355:platform/BSP/stm32g4xx_nucleo.c ****   /* Prevent unused argument(s) compilation warning */
+ 812              		.loc 1 355 1 is_stmt 1 view -0
+ 813              		.cfi_startproc
+ 814              		@ args = 0, pretend = 0, frame = 0
+ 815              		@ frame_needed = 0, uses_anonymous_args = 0
+ 816              		@ link register save eliminated.
+ 357:platform/BSP/stm32g4xx_nucleo.c **** 
+ 817              		.loc 1 357 3 view .LVU175
+ 361:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+ 818              		.loc 1 361 1 is_stmt 0 view .LVU176
+ 819 0000 7047     		bx	lr
+ 820              		.cfi_endproc
+ 821              	.LFE145:
+ 823              		.section	.text.BUTTON_USER_EXTI_Callback,"ax",%progbits
+ 824              		.align	1
+ 825              		.syntax unified
+ 826              		.thumb
+ 827              		.thumb_func
+ 829              	BUTTON_USER_EXTI_Callback:
+ 830              	.LFB151:
+ 597:platform/BSP/stm32g4xx_nucleo.c ****   BSP_PB_Callback(BUTTON_USER);
+ 831              		.loc 1 597 1 is_stmt 1 view -0
+ 832              		.cfi_startproc
+ 833              		@ args = 0, pretend = 0, frame = 0
+ 834              		@ frame_needed = 0, uses_anonymous_args = 0
+ 835 0000 08B5     		push	{r3, lr}
+ 836              	.LCFI21:
+ 837              		.cfi_def_cfa_offset 8
+ 838              		.cfi_offset 3, -8
+ 839              		.cfi_offset 14, -4
+ 598:platform/BSP/stm32g4xx_nucleo.c **** }
+ 840              		.loc 1 598 3 view .LVU178
+ 841 0002 0020     		movs	r0, #0
+ 842 0004 FFF7FEFF 		bl	BSP_PB_Callback
+ARM GAS  /tmp/ccTVROKY.s 			page 29
+
+
+ 843              	.LVL51:
+ 599:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_NUCLEO_64 */
+ 844              		.loc 1 599 1 is_stmt 0 view .LVU179
+ 845 0008 08BD     		pop	{r3, pc}
+ 846              		.cfi_endproc
+ 847              	.LFE151:
+ 849              		.section	.text.BSP_COM_DeInit,"ax",%progbits
+ 850              		.align	1
+ 851              		.global	BSP_COM_DeInit
+ 852              		.syntax unified
+ 853              		.thumb
+ 854              		.thumb_func
+ 856              	BSP_COM_DeInit:
+ 857              	.LVL52:
+ 858              	.LFB147:
+ 412:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 859              		.loc 1 412 1 is_stmt 1 view -0
+ 860              		.cfi_startproc
+ 861              		@ args = 0, pretend = 0, frame = 0
+ 862              		@ frame_needed = 0, uses_anonymous_args = 0
+ 413:platform/BSP/stm32g4xx_nucleo.c **** 
+ 863              		.loc 1 413 3 view .LVU181
+ 415:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 864              		.loc 1 415 3 view .LVU182
+ 415:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 865              		.loc 1 415 5 is_stmt 0 view .LVU183
+ 866 0000 80B9     		cbnz	r0, .L55
+ 412:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 867              		.loc 1 412 1 view .LVU184
+ 868 0002 10B5     		push	{r4, lr}
+ 869              	.LCFI22:
+ 870              		.cfi_def_cfa_offset 8
+ 871              		.cfi_offset 4, -8
+ 872              		.cfi_offset 14, -4
+ 873 0004 0346     		mov	r3, r0
+ 422:platform/BSP/stm32g4xx_nucleo.c **** 
+ 874              		.loc 1 422 5 is_stmt 1 view .LVU185
+ 422:platform/BSP/stm32g4xx_nucleo.c **** 
+ 875              		.loc 1 422 29 is_stmt 0 view .LVU186
+ 876 0006 0A4A     		ldr	r2, .L61
+ 877 0008 9421     		movs	r1, #148
+ 878 000a 01FB03F3 		mul	r3, r1, r3
+ 879 000e D418     		adds	r4, r2, r3
+ 880 0010 0849     		ldr	r1, .L61+4
+ 881 0012 D150     		str	r1, [r2, r3]
+ 425:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_HAL_UART_REGISTER_CALLBACKS == 0) */
+ 882              		.loc 1 425 5 is_stmt 1 view .LVU187
+ 883 0014 2046     		mov	r0, r4
+ 884              	.LVL53:
+ 425:platform/BSP/stm32g4xx_nucleo.c **** #endif /* (USE_HAL_UART_REGISTER_CALLBACKS == 0) */
+ 885              		.loc 1 425 5 is_stmt 0 view .LVU188
+ 886 0016 FFF7FEFF 		bl	COM1_MspDeInit
+ 887              	.LVL54:
+ 428:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 888              		.loc 1 428 5 is_stmt 1 view .LVU189
+ 428:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 889              		.loc 1 428 8 is_stmt 0 view .LVU190
+ARM GAS  /tmp/ccTVROKY.s 			page 30
+
+
+ 890 001a 2046     		mov	r0, r4
+ 891 001c FFF7FEFF 		bl	HAL_UART_DeInit
+ 892              	.LVL55:
+ 428:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 893              		.loc 1 428 7 discriminator 1 view .LVU191
+ 894 0020 18B9     		cbnz	r0, .L56
+ 895              	.LVL56:
+ 896              	.L53:
+ 435:platform/BSP/stm32g4xx_nucleo.c **** 
+ 897              		.loc 1 435 1 view .LVU192
+ 898 0022 10BD     		pop	{r4, pc}
+ 899              	.LVL57:
+ 900              	.L55:
+ 901              	.LCFI23:
+ 902              		.cfi_def_cfa_offset 0
+ 903              		.cfi_restore 4
+ 904              		.cfi_restore 14
+ 417:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 905              		.loc 1 417 9 view .LVU193
+ 906 0024 6FF00100 		mvn	r0, #1
+ 907              	.LVL58:
+ 435:platform/BSP/stm32g4xx_nucleo.c **** 
+ 908              		.loc 1 435 1 view .LVU194
+ 909 0028 7047     		bx	lr
+ 910              	.L56:
+ 911              	.LCFI24:
+ 912              		.cfi_def_cfa_offset 8
+ 913              		.cfi_offset 4, -8
+ 914              		.cfi_offset 14, -4
+ 430:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 915              		.loc 1 430 14 view .LVU195
+ 916 002a 6FF00300 		mvn	r0, #3
+ 917              	.LVL59:
+ 430:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 918              		.loc 1 430 14 view .LVU196
+ 919 002e F8E7     		b	.L53
+ 920              	.L62:
+ 921              		.align	2
+ 922              	.L61:
+ 923 0030 00000000 		.word	hcom_uart
+ 924 0034 00800040 		.word	1073774592
+ 925              		.cfi_endproc
+ 926              	.LFE147:
+ 928              		.section	.text.MX_LPUART1_Init,"ax",%progbits
+ 929              		.align	1
+ 930              		.weak	MX_LPUART1_Init
+ 931              		.syntax unified
+ 932              		.thumb
+ 933              		.thumb_func
+ 935              	MX_LPUART1_Init:
+ 936              	.LVL60:
+ 937              	.LFB148:
+ 445:platform/BSP/stm32g4xx_nucleo.c ****   /* USART configuration */
+ 938              		.loc 1 445 1 is_stmt 1 view -0
+ 939              		.cfi_startproc
+ 940              		@ args = 0, pretend = 0, frame = 0
+ 941              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccTVROKY.s 			page 31
+
+
+ 445:platform/BSP/stm32g4xx_nucleo.c ****   /* USART configuration */
+ 942              		.loc 1 445 1 is_stmt 0 view .LVU198
+ 943 0000 08B5     		push	{r3, lr}
+ 944              	.LCFI25:
+ 945              		.cfi_def_cfa_offset 8
+ 946              		.cfi_offset 3, -8
+ 947              		.cfi_offset 14, -4
+ 447:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.BaudRate     = COM_Init->BaudRate;
+ 948              		.loc 1 447 2 is_stmt 1 view .LVU199
+ 447:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.BaudRate     = COM_Init->BaudRate;
+ 949              		.loc 1 447 27 is_stmt 0 view .LVU200
+ 950 0002 0A4A     		ldr	r2, .L65
+ 951 0004 0260     		str	r2, [r0]
+ 448:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Mode         = UART_MODE_TX_RX;
+ 952              		.loc 1 448 2 is_stmt 1 view .LVU201
+ 448:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Mode         = UART_MODE_TX_RX;
+ 953              		.loc 1 448 37 is_stmt 0 view .LVU202
+ 954 0006 0A68     		ldr	r2, [r1]
+ 448:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Mode         = UART_MODE_TX_RX;
+ 955              		.loc 1 448 27 view .LVU203
+ 956 0008 4260     		str	r2, [r0, #4]
+ 449:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Parity       = (uint32_t)COM_Init->Parity;
+ 957              		.loc 1 449 2 is_stmt 1 view .LVU204
+ 449:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.Parity       = (uint32_t)COM_Init->Parity;
+ 958              		.loc 1 449 27 is_stmt 0 view .LVU205
+ 959 000a 0C22     		movs	r2, #12
+ 960 000c 4261     		str	r2, [r0, #20]
+ 450:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.WordLength   = COM_Init->WordLength;
+ 961              		.loc 1 450 2 is_stmt 1 view .LVU206
+ 450:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.WordLength   = COM_Init->WordLength;
+ 962              		.loc 1 450 47 is_stmt 0 view .LVU207
+ 963 000e 4A89     		ldrh	r2, [r1, #10]
+ 450:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.WordLength   = COM_Init->WordLength;
+ 964              		.loc 1 450 27 view .LVU208
+ 965 0010 0261     		str	r2, [r0, #16]
+ 451:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.StopBits     = (uint32_t)COM_Init->StopBits;
+ 966              		.loc 1 451 2 is_stmt 1 view .LVU209
+ 451:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.StopBits     = (uint32_t)COM_Init->StopBits;
+ 967              		.loc 1 451 37 is_stmt 0 view .LVU210
+ 968 0012 4A68     		ldr	r2, [r1, #4]
+ 451:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.StopBits     = (uint32_t)COM_Init->StopBits;
+ 969              		.loc 1 451 27 view .LVU211
+ 970 0014 8260     		str	r2, [r0, #8]
+ 452:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.HwFlowCtl    = (uint32_t)COM_Init->HwFlowCtl;
+ 971              		.loc 1 452 2 is_stmt 1 view .LVU212
+ 452:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.HwFlowCtl    = (uint32_t)COM_Init->HwFlowCtl;
+ 972              		.loc 1 452 47 is_stmt 0 view .LVU213
+ 973 0016 0A89     		ldrh	r2, [r1, #8]
+ 452:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.HwFlowCtl    = (uint32_t)COM_Init->HwFlowCtl;
+ 974              		.loc 1 452 27 view .LVU214
+ 975 0018 C260     		str	r2, [r0, #12]
+ 453:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.OverSampling = UART_OVERSAMPLING_8;
+ 976              		.loc 1 453 2 is_stmt 1 view .LVU215
+ 453:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.OverSampling = UART_OVERSAMPLING_8;
+ 977              		.loc 1 453 47 is_stmt 0 view .LVU216
+ 978 001a 8A89     		ldrh	r2, [r1, #12]
+ 453:platform/BSP/stm32g4xx_nucleo.c ****  huart->Init.OverSampling = UART_OVERSAMPLING_8;
+ARM GAS  /tmp/ccTVROKY.s 			page 32
+
+
+ 979              		.loc 1 453 27 view .LVU217
+ 980 001c 8261     		str	r2, [r0, #24]
+ 454:platform/BSP/stm32g4xx_nucleo.c **** 
+ 981              		.loc 1 454 2 is_stmt 1 view .LVU218
+ 454:platform/BSP/stm32g4xx_nucleo.c **** 
+ 982              		.loc 1 454 27 is_stmt 0 view .LVU219
+ 983 001e 4FF40042 		mov	r2, #32768
+ 984 0022 C261     		str	r2, [r0, #28]
+ 456:platform/BSP/stm32g4xx_nucleo.c **** }
+ 985              		.loc 1 456 2 is_stmt 1 view .LVU220
+ 456:platform/BSP/stm32g4xx_nucleo.c **** }
+ 986              		.loc 1 456 9 is_stmt 0 view .LVU221
+ 987 0024 FFF7FEFF 		bl	HAL_UART_Init
+ 988              	.LVL61:
+ 457:platform/BSP/stm32g4xx_nucleo.c **** 
+ 989              		.loc 1 457 1 view .LVU222
+ 990 0028 08BD     		pop	{r3, pc}
+ 991              	.L66:
+ 992 002a 00BF     		.align	2
+ 993              	.L65:
+ 994 002c 00800040 		.word	1073774592
+ 995              		.cfi_endproc
+ 996              	.LFE148:
+ 998              		.section	.text.BSP_COM_Init,"ax",%progbits
+ 999              		.align	1
+ 1000              		.global	BSP_COM_Init
+ 1001              		.syntax unified
+ 1002              		.thumb
+ 1003              		.thumb_func
+ 1005              	BSP_COM_Init:
+ 1006              	.LVL62:
+ 1007              	.LFB146:
+ 374:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 1008              		.loc 1 374 1 is_stmt 1 view -0
+ 1009              		.cfi_startproc
+ 1010              		@ args = 0, pretend = 0, frame = 0
+ 1011              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375:platform/BSP/stm32g4xx_nucleo.c **** 
+ 1012              		.loc 1 375 3 view .LVU224
+ 377:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 1013              		.loc 1 377 3 view .LVU225
+ 377:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 1014              		.loc 1 377 5 is_stmt 0 view .LVU226
+ 1015 0000 0128     		cmp	r0, #1
+ 1016 0002 0ED8     		bhi	.L69
+ 374:platform/BSP/stm32g4xx_nucleo.c ****   int32_t ret = BSP_ERROR_NONE;
+ 1017              		.loc 1 374 1 view .LVU227
+ 1018 0004 38B5     		push	{r3, r4, r5, lr}
+ 1019              	.LCFI26:
+ 1020              		.cfi_def_cfa_offset 16
+ 1021              		.cfi_offset 3, -16
+ 1022              		.cfi_offset 4, -12
+ 1023              		.cfi_offset 5, -8
+ 1024              		.cfi_offset 14, -4
+ 1025 0006 0D46     		mov	r5, r1
+ 385:platform/BSP/stm32g4xx_nucleo.c **** #else
+ 1026              		.loc 1 385 5 is_stmt 1 view .LVU228
+ARM GAS  /tmp/ccTVROKY.s 			page 33
+
+
+ 1027 0008 9423     		movs	r3, #148
+ 1028 000a 094C     		ldr	r4, .L75
+ 1029 000c 03FB0044 		mla	r4, r3, r0, r4
+ 1030 0010 2046     		mov	r0, r4
+ 1031              	.LVL63:
+ 385:platform/BSP/stm32g4xx_nucleo.c **** #else
+ 1032              		.loc 1 385 5 is_stmt 0 view .LVU229
+ 1033 0012 FFF7FEFF 		bl	COM1_MspInit
+ 1034              	.LVL64:
+ 396:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 1035              		.loc 1 396 5 is_stmt 1 view .LVU230
+ 396:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 1036              		.loc 1 396 8 is_stmt 0 view .LVU231
+ 1037 0016 2946     		mov	r1, r5
+ 1038 0018 2046     		mov	r0, r4
+ 1039 001a FFF7FEFF 		bl	MX_LPUART1_Init
+ 1040              	.LVL65:
+ 396:platform/BSP/stm32g4xx_nucleo.c ****     {
+ 1041              		.loc 1 396 7 discriminator 1 view .LVU232
+ 1042 001e 18B9     		cbnz	r0, .L70
+ 1043              	.LVL66:
+ 1044              	.L67:
+ 403:platform/BSP/stm32g4xx_nucleo.c **** 
+ 1045              		.loc 1 403 1 view .LVU233
+ 1046 0020 38BD     		pop	{r3, r4, r5, pc}
+ 1047              	.LVL67:
+ 1048              	.L69:
+ 1049              	.LCFI27:
+ 1050              		.cfi_def_cfa_offset 0
+ 1051              		.cfi_restore 3
+ 1052              		.cfi_restore 4
+ 1053              		.cfi_restore 5
+ 1054              		.cfi_restore 14
+ 379:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 1055              		.loc 1 379 9 view .LVU234
+ 1056 0022 6FF00100 		mvn	r0, #1
+ 1057              	.LVL68:
+ 403:platform/BSP/stm32g4xx_nucleo.c **** 
+ 1058              		.loc 1 403 1 view .LVU235
+ 1059 0026 7047     		bx	lr
+ 1060              	.LVL69:
+ 1061              	.L70:
+ 1062              	.LCFI28:
+ 1063              		.cfi_def_cfa_offset 16
+ 1064              		.cfi_offset 3, -16
+ 1065              		.cfi_offset 4, -12
+ 1066              		.cfi_offset 5, -8
+ 1067              		.cfi_offset 14, -4
+ 398:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 1068              		.loc 1 398 14 view .LVU236
+ 1069 0028 6FF00300 		mvn	r0, #3
+ 1070              	.LVL70:
+ 398:platform/BSP/stm32g4xx_nucleo.c ****     }
+ 1071              		.loc 1 398 14 view .LVU237
+ 1072 002c F8E7     		b	.L67
+ 1073              	.L76:
+ 1074 002e 00BF     		.align	2
+ARM GAS  /tmp/ccTVROKY.s 			page 34
+
+
+ 1075              	.L75:
+ 1076 0030 00000000 		.word	hcom_uart
+ 1077              		.cfi_endproc
+ 1078              	.LFE146:
+ 1080              		.section	.text.BSP_COM_SelectLogPort,"ax",%progbits
+ 1081              		.align	1
+ 1082              		.global	BSP_COM_SelectLogPort
+ 1083              		.syntax unified
+ 1084              		.thumb
+ 1085              		.thumb_func
+ 1087              	BSP_COM_SelectLogPort:
+ 1088              	.LVL71:
+ 1089              	.LFB149:
+ 543:platform/BSP/stm32g4xx_nucleo.c ****   if(COM_ActiveLogPort != COM)
+ 1090              		.loc 1 543 1 is_stmt 1 view -0
+ 1091              		.cfi_startproc
+ 1092              		@ args = 0, pretend = 0, frame = 0
+ 1093              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1094              		@ link register save eliminated.
+ 544:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 1095              		.loc 1 544 3 view .LVU239
+ 544:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 1096              		.loc 1 544 24 is_stmt 0 view .LVU240
+ 1097 0000 034B     		ldr	r3, .L79
+ 1098 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 544:platform/BSP/stm32g4xx_nucleo.c ****   {
+ 1099              		.loc 1 544 5 view .LVU241
+ 1100 0004 8342     		cmp	r3, r0
+ 1101 0006 01D0     		beq	.L78
+ 546:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 1102              		.loc 1 546 5 is_stmt 1 view .LVU242
+ 546:platform/BSP/stm32g4xx_nucleo.c ****   }
+ 1103              		.loc 1 546 23 is_stmt 0 view .LVU243
+ 1104 0008 014B     		ldr	r3, .L79
+ 1105 000a 1870     		strb	r0, [r3]
+ 1106              	.L78:
+ 548:platform/BSP/stm32g4xx_nucleo.c **** }
+ 1107              		.loc 1 548 3 is_stmt 1 view .LVU244
+ 549:platform/BSP/stm32g4xx_nucleo.c **** 
+ 1108              		.loc 1 549 1 is_stmt 0 view .LVU245
+ 1109 000c 0020     		movs	r0, #0
+ 1110              	.LVL72:
+ 549:platform/BSP/stm32g4xx_nucleo.c **** 
+ 1111              		.loc 1 549 1 view .LVU246
+ 1112 000e 7047     		bx	lr
+ 1113              	.L80:
+ 1114              		.align	2
+ 1115              	.L79:
+ 1116 0010 00000000 		.word	COM_ActiveLogPort
+ 1117              		.cfi_endproc
+ 1118              	.LFE149:
+ 1120              		.section	.text.__io_putchar,"ax",%progbits
+ 1121              		.align	1
+ 1122              		.global	__io_putchar
+ 1123              		.syntax unified
+ 1124              		.thumb
+ 1125              		.thumb_func
+ARM GAS  /tmp/ccTVROKY.s 			page 35
+
+
+ 1127              	__io_putchar:
+ 1128              	.LVL73:
+ 1129              	.LFB150:
+ 577:platform/BSP/stm32g4xx_nucleo.c ****   (void) HAL_UART_Transmit(&hcom_uart [COM_ActiveLogPort], (uint8_t *) &ch, 1, COM_POLL_TIMEOUT);
+ 1130              		.loc 1 577 1 is_stmt 1 view -0
+ 1131              		.cfi_startproc
+ 1132              		@ args = 0, pretend = 0, frame = 8
+ 1133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 577:platform/BSP/stm32g4xx_nucleo.c ****   (void) HAL_UART_Transmit(&hcom_uart [COM_ActiveLogPort], (uint8_t *) &ch, 1, COM_POLL_TIMEOUT);
+ 1134              		.loc 1 577 1 is_stmt 0 view .LVU248
+ 1135 0000 10B5     		push	{r4, lr}
+ 1136              	.LCFI29:
+ 1137              		.cfi_def_cfa_offset 8
+ 1138              		.cfi_offset 4, -8
+ 1139              		.cfi_offset 14, -4
+ 1140 0002 82B0     		sub	sp, sp, #8
+ 1141              	.LCFI30:
+ 1142              		.cfi_def_cfa_offset 16
+ 1143 0004 0190     		str	r0, [sp, #4]
+ 578:platform/BSP/stm32g4xx_nucleo.c ****   return ch;
+ 1144              		.loc 1 578 3 is_stmt 1 view .LVU249
+ 578:platform/BSP/stm32g4xx_nucleo.c ****   return ch;
+ 1145              		.loc 1 578 39 is_stmt 0 view .LVU250
+ 1146 0006 084B     		ldr	r3, .L83
+ 1147 0008 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 1148              	.LVL74:
+ 578:platform/BSP/stm32g4xx_nucleo.c ****   return ch;
+ 1149              		.loc 1 578 10 view .LVU251
+ 1150 000a 4FF47A73 		mov	r3, #1000
+ 1151 000e 0122     		movs	r2, #1
+ 1152 0010 01A9     		add	r1, sp, #4
+ 1153              	.LVL75:
+ 578:platform/BSP/stm32g4xx_nucleo.c ****   return ch;
+ 1154              		.loc 1 578 10 view .LVU252
+ 1155 0012 4FF0940C 		mov	ip, #148
+ 1156 0016 054C     		ldr	r4, .L83+4
+ 1157 0018 0CFB0040 		mla	r0, ip, r0, r4
+ 1158 001c FFF7FEFF 		bl	HAL_UART_Transmit
+ 1159              	.LVL76:
+ 579:platform/BSP/stm32g4xx_nucleo.c **** }
+ 1160              		.loc 1 579 3 is_stmt 1 view .LVU253
+ 580:platform/BSP/stm32g4xx_nucleo.c **** #endif /* USE_COM_LOG */
+ 1161              		.loc 1 580 1 is_stmt 0 view .LVU254
+ 1162 0020 0198     		ldr	r0, [sp, #4]
+ 1163 0022 02B0     		add	sp, sp, #8
+ 1164              	.LCFI31:
+ 1165              		.cfi_def_cfa_offset 8
+ 1166              		@ sp needed
+ 1167 0024 10BD     		pop	{r4, pc}
+ 1168              	.L84:
+ 1169 0026 00BF     		.align	2
+ 1170              	.L83:
+ 1171 0028 00000000 		.word	COM_ActiveLogPort
+ 1172 002c 00000000 		.word	hcom_uart
+ 1173              		.cfi_endproc
+ 1174              	.LFE150:
+ 1176              		.section	.bss.COM_ActiveLogPort,"aw",%nobits
+ARM GAS  /tmp/ccTVROKY.s 			page 36
+
+
+ 1179              	COM_ActiveLogPort:
+ 1180 0000 00       		.space	1
+ 1181              		.global	hcom_uart
+ 1182              		.section	.bss.hcom_uart,"aw",%nobits
+ 1183              		.align	2
+ 1186              	hcom_uart:
+ 1187 0000 00000000 		.space	148
+ 1187      00000000 
+ 1187      00000000 
+ 1187      00000000 
+ 1187      00000000 
+ 1188              		.global	hpb_exti
+ 1189              		.section	.bss.hpb_exti,"aw",%nobits
+ 1190              		.align	2
+ 1193              	hpb_exti:
+ 1194 0000 00000000 		.space	8
+ 1194      00000000 
+ 1195              		.text
+ 1196              	.Letext0:
+ 1197              		.file 2 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 1198              		.file 3 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 1199              		.file 4 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 1200              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 1201              		.file 6 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
+ 1202              		.file 7 "platform/HAL/inc/stm32g4xx_hal_dma.h"
+ 1203              		.file 8 "platform/HAL/inc/stm32g4xx_hal_exti.h"
+ 1204              		.file 9 "platform/HAL/inc/stm32g4xx_hal_uart.h"
+ 1205              		.file 10 "platform/BSP/stm32g4xx_nucleo.h"
+ 1206              		.file 11 "platform/HAL/inc/stm32g4xx_hal_cortex.h"
+ARM GAS  /tmp/ccTVROKY.s 			page 37
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32g4xx_nucleo.c
+     /tmp/ccTVROKY.s:21     .text.COM1_MspInit:00000000 $t
+     /tmp/ccTVROKY.s:26     .text.COM1_MspInit:00000000 COM1_MspInit
+     /tmp/ccTVROKY.s:143    .text.COM1_MspInit:00000074 $d
+     /tmp/ccTVROKY.s:148    .text.COM1_MspDeInit:00000000 $t
+     /tmp/ccTVROKY.s:153    .text.COM1_MspDeInit:00000000 COM1_MspDeInit
+     /tmp/ccTVROKY.s:202    .text.COM1_MspDeInit:0000002c $d
+     /tmp/ccTVROKY.s:207    .text.BSP_GetVersion:00000000 $t
+     /tmp/ccTVROKY.s:213    .text.BSP_GetVersion:00000000 BSP_GetVersion
+     /tmp/ccTVROKY.s:227    .text.BSP_GetVersion:00000004 $d
+     /tmp/ccTVROKY.s:232    .rodata.BSP_GetBoardName.str1.4:00000000 $d
+     /tmp/ccTVROKY.s:236    .text.BSP_GetBoardName:00000000 $t
+     /tmp/ccTVROKY.s:242    .text.BSP_GetBoardName:00000000 BSP_GetBoardName
+     /tmp/ccTVROKY.s:256    .text.BSP_GetBoardName:00000004 $d
+     /tmp/ccTVROKY.s:261    .rodata.BSP_GetBoardID.str1.4:00000000 $d
+     /tmp/ccTVROKY.s:265    .text.BSP_GetBoardID:00000000 $t
+     /tmp/ccTVROKY.s:271    .text.BSP_GetBoardID:00000000 BSP_GetBoardID
+     /tmp/ccTVROKY.s:285    .text.BSP_GetBoardID:00000004 $d
+     /tmp/ccTVROKY.s:290    .text.BSP_LED_Init:00000000 $t
+     /tmp/ccTVROKY.s:296    .text.BSP_LED_Init:00000000 BSP_LED_Init
+     /tmp/ccTVROKY.s:370    .text.BSP_LED_Init:00000044 $d
+     /tmp/ccTVROKY.s:375    .text.BSP_LED_DeInit:00000000 $t
+     /tmp/ccTVROKY.s:381    .text.BSP_LED_DeInit:00000000 BSP_LED_DeInit
+     /tmp/ccTVROKY.s:415    .text.BSP_LED_On:00000000 $t
+     /tmp/ccTVROKY.s:421    .text.BSP_LED_On:00000000 BSP_LED_On
+     /tmp/ccTVROKY.s:450    .text.BSP_LED_Off:00000000 $t
+     /tmp/ccTVROKY.s:456    .text.BSP_LED_Off:00000000 BSP_LED_Off
+     /tmp/ccTVROKY.s:485    .text.BSP_LED_Toggle:00000000 $t
+     /tmp/ccTVROKY.s:491    .text.BSP_LED_Toggle:00000000 BSP_LED_Toggle
+     /tmp/ccTVROKY.s:519    .text.BSP_LED_GetState:00000000 $t
+     /tmp/ccTVROKY.s:525    .text.BSP_LED_GetState:00000000 BSP_LED_GetState
+     /tmp/ccTVROKY.s:552    .text.BSP_PB_Init:00000000 $t
+     /tmp/ccTVROKY.s:558    .text.BSP_PB_Init:00000000 BSP_PB_Init
+     /tmp/ccTVROKY.s:679    .text.BSP_PB_Init:00000074 $d
+     /tmp/ccTVROKY.s:1193   .bss.hpb_exti:00000000 hpb_exti
+     /tmp/ccTVROKY.s:829    .text.BUTTON_USER_EXTI_Callback:00000000 BUTTON_USER_EXTI_Callback
+     /tmp/ccTVROKY.s:688    .text.BSP_PB_DeInit:00000000 $t
+     /tmp/ccTVROKY.s:694    .text.BSP_PB_DeInit:00000000 BSP_PB_DeInit
+     /tmp/ccTVROKY.s:725    .text.BSP_PB_DeInit:00000018 $d
+     /tmp/ccTVROKY.s:730    .text.BSP_PB_GetState:00000000 $t
+     /tmp/ccTVROKY.s:736    .text.BSP_PB_GetState:00000000 BSP_PB_GetState
+     /tmp/ccTVROKY.s:762    .text.BSP_PB_GetState:00000010 $d
+     /tmp/ccTVROKY.s:767    .text.BSP_PB_IRQHandler:00000000 $t
+     /tmp/ccTVROKY.s:773    .text.BSP_PB_IRQHandler:00000000 BSP_PB_IRQHandler
+     /tmp/ccTVROKY.s:798    .text.BSP_PB_IRQHandler:00000010 $d
+     /tmp/ccTVROKY.s:803    .text.BSP_PB_Callback:00000000 $t
+     /tmp/ccTVROKY.s:809    .text.BSP_PB_Callback:00000000 BSP_PB_Callback
+     /tmp/ccTVROKY.s:824    .text.BUTTON_USER_EXTI_Callback:00000000 $t
+     /tmp/ccTVROKY.s:850    .text.BSP_COM_DeInit:00000000 $t
+     /tmp/ccTVROKY.s:856    .text.BSP_COM_DeInit:00000000 BSP_COM_DeInit
+     /tmp/ccTVROKY.s:923    .text.BSP_COM_DeInit:00000030 $d
+     /tmp/ccTVROKY.s:1186   .bss.hcom_uart:00000000 hcom_uart
+     /tmp/ccTVROKY.s:929    .text.MX_LPUART1_Init:00000000 $t
+     /tmp/ccTVROKY.s:935    .text.MX_LPUART1_Init:00000000 MX_LPUART1_Init
+     /tmp/ccTVROKY.s:994    .text.MX_LPUART1_Init:0000002c $d
+     /tmp/ccTVROKY.s:999    .text.BSP_COM_Init:00000000 $t
+ARM GAS  /tmp/ccTVROKY.s 			page 38
+
+
+     /tmp/ccTVROKY.s:1005   .text.BSP_COM_Init:00000000 BSP_COM_Init
+     /tmp/ccTVROKY.s:1076   .text.BSP_COM_Init:00000030 $d
+     /tmp/ccTVROKY.s:1081   .text.BSP_COM_SelectLogPort:00000000 $t
+     /tmp/ccTVROKY.s:1087   .text.BSP_COM_SelectLogPort:00000000 BSP_COM_SelectLogPort
+     /tmp/ccTVROKY.s:1116   .text.BSP_COM_SelectLogPort:00000010 $d
+     /tmp/ccTVROKY.s:1179   .bss.COM_ActiveLogPort:00000000 COM_ActiveLogPort
+     /tmp/ccTVROKY.s:1121   .text.__io_putchar:00000000 $t
+     /tmp/ccTVROKY.s:1127   .text.__io_putchar:00000000 __io_putchar
+     /tmp/ccTVROKY.s:1171   .text.__io_putchar:00000028 $d
+     /tmp/ccTVROKY.s:1180   .bss.COM_ActiveLogPort:00000000 $d
+     /tmp/ccTVROKY.s:1183   .bss.hcom_uart:00000000 $d
+     /tmp/ccTVROKY.s:1190   .bss.hpb_exti:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_GPIO_DeInit
+HAL_GPIO_WritePin
+HAL_GPIO_TogglePin
+HAL_GPIO_ReadPin
+HAL_EXTI_GetHandle
+HAL_EXTI_RegisterCallback
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_NVIC_DisableIRQ
+HAL_EXTI_IRQHandler
+HAL_UART_DeInit
+HAL_UART_Init
+HAL_UART_Transmit

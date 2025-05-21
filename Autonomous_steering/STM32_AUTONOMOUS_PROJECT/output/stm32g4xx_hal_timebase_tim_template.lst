@@ -1,0 +1,599 @@
+ARM GAS  /tmp/cc4I52Xv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32g4xx_hal_timebase_tim_template.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c"
+  20              		.section	.text.HAL_InitTick,"ax",%progbits
+  21              		.align	1
+  22              		.global	HAL_InitTick
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	HAL_InitTick:
+  28              	.LVL0:
+  29              	.LFB132:
+   1:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /**
+   2:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   ******************************************************************************
+   3:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @file    stm32g4xx_hal_timebase_tim_template.c
+   4:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @author  MCD Application Team
+   5:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @brief   HAL time base based on the hardware TIM Template.
+   6:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *
+   7:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *          This file override the native HAL time base functions (defined as weak)
+   8:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *          the TIM time base:
+   9:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *           + Initializes the TIM peripheral to generate a Period elapsed Event each 1ms
+  10:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *           + HAL_IncTick is called inside HAL_TIM_PeriodElapsedCallback ie each 1ms
+  11:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   ******************************************************************************
+  12:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @attention
+  13:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *
+  14:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * Copyright (c) 2019 STMicroelectronics.
+  15:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * All rights reserved.
+  16:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *
+  17:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  18:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * in the root directory of this software component.
+  19:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  20:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *
+  21:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   ******************************************************************************
+  22:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   @verbatim
+  23:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   ==============================================================================
+  24:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****                         ##### How to use this driver #####
+  25:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   ==============================================================================
+  26:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     [..]
+  27:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     This file must be copied to the application folder and modified as follows:
+  28:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     (#) Rename it to 'stm32g4xx_hal_timebase_tim.c'
+  29:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     (#) Add this file and the TIM HAL driver files to your project and make sure
+ARM GAS  /tmp/cc4I52Xv.s 			page 2
+
+
+  30:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****        HAL_TIM_MODULE_ENABLED is defined in stm32g4xx_hal_conf.h
+  31:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  32:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     [..]
+  33:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     (@) The application needs to ensure that the time base is always set to 1 millisecond
+  34:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****        to have correct HAL operation.
+  35:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  36:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   @endverbatim
+  37:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   ******************************************************************************
+  38:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+  39:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  40:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Includes ------------------------------------------------------------------*/
+  41:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** #include "stm32g4xx_hal.h"
+  42:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** #include "stm32g4xx_hal_tim.h"
+  43:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  44:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /** @addtogroup STM32G4xx_HAL_Driver
+  45:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @{
+  46:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+  47:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  48:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /** @addtogroup HAL_TimeBase
+  49:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @{
+  50:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+  51:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  52:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Private typedef -----------------------------------------------------------*/
+  53:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Private define ------------------------------------------------------------*/
+  54:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Private macro -------------------------------------------------------------*/
+  55:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Private variables ---------------------------------------------------------*/
+  56:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** TIM_HandleTypeDef        TimHandle;
+  57:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Private function prototypes -----------------------------------------------*/
+  58:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** void TIM6_DAC_IRQHandler(void);
+  59:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /* Private functions ---------------------------------------------------------*/
+  60:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  61:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /**
+  62:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @brief  This function configures the TIM6 as a time base source.
+  63:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *         The time source is configured  to have 1ms time base with a dedicated
+  64:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *         Tick interrupt priority.
+  65:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @note   This function is called  automatically at the beginning of program after
+  66:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   *         reset by HAL_Init() or at any time when clock is configured, by HAL_RCC_ClockConfig().
+  67:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @param  TickPriority: Tick interrupt priority.
+  68:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @retval HAL status
+  69:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+  70:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
+  71:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** {
+  30              		.loc 1 71 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 32
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 71 1 is_stmt 0 view .LVU1
+  35 0000 30B5     		push	{r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 12
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  41 0002 89B0     		sub	sp, sp, #36
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 48
+  44 0004 0446     		mov	r4, r0
+ARM GAS  /tmp/cc4I52Xv.s 			page 3
+
+
+  72:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   RCC_ClkInitTypeDef    clkconfig;
+  45              		.loc 1 72 3 is_stmt 1 view .LVU2
+  73:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   uint32_t              uwTimclock;
+  46              		.loc 1 73 3 view .LVU3
+  74:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   uint32_t              uwAPB1Prescaler;
+  47              		.loc 1 74 3 view .LVU4
+  75:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   uint32_t              uwPrescalerValue;
+  48              		.loc 1 75 3 view .LVU5
+  76:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   uint32_t              pFLatency;
+  49              		.loc 1 76 3 view .LVU6
+  77:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   HAL_StatusTypeDef     status;
+  50              		.loc 1 77 3 view .LVU7
+  78:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  79:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Configure the TIM6 IRQ priority */
+  80:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   HAL_NVIC_SetPriority(TIM6_DAC_IRQn, TickPriority, 0U);
+  51              		.loc 1 80 3 view .LVU8
+  52 0006 0022     		movs	r2, #0
+  53 0008 0146     		mov	r1, r0
+  54 000a 3620     		movs	r0, #54
+  55              	.LVL1:
+  56              		.loc 1 80 3 is_stmt 0 view .LVU9
+  57 000c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  58              	.LVL2:
+  81:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  82:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Enable the TIM6 global Interrupt */
+  83:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
+  59              		.loc 1 83 3 is_stmt 1 view .LVU10
+  60 0010 3620     		movs	r0, #54
+  61 0012 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+  62              	.LVL3:
+  84:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  85:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Enable TIM6 clock */
+  86:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   __HAL_RCC_TIM6_CLK_ENABLE();
+  63              		.loc 1 86 3 view .LVU11
+  64              	.LBB2:
+  65              		.loc 1 86 3 view .LVU12
+  66              		.loc 1 86 3 view .LVU13
+  67 0016 1F4B     		ldr	r3, .L9
+  68 0018 9A6D     		ldr	r2, [r3, #88]
+  69 001a 42F01002 		orr	r2, r2, #16
+  70 001e 9A65     		str	r2, [r3, #88]
+  71              		.loc 1 86 3 view .LVU14
+  72 0020 9B6D     		ldr	r3, [r3, #88]
+  73 0022 03F01003 		and	r3, r3, #16
+  74 0026 0193     		str	r3, [sp, #4]
+  75              		.loc 1 86 3 view .LVU15
+  76 0028 019B     		ldr	r3, [sp, #4]
+  77              	.LBE2:
+  78              		.loc 1 86 3 view .LVU16
+  87:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  88:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Get clock configuration */
+  89:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   HAL_RCC_GetClockConfig(&clkconfig, &pFLatency);
+  79              		.loc 1 89 3 view .LVU17
+  80 002a 02A9     		add	r1, sp, #8
+  81 002c 03A8     		add	r0, sp, #12
+  82 002e FFF7FEFF 		bl	HAL_RCC_GetClockConfig
+  83              	.LVL4:
+ARM GAS  /tmp/cc4I52Xv.s 			page 4
+
+
+  90:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  91:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Get APB1 prescaler */
+  92:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   uwAPB1Prescaler = clkconfig.APB1CLKDivider;
+  84              		.loc 1 92 3 view .LVU18
+  85              		.loc 1 92 19 is_stmt 0 view .LVU19
+  86 0032 069B     		ldr	r3, [sp, #24]
+  87              	.LVL5:
+  93:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+  94:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Compute TIM6 clock */
+  95:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   if (uwAPB1Prescaler == RCC_HCLK_DIV1)
+  88              		.loc 1 95 3 is_stmt 1 view .LVU20
+  89              		.loc 1 95 6 is_stmt 0 view .LVU21
+  90 0034 C3B9     		cbnz	r3, .L2
+  96:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   {
+  97:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     uwTimclock = HAL_RCC_GetPCLK1Freq();
+  91              		.loc 1 97 5 is_stmt 1 view .LVU22
+  92              		.loc 1 97 18 is_stmt 0 view .LVU23
+  93 0036 FFF7FEFF 		bl	HAL_RCC_GetPCLK1Freq
+  94              	.LVL6:
+  95              		.loc 1 97 18 view .LVU24
+  96 003a 0346     		mov	r3, r0
+  97              	.LVL7:
+  98              	.L3:
+  98:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   }
+  99:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   else
+ 100:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   {
+ 101:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     uwTimclock = 2U * HAL_RCC_GetPCLK1Freq();
+ 102:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   }
+ 103:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 104:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Compute the prescaler value to have TIM6 counter clock equal to 1MHz */
+ 105:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   uwPrescalerValue = (uint32_t)((uwTimclock / 1000000U) - 1U);
+  99              		.loc 1 105 3 is_stmt 1 view .LVU25
+ 100              		.loc 1 105 45 is_stmt 0 view .LVU26
+ 101 003c 164A     		ldr	r2, .L9+4
+ 102 003e A2FB0323 		umull	r2, r3, r2, r3
+ 103              	.LVL8:
+ 104              		.loc 1 105 45 view .LVU27
+ 105 0042 9B0C     		lsrs	r3, r3, #18
+ 106              		.loc 1 105 20 view .LVU28
+ 107 0044 013B     		subs	r3, r3, #1
+ 108              	.LVL9:
+ 106:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 107:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Initialize TIM6 */
+ 108:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   TimHandle.Instance = TIM6;
+ 109              		.loc 1 108 3 is_stmt 1 view .LVU29
+ 110              		.loc 1 108 22 is_stmt 0 view .LVU30
+ 111 0046 1548     		ldr	r0, .L9+8
+ 112 0048 154A     		ldr	r2, .L9+12
+ 113 004a 0260     		str	r2, [r0]
+ 109:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 110:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Initialize TIMx peripheral as follow:
+ 111:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   + Period = [(TIM6CLK/1000) - 1]. to have a (1/1000) s time base.
+ 112:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   + Prescaler = (uwTimclock/1000000 - 1) to have a 1MHz counter clock.
+ 113:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   + ClockDivision = 0
+ 114:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   + Counter direction = Up
+ 115:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+ 116:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   TimHandle.Init.Period = (1000000U / 1000U) - 1U;
+ARM GAS  /tmp/cc4I52Xv.s 			page 5
+
+
+ 114              		.loc 1 116 3 is_stmt 1 view .LVU31
+ 115              		.loc 1 116 25 is_stmt 0 view .LVU32
+ 116 004c 40F2E732 		movw	r2, #999
+ 117 0050 C260     		str	r2, [r0, #12]
+ 117:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   TimHandle.Init.Prescaler = uwPrescalerValue;
+ 118              		.loc 1 117 3 is_stmt 1 view .LVU33
+ 119              		.loc 1 117 28 is_stmt 0 view .LVU34
+ 120 0052 4360     		str	r3, [r0, #4]
+ 118:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   TimHandle.Init.ClockDivision = 0;
+ 121              		.loc 1 118 3 is_stmt 1 view .LVU35
+ 122              		.loc 1 118 32 is_stmt 0 view .LVU36
+ 123 0054 0023     		movs	r3, #0
+ 124              	.LVL10:
+ 125              		.loc 1 118 32 view .LVU37
+ 126 0056 0361     		str	r3, [r0, #16]
+ 119:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 127              		.loc 1 119 3 is_stmt 1 view .LVU38
+ 128              		.loc 1 119 30 is_stmt 0 view .LVU39
+ 129 0058 8360     		str	r3, [r0, #8]
+ 120:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   status = HAL_TIM_Base_Init(&TimHandle);
+ 130              		.loc 1 120 3 is_stmt 1 view .LVU40
+ 131              		.loc 1 120 12 is_stmt 0 view .LVU41
+ 132 005a FFF7FEFF 		bl	HAL_TIM_Base_Init
+ 133              	.LVL11:
+ 121:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   if (status == HAL_OK)
+ 134              		.loc 1 121 3 is_stmt 1 view .LVU42
+ 135              		.loc 1 121 6 is_stmt 0 view .LVU43
+ 136 005e 0546     		mov	r5, r0
+ 137 0060 30B1     		cbz	r0, .L7
+ 138              	.LVL12:
+ 139              	.L4:
+ 122:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   {
+ 123:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     /* Start the TIM time Base generation in interrupt mode */
+ 124:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     status = HAL_TIM_Base_Start_IT(&TimHandle);
+ 125:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     if (status == HAL_OK)
+ 126:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     {
+ 127:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       /* Configure the SysTick IRQ priority */
+ 128:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       if (TickPriority < (1UL << __NVIC_PRIO_BITS))
+ 129:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       {
+ 130:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****         /* Configure the TIM IRQ priority */
+ 131:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****         HAL_NVIC_SetPriority(TIM6_DAC_IRQn, TickPriority, 0U);
+ 132:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****         uwTickPrio = TickPriority;
+ 133:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       }
+ 134:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       else
+ 135:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       {
+ 136:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****         status = HAL_ERROR;
+ 137:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       }
+ 138:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     }
+ 139:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   }
+ 140:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 141:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Return function status */
+ 142:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   return status;
+ 140              		.loc 1 142 3 is_stmt 1 view .LVU44
+ 143:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** }
+ 141              		.loc 1 143 1 is_stmt 0 view .LVU45
+ 142 0062 2846     		mov	r0, r5
+ 143 0064 09B0     		add	sp, sp, #36
+ARM GAS  /tmp/cc4I52Xv.s 			page 6
+
+
+ 144              	.LCFI2:
+ 145              		.cfi_remember_state
+ 146              		.cfi_def_cfa_offset 12
+ 147              		@ sp needed
+ 148 0066 30BD     		pop	{r4, r5, pc}
+ 149              	.LVL13:
+ 150              	.L2:
+ 151              	.LCFI3:
+ 152              		.cfi_restore_state
+ 101:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   }
+ 153              		.loc 1 101 5 is_stmt 1 view .LVU46
+ 101:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   }
+ 154              		.loc 1 101 23 is_stmt 0 view .LVU47
+ 155 0068 FFF7FEFF 		bl	HAL_RCC_GetPCLK1Freq
+ 156              	.LVL14:
+ 101:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   }
+ 157              		.loc 1 101 16 discriminator 1 view .LVU48
+ 158 006c 4300     		lsls	r3, r0, #1
+ 159 006e E5E7     		b	.L3
+ 160              	.LVL15:
+ 161              	.L7:
+ 124:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     if (status == HAL_OK)
+ 162              		.loc 1 124 5 is_stmt 1 view .LVU49
+ 124:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     if (status == HAL_OK)
+ 163              		.loc 1 124 14 is_stmt 0 view .LVU50
+ 164 0070 0A48     		ldr	r0, .L9+8
+ 165              	.LVL16:
+ 124:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     if (status == HAL_OK)
+ 166              		.loc 1 124 14 view .LVU51
+ 167 0072 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 168              	.LVL17:
+ 125:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     {
+ 169              		.loc 1 125 5 is_stmt 1 view .LVU52
+ 125:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****     {
+ 170              		.loc 1 125 8 is_stmt 0 view .LVU53
+ 171 0076 0546     		mov	r5, r0
+ 172 0078 0028     		cmp	r0, #0
+ 173 007a F2D1     		bne	.L4
+ 128:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       {
+ 174              		.loc 1 128 7 is_stmt 1 view .LVU54
+ 128:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       {
+ 175              		.loc 1 128 10 is_stmt 0 view .LVU55
+ 176 007c 0F2C     		cmp	r4, #15
+ 177 007e 01D9     		bls	.L8
+ 136:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       }
+ 178              		.loc 1 136 16 view .LVU56
+ 179 0080 0125     		movs	r5, #1
+ 180 0082 EEE7     		b	.L4
+ 181              	.L8:
+ 131:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****         uwTickPrio = TickPriority;
+ 182              		.loc 1 131 9 is_stmt 1 view .LVU57
+ 183 0084 0022     		movs	r2, #0
+ 184 0086 2146     		mov	r1, r4
+ 185 0088 3620     		movs	r0, #54
+ 186              	.LVL18:
+ 131:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****         uwTickPrio = TickPriority;
+ 187              		.loc 1 131 9 is_stmt 0 view .LVU58
+ARM GAS  /tmp/cc4I52Xv.s 			page 7
+
+
+ 188 008a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 189              	.LVL19:
+ 132:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       }
+ 190              		.loc 1 132 9 is_stmt 1 view .LVU59
+ 132:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****       }
+ 191              		.loc 1 132 20 is_stmt 0 view .LVU60
+ 192 008e 054B     		ldr	r3, .L9+16
+ 193 0090 1C60     		str	r4, [r3]
+ 194 0092 E6E7     		b	.L4
+ 195              	.L10:
+ 196              		.align	2
+ 197              	.L9:
+ 198 0094 00100240 		.word	1073876992
+ 199 0098 83DE1B43 		.word	1125899907
+ 200 009c 00000000 		.word	TimHandle
+ 201 00a0 00100040 		.word	1073745920
+ 202 00a4 00000000 		.word	uwTickPrio
+ 203              		.cfi_endproc
+ 204              	.LFE132:
+ 206              		.section	.text.HAL_SuspendTick,"ax",%progbits
+ 207              		.align	1
+ 208              		.global	HAL_SuspendTick
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	HAL_SuspendTick:
+ 214              	.LFB133:
+ 144:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 145:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /**
+ 146:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @brief  Suspend Tick increment.
+ 147:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @note   Disable the tick increment by disabling TIM6 update interrupt.
+ 148:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @param  None
+ 149:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @retval None
+ 150:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+ 151:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** void HAL_SuspendTick(void)
+ 152:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** {
+ 215              		.loc 1 152 1 is_stmt 1 view -0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219              		@ link register save eliminated.
+ 153:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Disable TIM6 update interrupt */
+ 154:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   __HAL_TIM_DISABLE_IT(&TimHandle, TIM_IT_UPDATE);
+ 220              		.loc 1 154 3 view .LVU62
+ 221 0000 034B     		ldr	r3, .L12
+ 222 0002 1A68     		ldr	r2, [r3]
+ 223 0004 D368     		ldr	r3, [r2, #12]
+ 224 0006 23F00103 		bic	r3, r3, #1
+ 225 000a D360     		str	r3, [r2, #12]
+ 155:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** }
+ 226              		.loc 1 155 1 is_stmt 0 view .LVU63
+ 227 000c 7047     		bx	lr
+ 228              	.L13:
+ 229 000e 00BF     		.align	2
+ 230              	.L12:
+ 231 0010 00000000 		.word	TimHandle
+ 232              		.cfi_endproc
+ARM GAS  /tmp/cc4I52Xv.s 			page 8
+
+
+ 233              	.LFE133:
+ 235              		.section	.text.HAL_ResumeTick,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	HAL_ResumeTick
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 242              	HAL_ResumeTick:
+ 243              	.LFB134:
+ 156:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 157:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /**
+ 158:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @brief  Resume Tick increment.
+ 159:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @note   Enable the tick increment by enabling TIM6 update interrupt.
+ 160:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @param  None
+ 161:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @retval None
+ 162:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+ 163:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** void HAL_ResumeTick(void)
+ 164:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** {
+ 244              		.loc 1 164 1 is_stmt 1 view -0
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248              		@ link register save eliminated.
+ 165:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   /* Enable TIM6 update interrupt */
+ 166:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   __HAL_TIM_ENABLE_IT(&TimHandle, TIM_IT_UPDATE);
+ 249              		.loc 1 166 3 view .LVU65
+ 250 0000 034B     		ldr	r3, .L15
+ 251 0002 1A68     		ldr	r2, [r3]
+ 252 0004 D368     		ldr	r3, [r2, #12]
+ 253 0006 43F00103 		orr	r3, r3, #1
+ 254 000a D360     		str	r3, [r2, #12]
+ 167:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** }
+ 255              		.loc 1 167 1 is_stmt 0 view .LVU66
+ 256 000c 7047     		bx	lr
+ 257              	.L16:
+ 258 000e 00BF     		.align	2
+ 259              	.L15:
+ 260 0010 00000000 		.word	TimHandle
+ 261              		.cfi_endproc
+ 262              	.LFE134:
+ 264              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	HAL_TIM_PeriodElapsedCallback
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	HAL_TIM_PeriodElapsedCallback:
+ 272              	.LVL20:
+ 273              	.LFB135:
+ 168:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 169:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /**
+ 170:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @brief  Period elapsed callback in non blocking mode
+ 171:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @note   This function is called  when TIM6 interrupt took place, inside
+ 172:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+ 173:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * a global variable "uwTick" used as application time base.
+ 174:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @param  htim : TIM handle
+ 175:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @retval None
+ARM GAS  /tmp/cc4I52Xv.s 			page 9
+
+
+ 176:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+ 177:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ 178:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** {
+ 274              		.loc 1 178 1 is_stmt 1 view -0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 0
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278              		.loc 1 178 1 is_stmt 0 view .LVU68
+ 279 0000 08B5     		push	{r3, lr}
+ 280              	.LCFI4:
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 3, -8
+ 283              		.cfi_offset 14, -4
+ 179:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   HAL_IncTick();
+ 284              		.loc 1 179 3 is_stmt 1 view .LVU69
+ 285 0002 FFF7FEFF 		bl	HAL_IncTick
+ 286              	.LVL21:
+ 180:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** }
+ 287              		.loc 1 180 1 is_stmt 0 view .LVU70
+ 288 0006 08BD     		pop	{r3, pc}
+ 289              		.cfi_endproc
+ 290              	.LFE135:
+ 292              		.section	.text.TIM6_DAC_IRQHandler,"ax",%progbits
+ 293              		.align	1
+ 294              		.global	TIM6_DAC_IRQHandler
+ 295              		.syntax unified
+ 296              		.thumb
+ 297              		.thumb_func
+ 299              	TIM6_DAC_IRQHandler:
+ 300              	.LFB136:
+ 181:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** 
+ 182:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** /**
+ 183:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @brief  This function handles TIM interrupt request.
+ 184:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @param  None
+ 185:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   * @retval None
+ 186:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   */
+ 187:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** void TIM6_DAC_IRQHandler(void)
+ 188:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** {
+ 301              		.loc 1 188 1 is_stmt 1 view -0
+ 302              		.cfi_startproc
+ 303              		@ args = 0, pretend = 0, frame = 0
+ 304              		@ frame_needed = 0, uses_anonymous_args = 0
+ 305 0000 08B5     		push	{r3, lr}
+ 306              	.LCFI5:
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 3, -8
+ 309              		.cfi_offset 14, -4
+ 189:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c ****   HAL_TIM_IRQHandler(&TimHandle);
+ 310              		.loc 1 189 3 view .LVU72
+ 311 0002 0248     		ldr	r0, .L21
+ 312 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 313              	.LVL22:
+ 190:platform/HAL/src/stm32g4xx_hal_timebase_tim_template.c **** }
+ 314              		.loc 1 190 1 is_stmt 0 view .LVU73
+ 315 0008 08BD     		pop	{r3, pc}
+ 316              	.L22:
+ 317 000a 00BF     		.align	2
+ARM GAS  /tmp/cc4I52Xv.s 			page 10
+
+
+ 318              	.L21:
+ 319 000c 00000000 		.word	TimHandle
+ 320              		.cfi_endproc
+ 321              	.LFE136:
+ 323              		.global	TimHandle
+ 324              		.section	.bss.TimHandle,"aw",%nobits
+ 325              		.align	2
+ 328              	TimHandle:
+ 329 0000 00000000 		.space	76
+ 329      00000000 
+ 329      00000000 
+ 329      00000000 
+ 329      00000000 
+ 330              		.text
+ 331              	.Letext0:
+ 332              		.file 2 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 333              		.file 3 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 334              		.file 4 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 335              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 336              		.file 6 "platform/HAL/inc/stm32g4xx_hal_rcc.h"
+ 337              		.file 7 "platform/HAL/inc/stm32g4xx_hal_dma.h"
+ 338              		.file 8 "platform/HAL/inc/stm32g4xx_hal_tim.h"
+ 339              		.file 9 "platform/HAL/inc/stm32g4xx_hal.h"
+ 340              		.file 10 "platform/HAL/inc/stm32g4xx_hal_cortex.h"
+ARM GAS  /tmp/cc4I52Xv.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32g4xx_hal_timebase_tim_template.c
+     /tmp/cc4I52Xv.s:21     .text.HAL_InitTick:00000000 $t
+     /tmp/cc4I52Xv.s:27     .text.HAL_InitTick:00000000 HAL_InitTick
+     /tmp/cc4I52Xv.s:198    .text.HAL_InitTick:00000094 $d
+     /tmp/cc4I52Xv.s:328    .bss.TimHandle:00000000 TimHandle
+     /tmp/cc4I52Xv.s:207    .text.HAL_SuspendTick:00000000 $t
+     /tmp/cc4I52Xv.s:213    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
+     /tmp/cc4I52Xv.s:231    .text.HAL_SuspendTick:00000010 $d
+     /tmp/cc4I52Xv.s:236    .text.HAL_ResumeTick:00000000 $t
+     /tmp/cc4I52Xv.s:242    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
+     /tmp/cc4I52Xv.s:260    .text.HAL_ResumeTick:00000010 $d
+     /tmp/cc4I52Xv.s:265    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+     /tmp/cc4I52Xv.s:271    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/cc4I52Xv.s:293    .text.TIM6_DAC_IRQHandler:00000000 $t
+     /tmp/cc4I52Xv.s:299    .text.TIM6_DAC_IRQHandler:00000000 TIM6_DAC_IRQHandler
+     /tmp/cc4I52Xv.s:319    .text.TIM6_DAC_IRQHandler:0000000c $d
+     /tmp/cc4I52Xv.s:325    .bss.TimHandle:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_RCC_GetClockConfig
+HAL_RCC_GetPCLK1Freq
+HAL_TIM_Base_Init
+HAL_TIM_Base_Start_IT
+uwTickPrio
+HAL_IncTick
+HAL_TIM_IRQHandler
