@@ -5,12 +5,14 @@ BUILD_DIR = output
 
 C_SOURCES =  \
 $(wildcard src/*.c) \
+$(wildcard platform/HAL/*.c) \
 $(wildcard platform/HAL/src/*.c) \
 $(wildcard platform/BSP/*.c) \
 
 C_INCLUDES =  \
 -Iinc \
 -Iplatform/BSP \
+-Iplatform/HAL\
 -Iplatform/HAL/inc \
 -Iplatform/HAL/inc/Legacy \
 -Iplatform/CMSIS/Device/ST/STM32G4xx/Include \

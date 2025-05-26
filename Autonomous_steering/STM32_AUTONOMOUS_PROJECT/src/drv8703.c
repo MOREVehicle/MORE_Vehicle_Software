@@ -5,6 +5,8 @@
  */
 
 #include "drv8703.h"
+#include "stm32g4xx_hal_spi.h"
+#include "stm32g4xx_hal_gpio.h"
 
 SPI_HandleTypeDef DRV_SPI_INTERFACE;
 

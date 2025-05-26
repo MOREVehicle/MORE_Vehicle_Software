@@ -7,13 +7,13 @@
 #ifndef __DRV8703_H_
 #define __DRV8703_H_
 
-#include <stdint.h>
-#include <stdbool.h>
-#include "stm32g4xx_hal.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "stm32g4xx_hal.h"
 
 /**
  * @def Register Map

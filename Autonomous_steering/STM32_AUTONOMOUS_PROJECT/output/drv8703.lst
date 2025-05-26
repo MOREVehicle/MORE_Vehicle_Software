@@ -1,0 +1,1438 @@
+ARM GAS  /tmp/ccB8NVeh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"drv8703.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/drv8703.c"
+  20              		.section	.text.DRV_write,"ax",%progbits
+  21              		.align	1
+  22              		.global	DRV_write
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	DRV_write:
+  28              	.LVL0:
+  29              	.LFB133:
+   1:src/drv8703.c **** /**
+   2:src/drv8703.c ****  * @file drv8703.c
+   3:src/drv8703.c ****  * @brief Source file for DRV8703 driver functions
+   4:src/drv8703.c ****  * Handles SPI communication and driver configuration.
+   5:src/drv8703.c ****  */
+   6:src/drv8703.c **** 
+   7:src/drv8703.c **** #include "drv8703.h"
+   8:src/drv8703.c **** #include "stm32g4xx_hal_spi.h"
+   9:src/drv8703.c **** #include "stm32g4xx_hal_gpio.h"
+  10:src/drv8703.c **** 
+  11:src/drv8703.c **** SPI_HandleTypeDef DRV_SPI_INTERFACE;
+  12:src/drv8703.c **** 
+  13:src/drv8703.c **** /**
+  14:src/drv8703.c ****  * @brief Initializes the DRV8703 driver.
+  15:src/drv8703.c ****  * Configures the SPI interface and initializes required settings.
+  16:src/drv8703.c ****  * @return true if initialization is successful, false otherwise.
+  17:src/drv8703.c ****  */
+  18:src/drv8703.c **** void DRV_init(void) {
+  19:src/drv8703.c ****     MX_SPI_init();												//can fail; check return value?
+  20:src/drv8703.c ****     MX_GPIO_init();
+  21:src/drv8703.c **** 
+  22:src/drv8703.c **** 	char pData[6] = {0};
+  23:src/drv8703.c **** 	DRV_read(DRV_MAIN, (unsigned char *)pData);                 // dummy read
+  24:src/drv8703.c **** 	DRV_readRegister((unsigned char *)pData, 0xFF);             // read all registers
+  25:src/drv8703.c **** 	DRV_modify_set(DRV_MAIN, DRV_MAIN_CLR_FLT_MASK);            // clear lock
+  26:src/drv8703.c **** }
+  27:src/drv8703.c **** 
+  28:src/drv8703.c **** /**
+  29:src/drv8703.c ****  * @brief Writes data to a specific register in the DRV8703 driver.
+ARM GAS  /tmp/ccB8NVeh.s 			page 2
+
+
+  30:src/drv8703.c ****  * @param address 4-bit register address.
+  31:src/drv8703.c ****  * @param data 8-bit data to be written.
+  32:src/drv8703.c ****  * @return true if write operation is successful, false otherwise.
+  33:src/drv8703.c ****  */
+  34:src/drv8703.c **** bool DRV_write(uint8_t address, uint8_t data) {
+  30              		.loc 1 34 47 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 34 47 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 84B0     		sub	sp, sp, #16
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 24
+  35:src/drv8703.c ****     uint8_t message[2] = {0}, buffer = 0;
+  43              		.loc 1 35 5 is_stmt 1 view .LVU2
+  44              		.loc 1 35 13 is_stmt 0 view .LVU3
+  45 0004 0023     		movs	r3, #0
+  46 0006 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  47              		.loc 1 35 31 view .LVU4
+  48 000a 8DF80B30 		strb	r3, [sp, #11]
+  36:src/drv8703.c ****     bool success = true;
+  49              		.loc 1 36 5 is_stmt 1 view .LVU5
+  50              	.LVL1:
+  37:src/drv8703.c **** 
+  38:src/drv8703.c ****     if (address > DRV_REG_MAP_SIZE) success = false;
+  51              		.loc 1 38 5 view .LVU6
+  52              		.loc 1 38 8 is_stmt 0 view .LVU7
+  53 000e 0528     		cmp	r0, #5
+  54 0010 03D9     		bls	.L7
+  55              		.loc 1 38 45 discriminator 1 view .LVU8
+  56 0012 0024     		movs	r4, #0
+  57              	.LVL2:
+  58              	.L2:
+  39:src/drv8703.c ****     else {
+  40:src/drv8703.c ****     	message[0] = DRV_ADDR_MASK(address);
+  41:src/drv8703.c ****     	message[1] = data;
+  42:src/drv8703.c ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+  43:src/drv8703.c ****         if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, message, &buffer, 2, DRV_SPI_TIMEOUT) != HA
+  44:src/drv8703.c ****             success = false;
+  45:src/drv8703.c ****         }
+  46:src/drv8703.c ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+  47:src/drv8703.c ****     }
+  48:src/drv8703.c **** 
+  49:src/drv8703.c ****     return success;
+  59              		.loc 1 49 5 is_stmt 1 view .LVU9
+  50:src/drv8703.c **** }
+  60              		.loc 1 50 1 is_stmt 0 view .LVU10
+  61 0014 2046     		mov	r0, r4
+  62 0016 04B0     		add	sp, sp, #16
+  63              	.LCFI2:
+  64              		.cfi_remember_state
+  65              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccB8NVeh.s 			page 3
+
+
+  66              		@ sp needed
+  67 0018 10BD     		pop	{r4, pc}
+  68              	.LVL3:
+  69              	.L7:
+  70              	.LCFI3:
+  71              		.cfi_restore_state
+  40:src/drv8703.c ****     	message[1] = data;
+  72              		.loc 1 40 6 is_stmt 1 view .LVU11
+  40:src/drv8703.c ****     	message[1] = data;
+  73              		.loc 1 40 19 is_stmt 0 view .LVU12
+  74 001a C000     		lsls	r0, r0, #3
+  75              	.LVL4:
+  40:src/drv8703.c ****     	message[1] = data;
+  76              		.loc 1 40 19 view .LVU13
+  77 001c 00F07800 		and	r0, r0, #120
+  40:src/drv8703.c ****     	message[1] = data;
+  78              		.loc 1 40 17 view .LVU14
+  79 0020 8DF80C00 		strb	r0, [sp, #12]
+  41:src/drv8703.c ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+  80              		.loc 1 41 6 is_stmt 1 view .LVU15
+  41:src/drv8703.c ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+  81              		.loc 1 41 17 is_stmt 0 view .LVU16
+  82 0024 8DF80D10 		strb	r1, [sp, #13]
+  42:src/drv8703.c ****         if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, message, &buffer, 2, DRV_SPI_TIMEOUT) != HA
+  83              		.loc 1 42 9 is_stmt 1 view .LVU17
+  84 0028 1A46     		mov	r2, r3
+  85 002a 1021     		movs	r1, #16
+  86              	.LVL5:
+  42:src/drv8703.c ****         if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, message, &buffer, 2, DRV_SPI_TIMEOUT) != HA
+  87              		.loc 1 42 9 is_stmt 0 view .LVU18
+  88 002c 4FF09040 		mov	r0, #1207959552
+  89 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  90              	.LVL6:
+  43:src/drv8703.c ****             success = false;
+  91              		.loc 1 43 9 is_stmt 1 view .LVU19
+  43:src/drv8703.c ****             success = false;
+  92              		.loc 1 43 13 is_stmt 0 view .LVU20
+  93 0034 0A23     		movs	r3, #10
+  94 0036 0093     		str	r3, [sp]
+  95 0038 0223     		movs	r3, #2
+  96 003a 0DF10B02 		add	r2, sp, #11
+  97 003e 03A9     		add	r1, sp, #12
+  98 0040 0648     		ldr	r0, .L8
+  99 0042 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 100              	.LVL7:
+  43:src/drv8703.c ****             success = false;
+ 101              		.loc 1 43 12 discriminator 1 view .LVU21
+ 102 0046 38B9     		cbnz	r0, .L5
+  36:src/drv8703.c **** 
+ 103              		.loc 1 36 10 view .LVU22
+ 104 0048 0124     		movs	r4, #1
+ 105              	.L3:
+ 106              	.LVL8:
+  46:src/drv8703.c ****     }
+ 107              		.loc 1 46 9 is_stmt 1 view .LVU23
+ 108 004a 0122     		movs	r2, #1
+ 109 004c 1021     		movs	r1, #16
+ARM GAS  /tmp/ccB8NVeh.s 			page 4
+
+
+ 110 004e 4FF09040 		mov	r0, #1207959552
+ 111 0052 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 112              	.LVL9:
+ 113 0056 DDE7     		b	.L2
+ 114              	.LVL10:
+ 115              	.L5:
+  44:src/drv8703.c ****         }
+ 116              		.loc 1 44 21 is_stmt 0 view .LVU24
+ 117 0058 0024     		movs	r4, #0
+ 118 005a F6E7     		b	.L3
+ 119              	.L9:
+ 120              		.align	2
+ 121              	.L8:
+ 122 005c 00000000 		.word	hspi3
+ 123              		.cfi_endproc
+ 124              	.LFE133:
+ 126              		.section	.text.DRV_read,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	DRV_read
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 133              	DRV_read:
+ 134              	.LVL11:
+ 135              	.LFB134:
+  51:src/drv8703.c **** 
+  52:src/drv8703.c **** /**
+  53:src/drv8703.c ****  * @brief Reads data from a specific register in the DRV8703 driver.
+  54:src/drv8703.c ****  * @param address 4-bit register address.
+  55:src/drv8703.c ****  * @param data Pointer to store the read 8-bit data.
+  56:src/drv8703.c ****  * @return true if read operation is successful, false otherwise.
+  57:src/drv8703.c ****  */
+  58:src/drv8703.c **** bool DRV_read(uint8_t address, uint8_t* data) {
+ 136              		.loc 1 58 47 is_stmt 1 view -0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 8
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		.loc 1 58 47 is_stmt 0 view .LVU26
+ 141 0000 30B5     		push	{r4, r5, lr}
+ 142              	.LCFI4:
+ 143              		.cfi_def_cfa_offset 12
+ 144              		.cfi_offset 4, -12
+ 145              		.cfi_offset 5, -8
+ 146              		.cfi_offset 14, -4
+ 147 0002 85B0     		sub	sp, sp, #20
+ 148              	.LCFI5:
+ 149              		.cfi_def_cfa_offset 32
+ 150 0004 0C46     		mov	r4, r1
+  59:src/drv8703.c **** 		bool success = true;
+ 151              		.loc 1 59 3 is_stmt 1 view .LVU27
+ 152              	.LVL12:
+  60:src/drv8703.c **** 		uint8_t message = 0, buffer = 0;
+ 153              		.loc 1 60 3 view .LVU28
+ 154              		.loc 1 60 11 is_stmt 0 view .LVU29
+ 155 0006 0023     		movs	r3, #0
+ 156 0008 8DF80F30 		strb	r3, [sp, #15]
+ 157              		.loc 1 60 24 view .LVU30
+ARM GAS  /tmp/ccB8NVeh.s 			page 5
+
+
+ 158 000c 8DF80E30 		strb	r3, [sp, #14]
+  61:src/drv8703.c **** 
+  62:src/drv8703.c **** 	    if (address > 0x0F) success = false;
+ 159              		.loc 1 62 6 is_stmt 1 view .LVU31
+ 160              		.loc 1 62 9 is_stmt 0 view .LVU32
+ 161 0010 0F28     		cmp	r0, #15
+ 162 0012 06D9     		bls	.L16
+ 163              		.loc 1 62 34 discriminator 1 view .LVU33
+ 164 0014 0025     		movs	r5, #0
+ 165              	.LVL13:
+ 166              	.L11:
+  63:src/drv8703.c **** 	    else {
+  64:src/drv8703.c **** 	    	message = DRV_READWRITE_MASK | DRV_ADDR_MASK(address);
+  65:src/drv8703.c **** 	    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+  66:src/drv8703.c **** 	        if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, &message, &buffer, 2, DRV_SPI_TIMEOUT) != 
+  67:src/drv8703.c **** 	            success = false;
+  68:src/drv8703.c **** 	        }
+  69:src/drv8703.c **** 	        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+  70:src/drv8703.c **** 	    }
+  71:src/drv8703.c **** 	    *data = (buffer & 0x00FF);
+ 167              		.loc 1 71 6 is_stmt 1 view .LVU34
+ 168              		.loc 1 71 12 is_stmt 0 view .LVU35
+ 169 0016 9DF80E30 		ldrb	r3, [sp, #14]	@ zero_extendqisi2
+ 170 001a 2370     		strb	r3, [r4]
+  72:src/drv8703.c **** 
+  73:src/drv8703.c ****     return success;
+ 171              		.loc 1 73 5 is_stmt 1 view .LVU36
+  74:src/drv8703.c **** }
+ 172              		.loc 1 74 1 is_stmt 0 view .LVU37
+ 173 001c 2846     		mov	r0, r5
+ 174 001e 05B0     		add	sp, sp, #20
+ 175              	.LCFI6:
+ 176              		.cfi_remember_state
+ 177              		.cfi_def_cfa_offset 12
+ 178              		@ sp needed
+ 179 0020 30BD     		pop	{r4, r5, pc}
+ 180              	.LVL14:
+ 181              	.L16:
+ 182              	.LCFI7:
+ 183              		.cfi_restore_state
+  64:src/drv8703.c **** 	    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+ 184              		.loc 1 64 7 is_stmt 1 view .LVU38
+  64:src/drv8703.c **** 	    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+ 185              		.loc 1 64 38 is_stmt 0 view .LVU39
+ 186 0022 C000     		lsls	r0, r0, #3
+ 187              	.LVL15:
+  64:src/drv8703.c **** 	    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+ 188              		.loc 1 64 38 view .LVU40
+ 189 0024 00F07800 		and	r0, r0, #120
+  64:src/drv8703.c **** 	    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+ 190              		.loc 1 64 36 view .LVU41
+ 191 0028 40F08000 		orr	r0, r0, #128
+  64:src/drv8703.c **** 	    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+ 192              		.loc 1 64 15 view .LVU42
+ 193 002c 8DF80F00 		strb	r0, [sp, #15]
+  65:src/drv8703.c **** 	        if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, &message, &buffer, 2, DRV_SPI_TIMEOUT) != 
+ 194              		.loc 1 65 7 is_stmt 1 view .LVU43
+ARM GAS  /tmp/ccB8NVeh.s 			page 6
+
+
+ 195 0030 1A46     		mov	r2, r3
+ 196 0032 1021     		movs	r1, #16
+ 197              	.LVL16:
+  65:src/drv8703.c **** 	        if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, &message, &buffer, 2, DRV_SPI_TIMEOUT) != 
+ 198              		.loc 1 65 7 is_stmt 0 view .LVU44
+ 199 0034 4FF09040 		mov	r0, #1207959552
+ 200 0038 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 201              	.LVL17:
+  66:src/drv8703.c **** 	            success = false;
+ 202              		.loc 1 66 10 is_stmt 1 view .LVU45
+  66:src/drv8703.c **** 	            success = false;
+ 203              		.loc 1 66 14 is_stmt 0 view .LVU46
+ 204 003c 0A23     		movs	r3, #10
+ 205 003e 0093     		str	r3, [sp]
+ 206 0040 0223     		movs	r3, #2
+ 207 0042 0DF10E02 		add	r2, sp, #14
+ 208 0046 0DF10F01 		add	r1, sp, #15
+ 209 004a 0748     		ldr	r0, .L17
+ 210 004c FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 211              	.LVL18:
+  66:src/drv8703.c **** 	            success = false;
+ 212              		.loc 1 66 13 discriminator 1 view .LVU47
+ 213 0050 38B9     		cbnz	r0, .L14
+  59:src/drv8703.c **** 		uint8_t message = 0, buffer = 0;
+ 214              		.loc 1 59 8 view .LVU48
+ 215 0052 0125     		movs	r5, #1
+ 216              	.L12:
+ 217              	.LVL19:
+  69:src/drv8703.c **** 	    }
+ 218              		.loc 1 69 10 is_stmt 1 view .LVU49
+ 219 0054 0122     		movs	r2, #1
+ 220 0056 1021     		movs	r1, #16
+ 221 0058 4FF09040 		mov	r0, #1207959552
+ 222 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 223              	.LVL20:
+ 224 0060 D9E7     		b	.L11
+ 225              	.LVL21:
+ 226              	.L14:
+  67:src/drv8703.c **** 	        }
+ 227              		.loc 1 67 22 is_stmt 0 view .LVU50
+ 228 0062 0025     		movs	r5, #0
+ 229 0064 F6E7     		b	.L12
+ 230              	.L18:
+ 231 0066 00BF     		.align	2
+ 232              	.L17:
+ 233 0068 00000000 		.word	hspi3
+ 234              		.cfi_endproc
+ 235              	.LFE134:
+ 237              		.section	.text.DRV_modify_set,"ax",%progbits
+ 238              		.align	1
+ 239              		.global	DRV_modify_set
+ 240              		.syntax unified
+ 241              		.thumb
+ 242              		.thumb_func
+ 244              	DRV_modify_set:
+ 245              	.LVL22:
+ 246              	.LFB135:
+ARM GAS  /tmp/ccB8NVeh.s 			page 7
+
+
+  75:src/drv8703.c **** 
+  76:src/drv8703.c **** /**
+  77:src/drv8703.c ****  * @brief Sets data in specific register in the DRV8703 driver.
+  78:src/drv8703.c ****  * @param address 4-bit register address.
+  79:src/drv8703.c ****  * @param data to be set, all unmentioned bits will remain unchanged.
+  80:src/drv8703.c ****  * @return true if write operation is successful, false otherwise.
+  81:src/drv8703.c ****  */
+  82:src/drv8703.c **** bool DRV_modify_set(uint8_t address, uint8_t data) {
+ 247              		.loc 1 82 52 is_stmt 1 view -0
+ 248              		.cfi_startproc
+ 249              		@ args = 0, pretend = 0, frame = 8
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              		.loc 1 82 52 is_stmt 0 view .LVU52
+ 252 0000 30B5     		push	{r4, r5, lr}
+ 253              	.LCFI8:
+ 254              		.cfi_def_cfa_offset 12
+ 255              		.cfi_offset 4, -12
+ 256              		.cfi_offset 5, -8
+ 257              		.cfi_offset 14, -4
+ 258 0002 83B0     		sub	sp, sp, #12
+ 259              	.LCFI9:
+ 260              		.cfi_def_cfa_offset 24
+ 261 0004 0546     		mov	r5, r0
+ 262 0006 0C46     		mov	r4, r1
+  83:src/drv8703.c **** 	uint8_t reg = 0;
+ 263              		.loc 1 83 2 is_stmt 1 view .LVU53
+ 264              		.loc 1 83 10 is_stmt 0 view .LVU54
+ 265 0008 0023     		movs	r3, #0
+ 266 000a 8DF80730 		strb	r3, [sp, #7]
+  84:src/drv8703.c ****     bool success = 0;
+ 267              		.loc 1 84 5 is_stmt 1 view .LVU55
+ 268              	.LVL23:
+  85:src/drv8703.c **** 
+  86:src/drv8703.c **** 	success = DRV_read(address, &reg);
+ 269              		.loc 1 86 2 view .LVU56
+ 270              		.loc 1 86 12 is_stmt 0 view .LVU57
+ 271 000e 0DF10701 		add	r1, sp, #7
+ 272              	.LVL24:
+ 273              		.loc 1 86 12 view .LVU58
+ 274 0012 FFF7FEFF 		bl	DRV_read
+ 275              	.LVL25:
+  87:src/drv8703.c ****     if (success) {
+ 276              		.loc 1 87 5 is_stmt 1 view .LVU59
+ 277              		.loc 1 87 8 is_stmt 0 view .LVU60
+ 278 0016 08B9     		cbnz	r0, .L22
+ 279              	.LVL26:
+ 280              	.L20:
+  88:src/drv8703.c ****         reg &= ~data;
+  89:src/drv8703.c ****         success = DRV_write(address, reg);
+  90:src/drv8703.c ****     }
+  91:src/drv8703.c ****     return success;
+ 281              		.loc 1 91 5 is_stmt 1 view .LVU61
+  92:src/drv8703.c **** }
+ 282              		.loc 1 92 1 is_stmt 0 view .LVU62
+ 283 0018 03B0     		add	sp, sp, #12
+ 284              	.LCFI10:
+ 285              		.cfi_remember_state
+ARM GAS  /tmp/ccB8NVeh.s 			page 8
+
+
+ 286              		.cfi_def_cfa_offset 12
+ 287              		@ sp needed
+ 288 001a 30BD     		pop	{r4, r5, pc}
+ 289              	.LVL27:
+ 290              	.L22:
+ 291              	.LCFI11:
+ 292              		.cfi_restore_state
+  88:src/drv8703.c ****         reg &= ~data;
+ 293              		.loc 1 88 9 is_stmt 1 view .LVU63
+  88:src/drv8703.c ****         reg &= ~data;
+ 294              		.loc 1 88 13 is_stmt 0 view .LVU64
+ 295 001c E443     		mvns	r4, r4
+ 296 001e 64B2     		sxtb	r4, r4
+ 297 0020 9DF80710 		ldrb	r1, [sp, #7]	@ zero_extendqisi2
+ 298 0024 2140     		ands	r1, r1, r4
+ 299 0026 8DF80710 		strb	r1, [sp, #7]
+  89:src/drv8703.c ****     }
+ 300              		.loc 1 89 9 is_stmt 1 view .LVU65
+  89:src/drv8703.c ****     }
+ 301              		.loc 1 89 19 is_stmt 0 view .LVU66
+ 302 002a 2846     		mov	r0, r5
+ 303 002c FFF7FEFF 		bl	DRV_write
+ 304              	.LVL28:
+ 305 0030 F2E7     		b	.L20
+ 306              		.cfi_endproc
+ 307              	.LFE135:
+ 309              		.section	.text.DRV_modify_reset,"ax",%progbits
+ 310              		.align	1
+ 311              		.global	DRV_modify_reset
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	DRV_modify_reset:
+ 317              	.LVL29:
+ 318              	.LFB136:
+  93:src/drv8703.c **** 
+  94:src/drv8703.c **** /**
+  95:src/drv8703.c ****  * @brief Modifies data in specific register in the DRV8703 driver.
+  96:src/drv8703.c ****  * @param address 4-bit register address.
+  97:src/drv8703.c ****  * @param data to be reset, all unmentioned bits will remain unchanged.
+  98:src/drv8703.c ****  * @return true if write operation is successful, false otherwise.
+  99:src/drv8703.c ****  */
+ 100:src/drv8703.c **** bool DRV_modify_reset(uint8_t address, uint8_t data) {
+ 319              		.loc 1 100 54 is_stmt 1 view -0
+ 320              		.cfi_startproc
+ 321              		@ args = 0, pretend = 0, frame = 8
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              		.loc 1 100 54 is_stmt 0 view .LVU68
+ 324 0000 30B5     		push	{r4, r5, lr}
+ 325              	.LCFI12:
+ 326              		.cfi_def_cfa_offset 12
+ 327              		.cfi_offset 4, -12
+ 328              		.cfi_offset 5, -8
+ 329              		.cfi_offset 14, -4
+ 330 0002 83B0     		sub	sp, sp, #12
+ 331              	.LCFI13:
+ 332              		.cfi_def_cfa_offset 24
+ARM GAS  /tmp/ccB8NVeh.s 			page 9
+
+
+ 333 0004 0546     		mov	r5, r0
+ 334 0006 0C46     		mov	r4, r1
+ 101:src/drv8703.c **** 	uint8_t reg = 0;
+ 335              		.loc 1 101 2 is_stmt 1 view .LVU69
+ 336              		.loc 1 101 10 is_stmt 0 view .LVU70
+ 337 0008 0023     		movs	r3, #0
+ 338 000a 8DF80730 		strb	r3, [sp, #7]
+ 102:src/drv8703.c ****     bool success = 0;
+ 339              		.loc 1 102 5 is_stmt 1 view .LVU71
+ 340              	.LVL30:
+ 103:src/drv8703.c **** 
+ 104:src/drv8703.c **** 	success = DRV_read(address, &reg);
+ 341              		.loc 1 104 2 view .LVU72
+ 342              		.loc 1 104 12 is_stmt 0 view .LVU73
+ 343 000e 0DF10701 		add	r1, sp, #7
+ 344              	.LVL31:
+ 345              		.loc 1 104 12 view .LVU74
+ 346 0012 FFF7FEFF 		bl	DRV_read
+ 347              	.LVL32:
+ 105:src/drv8703.c ****     if (success) {
+ 348              		.loc 1 105 5 is_stmt 1 view .LVU75
+ 349              		.loc 1 105 8 is_stmt 0 view .LVU76
+ 350 0016 08B9     		cbnz	r0, .L26
+ 351              	.LVL33:
+ 352              	.L24:
+ 106:src/drv8703.c ****         reg &= ~data;
+ 107:src/drv8703.c ****         success = DRV_write(address, reg);
+ 108:src/drv8703.c ****     }
+ 109:src/drv8703.c ****     return success;
+ 353              		.loc 1 109 5 is_stmt 1 view .LVU77
+ 110:src/drv8703.c **** }
+ 354              		.loc 1 110 1 is_stmt 0 view .LVU78
+ 355 0018 03B0     		add	sp, sp, #12
+ 356              	.LCFI14:
+ 357              		.cfi_remember_state
+ 358              		.cfi_def_cfa_offset 12
+ 359              		@ sp needed
+ 360 001a 30BD     		pop	{r4, r5, pc}
+ 361              	.LVL34:
+ 362              	.L26:
+ 363              	.LCFI15:
+ 364              		.cfi_restore_state
+ 106:src/drv8703.c ****         reg &= ~data;
+ 365              		.loc 1 106 9 is_stmt 1 view .LVU79
+ 106:src/drv8703.c ****         reg &= ~data;
+ 366              		.loc 1 106 13 is_stmt 0 view .LVU80
+ 367 001c E443     		mvns	r4, r4
+ 368 001e 64B2     		sxtb	r4, r4
+ 369 0020 9DF80710 		ldrb	r1, [sp, #7]	@ zero_extendqisi2
+ 370 0024 2140     		ands	r1, r1, r4
+ 371 0026 8DF80710 		strb	r1, [sp, #7]
+ 107:src/drv8703.c ****     }
+ 372              		.loc 1 107 9 is_stmt 1 view .LVU81
+ 107:src/drv8703.c ****     }
+ 373              		.loc 1 107 19 is_stmt 0 view .LVU82
+ 374 002a 2846     		mov	r0, r5
+ 375 002c FFF7FEFF 		bl	DRV_write
+ARM GAS  /tmp/ccB8NVeh.s 			page 10
+
+
+ 376              	.LVL35:
+ 377 0030 F2E7     		b	.L24
+ 378              		.cfi_endproc
+ 379              	.LFE136:
+ 381              		.section	.text.DRV_writeRegister,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	DRV_writeRegister
+ 384              		.syntax unified
+ 385              		.thumb
+ 386              		.thumb_func
+ 388              	DRV_writeRegister:
+ 389              	.LVL36:
+ 390              	.LFB137:
+ 111:src/drv8703.c **** 
+ 112:src/drv8703.c **** /**
+ 113:src/drv8703.c ****  * @brief Writes data to multiple registers in the DRV8703 driver.
+ 114:src/drv8703.c ****  * @param data Pointer to an array containing data for registers.
+ 115:src/drv8703.c ****  * @param filter Bit mask to filter out specific registers.
+ 116:src/drv8703.c ****  * @return true if write operation is successful, false otherwise.
+ 117:src/drv8703.c ****  */
+ 118:src/drv8703.c **** bool DRV_writeRegister(uint8_t* data, uint8_t filter) {
+ 391              		.loc 1 118 55 is_stmt 1 view -0
+ 392              		.cfi_startproc
+ 393              		@ args = 0, pretend = 0, frame = 0
+ 394              		@ frame_needed = 0, uses_anonymous_args = 0
+ 395              		.loc 1 118 55 is_stmt 0 view .LVU84
+ 396 0000 70B5     		push	{r4, r5, r6, lr}
+ 397              	.LCFI16:
+ 398              		.cfi_def_cfa_offset 16
+ 399              		.cfi_offset 4, -16
+ 400              		.cfi_offset 5, -12
+ 401              		.cfi_offset 6, -8
+ 402              		.cfi_offset 14, -4
+ 403 0002 0646     		mov	r6, r0
+ 404 0004 0D46     		mov	r5, r1
+ 119:src/drv8703.c ****     bool success = true;
+ 405              		.loc 1 119 5 is_stmt 1 view .LVU85
+ 406              	.LVL37:
+ 120:src/drv8703.c **** 
+ 121:src/drv8703.c ****     for (int i = 0; i < DRV_REG_MAP_SIZE + 1; i++) {
+ 407              		.loc 1 121 5 view .LVU86
+ 408              	.LBB2:
+ 409              		.loc 1 121 10 view .LVU87
+ 410              		.loc 1 121 14 is_stmt 0 view .LVU88
+ 411 0006 0024     		movs	r4, #0
+ 412              	.LBE2:
+ 119:src/drv8703.c ****     bool success = true;
+ 413              		.loc 1 119 10 view .LVU89
+ 414 0008 0122     		movs	r2, #1
+ 415              	.LBB3:
+ 416              		.loc 1 121 5 view .LVU90
+ 417 000a 00E0     		b	.L28
+ 418              	.LVL38:
+ 419              	.L29:
+ 420              		.loc 1 121 48 is_stmt 1 discriminator 2 view .LVU91
+ 421 000c 0134     		adds	r4, r4, #1
+ 422              	.LVL39:
+ARM GAS  /tmp/ccB8NVeh.s 			page 11
+
+
+ 423              	.L28:
+ 424              		.loc 1 121 23 discriminator 1 view .LVU92
+ 425 000e 052C     		cmp	r4, #5
+ 426 0010 0FDC     		bgt	.L30
+ 122:src/drv8703.c ****         if (!(filter & (1<<(DRV_REG_MAP_SIZE-i)))) {
+ 427              		.loc 1 122 9 view .LVU93
+ 428              		.loc 1 122 45 is_stmt 0 view .LVU94
+ 429 0012 C4F10503 		rsb	r3, r4, #5
+ 430              		.loc 1 122 13 view .LVU95
+ 431 0016 45FA03F3 		asr	r3, r5, r3
+ 432              		.loc 1 122 12 view .LVU96
+ 433 001a 13F0010F 		tst	r3, #1
+ 434 001e F5D1     		bne	.L29
+ 123:src/drv8703.c ****             success = DRV_write(DRV_REG_MAP_SIZE-i, data[i]);
+ 435              		.loc 1 123 13 is_stmt 1 view .LVU97
+ 436              		.loc 1 123 23 is_stmt 0 view .LVU98
+ 437 0020 C4F10500 		rsb	r0, r4, #5
+ 438 0024 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
+ 439 0026 C0B2     		uxtb	r0, r0
+ 440 0028 FFF7FEFF 		bl	DRV_write
+ 441              	.LVL40:
+ 124:src/drv8703.c ****             if (!success) break;
+ 442              		.loc 1 124 13 is_stmt 1 view .LVU99
+ 443              		.loc 1 124 16 is_stmt 0 view .LVU100
+ 444 002c 0246     		mov	r2, r0
+ 445 002e 0028     		cmp	r0, #0
+ 446 0030 ECD1     		bne	.L29
+ 447              	.LVL41:
+ 448              	.L30:
+ 449              		.loc 1 124 16 view .LVU101
+ 450              	.LBE3:
+ 125:src/drv8703.c ****         }
+ 126:src/drv8703.c ****     }
+ 127:src/drv8703.c **** 
+ 128:src/drv8703.c ****     return success;
+ 451              		.loc 1 128 5 is_stmt 1 view .LVU102
+ 129:src/drv8703.c **** }
+ 452              		.loc 1 129 1 is_stmt 0 view .LVU103
+ 453 0032 1046     		mov	r0, r2
+ 454 0034 70BD     		pop	{r4, r5, r6, pc}
+ 455              		.loc 1 129 1 view .LVU104
+ 456              		.cfi_endproc
+ 457              	.LFE137:
+ 459              		.section	.text.DRV_readRegister,"ax",%progbits
+ 460              		.align	1
+ 461              		.global	DRV_readRegister
+ 462              		.syntax unified
+ 463              		.thumb
+ 464              		.thumb_func
+ 466              	DRV_readRegister:
+ 467              	.LVL42:
+ 468              	.LFB138:
+ 130:src/drv8703.c **** 
+ 131:src/drv8703.c **** /**
+ 132:src/drv8703.c ****  * @brief Reads data from all registers in the DRV8703 driver.
+ 133:src/drv8703.c ****  * @param data Pointer to an array where register data will be stored.
+ 134:src/drv8703.c ****  * @param filter Bit mask to filter out specific registers.
+ARM GAS  /tmp/ccB8NVeh.s 			page 12
+
+
+ 135:src/drv8703.c ****  * @return true if read operation is successful, false otherwise.
+ 136:src/drv8703.c ****  */
+ 137:src/drv8703.c **** bool DRV_readRegister(uint8_t* data, uint8_t filter) {
+ 469              		.loc 1 137 54 is_stmt 1 view -0
+ 470              		.cfi_startproc
+ 471              		@ args = 0, pretend = 0, frame = 0
+ 472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 473              		.loc 1 137 54 is_stmt 0 view .LVU106
+ 474 0000 70B5     		push	{r4, r5, r6, lr}
+ 475              	.LCFI17:
+ 476              		.cfi_def_cfa_offset 16
+ 477              		.cfi_offset 4, -16
+ 478              		.cfi_offset 5, -12
+ 479              		.cfi_offset 6, -8
+ 480              		.cfi_offset 14, -4
+ 481 0002 0646     		mov	r6, r0
+ 482 0004 0D46     		mov	r5, r1
+ 138:src/drv8703.c ****     bool success = true;
+ 483              		.loc 1 138 5 is_stmt 1 view .LVU107
+ 484              	.LVL43:
+ 139:src/drv8703.c ****     uint8_t* pData = data;
+ 485              		.loc 1 139 5 view .LVU108
+ 140:src/drv8703.c **** 
+ 141:src/drv8703.c ****     for (int i = 0; i < DRV_REG_MAP_SIZE; i++) {
+ 486              		.loc 1 141 5 view .LVU109
+ 487              	.LBB4:
+ 488              		.loc 1 141 10 view .LVU110
+ 489              		.loc 1 141 14 is_stmt 0 view .LVU111
+ 490 0006 0024     		movs	r4, #0
+ 491              	.LBE4:
+ 138:src/drv8703.c ****     uint8_t* pData = data;
+ 492              		.loc 1 138 10 view .LVU112
+ 493 0008 0122     		movs	r2, #1
+ 494              	.LBB5:
+ 495              		.loc 1 141 5 view .LVU113
+ 496 000a 00E0     		b	.L34
+ 497              	.LVL44:
+ 498              	.L35:
+ 499              		.loc 1 141 44 is_stmt 1 discriminator 2 view .LVU114
+ 500 000c 0134     		adds	r4, r4, #1
+ 501              	.LVL45:
+ 502              	.L34:
+ 503              		.loc 1 141 23 discriminator 1 view .LVU115
+ 504 000e 042C     		cmp	r4, #4
+ 505 0010 10DC     		bgt	.L36
+ 142:src/drv8703.c ****         if (!(filter & (1<<(DRV_REG_MAP_SIZE-i)))) {
+ 506              		.loc 1 142 9 view .LVU116
+ 507              		.loc 1 142 45 is_stmt 0 view .LVU117
+ 508 0012 C4F10503 		rsb	r3, r4, #5
+ 509              		.loc 1 142 13 view .LVU118
+ 510 0016 45FA03F3 		asr	r3, r5, r3
+ 511              		.loc 1 142 12 view .LVU119
+ 512 001a 13F0010F 		tst	r3, #1
+ 513 001e F5D1     		bne	.L35
+ 143:src/drv8703.c ****             success = DRV_read(DRV_REG_MAP_SIZE-i, data);
+ 514              		.loc 1 143 13 is_stmt 1 view .LVU120
+ 515              		.loc 1 143 23 is_stmt 0 view .LVU121
+ARM GAS  /tmp/ccB8NVeh.s 			page 13
+
+
+ 516 0020 C4F10500 		rsb	r0, r4, #5
+ 517 0024 3146     		mov	r1, r6
+ 518 0026 C0B2     		uxtb	r0, r0
+ 519 0028 FFF7FEFF 		bl	DRV_read
+ 520              	.LVL46:
+ 144:src/drv8703.c ****             if (!success) break;
+ 521              		.loc 1 144 13 is_stmt 1 view .LVU122
+ 522              		.loc 1 144 16 is_stmt 0 view .LVU123
+ 523 002c 0246     		mov	r2, r0
+ 524 002e 08B1     		cbz	r0, .L36
+ 145:src/drv8703.c ****             data++;
+ 525              		.loc 1 145 13 is_stmt 1 view .LVU124
+ 526              	.LVL47:
+ 527              		.loc 1 145 17 is_stmt 0 view .LVU125
+ 528 0030 0136     		adds	r6, r6, #1
+ 529              	.LVL48:
+ 530              		.loc 1 145 17 view .LVU126
+ 531 0032 EBE7     		b	.L35
+ 532              	.LVL49:
+ 533              	.L36:
+ 534              		.loc 1 145 17 view .LVU127
+ 535              	.LBE5:
+ 146:src/drv8703.c ****         }
+ 147:src/drv8703.c ****     }
+ 148:src/drv8703.c ****     data = pData;
+ 536              		.loc 1 148 5 is_stmt 1 view .LVU128
+ 149:src/drv8703.c **** 
+ 150:src/drv8703.c ****     return success;
+ 537              		.loc 1 150 5 view .LVU129
+ 151:src/drv8703.c **** }
+ 538              		.loc 1 151 1 is_stmt 0 view .LVU130
+ 539 0034 1046     		mov	r0, r2
+ 540 0036 70BD     		pop	{r4, r5, r6, pc}
+ 541              		.loc 1 151 1 view .LVU131
+ 542              		.cfi_endproc
+ 543              	.LFE138:
+ 545              		.section	.text.MX_SPI_init,"ax",%progbits
+ 546              		.align	1
+ 547              		.global	MX_SPI_init
+ 548              		.syntax unified
+ 549              		.thumb
+ 550              		.thumb_func
+ 552              	MX_SPI_init:
+ 553              	.LFB139:
+ 152:src/drv8703.c **** 
+ 153:src/drv8703.c **** /**
+ 154:src/drv8703.c **** * @brief THIS IS AUTOGENERATED BY STM32MX, it overides the
+ 155:src/drv8703.c **** * __weak verions defined in the stm HAL via linker and is
+ 156:src/drv8703.c **** * used in HAL_SPI_Init used in DRV_init.
+ 157:src/drv8703.c **** */
+ 158:src/drv8703.c **** int MX_SPI_init() {
+ 554              		.loc 1 158 19 is_stmt 1 view -0
+ 555              		.cfi_startproc
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 0, uses_anonymous_args = 0
+ 558 0000 08B5     		push	{r3, lr}
+ 559              	.LCFI18:
+ARM GAS  /tmp/ccB8NVeh.s 			page 14
+
+
+ 560              		.cfi_def_cfa_offset 8
+ 561              		.cfi_offset 3, -8
+ 562              		.cfi_offset 14, -4
+ 159:src/drv8703.c **** 	bool OK = 0;
+ 563              		.loc 1 159 2 view .LVU133
+ 564              	.LVL50:
+ 160:src/drv8703.c **** 
+ 161:src/drv8703.c **** 	DRV_SPI_INTERFACE.Instance = SPI3;
+ 565              		.loc 1 161 2 view .LVU134
+ 566              		.loc 1 161 29 is_stmt 0 view .LVU135
+ 567 0002 1048     		ldr	r0, .L43
+ 568 0004 104B     		ldr	r3, .L43+4
+ 569 0006 0360     		str	r3, [r0]
+ 162:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.Mode = SPI_MODE_MASTER;
+ 570              		.loc 1 162 5 is_stmt 1 view .LVU136
+ 571              		.loc 1 162 33 is_stmt 0 view .LVU137
+ 572 0008 4FF48273 		mov	r3, #260
+ 573 000c 4360     		str	r3, [r0, #4]
+ 163:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.Direction = SPI_DIRECTION_2LINES;
+ 574              		.loc 1 163 5 is_stmt 1 view .LVU138
+ 575              		.loc 1 163 38 is_stmt 0 view .LVU139
+ 576 000e 0023     		movs	r3, #0
+ 577 0010 8360     		str	r3, [r0, #8]
+ 164:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.DataSize = SPI_DATASIZE_8BIT;
+ 578              		.loc 1 164 5 is_stmt 1 view .LVU140
+ 579              		.loc 1 164 37 is_stmt 0 view .LVU141
+ 580 0012 4FF4E062 		mov	r2, #1792
+ 581 0016 C260     		str	r2, [r0, #12]
+ 165:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 582              		.loc 1 165 5 is_stmt 1 view .LVU142
+ 583              		.loc 1 165 40 is_stmt 0 view .LVU143
+ 584 0018 0361     		str	r3, [r0, #16]
+ 166:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.CLKPhase = SPI_PHASE_2EDGE;
+ 585              		.loc 1 166 5 is_stmt 1 view .LVU144
+ 586              		.loc 1 166 37 is_stmt 0 view .LVU145
+ 587 001a 0122     		movs	r2, #1
+ 588 001c 4261     		str	r2, [r0, #20]
+ 167:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.NSS = SPI_NSS_SOFT;
+ 589              		.loc 1 167 5 is_stmt 1 view .LVU146
+ 590              		.loc 1 167 32 is_stmt 0 view .LVU147
+ 591 001e 4FF40072 		mov	r2, #512
+ 592 0022 8261     		str	r2, [r0, #24]
+ 168:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+ 593              		.loc 1 168 5 is_stmt 1 view .LVU148
+ 594              		.loc 1 168 46 is_stmt 0 view .LVU149
+ 595 0024 3822     		movs	r2, #56
+ 596 0026 C261     		str	r2, [r0, #28]
+ 169:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 597              		.loc 1 169 5 is_stmt 1 view .LVU150
+ 598              		.loc 1 169 37 is_stmt 0 view .LVU151
+ 599 0028 0362     		str	r3, [r0, #32]
+ 170:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.TIMode = SPI_TIMODE_DISABLE;
+ 600              		.loc 1 170 5 is_stmt 1 view .LVU152
+ 601              		.loc 1 170 35 is_stmt 0 view .LVU153
+ 602 002a 4362     		str	r3, [r0, #36]
+ 171:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 603              		.loc 1 171 5 is_stmt 1 view .LVU154
+ARM GAS  /tmp/ccB8NVeh.s 			page 15
+
+
+ 604              		.loc 1 171 43 is_stmt 0 view .LVU155
+ 605 002c 8362     		str	r3, [r0, #40]
+ 172:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.CRCPolynomial = 7;
+ 606              		.loc 1 172 5 is_stmt 1 view .LVU156
+ 607              		.loc 1 172 42 is_stmt 0 view .LVU157
+ 608 002e 0722     		movs	r2, #7
+ 609 0030 C262     		str	r2, [r0, #44]
+ 173:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+ 610              		.loc 1 173 5 is_stmt 1 view .LVU158
+ 611              		.loc 1 173 38 is_stmt 0 view .LVU159
+ 612 0032 0363     		str	r3, [r0, #48]
+ 174:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
+ 613              		.loc 1 174 5 is_stmt 1 view .LVU160
+ 614              		.loc 1 174 37 is_stmt 0 view .LVU161
+ 615 0034 4363     		str	r3, [r0, #52]
+ 175:src/drv8703.c ****     if (HAL_SPI_Init(&DRV_SPI_INTERFACE) != HAL_OK) OK = 0;
+ 616              		.loc 1 175 5 is_stmt 1 view .LVU162
+ 617              		.loc 1 175 9 is_stmt 0 view .LVU163
+ 618 0036 FFF7FEFF 		bl	HAL_SPI_Init
+ 619              	.LVL51:
+ 620              		.loc 1 175 8 discriminator 1 view .LVU164
+ 621 003a 08B1     		cbz	r0, .L41
+ 622              		.loc 1 175 56 discriminator 1 view .LVU165
+ 623 003c 0020     		movs	r0, #0
+ 624              	.L40:
+ 625              	.LVL52:
+ 176:src/drv8703.c ****     else OK = 1;
+ 177:src/drv8703.c **** 
+ 178:src/drv8703.c ****     return OK;
+ 626              		.loc 1 178 5 is_stmt 1 view .LVU166
+ 179:src/drv8703.c **** 
+ 180:src/drv8703.c **** }
+ 627              		.loc 1 180 1 is_stmt 0 view .LVU167
+ 628 003e 08BD     		pop	{r3, pc}
+ 629              	.LVL53:
+ 630              	.L41:
+ 176:src/drv8703.c ****     else OK = 1;
+ 631              		.loc 1 176 13 view .LVU168
+ 632 0040 0120     		movs	r0, #1
+ 633 0042 FCE7     		b	.L40
+ 634              	.L44:
+ 635              		.align	2
+ 636              	.L43:
+ 637 0044 00000000 		.word	hspi3
+ 638 0048 003C0040 		.word	1073757184
+ 639              		.cfi_endproc
+ 640              	.LFE139:
+ 642              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 643              		.align	1
+ 644              		.global	HAL_SPI_MspInit
+ 645              		.syntax unified
+ 646              		.thumb
+ 647              		.thumb_func
+ 649              	HAL_SPI_MspInit:
+ 650              	.LVL54:
+ 651              	.LFB140:
+ 181:src/drv8703.c **** 
+ARM GAS  /tmp/ccB8NVeh.s 			page 16
+
+
+ 182:src/drv8703.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle) {
+ 652              		.loc 1 182 52 is_stmt 1 view -0
+ 653              		.cfi_startproc
+ 654              		@ args = 0, pretend = 0, frame = 32
+ 655              		@ frame_needed = 0, uses_anonymous_args = 0
+ 656              		.loc 1 182 52 is_stmt 0 view .LVU170
+ 657 0000 00B5     		push	{lr}
+ 658              	.LCFI19:
+ 659              		.cfi_def_cfa_offset 4
+ 660              		.cfi_offset 14, -4
+ 661 0002 89B0     		sub	sp, sp, #36
+ 662              	.LCFI20:
+ 663              		.cfi_def_cfa_offset 40
+ 183:src/drv8703.c ****     GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 664              		.loc 1 183 5 is_stmt 1 view .LVU171
+ 665              		.loc 1 183 22 is_stmt 0 view .LVU172
+ 666 0004 0023     		movs	r3, #0
+ 667 0006 0393     		str	r3, [sp, #12]
+ 668 0008 0493     		str	r3, [sp, #16]
+ 669 000a 0593     		str	r3, [sp, #20]
+ 670 000c 0693     		str	r3, [sp, #24]
+ 671 000e 0793     		str	r3, [sp, #28]
+ 184:src/drv8703.c ****     if(spiHandle->Instance==SPI3) {
+ 672              		.loc 1 184 5 is_stmt 1 view .LVU173
+ 673              		.loc 1 184 17 is_stmt 0 view .LVU174
+ 674 0010 0268     		ldr	r2, [r0]
+ 675              		.loc 1 184 7 view .LVU175
+ 676 0012 134B     		ldr	r3, .L49
+ 677 0014 9A42     		cmp	r2, r3
+ 678 0016 02D0     		beq	.L48
+ 679              	.LVL55:
+ 680              	.L45:
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 186:src/drv8703.c **** 
+ 187:src/drv8703.c ****         __HAL_RCC_GPIOC_CLK_ENABLE();
+ 188:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 189:src/drv8703.c ****         PC10     ------> SPI3_SCK
+ 190:src/drv8703.c ****         PC11     ------> SPI3_MISO
+ 191:src/drv8703.c ****         PC12     ------> SPI3_MOSI
+ 192:src/drv8703.c ****         */
+ 193:src/drv8703.c ****         GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;
+ 194:src/drv8703.c ****         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 195:src/drv8703.c ****         GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 196:src/drv8703.c ****         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 197:src/drv8703.c ****         GPIO_InitStruct.Alternate = GPIO_AF6_SPI3;
+ 198:src/drv8703.c ****         HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 199:src/drv8703.c ****     }
+ 200:src/drv8703.c **** }
+ 681              		.loc 1 200 1 view .LVU176
+ 682 0018 09B0     		add	sp, sp, #36
+ 683              	.LCFI21:
+ 684              		.cfi_remember_state
+ 685              		.cfi_def_cfa_offset 4
+ 686              		@ sp needed
+ 687 001a 5DF804FB 		ldr	pc, [sp], #4
+ 688              	.LVL56:
+ 689              	.L48:
+ARM GAS  /tmp/ccB8NVeh.s 			page 17
+
+
+ 690              	.LCFI22:
+ 691              		.cfi_restore_state
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 692              		.loc 1 185 9 is_stmt 1 view .LVU177
+ 693              	.LBB6:
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 694              		.loc 1 185 9 view .LVU178
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 695              		.loc 1 185 9 view .LVU179
+ 696 001e 03F5EA33 		add	r3, r3, #119808
+ 697 0022 9A6D     		ldr	r2, [r3, #88]
+ 698 0024 42F40042 		orr	r2, r2, #32768
+ 699 0028 9A65     		str	r2, [r3, #88]
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 700              		.loc 1 185 9 view .LVU180
+ 701 002a 9A6D     		ldr	r2, [r3, #88]
+ 702 002c 02F40042 		and	r2, r2, #32768
+ 703 0030 0192     		str	r2, [sp, #4]
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 704              		.loc 1 185 9 view .LVU181
+ 705 0032 019A     		ldr	r2, [sp, #4]
+ 706              	.LBE6:
+ 185:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_ENABLE();
+ 707              		.loc 1 185 9 view .LVU182
+ 187:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 708              		.loc 1 187 9 view .LVU183
+ 709              	.LBB7:
+ 187:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 710              		.loc 1 187 9 view .LVU184
+ 187:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 711              		.loc 1 187 9 view .LVU185
+ 712 0034 DA6C     		ldr	r2, [r3, #76]
+ 713 0036 42F00402 		orr	r2, r2, #4
+ 714 003a DA64     		str	r2, [r3, #76]
+ 187:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 715              		.loc 1 187 9 view .LVU186
+ 716 003c DB6C     		ldr	r3, [r3, #76]
+ 717 003e 03F00403 		and	r3, r3, #4
+ 718 0042 0293     		str	r3, [sp, #8]
+ 187:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 719              		.loc 1 187 9 view .LVU187
+ 720 0044 029B     		ldr	r3, [sp, #8]
+ 721              	.LBE7:
+ 187:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 722              		.loc 1 187 9 view .LVU188
+ 193:src/drv8703.c ****         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 723              		.loc 1 193 9 view .LVU189
+ 193:src/drv8703.c ****         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 724              		.loc 1 193 29 is_stmt 0 view .LVU190
+ 725 0046 4FF4E053 		mov	r3, #7168
+ 726 004a 0393     		str	r3, [sp, #12]
+ 194:src/drv8703.c ****         GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 727              		.loc 1 194 9 is_stmt 1 view .LVU191
+ 194:src/drv8703.c ****         GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 728              		.loc 1 194 30 is_stmt 0 view .LVU192
+ 729 004c 0223     		movs	r3, #2
+ 730 004e 0493     		str	r3, [sp, #16]
+ARM GAS  /tmp/ccB8NVeh.s 			page 18
+
+
+ 195:src/drv8703.c ****         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 731              		.loc 1 195 9 is_stmt 1 view .LVU193
+ 196:src/drv8703.c ****         GPIO_InitStruct.Alternate = GPIO_AF6_SPI3;
+ 732              		.loc 1 196 9 view .LVU194
+ 197:src/drv8703.c ****         HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 733              		.loc 1 197 9 view .LVU195
+ 197:src/drv8703.c ****         HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 734              		.loc 1 197 35 is_stmt 0 view .LVU196
+ 735 0050 0623     		movs	r3, #6
+ 736 0052 0793     		str	r3, [sp, #28]
+ 198:src/drv8703.c ****     }
+ 737              		.loc 1 198 9 is_stmt 1 view .LVU197
+ 738 0054 03A9     		add	r1, sp, #12
+ 739 0056 0348     		ldr	r0, .L49+4
+ 740              	.LVL57:
+ 198:src/drv8703.c ****     }
+ 741              		.loc 1 198 9 is_stmt 0 view .LVU198
+ 742 0058 FFF7FEFF 		bl	HAL_GPIO_Init
+ 743              	.LVL58:
+ 744              		.loc 1 200 1 view .LVU199
+ 745 005c DCE7     		b	.L45
+ 746              	.L50:
+ 747 005e 00BF     		.align	2
+ 748              	.L49:
+ 749 0060 003C0040 		.word	1073757184
+ 750 0064 00080048 		.word	1207961600
+ 751              		.cfi_endproc
+ 752              	.LFE140:
+ 754              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 755              		.align	1
+ 756              		.global	HAL_SPI_MspDeInit
+ 757              		.syntax unified
+ 758              		.thumb
+ 759              		.thumb_func
+ 761              	HAL_SPI_MspDeInit:
+ 762              	.LVL59:
+ 763              	.LFB141:
+ 201:src/drv8703.c **** 
+ 202:src/drv8703.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle) {
+ 764              		.loc 1 202 54 is_stmt 1 view -0
+ 765              		.cfi_startproc
+ 766              		@ args = 0, pretend = 0, frame = 0
+ 767              		@ frame_needed = 0, uses_anonymous_args = 0
+ 768              		.loc 1 202 54 is_stmt 0 view .LVU201
+ 769 0000 08B5     		push	{r3, lr}
+ 770              	.LCFI23:
+ 771              		.cfi_def_cfa_offset 8
+ 772              		.cfi_offset 3, -8
+ 773              		.cfi_offset 14, -4
+ 203:src/drv8703.c ****     if(spiHandle->Instance==SPI3) {
+ 774              		.loc 1 203 5 is_stmt 1 view .LVU202
+ 775              		.loc 1 203 17 is_stmt 0 view .LVU203
+ 776 0002 0268     		ldr	r2, [r0]
+ 777              		.loc 1 203 7 view .LVU204
+ 778 0004 074B     		ldr	r3, .L55
+ 779 0006 9A42     		cmp	r2, r3
+ 780 0008 00D0     		beq	.L54
+ARM GAS  /tmp/ccB8NVeh.s 			page 19
+
+
+ 781              	.LVL60:
+ 782              	.L51:
+ 204:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_DISABLE();
+ 205:src/drv8703.c ****         /**SPI3 GPIO Configuration
+ 206:src/drv8703.c ****         PC10     ------> SPI3_SCK
+ 207:src/drv8703.c ****         PC11     ------> SPI3_MISO
+ 208:src/drv8703.c ****         PC12     ------> SPI3_MOSI
+ 209:src/drv8703.c ****         */
+ 210:src/drv8703.c ****         HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12);
+ 211:src/drv8703.c ****     }
+ 212:src/drv8703.c **** }
+ 783              		.loc 1 212 1 view .LVU205
+ 784 000a 08BD     		pop	{r3, pc}
+ 785              	.LVL61:
+ 786              	.L54:
+ 204:src/drv8703.c ****         __HAL_RCC_SPI3_CLK_DISABLE();
+ 787              		.loc 1 204 9 is_stmt 1 view .LVU206
+ 788 000c 064A     		ldr	r2, .L55+4
+ 789 000e 936D     		ldr	r3, [r2, #88]
+ 790 0010 23F40043 		bic	r3, r3, #32768
+ 791 0014 9365     		str	r3, [r2, #88]
+ 210:src/drv8703.c ****     }
+ 792              		.loc 1 210 9 view .LVU207
+ 793 0016 4FF4E051 		mov	r1, #7168
+ 794 001a 0448     		ldr	r0, .L55+8
+ 795              	.LVL62:
+ 210:src/drv8703.c ****     }
+ 796              		.loc 1 210 9 is_stmt 0 view .LVU208
+ 797 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 798              	.LVL63:
+ 799              		.loc 1 212 1 view .LVU209
+ 800 0020 F3E7     		b	.L51
+ 801              	.L56:
+ 802 0022 00BF     		.align	2
+ 803              	.L55:
+ 804 0024 003C0040 		.word	1073757184
+ 805 0028 00100240 		.word	1073876992
+ 806 002c 00080048 		.word	1207961600
+ 807              		.cfi_endproc
+ 808              	.LFE141:
+ 810              		.section	.text.MX_GPIO_init,"ax",%progbits
+ 811              		.align	1
+ 812              		.global	MX_GPIO_init
+ 813              		.syntax unified
+ 814              		.thumb
+ 815              		.thumb_func
+ 817              	MX_GPIO_init:
+ 818              	.LFB142:
+ 213:src/drv8703.c **** 
+ 214:src/drv8703.c **** 
+ 215:src/drv8703.c **** void MX_GPIO_init() {
+ 819              		.loc 1 215 21 is_stmt 1 view -0
+ 820              		.cfi_startproc
+ 821              		@ args = 0, pretend = 0, frame = 40
+ 822              		@ frame_needed = 0, uses_anonymous_args = 0
+ 823 0000 70B5     		push	{r4, r5, r6, lr}
+ 824              	.LCFI24:
+ARM GAS  /tmp/ccB8NVeh.s 			page 20
+
+
+ 825              		.cfi_def_cfa_offset 16
+ 826              		.cfi_offset 4, -16
+ 827              		.cfi_offset 5, -12
+ 828              		.cfi_offset 6, -8
+ 829              		.cfi_offset 14, -4
+ 830 0002 8AB0     		sub	sp, sp, #40
+ 831              	.LCFI25:
+ 832              		.cfi_def_cfa_offset 56
+ 216:src/drv8703.c **** 	GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 833              		.loc 1 216 2 view .LVU211
+ 834              		.loc 1 216 19 is_stmt 0 view .LVU212
+ 835 0004 05AD     		add	r5, sp, #20
+ 836 0006 0024     		movs	r4, #0
+ 837 0008 0594     		str	r4, [sp, #20]
+ 838 000a 0694     		str	r4, [sp, #24]
+ 839 000c 0794     		str	r4, [sp, #28]
+ 840 000e 0894     		str	r4, [sp, #32]
+ 841 0010 0994     		str	r4, [sp, #36]
+ 217:src/drv8703.c **** 
+ 218:src/drv8703.c **** 	/* GPIO Ports Clock Enable */
+ 219:src/drv8703.c **** 	__HAL_RCC_GPIOC_CLK_ENABLE();
+ 842              		.loc 1 219 2 is_stmt 1 view .LVU213
+ 843              	.LBB8:
+ 844              		.loc 1 219 2 view .LVU214
+ 845              		.loc 1 219 2 view .LVU215
+ 846 0012 214B     		ldr	r3, .L59
+ 847 0014 DA6C     		ldr	r2, [r3, #76]
+ 848 0016 42F00402 		orr	r2, r2, #4
+ 849 001a DA64     		str	r2, [r3, #76]
+ 850              		.loc 1 219 2 view .LVU216
+ 851 001c DA6C     		ldr	r2, [r3, #76]
+ 852 001e 02F00402 		and	r2, r2, #4
+ 853 0022 0192     		str	r2, [sp, #4]
+ 854              		.loc 1 219 2 view .LVU217
+ 855 0024 019A     		ldr	r2, [sp, #4]
+ 856              	.LBE8:
+ 857              		.loc 1 219 2 view .LVU218
+ 220:src/drv8703.c **** 	__HAL_RCC_GPIOF_CLK_ENABLE();
+ 858              		.loc 1 220 2 view .LVU219
+ 859              	.LBB9:
+ 860              		.loc 1 220 2 view .LVU220
+ 861              		.loc 1 220 2 view .LVU221
+ 862 0026 DA6C     		ldr	r2, [r3, #76]
+ 863 0028 42F02002 		orr	r2, r2, #32
+ 864 002c DA64     		str	r2, [r3, #76]
+ 865              		.loc 1 220 2 view .LVU222
+ 866 002e DA6C     		ldr	r2, [r3, #76]
+ 867 0030 02F02002 		and	r2, r2, #32
+ 868 0034 0292     		str	r2, [sp, #8]
+ 869              		.loc 1 220 2 view .LVU223
+ 870 0036 029A     		ldr	r2, [sp, #8]
+ 871              	.LBE9:
+ 872              		.loc 1 220 2 view .LVU224
+ 221:src/drv8703.c **** 	__HAL_RCC_GPIOA_CLK_ENABLE();
+ 873              		.loc 1 221 2 view .LVU225
+ 874              	.LBB10:
+ 875              		.loc 1 221 2 view .LVU226
+ARM GAS  /tmp/ccB8NVeh.s 			page 21
+
+
+ 876              		.loc 1 221 2 view .LVU227
+ 877 0038 DA6C     		ldr	r2, [r3, #76]
+ 878 003a 42F00102 		orr	r2, r2, #1
+ 879 003e DA64     		str	r2, [r3, #76]
+ 880              		.loc 1 221 2 view .LVU228
+ 881 0040 DA6C     		ldr	r2, [r3, #76]
+ 882 0042 02F00102 		and	r2, r2, #1
+ 883 0046 0392     		str	r2, [sp, #12]
+ 884              		.loc 1 221 2 view .LVU229
+ 885 0048 039A     		ldr	r2, [sp, #12]
+ 886              	.LBE10:
+ 887              		.loc 1 221 2 view .LVU230
+ 222:src/drv8703.c **** 	__HAL_RCC_GPIOB_CLK_ENABLE();
+ 888              		.loc 1 222 2 view .LVU231
+ 889              	.LBB11:
+ 890              		.loc 1 222 2 view .LVU232
+ 891              		.loc 1 222 2 view .LVU233
+ 892 004a DA6C     		ldr	r2, [r3, #76]
+ 893 004c 42F00202 		orr	r2, r2, #2
+ 894 0050 DA64     		str	r2, [r3, #76]
+ 895              		.loc 1 222 2 view .LVU234
+ 896 0052 DB6C     		ldr	r3, [r3, #76]
+ 897 0054 03F00203 		and	r3, r3, #2
+ 898 0058 0493     		str	r3, [sp, #16]
+ 899              		.loc 1 222 2 view .LVU235
+ 900 005a 049B     		ldr	r3, [sp, #16]
+ 901              	.LBE11:
+ 902              		.loc 1 222 2 view .LVU236
+ 223:src/drv8703.c **** 
+ 224:src/drv8703.c **** 	/*Configure GPIO pin Output Level */
+ 225:src/drv8703.c **** 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_4, GPIO_PIN_SET);
+ 903              		.loc 1 225 2 view .LVU237
+ 904 005c 0122     		movs	r2, #1
+ 905 005e 1221     		movs	r1, #18
+ 906 0060 4FF09040 		mov	r0, #1207959552
+ 907 0064 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 908              	.LVL64:
+ 226:src/drv8703.c **** 
+ 227:src/drv8703.c **** 	/*Configure GPIO pin : PA1 */
+ 228:src/drv8703.c **** 	GPIO_InitStruct.Pin = GPIO_PIN_1;
+ 909              		.loc 1 228 2 view .LVU238
+ 910              		.loc 1 228 22 is_stmt 0 view .LVU239
+ 911 0068 0223     		movs	r3, #2
+ 912 006a 0593     		str	r3, [sp, #20]
+ 229:src/drv8703.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 913              		.loc 1 229 2 is_stmt 1 view .LVU240
+ 914              		.loc 1 229 23 is_stmt 0 view .LVU241
+ 915 006c 0126     		movs	r6, #1
+ 916 006e 0696     		str	r6, [sp, #24]
+ 230:src/drv8703.c **** 	GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 917              		.loc 1 230 2 is_stmt 1 view .LVU242
+ 918              		.loc 1 230 23 is_stmt 0 view .LVU243
+ 919 0070 0794     		str	r4, [sp, #28]
+ 231:src/drv8703.c **** 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 920              		.loc 1 231 2 is_stmt 1 view .LVU244
+ 921              		.loc 1 231 24 is_stmt 0 view .LVU245
+ 922 0072 0893     		str	r3, [sp, #32]
+ARM GAS  /tmp/ccB8NVeh.s 			page 22
+
+
+ 232:src/drv8703.c **** 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 923              		.loc 1 232 2 is_stmt 1 view .LVU246
+ 924 0074 2946     		mov	r1, r5
+ 925 0076 4FF09040 		mov	r0, #1207959552
+ 926 007a FFF7FEFF 		bl	HAL_GPIO_Init
+ 927              	.LVL65:
+ 233:src/drv8703.c **** 
+ 234:src/drv8703.c **** 	/*Configure GPIO pin : PA4 */
+ 235:src/drv8703.c **** 	GPIO_InitStruct.Pin = GPIO_PIN_4;
+ 928              		.loc 1 235 2 view .LVU247
+ 929              		.loc 1 235 22 is_stmt 0 view .LVU248
+ 930 007e 1023     		movs	r3, #16
+ 931 0080 0593     		str	r3, [sp, #20]
+ 236:src/drv8703.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 932              		.loc 1 236 2 is_stmt 1 view .LVU249
+ 933              		.loc 1 236 23 is_stmt 0 view .LVU250
+ 934 0082 0696     		str	r6, [sp, #24]
+ 237:src/drv8703.c **** 	GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 935              		.loc 1 237 2 is_stmt 1 view .LVU251
+ 936              		.loc 1 237 23 is_stmt 0 view .LVU252
+ 937 0084 0794     		str	r4, [sp, #28]
+ 238:src/drv8703.c **** 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 938              		.loc 1 238 2 is_stmt 1 view .LVU253
+ 939              		.loc 1 238 24 is_stmt 0 view .LVU254
+ 940 0086 0323     		movs	r3, #3
+ 941 0088 0893     		str	r3, [sp, #32]
+ 239:src/drv8703.c **** 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 942              		.loc 1 239 2 is_stmt 1 view .LVU255
+ 943 008a 2946     		mov	r1, r5
+ 944 008c 4FF09040 		mov	r0, #1207959552
+ 945 0090 FFF7FEFF 		bl	HAL_GPIO_Init
+ 946              	.LVL66:
+ 240:src/drv8703.c **** }
+ 947              		.loc 1 240 1 is_stmt 0 view .LVU256
+ 948 0094 0AB0     		add	sp, sp, #40
+ 949              	.LCFI26:
+ 950              		.cfi_def_cfa_offset 16
+ 951              		@ sp needed
+ 952 0096 70BD     		pop	{r4, r5, r6, pc}
+ 953              	.L60:
+ 954              		.align	2
+ 955              	.L59:
+ 956 0098 00100240 		.word	1073876992
+ 957              		.cfi_endproc
+ 958              	.LFE142:
+ 960              		.section	.text.DRV_init,"ax",%progbits
+ 961              		.align	1
+ 962              		.global	DRV_init
+ 963              		.syntax unified
+ 964              		.thumb
+ 965              		.thumb_func
+ 967              	DRV_init:
+ 968              	.LFB132:
+  18:src/drv8703.c ****     MX_SPI_init();												//can fail; check return value?
+ 969              		.loc 1 18 21 is_stmt 1 view -0
+ 970              		.cfi_startproc
+ 971              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  /tmp/ccB8NVeh.s 			page 23
+
+
+ 972              		@ frame_needed = 0, uses_anonymous_args = 0
+ 973 0000 10B5     		push	{r4, lr}
+ 974              	.LCFI27:
+ 975              		.cfi_def_cfa_offset 8
+ 976              		.cfi_offset 4, -8
+ 977              		.cfi_offset 14, -4
+ 978 0002 82B0     		sub	sp, sp, #8
+ 979              	.LCFI28:
+ 980              		.cfi_def_cfa_offset 16
+  19:src/drv8703.c ****     MX_GPIO_init();
+ 981              		.loc 1 19 5 view .LVU258
+ 982 0004 FFF7FEFF 		bl	MX_SPI_init
+ 983              	.LVL67:
+  20:src/drv8703.c **** 
+ 984              		.loc 1 20 5 view .LVU259
+ 985 0008 FFF7FEFF 		bl	MX_GPIO_init
+ 986              	.LVL68:
+  22:src/drv8703.c **** 	DRV_read(DRV_MAIN, (unsigned char *)pData);                 // dummy read
+ 987              		.loc 1 22 2 view .LVU260
+  22:src/drv8703.c **** 	DRV_read(DRV_MAIN, (unsigned char *)pData);                 // dummy read
+ 988              		.loc 1 22 7 is_stmt 0 view .LVU261
+ 989 000c 0023     		movs	r3, #0
+ 990 000e 0093     		str	r3, [sp]
+ 991 0010 ADF80430 		strh	r3, [sp, #4]	@ movhi
+  23:src/drv8703.c **** 	DRV_readRegister((unsigned char *)pData, 0xFF);             // read all registers
+ 992              		.loc 1 23 2 is_stmt 1 view .LVU262
+ 993 0014 6946     		mov	r1, sp
+ 994 0016 0220     		movs	r0, #2
+ 995 0018 FFF7FEFF 		bl	DRV_read
+ 996              	.LVL69:
+  24:src/drv8703.c **** 	DRV_modify_set(DRV_MAIN, DRV_MAIN_CLR_FLT_MASK);            // clear lock
+ 997              		.loc 1 24 2 view .LVU263
+ 998 001c FF21     		movs	r1, #255
+ 999 001e 6846     		mov	r0, sp
+ 1000 0020 FFF7FEFF 		bl	DRV_readRegister
+ 1001              	.LVL70:
+  25:src/drv8703.c **** }
+ 1002              		.loc 1 25 2 view .LVU264
+ 1003 0024 0121     		movs	r1, #1
+ 1004 0026 0220     		movs	r0, #2
+ 1005 0028 FFF7FEFF 		bl	DRV_modify_set
+ 1006              	.LVL71:
+  26:src/drv8703.c **** 
+ 1007              		.loc 1 26 1 is_stmt 0 view .LVU265
+ 1008 002c 02B0     		add	sp, sp, #8
+ 1009              	.LCFI29:
+ 1010              		.cfi_def_cfa_offset 8
+ 1011              		@ sp needed
+ 1012 002e 10BD     		pop	{r4, pc}
+ 1013              		.cfi_endproc
+ 1014              	.LFE132:
+ 1016              		.global	hspi3
+ 1017              		.section	.bss.hspi3,"aw",%nobits
+ 1018              		.align	2
+ 1021              	hspi3:
+ 1022 0000 00000000 		.space	100
+ 1022      00000000 
+ARM GAS  /tmp/ccB8NVeh.s 			page 24
+
+
+ 1022      00000000 
+ 1022      00000000 
+ 1022      00000000 
+ 1023              		.text
+ 1024              	.Letext0:
+ 1025              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 1026              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 1027              		.file 4 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 1028              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 1029              		.file 6 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
+ 1030              		.file 7 "platform/HAL/inc/stm32g4xx_hal_dma.h"
+ 1031              		.file 8 "platform/HAL/inc/stm32g4xx_hal_spi.h"
+ 1032              		.file 9 "inc/drv8703.h"
+ARM GAS  /tmp/ccB8NVeh.s 			page 25
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 drv8703.c
+     /tmp/ccB8NVeh.s:21     .text.DRV_write:00000000 $t
+     /tmp/ccB8NVeh.s:27     .text.DRV_write:00000000 DRV_write
+     /tmp/ccB8NVeh.s:122    .text.DRV_write:0000005c $d
+     /tmp/ccB8NVeh.s:1021   .bss.hspi3:00000000 hspi3
+     /tmp/ccB8NVeh.s:127    .text.DRV_read:00000000 $t
+     /tmp/ccB8NVeh.s:133    .text.DRV_read:00000000 DRV_read
+     /tmp/ccB8NVeh.s:233    .text.DRV_read:00000068 $d
+     /tmp/ccB8NVeh.s:238    .text.DRV_modify_set:00000000 $t
+     /tmp/ccB8NVeh.s:244    .text.DRV_modify_set:00000000 DRV_modify_set
+     /tmp/ccB8NVeh.s:310    .text.DRV_modify_reset:00000000 $t
+     /tmp/ccB8NVeh.s:316    .text.DRV_modify_reset:00000000 DRV_modify_reset
+     /tmp/ccB8NVeh.s:382    .text.DRV_writeRegister:00000000 $t
+     /tmp/ccB8NVeh.s:388    .text.DRV_writeRegister:00000000 DRV_writeRegister
+     /tmp/ccB8NVeh.s:460    .text.DRV_readRegister:00000000 $t
+     /tmp/ccB8NVeh.s:466    .text.DRV_readRegister:00000000 DRV_readRegister
+     /tmp/ccB8NVeh.s:546    .text.MX_SPI_init:00000000 $t
+     /tmp/ccB8NVeh.s:552    .text.MX_SPI_init:00000000 MX_SPI_init
+     /tmp/ccB8NVeh.s:637    .text.MX_SPI_init:00000044 $d
+     /tmp/ccB8NVeh.s:643    .text.HAL_SPI_MspInit:00000000 $t
+     /tmp/ccB8NVeh.s:649    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+     /tmp/ccB8NVeh.s:749    .text.HAL_SPI_MspInit:00000060 $d
+     /tmp/ccB8NVeh.s:755    .text.HAL_SPI_MspDeInit:00000000 $t
+     /tmp/ccB8NVeh.s:761    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+     /tmp/ccB8NVeh.s:804    .text.HAL_SPI_MspDeInit:00000024 $d
+     /tmp/ccB8NVeh.s:811    .text.MX_GPIO_init:00000000 $t
+     /tmp/ccB8NVeh.s:817    .text.MX_GPIO_init:00000000 MX_GPIO_init
+     /tmp/ccB8NVeh.s:956    .text.MX_GPIO_init:00000098 $d
+     /tmp/ccB8NVeh.s:961    .text.DRV_init:00000000 $t
+     /tmp/ccB8NVeh.s:967    .text.DRV_init:00000000 DRV_init
+     /tmp/ccB8NVeh.s:1018   .bss.hspi3:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_SPI_TransmitReceive
+HAL_SPI_Init
+HAL_GPIO_Init
+HAL_GPIO_DeInit

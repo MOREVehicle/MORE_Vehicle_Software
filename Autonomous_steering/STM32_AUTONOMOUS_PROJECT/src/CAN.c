@@ -18,6 +18,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "CAN.h"
+#include "stm32g4xx_hal_fdcan.h"
 #include <stdio.h>
 
 uint16_t device_can_id = 0x123;

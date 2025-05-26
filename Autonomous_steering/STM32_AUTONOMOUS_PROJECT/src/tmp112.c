@@ -10,49 +10,58 @@ I2C_HandleTypeDef 	TMP_I2C_INTERFACE;
 void TMP_init() {
 	MX_I2C_Init();
 
-    TMP_setConfig(TMP_CONFIG_FAULT_QUEUE_MASK(1));
-    TMP_setConfig(TMP_CONFIG_POLARITY_MASK);
-            CAN_getAngle();
-            CAN_getAngle();
-            CAN_getAngleSpeed();
-
-            CAN_getAngleSpeed();
-
-    TMP_setTLow(60);
-    TMP_setTHigh(80);
+    for (uint8_t i = 0; i < TMP_ADDR_AMOUNT; i++) {
+        TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
+        TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_POLARITY_MASK);
+        TMP_setTLow(TMP_ADDR(i), 60);
+        TMP_setTHigh(TMP_ADDR(i), 80);
+        TMP_getTemperatureSingle(TMP_ADDR(i));
+    }
 }
 
 int16_t TMP_getTemperature(void) {
-	int16_t temperature = (uint16_t)(TMP_read(TMP_TEMPERATURE) >> 4);
+    uint16_t average = 0;
+
+    for (uint8_t i = 0; i < TMP_ADDR_AMOUNT; i++) {
+        average += TMP_getTemperatureSingle(TMP_ADDR(i));
+    }
+
+    average /= TMP_ADDR_AMOUNT;
+    return average;
+}
+
+
+int16_t TMP_getTemperatureSingle(uint8_t address) {
+	int16_t temperature = (uint16_t)(TMP_read(address, TMP_TEMPERATURE) >> 4);
     return TMP_data_to_celcius(temperature);
 }
 
-uint8_t TMP_setTLow(float celcius) {
-    return TMP_write(TMP_TLOW, TMP_data_to_celcius(celcius));
+uint8_t TMP_setTLow(uint8_t address, float celcius) {
+    return TMP_write(address, TMP_TLOW, TMP_data_to_celcius(celcius));
 }
 
-uint8_t TMP_setTHigh(float celcius) {
-    return TMP_write(TMP_THIGH, TMP_data_to_celcius(celcius));
+uint8_t TMP_setTHigh(uint8_t address, float celcius) {
+    return TMP_write(address, TMP_THIGH, TMP_data_to_celcius(celcius));
 }
 
-uint8_t TMP_setConfig(uint16_t data) {
-    return TMP_write(TMP_CONFIG, data);
+uint8_t TMP_setConfig(uint8_t address, uint16_t data) {
+    return TMP_write(address, TMP_CONFIG, data);
 }
 
-uint8_t TMP_write(uint8_t reg, uint16_t data) {
+uint8_t TMP_write(uint8_t address, uint8_t reg, uint16_t data) {
     uint8_t OK = 1;
     uint8_t buf[2] = {(data >> 8 & 0xFF), (data & 0xFF)};
 
-    if (HAL_I2C_Mem_Write(&TMP_I2C_INTERFACE, TMP_ADDR, reg, 1, buf, 2, HAL_MAX_DELAY) != HAL_OK) OK = 0;
+    if (HAL_I2C_Mem_Write(&TMP_I2C_INTERFACE, address, reg, 1, buf, 2, HAL_MAX_DELAY) != HAL_OK) OK = 0;
     return OK;
 }
 
 
-uint16_t TMP_read(uint8_t reg) {
+uint16_t TMP_read(uint8_t address, uint8_t reg) {
     uint8_t pData[2] = {0};
     uint16_t data = 0;
 
-    if (HAL_I2C_Mem_Read(&TMP_I2C_INTERFACE, TMP_ADDR, reg, 1, pData, 2, HAL_MAX_DELAY) != HAL_OK) return 0xFFFF;
+    if (HAL_I2C_Mem_Read(&TMP_I2C_INTERFACE, address, reg, 1, pData, 2, HAL_MAX_DELAY) != HAL_OK) return 0xFFFF;
     data = ((uint16_t)pData[0] << 8) | pData[1];
     return data;
 }

@@ -17,6 +17,7 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 #include "stm32g4xx_hal.h"
+#include "stm32g4xx_hal_i2c.h"
 
 #define TMP_REG_MAP_SIZE       0x04
 
@@ -68,7 +69,7 @@ extern "C" {
  * DEV_ADDR_2 to DEV_ADDR_1 are varying depending on the CONF register
  */
 
-#define TMP_DEFAULT_ADDR       0x48
+#define TMP_ADDR_DEFAULT       0x48
 #define TMP_ADDR_SIZE          2
 #define TMP_DEV_ADDR_MASK(x)   ((((uint8_t)x) & 0x7F) << 1) //byte #1
 #define TMP_READWRITE_MASK     (1U << 0)                    //byte #1
@@ -77,8 +78,15 @@ extern "C" {
 #define TMP_DATA_2_MASK(x)     ((((uint8_t)x) & 0xFF) << 0) //byte #4
 
 
-/**Used address defined by project, default is default TMP112 address */
-#define TMP_ADDR               ((TMP_DEFAULT_ADDR) << 1)
+/**Used address defined by project, default is default TMP112 address * 
+ * number is refering to what sensor is used 
+ */
+#define TMP_ADDR_AMOUNT             4
+#define TMP_ADDR_HIGHSIDE_LEFT      0
+#define TMP_ADDR_HIGHSIDE_RIGHT     1
+#define TMP_ADDR_LOWSIDE_LEFT       2
+#define TMP_ADDR_LOWSIDE_RIGHT      3
+#define TMP_ADDR(x)                 ((uint8_t)(TMP_ADDR_DEFAULT + x))
 
 /** @brief used i2c channel on mcu.*/
 #define TMP_I2C_INTERFACE      hi2c1
@@ -96,7 +104,13 @@ void TMP_init(void);
  * Reads the 16-bit temperature value from the TMP112 and converts it to Celsius.
  * @return Temperature in Celsius as a 16-bit signed integer.
  */
-int16_t TMP_getTemperature(void);
+int16_t TMP_getTemperatureSingle(uint8_t address);
+
+/**
+ * @brief Reads all the temperature sensors
+ * @return Average temperature of all sensors
+ */
+int16_t TMP_getTemperature();
 
 /**
  * @brief basic function to write to TMP112 
@@ -104,27 +118,27 @@ int16_t TMP_getTemperature(void);
  * @param data: data to be written to register
  * @return success
  */
-uint8_t TMP_write(uint8_t reg, uint16_t data);
+uint8_t TMP_write(uint8_t address, uint8_t reg, uint16_t data);
 
 /**
  * @brief basic function to read to TMP112 
  * @param reg: register to be read
  * @return data or 0xFFFF if fail
  */
-uint16_t TMP_read(uint8_t reg);
+uint16_t TMP_read(uint8_t address, uint8_t reg);
 
 /**
  * @brief wrapper of write to set the TLOW and THIGH regisers 
  * return success 
  */
-uint8_t TMP_setTLow(float celcius);
-uint8_t TMP_setTHigh(float celcius);
+uint8_t TMP_setTLow(uint8_t address, float celcius);
+uint8_t TMP_setTHigh(uint8_t address, float celcius);
 
 /** 
  * @brief wrapper of write to write to config register
  * return success
  */
-uint8_t TMP_setConfig(uint16_t data);
+uint8_t TMP_setConfig(uint8_t address, uint16_t data);
 
 /**
 * @brief Converts digital data to degrees celcius 

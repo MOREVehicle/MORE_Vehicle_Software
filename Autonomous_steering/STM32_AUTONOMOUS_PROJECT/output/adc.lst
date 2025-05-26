@@ -1,0 +1,83 @@
+ARM GAS  /tmp/ccqQr1KD.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"adc.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/adc.c"
+  20              		.section	.text.ADC_init,"ax",%progbits
+  21              		.align	1
+  22              		.global	ADC_init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	ADC_init:
+  28              	.LFB132:
+   1:src/adc.c     **** #include "adc.h"
+   2:src/adc.c     **** 
+   3:src/adc.c     **** // ADC_HanldeTypeDef hadc1;
+   4:src/adc.c     **** 
+   5:src/adc.c     **** void ADC_init(void) {
+  29              		.loc 1 5 21 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   6:src/adc.c     ****     
+   7:src/adc.c     **** }
+  34              		.loc 1 7 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE132:
+  39              		.section	.text.ADC_readCurrent,"ax",%progbits
+  40              		.align	1
+  41              		.global	ADC_readCurrent
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	ADC_readCurrent:
+  47              	.LFB133:
+   8:src/adc.c     **** 
+   9:src/adc.c     **** float ADC_readCurrent(void) {
+  48              		.loc 1 9 29 view -0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccqQr1KD.s 			page 2
+
+
+  52              		@ link register save eliminated.
+  10:src/adc.c     **** 
+  11:src/adc.c     **** }
+  53              		.loc 1 11 1 view .LVU3
+  54 0000 7047     		bx	lr
+  55              		.cfi_endproc
+  56              	.LFE133:
+  58              		.text
+  59              	.Letext0:
+ARM GAS  /tmp/ccqQr1KD.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+     /tmp/ccqQr1KD.s:21     .text.ADC_init:00000000 $t
+     /tmp/ccqQr1KD.s:27     .text.ADC_init:00000000 ADC_init
+     /tmp/ccqQr1KD.s:40     .text.ADC_readCurrent:00000000 $t
+     /tmp/ccqQr1KD.s:46     .text.ADC_readCurrent:00000000 ADC_readCurrent
+
+NO UNDEFINED SYMBOLS

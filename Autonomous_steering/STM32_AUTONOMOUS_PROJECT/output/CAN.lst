@@ -1,0 +1,1989 @@
+ARM GAS  /tmp/cc69WLJP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"CAN.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/CAN.c"
+  20              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	MX_GPIO_Init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	MX_GPIO_Init:
+  28              	.LFB141:
+   1:src/CAN.c     **** /* USER CODE BEGIN Header */
+   2:src/CAN.c     **** /**
+   3:src/CAN.c     ****   ******************************************************************************
+   4:src/CAN.c     ****   * @file           : main.c
+   5:src/CAN.c     ****   * @brief          : Main program body
+   6:src/CAN.c     ****   ******************************************************************************
+   7:src/CAN.c     ****   * @attention
+   8:src/CAN.c     ****   *
+   9:src/CAN.c     ****   * Copyright (c) 2023 STMicroelectronics.
+  10:src/CAN.c     ****   * All rights reserved.
+  11:src/CAN.c     ****   *
+  12:src/CAN.c     ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:src/CAN.c     ****   * in the root directory of this software component.
+  14:src/CAN.c     ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:src/CAN.c     ****   *
+  16:src/CAN.c     ****   ******************************************************************************
+  17:src/CAN.c     ****   */
+  18:src/CAN.c     **** 
+  19:src/CAN.c     **** /* Includes ------------------------------------------------------------------*/
+  20:src/CAN.c     **** #include "CAN.h"
+  21:src/CAN.c     **** #include "stm32g4xx_hal_fdcan.h"
+  22:src/CAN.c     **** #include <stdio.h>
+  23:src/CAN.c     **** 
+  24:src/CAN.c     **** uint16_t device_can_id = 0x123;
+  25:src/CAN.c     **** 
+  26:src/CAN.c     **** 
+  27:src/CAN.c     **** /* Private variables ---------------------------------------------------------*/
+  28:src/CAN.c     **** FDCAN_HandleTypeDef hfdcan1;
+  29:src/CAN.c     **** FDCAN_HandleTypeDef hfdcan2;
+  30:src/CAN.c     **** 
+ARM GAS  /tmp/cc69WLJP.s 			page 2
+
+
+  31:src/CAN.c     **** // FDCAN1 Defines
+  32:src/CAN.c     **** FDCAN_TxHeaderTypeDef	fdcan1TxHeader;
+  33:src/CAN.c     **** FDCAN_RxHeaderTypeDef	fdcan1RxHeader;
+  34:src/CAN.c     **** uint8_t		fdcan1TxData[64];
+  35:src/CAN.c     **** uint8_t		fdcan1RxData[64];
+  36:src/CAN.c     **** 
+  37:src/CAN.c     **** // FDCAN2 Defines
+  38:src/CAN.c     **** FDCAN_TxHeaderTypeDef   fdcan2TxHeader;
+  39:src/CAN.c     **** FDCAN_RxHeaderTypeDef   fdcan2RxHeader;
+  40:src/CAN.c     **** uint8_t		fdcan2TxData[64];
+  41:src/CAN.c     **** uint8_t		fdcan2RxData[64];
+  42:src/CAN.c     **** 
+  43:src/CAN.c     **** int32_t dataLen = 32;
+  44:src/CAN.c     **** 
+  45:src/CAN.c     **** 
+  46:src/CAN.c     **** 
+  47:src/CAN.c     **** 
+  48:src/CAN.c     **** // FDCAN1 Callback
+  49:src/CAN.c     **** void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs) {
+  50:src/CAN.c     ****   if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET) {
+  51:src/CAN.c     ****     /* Retreive Rx messages from RX FIFO0 */
+  52:src/CAN.c     ****     if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &fdcan1RxHeader, fdcan1RxData) != HAL_OK) {
+  53:src/CAN.c     **** 		/* Reception Error */
+  54:src/CAN.c     **** 		Error_Handler();
+  55:src/CAN.c     ****     }
+  56:src/CAN.c     **** 
+  57:src/CAN.c     ****     if (HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK) {
+  58:src/CAN.c     ****       /* Notification Error */
+  59:src/CAN.c     ****       Error_Handler();
+  60:src/CAN.c     ****     }
+  61:src/CAN.c     ****   }
+  62:src/CAN.c     **** }
+  63:src/CAN.c     **** 
+  64:src/CAN.c     **** 
+  65:src/CAN.c     **** // FDCAN2 Callback
+  66:src/CAN.c     **** void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)
+  67:src/CAN.c     **** {
+  68:src/CAN.c     ****   if((RxFifo1ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET) {
+  69:src/CAN.c     ****     /* Retreive Rx messages from RX FIFO0 */
+  70:src/CAN.c     ****     if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO1, &fdcan2RxHeader, fdcan2RxData) != HAL_OK) {
+  71:src/CAN.c     **** 		/* Reception Error */
+  72:src/CAN.c     **** 		Error_Handler();
+  73:src/CAN.c     ****     }
+  74:src/CAN.c     **** 
+  75:src/CAN.c     ****     if (HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0) != HAL_OK) {
+  76:src/CAN.c     ****       /* Notification Error */
+  77:src/CAN.c     ****       Error_Handler();
+  78:src/CAN.c     ****     }
+  79:src/CAN.c     ****   }
+  80:src/CAN.c     **** }
+  81:src/CAN.c     **** 
+  82:src/CAN.c     **** 
+  83:src/CAN.c     **** void FDCAN_Config(void)
+  84:src/CAN.c     **** {
+  85:src/CAN.c     ****   // STart FDCAN1
+  86:src/CAN.c     ****   if(HAL_FDCAN_Start(&hfdcan1)!= HAL_OK) {
+  87:src/CAN.c     **** 	  Error_Handler();
+ARM GAS  /tmp/cc69WLJP.s 			page 3
+
+
+  88:src/CAN.c     ****   }
+  89:src/CAN.c     **** 
+  90:src/CAN.c     ****   // STart FDCAN2
+  91:src/CAN.c     ****   if(HAL_FDCAN_Start(&hfdcan2)!= HAL_OK) {
+  92:src/CAN.c     **** 	  Error_Handler();
+  93:src/CAN.c     ****   }
+  94:src/CAN.c     **** 
+  95:src/CAN.c     ****   // Activate the notification for new data in FIFO0 for FDCAN1
+  96:src/CAN.c     ****   if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK) {
+  97:src/CAN.c     ****     /* Notification Error */
+  98:src/CAN.c     ****     Error_Handler();
+  99:src/CAN.c     ****   }
+ 100:src/CAN.c     **** 
+ 101:src/CAN.c     ****   // Activate the notification for new data in FIFO1 for FDCAN2
+ 102:src/CAN.c     ****   if (HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0) != HAL_OK) {
+ 103:src/CAN.c     ****     /* Notification Error */
+ 104:src/CAN.c     ****     Error_Handler();
+ 105:src/CAN.c     ****   }
+ 106:src/CAN.c     **** 
+ 107:src/CAN.c     **** 
+ 108:src/CAN.c     ****   // Configure TX Header for FDCAN1
+ 109:src/CAN.c     ****   fdcan1TxHeader.Identifier = 0x1;
+ 110:src/CAN.c     ****   fdcan1TxHeader.IdType = FDCAN_STANDARD_ID;
+ 111:src/CAN.c     ****   fdcan1TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+ 112:src/CAN.c     ****   fdcan1TxHeader.DataLength = FDCAN_DLC_BYTES_32;
+ 113:src/CAN.c     ****   fdcan1TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+ 114:src/CAN.c     ****   fdcan1TxHeader.BitRateSwitch = FDCAN_BRS_ON;
+ 115:src/CAN.c     ****   fdcan1TxHeader.FDFormat = FDCAN_FD_CAN;
+ 116:src/CAN.c     ****   fdcan1TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+ 117:src/CAN.c     ****   fdcan1TxHeader.MessageMarker = 0;
+ 118:src/CAN.c     **** 
+ 119:src/CAN.c     ****   // Configure TX Header for FDCAN2
+ 120:src/CAN.c     ****   fdcan2TxHeader.Identifier = device_can_id;
+ 121:src/CAN.c     ****   fdcan2TxHeader.IdType = FDCAN_STANDARD_ID;
+ 122:src/CAN.c     ****   fdcan2TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+ 123:src/CAN.c     ****   fdcan2TxHeader.DataLength = FDCAN_DLC_BYTES_32;
+ 124:src/CAN.c     ****   fdcan2TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+ 125:src/CAN.c     ****   fdcan2TxHeader.BitRateSwitch = FDCAN_BRS_ON;
+ 126:src/CAN.c     ****   fdcan2TxHeader.FDFormat = FDCAN_FD_CAN;
+ 127:src/CAN.c     ****   fdcan2TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+ 128:src/CAN.c     ****   fdcan2TxHeader.MessageMarker = 0;
+ 129:src/CAN.c     **** }
+ 130:src/CAN.c     **** 
+ 131:src/CAN.c     **** 
+ 132:src/CAN.c     **** 
+ 133:src/CAN.c     **** /**
+ 134:src/CAN.c     ****   * @brief System Clock Configuration
+ 135:src/CAN.c     ****   * @retval None
+ 136:src/CAN.c     ****   */
+ 137:src/CAN.c     **** void SystemClock_Config(void)
+ 138:src/CAN.c     **** {
+ 139:src/CAN.c     ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 140:src/CAN.c     ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 141:src/CAN.c     **** 
+ 142:src/CAN.c     ****   /** Configure the main internal regulator output voltage
+ 143:src/CAN.c     ****   */
+ 144:src/CAN.c     ****   HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST);
+ARM GAS  /tmp/cc69WLJP.s 			page 4
+
+
+ 145:src/CAN.c     **** 
+ 146:src/CAN.c     ****   /** Initializes the RCC Oscillators according to the specified parameters
+ 147:src/CAN.c     ****   * in the RCC_OscInitTypeDef structure.
+ 148:src/CAN.c     ****   */
+ 149:src/CAN.c     ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+ 150:src/CAN.c     ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 151:src/CAN.c     ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 152:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 153:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+ 154:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV4;
+ 155:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLN = 85;
+ 156:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 157:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+ 158:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+ 159:src/CAN.c     ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 160:src/CAN.c     ****   {
+ 161:src/CAN.c     ****     Error_Handler();
+ 162:src/CAN.c     ****   }
+ 163:src/CAN.c     **** 
+ 164:src/CAN.c     ****   /** Initializes the CPU, AHB and APB buses clocks
+ 165:src/CAN.c     ****   */
+ 166:src/CAN.c     ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 167:src/CAN.c     ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 168:src/CAN.c     ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 169:src/CAN.c     ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 170:src/CAN.c     ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 171:src/CAN.c     ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 172:src/CAN.c     **** 
+ 173:src/CAN.c     ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+ 174:src/CAN.c     ****   {
+ 175:src/CAN.c     ****     Error_Handler();
+ 176:src/CAN.c     ****   }
+ 177:src/CAN.c     **** }
+ 178:src/CAN.c     **** 
+ 179:src/CAN.c     **** /**
+ 180:src/CAN.c     ****   * @brief FDCAN1 Initialization Function
+ 181:src/CAN.c     ****   * @param None
+ 182:src/CAN.c     ****   * @retval None
+ 183:src/CAN.c     ****   */
+ 184:src/CAN.c     **** void MX_FDCAN1_Init(void)
+ 185:src/CAN.c     **** {
+ 186:src/CAN.c     **** 
+ 187:src/CAN.c     ****   /* FDCAN1_Init 1 */
+ 188:src/CAN.c     ****   hfdcan1.Instance = FDCAN1;
+ 189:src/CAN.c     ****   hfdcan1.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+ 190:src/CAN.c     ****   hfdcan1.Init.FrameFormat = FDCAN_FRAME_FD_BRS;
+ 191:src/CAN.c     ****   hfdcan1.Init.Mode = FDCAN_MODE_NORMAL;
+ 192:src/CAN.c     ****   hfdcan1.Init.AutoRetransmission = DISABLE;
+ 193:src/CAN.c     ****   hfdcan1.Init.TransmitPause = DISABLE;
+ 194:src/CAN.c     ****   hfdcan1.Init.ProtocolException = ENABLE;
+ 195:src/CAN.c     ****   hfdcan1.Init.NominalPrescaler = 5;
+ 196:src/CAN.c     ****   hfdcan1.Init.NominalSyncJumpWidth = 11;
+ 197:src/CAN.c     ****   hfdcan1.Init.NominalTimeSeg1 = 56;
+ 198:src/CAN.c     ****   hfdcan1.Init.NominalTimeSeg2 = 11;
+ 199:src/CAN.c     ****   hfdcan1.Init.DataPrescaler = 5;
+ 200:src/CAN.c     ****   hfdcan1.Init.DataSyncJumpWidth = 4;
+ 201:src/CAN.c     ****   hfdcan1.Init.DataTimeSeg1 = 12;
+ARM GAS  /tmp/cc69WLJP.s 			page 5
+
+
+ 202:src/CAN.c     ****   hfdcan1.Init.DataTimeSeg2 = 4;
+ 203:src/CAN.c     ****   hfdcan1.Init.StdFiltersNbr = 1;
+ 204:src/CAN.c     ****   hfdcan1.Init.ExtFiltersNbr = 0;
+ 205:src/CAN.c     ****   hfdcan1.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+ 206:src/CAN.c     ****   if (HAL_FDCAN_Init(&hfdcan1) != HAL_OK)
+ 207:src/CAN.c     ****   {
+ 208:src/CAN.c     ****     Error_Handler();
+ 209:src/CAN.c     ****   }
+ 210:src/CAN.c     ****   /* FDCAN1_Init 2 */
+ 211:src/CAN.c     ****   FDCAN_FilterTypeDef sFilterConfig;
+ 212:src/CAN.c     ****   sFilterConfig.IdType = FDCAN_STANDARD_ID;
+ 213:src/CAN.c     ****   sFilterConfig.FilterIndex = 0;
+ 214:src/CAN.c     ****   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+ 215:src/CAN.c     ****   sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+ 216:src/CAN.c     ****   sFilterConfig.FilterID1 = 0x2;
+ 217:src/CAN.c     ****   sFilterConfig.FilterID2 = 0x2;
+ 218:src/CAN.c     ****   //sFilterConfig.RxBufferIndex = 0;
+ 219:src/CAN.c     ****   if (HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig) != HAL_OK) {
+ 220:src/CAN.c     ****     /* Filter configuration Error */
+ 221:src/CAN.c     ****     Error_Handler();
+ 222:src/CAN.c     ****   }
+ 223:src/CAN.c     **** 
+ 224:src/CAN.c     **** }
+ 225:src/CAN.c     **** 
+ 226:src/CAN.c     **** /**
+ 227:src/CAN.c     ****   * @brief FDCAN2 Initialization Function
+ 228:src/CAN.c     ****   * @param None
+ 229:src/CAN.c     ****   * @retval None
+ 230:src/CAN.c     ****   */
+ 231:src/CAN.c     **** void MX_FDCAN2_Init(void)
+ 232:src/CAN.c     **** {
+ 233:src/CAN.c     **** 
+ 234:src/CAN.c     ****   /* FDCAN2_Init 1 */
+ 235:src/CAN.c     **** 
+ 236:src/CAN.c     ****   hfdcan2.Instance = FDCAN2;
+ 237:src/CAN.c     ****   hfdcan2.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+ 238:src/CAN.c     ****   hfdcan2.Init.FrameFormat = FDCAN_FRAME_FD_BRS;
+ 239:src/CAN.c     ****   hfdcan2.Init.Mode = FDCAN_MODE_NORMAL;
+ 240:src/CAN.c     ****   hfdcan2.Init.AutoRetransmission = DISABLE;
+ 241:src/CAN.c     ****   hfdcan2.Init.TransmitPause = DISABLE;
+ 242:src/CAN.c     ****   hfdcan2.Init.ProtocolException = ENABLE;
+ 243:src/CAN.c     ****   hfdcan2.Init.NominalPrescaler = 5;
+ 244:src/CAN.c     ****   hfdcan2.Init.NominalSyncJumpWidth = 11;
+ 245:src/CAN.c     ****   hfdcan2.Init.NominalTimeSeg1 = 56;
+ 246:src/CAN.c     ****   hfdcan2.Init.NominalTimeSeg2 = 11;
+ 247:src/CAN.c     ****   hfdcan2.Init.DataPrescaler = 5;
+ 248:src/CAN.c     ****   hfdcan2.Init.DataSyncJumpWidth = 4;
+ 249:src/CAN.c     ****   hfdcan2.Init.DataTimeSeg1 = 12;
+ 250:src/CAN.c     ****   hfdcan2.Init.DataTimeSeg2 = 4;
+ 251:src/CAN.c     ****   hfdcan2.Init.StdFiltersNbr = 1;
+ 252:src/CAN.c     ****   hfdcan2.Init.ExtFiltersNbr = 0;
+ 253:src/CAN.c     ****   hfdcan2.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+ 254:src/CAN.c     ****   if (HAL_FDCAN_Init(&hfdcan2) != HAL_OK)
+ 255:src/CAN.c     ****   {
+ 256:src/CAN.c     ****     Error_Handler();
+ 257:src/CAN.c     ****   }
+ 258:src/CAN.c     ****   /*FDCAN2_Init 2 */
+ARM GAS  /tmp/cc69WLJP.s 			page 6
+
+
+ 259:src/CAN.c     **** 
+ 260:src/CAN.c     ****   FDCAN_FilterTypeDef sFilterConfig;
+ 261:src/CAN.c     ****   sFilterConfig.IdType = FDCAN_STANDARD_ID;
+ 262:src/CAN.c     ****   sFilterConfig.FilterIndex = 0;
+ 263:src/CAN.c     ****   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+ 264:src/CAN.c     ****   sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO1;
+ 265:src/CAN.c     ****   sFilterConfig.FilterID1 = 0x1;
+ 266:src/CAN.c     ****   sFilterConfig.FilterID2 = 0x1;
+ 267:src/CAN.c     ****   //sFilterConfig.RxBufferIndex = 0;
+ 268:src/CAN.c     ****   if (HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig) != HAL_OK) {
+ 269:src/CAN.c     ****     /* Filter configuration Error */
+ 270:src/CAN.c     ****     Error_Handler();
+ 271:src/CAN.c     ****   }
+ 272:src/CAN.c     **** 
+ 273:src/CAN.c     **** }
+ 274:src/CAN.c     **** 
+ 275:src/CAN.c     **** 
+ 276:src/CAN.c     **** /**
+ 277:src/CAN.c     ****   * @brief GPIO Initialization Function
+ 278:src/CAN.c     ****   * @param None
+ 279:src/CAN.c     ****   * @retval None
+ 280:src/CAN.c     ****   */
+ 281:src/CAN.c     **** void MX_GPIO_Init(void)
+ 282:src/CAN.c     **** {
+  29              		.loc 1 282 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 30B5     		push	{r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 12
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  39 0002 8BB0     		sub	sp, sp, #44
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 56
+ 283:src/CAN.c     ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  42              		.loc 1 283 3 view .LVU1
+  43              		.loc 1 283 20 is_stmt 0 view .LVU2
+  44 0004 05AD     		add	r5, sp, #20
+  45 0006 0024     		movs	r4, #0
+  46 0008 0594     		str	r4, [sp, #20]
+  47 000a 0694     		str	r4, [sp, #24]
+  48 000c 0794     		str	r4, [sp, #28]
+  49 000e 0894     		str	r4, [sp, #32]
+  50 0010 0994     		str	r4, [sp, #36]
+ 284:src/CAN.c     **** /* USER CODE BEGIN MX_GPIO_Init_1 */
+ 285:src/CAN.c     **** /* USER CODE END MX_GPIO_Init_1 */
+ 286:src/CAN.c     **** 
+ 287:src/CAN.c     ****   /* GPIO Ports Clock Enable */
+ 288:src/CAN.c     ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  51              		.loc 1 288 3 is_stmt 1 view .LVU3
+  52              	.LBB4:
+  53              		.loc 1 288 3 view .LVU4
+  54              		.loc 1 288 3 view .LVU5
+  55 0012 254B     		ldr	r3, .L3
+ARM GAS  /tmp/cc69WLJP.s 			page 7
+
+
+  56 0014 DA6C     		ldr	r2, [r3, #76]
+  57 0016 42F00402 		orr	r2, r2, #4
+  58 001a DA64     		str	r2, [r3, #76]
+  59              		.loc 1 288 3 view .LVU6
+  60 001c DA6C     		ldr	r2, [r3, #76]
+  61 001e 02F00402 		and	r2, r2, #4
+  62 0022 0192     		str	r2, [sp, #4]
+  63              		.loc 1 288 3 view .LVU7
+  64 0024 019A     		ldr	r2, [sp, #4]
+  65              	.LBE4:
+  66              		.loc 1 288 3 view .LVU8
+ 289:src/CAN.c     ****   __HAL_RCC_GPIOF_CLK_ENABLE();
+  67              		.loc 1 289 3 view .LVU9
+  68              	.LBB5:
+  69              		.loc 1 289 3 view .LVU10
+  70              		.loc 1 289 3 view .LVU11
+  71 0026 DA6C     		ldr	r2, [r3, #76]
+  72 0028 42F02002 		orr	r2, r2, #32
+  73 002c DA64     		str	r2, [r3, #76]
+  74              		.loc 1 289 3 view .LVU12
+  75 002e DA6C     		ldr	r2, [r3, #76]
+  76 0030 02F02002 		and	r2, r2, #32
+  77 0034 0292     		str	r2, [sp, #8]
+  78              		.loc 1 289 3 view .LVU13
+  79 0036 029A     		ldr	r2, [sp, #8]
+  80              	.LBE5:
+  81              		.loc 1 289 3 view .LVU14
+ 290:src/CAN.c     ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  82              		.loc 1 290 3 view .LVU15
+  83              	.LBB6:
+  84              		.loc 1 290 3 view .LVU16
+  85              		.loc 1 290 3 view .LVU17
+  86 0038 DA6C     		ldr	r2, [r3, #76]
+  87 003a 42F00102 		orr	r2, r2, #1
+  88 003e DA64     		str	r2, [r3, #76]
+  89              		.loc 1 290 3 view .LVU18
+  90 0040 DA6C     		ldr	r2, [r3, #76]
+  91 0042 02F00102 		and	r2, r2, #1
+  92 0046 0392     		str	r2, [sp, #12]
+  93              		.loc 1 290 3 view .LVU19
+  94 0048 039A     		ldr	r2, [sp, #12]
+  95              	.LBE6:
+  96              		.loc 1 290 3 view .LVU20
+ 291:src/CAN.c     ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  97              		.loc 1 291 3 view .LVU21
+  98              	.LBB7:
+  99              		.loc 1 291 3 view .LVU22
+ 100              		.loc 1 291 3 view .LVU23
+ 101 004a DA6C     		ldr	r2, [r3, #76]
+ 102 004c 42F00202 		orr	r2, r2, #2
+ 103 0050 DA64     		str	r2, [r3, #76]
+ 104              		.loc 1 291 3 view .LVU24
+ 105 0052 DB6C     		ldr	r3, [r3, #76]
+ 106 0054 03F00203 		and	r3, r3, #2
+ 107 0058 0493     		str	r3, [sp, #16]
+ 108              		.loc 1 291 3 view .LVU25
+ 109 005a 049B     		ldr	r3, [sp, #16]
+ARM GAS  /tmp/cc69WLJP.s 			page 8
+
+
+ 110              	.LBE7:
+ 111              		.loc 1 291 3 view .LVU26
+ 292:src/CAN.c     **** 
+ 293:src/CAN.c     ****   /*Configure GPIO pin Output Level */
+ 294:src/CAN.c     ****   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+ 112              		.loc 1 294 3 view .LVU27
+ 113 005c 2246     		mov	r2, r4
+ 114 005e 2021     		movs	r1, #32
+ 115 0060 4FF09040 		mov	r0, #1207959552
+ 116 0064 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 117              	.LVL0:
+ 295:src/CAN.c     **** 
+ 296:src/CAN.c     ****   /*Configure GPIO pin : B1_Pin */
+ 297:src/CAN.c     ****   GPIO_InitStruct.Pin = B1_Pin;
+ 118              		.loc 1 297 3 view .LVU28
+ 119              		.loc 1 297 23 is_stmt 0 view .LVU29
+ 120 0068 4FF40053 		mov	r3, #8192
+ 121 006c 0593     		str	r3, [sp, #20]
+ 298:src/CAN.c     ****   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+ 122              		.loc 1 298 3 is_stmt 1 view .LVU30
+ 123              		.loc 1 298 24 is_stmt 0 view .LVU31
+ 124 006e 4FF48813 		mov	r3, #1114112
+ 125 0072 0693     		str	r3, [sp, #24]
+ 299:src/CAN.c     ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 126              		.loc 1 299 3 is_stmt 1 view .LVU32
+ 127              		.loc 1 299 24 is_stmt 0 view .LVU33
+ 128 0074 0794     		str	r4, [sp, #28]
+ 300:src/CAN.c     ****   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+ 129              		.loc 1 300 3 is_stmt 1 view .LVU34
+ 130 0076 2946     		mov	r1, r5
+ 131 0078 0C48     		ldr	r0, .L3+4
+ 132 007a FFF7FEFF 		bl	HAL_GPIO_Init
+ 133              	.LVL1:
+ 301:src/CAN.c     **** 
+ 302:src/CAN.c     ****   /*Configure GPIO pin : LD2_Pin */
+ 303:src/CAN.c     ****   GPIO_InitStruct.Pin = LD2_Pin;
+ 134              		.loc 1 303 3 view .LVU35
+ 135              		.loc 1 303 23 is_stmt 0 view .LVU36
+ 136 007e 2023     		movs	r3, #32
+ 137 0080 0593     		str	r3, [sp, #20]
+ 304:src/CAN.c     ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 138              		.loc 1 304 3 is_stmt 1 view .LVU37
+ 139              		.loc 1 304 24 is_stmt 0 view .LVU38
+ 140 0082 0123     		movs	r3, #1
+ 141 0084 0693     		str	r3, [sp, #24]
+ 305:src/CAN.c     ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 142              		.loc 1 305 3 is_stmt 1 view .LVU39
+ 143              		.loc 1 305 24 is_stmt 0 view .LVU40
+ 144 0086 0794     		str	r4, [sp, #28]
+ 306:src/CAN.c     ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 145              		.loc 1 306 3 is_stmt 1 view .LVU41
+ 146              		.loc 1 306 25 is_stmt 0 view .LVU42
+ 147 0088 0894     		str	r4, [sp, #32]
+ 307:src/CAN.c     ****   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+ 148              		.loc 1 307 3 is_stmt 1 view .LVU43
+ 149 008a 2946     		mov	r1, r5
+ 150 008c 4FF09040 		mov	r0, #1207959552
+ARM GAS  /tmp/cc69WLJP.s 			page 9
+
+
+ 151 0090 FFF7FEFF 		bl	HAL_GPIO_Init
+ 152              	.LVL2:
+ 308:src/CAN.c     **** 
+ 309:src/CAN.c     ****   /* EXTI interrupt init*/
+ 310:src/CAN.c     ****   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+ 153              		.loc 1 310 3 view .LVU44
+ 154 0094 2246     		mov	r2, r4
+ 155 0096 2146     		mov	r1, r4
+ 156 0098 2820     		movs	r0, #40
+ 157 009a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 158              	.LVL3:
+ 311:src/CAN.c     ****   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+ 159              		.loc 1 311 3 view .LVU45
+ 160 009e 2820     		movs	r0, #40
+ 161 00a0 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 162              	.LVL4:
+ 312:src/CAN.c     **** 
+ 313:src/CAN.c     **** /* USER CODE BEGIN MX_GPIO_Init_2 */
+ 314:src/CAN.c     **** /* USER CODE END MX_GPIO_Init_2 */
+ 315:src/CAN.c     **** }
+ 163              		.loc 1 315 1 is_stmt 0 view .LVU46
+ 164 00a4 0BB0     		add	sp, sp, #44
+ 165              	.LCFI2:
+ 166              		.cfi_def_cfa_offset 12
+ 167              		@ sp needed
+ 168 00a6 30BD     		pop	{r4, r5, pc}
+ 169              	.L4:
+ 170              		.align	2
+ 171              	.L3:
+ 172 00a8 00100240 		.word	1073876992
+ 173 00ac 00080048 		.word	1207961600
+ 174              		.cfi_endproc
+ 175              	.LFE141:
+ 177              		.section	.rodata.Error_Handler.str1.4,"aMS",%progbits,1
+ 178              		.align	2
+ 179              	.LC0:
+ 180 0000 4572726F 		.ascii	"Error detected\015\000"
+ 180      72206465 
+ 180      74656374 
+ 180      65640D00 
+ 181              		.section	.text.Error_Handler,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	Error_Handler
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 188              	Error_Handler:
+ 189              	.LFB142:
+ 316:src/CAN.c     **** 
+ 317:src/CAN.c     **** 
+ 318:src/CAN.c     **** 
+ 319:src/CAN.c     **** /**
+ 320:src/CAN.c     ****   * @brief  This function is executed in case of error occurrence.
+ 321:src/CAN.c     ****   * @retval None
+ 322:src/CAN.c     ****   */
+ 323:src/CAN.c     **** void Error_Handler(void)
+ 324:src/CAN.c     **** {
+ARM GAS  /tmp/cc69WLJP.s 			page 10
+
+
+ 190              		.loc 1 324 1 is_stmt 1 view -0
+ 191              		.cfi_startproc
+ 192              		@ Volatile: function does not return.
+ 193              		@ args = 0, pretend = 0, frame = 0
+ 194              		@ frame_needed = 0, uses_anonymous_args = 0
+ 195 0000 08B5     		push	{r3, lr}
+ 196              	.LCFI3:
+ 197              		.cfi_def_cfa_offset 8
+ 198              		.cfi_offset 3, -8
+ 199              		.cfi_offset 14, -4
+ 325:src/CAN.c     ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 326:src/CAN.c     ****   /* User can add his own implementation to report the HAL error return state */
+ 327:src/CAN.c     ****   __disable_irq();
+ 200              		.loc 1 327 3 view .LVU48
+ 201              	.LBB8:
+ 202              	.LBI8:
+ 203              		.file 2 "platform/CMSIS/Include/cmsis_gcc.h"
+   1:platform/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
+   2:platform/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:platform/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:platform/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.2.0
+   5:platform/CMSIS/Include/cmsis_gcc.h ****  * @date     08. May 2019
+   6:platform/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
+   7:platform/CMSIS/Include/cmsis_gcc.h **** /*
+   8:platform/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2019 Arm Limited. All rights reserved.
+   9:platform/CMSIS/Include/cmsis_gcc.h ****  *
+  10:platform/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:platform/CMSIS/Include/cmsis_gcc.h ****  *
+  12:platform/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:platform/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:platform/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:platform/CMSIS/Include/cmsis_gcc.h ****  *
+  16:platform/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:platform/CMSIS/Include/cmsis_gcc.h ****  *
+  18:platform/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:platform/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:platform/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:platform/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:platform/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
+  23:platform/CMSIS/Include/cmsis_gcc.h ****  */
+  24:platform/CMSIS/Include/cmsis_gcc.h **** 
+  25:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:platform/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+  27:platform/CMSIS/Include/cmsis_gcc.h **** 
+  28:platform/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:platform/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:platform/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:platform/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:platform/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:platform/CMSIS/Include/cmsis_gcc.h **** 
+  34:platform/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
+  36:platform/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  38:platform/CMSIS/Include/cmsis_gcc.h **** 
+  39:platform/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
+ARM GAS  /tmp/cc69WLJP.s 			page 11
+
+
+  41:platform/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  43:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
+  44:platform/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
+  45:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  46:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:platform/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  49:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+  50:platform/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:platform/CMSIS/Include/cmsis_gcc.h **** #endif                                           
+  52:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:platform/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  55:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
+  56:platform/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+  57:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  58:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
+  59:platform/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  61:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
+  62:platform/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  64:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:platform/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  67:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:platform/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  70:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:platform/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:platform/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  78:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:platform/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  84:platform/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  86:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:platform/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:platform/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+  94:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ARM GAS  /tmp/cc69WLJP.s 			page 12
+
+
+  98:platform/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:platform/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 102:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ 106:platform/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ 107:platform/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:platform/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 110:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:platform/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 113:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
+ 114:platform/CMSIS/Include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 116:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef   __COMPILER_BARRIER
+ 117:platform/CMSIS/Include/cmsis_gcc.h ****   #define __COMPILER_BARRIER()                   __ASM volatile("":::"memory")
+ 118:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 119:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 120:platform/CMSIS/Include/cmsis_gcc.h **** /* #########################  Startup and Lowlevel Init  ######################## */
+ 121:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 122:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __PROGRAM_START
+ 123:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 124:platform/CMSIS/Include/cmsis_gcc.h **** /**
+ 125:platform/CMSIS/Include/cmsis_gcc.h ****   \brief   Initializes data and bss sections
+ 126:platform/CMSIS/Include/cmsis_gcc.h ****   \details This default implementations initialized all data and additional bss
+ 127:platform/CMSIS/Include/cmsis_gcc.h ****            sections relying on .copy.table and .zero.table specified properly
+ 128:platform/CMSIS/Include/cmsis_gcc.h ****            in the used linker script.
+ 129:platform/CMSIS/Include/cmsis_gcc.h ****   
+ 130:platform/CMSIS/Include/cmsis_gcc.h ****  */
+ 131:platform/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE __NO_RETURN void __cmsis_start(void)
+ 132:platform/CMSIS/Include/cmsis_gcc.h **** {
+ 133:platform/CMSIS/Include/cmsis_gcc.h ****   extern void _start(void) __NO_RETURN;
+ 134:platform/CMSIS/Include/cmsis_gcc.h ****   
+ 135:platform/CMSIS/Include/cmsis_gcc.h ****   typedef struct {
+ 136:platform/CMSIS/Include/cmsis_gcc.h ****     uint32_t const* src;
+ 137:platform/CMSIS/Include/cmsis_gcc.h ****     uint32_t* dest;
+ 138:platform/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
+ 139:platform/CMSIS/Include/cmsis_gcc.h ****   } __copy_table_t;
+ 140:platform/CMSIS/Include/cmsis_gcc.h ****   
+ 141:platform/CMSIS/Include/cmsis_gcc.h ****   typedef struct {
+ 142:platform/CMSIS/Include/cmsis_gcc.h ****     uint32_t* dest;
+ 143:platform/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
+ 144:platform/CMSIS/Include/cmsis_gcc.h ****   } __zero_table_t;
+ 145:platform/CMSIS/Include/cmsis_gcc.h ****   
+ 146:platform/CMSIS/Include/cmsis_gcc.h ****   extern const __copy_table_t __copy_table_start__;
+ 147:platform/CMSIS/Include/cmsis_gcc.h ****   extern const __copy_table_t __copy_table_end__;
+ 148:platform/CMSIS/Include/cmsis_gcc.h ****   extern const __zero_table_t __zero_table_start__;
+ 149:platform/CMSIS/Include/cmsis_gcc.h ****   extern const __zero_table_t __zero_table_end__;
+ 150:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 151:platform/CMSIS/Include/cmsis_gcc.h ****   for (__copy_table_t const* pTable = &__copy_table_start__; pTable < &__copy_table_end__; ++pTable
+ 152:platform/CMSIS/Include/cmsis_gcc.h ****     for(uint32_t i=0u; i<pTable->wlen; ++i) {
+ 153:platform/CMSIS/Include/cmsis_gcc.h ****       pTable->dest[i] = pTable->src[i];
+ 154:platform/CMSIS/Include/cmsis_gcc.h ****     }
+ARM GAS  /tmp/cc69WLJP.s 			page 13
+
+
+ 155:platform/CMSIS/Include/cmsis_gcc.h ****   }
+ 156:platform/CMSIS/Include/cmsis_gcc.h ****  
+ 157:platform/CMSIS/Include/cmsis_gcc.h ****   for (__zero_table_t const* pTable = &__zero_table_start__; pTable < &__zero_table_end__; ++pTable
+ 158:platform/CMSIS/Include/cmsis_gcc.h ****     for(uint32_t i=0u; i<pTable->wlen; ++i) {
+ 159:platform/CMSIS/Include/cmsis_gcc.h ****       pTable->dest[i] = 0u;
+ 160:platform/CMSIS/Include/cmsis_gcc.h ****     }
+ 161:platform/CMSIS/Include/cmsis_gcc.h ****   }
+ 162:platform/CMSIS/Include/cmsis_gcc.h ****  
+ 163:platform/CMSIS/Include/cmsis_gcc.h ****   _start();
+ 164:platform/CMSIS/Include/cmsis_gcc.h **** }
+ 165:platform/CMSIS/Include/cmsis_gcc.h ****   
+ 166:platform/CMSIS/Include/cmsis_gcc.h **** #define __PROGRAM_START           __cmsis_start
+ 167:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 168:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 169:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __INITIAL_SP
+ 170:platform/CMSIS/Include/cmsis_gcc.h **** #define __INITIAL_SP              __StackTop
+ 171:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 172:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 173:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __STACK_LIMIT
+ 174:platform/CMSIS/Include/cmsis_gcc.h **** #define __STACK_LIMIT             __StackLimit
+ 175:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 176:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 177:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __VECTOR_TABLE
+ 178:platform/CMSIS/Include/cmsis_gcc.h **** #define __VECTOR_TABLE            __Vectors
+ 179:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 180:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 181:platform/CMSIS/Include/cmsis_gcc.h **** #ifndef __VECTOR_TABLE_ATTRIBUTE
+ 182:platform/CMSIS/Include/cmsis_gcc.h **** #define __VECTOR_TABLE_ATTRIBUTE  __attribute((used, section(".vectors")))
+ 183:platform/CMSIS/Include/cmsis_gcc.h **** #endif
+ 184:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 185:platform/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ 186:platform/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 187:platform/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 188:platform/CMSIS/Include/cmsis_gcc.h ****   @{
+ 189:platform/CMSIS/Include/cmsis_gcc.h ****  */
+ 190:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 191:platform/CMSIS/Include/cmsis_gcc.h **** /**
+ 192:platform/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 193:platform/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 194:platform/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 195:platform/CMSIS/Include/cmsis_gcc.h ****  */
+ 196:platform/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 197:platform/CMSIS/Include/cmsis_gcc.h **** {
+ 198:platform/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 199:platform/CMSIS/Include/cmsis_gcc.h **** }
+ 200:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 201:platform/CMSIS/Include/cmsis_gcc.h **** 
+ 202:platform/CMSIS/Include/cmsis_gcc.h **** /**
+ 203:platform/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+ 204:platform/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+ 205:platform/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 206:platform/CMSIS/Include/cmsis_gcc.h ****  */
+ 207:platform/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
+ 204              		.loc 2 207 27 view .LVU49
+ 205              	.LBB9:
+ 208:platform/CMSIS/Include/cmsis_gcc.h **** {
+ 209:platform/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+ARM GAS  /tmp/cc69WLJP.s 			page 14
+
+
+ 206              		.loc 2 209 3 view .LVU50
+ 207              		.syntax unified
+ 208              	@ 209 "platform/CMSIS/Include/cmsis_gcc.h" 1
+ 209 0002 72B6     		cpsid i
+ 210              	@ 0 "" 2
+ 211              		.thumb
+ 212              		.syntax unified
+ 213              	.L6:
+ 214              	.LBE9:
+ 215              	.LBE8:
+ 328:src/CAN.c     ****   while (1) {
+ 216              		.loc 1 328 3 view .LVU51
+ 329:src/CAN.c     **** 	// begin@2023-05-21/tateo.y
+ 330:src/CAN.c     **** 	printf("Error detected\r\n");
+ 217              		.loc 1 330 2 view .LVU52
+ 218 0004 0348     		ldr	r0, .L8
+ 219 0006 FFF7FEFF 		bl	puts
+ 220              	.LVL5:
+ 331:src/CAN.c     **** 	HAL_Delay(1000);
+ 221              		.loc 1 331 2 discriminator 1 view .LVU53
+ 222 000a 4FF47A70 		mov	r0, #1000
+ 223 000e FFF7FEFF 		bl	HAL_Delay
+ 224              	.LVL6:
+ 328:src/CAN.c     ****   while (1) {
+ 225              		.loc 1 328 9 view .LVU54
+ 226 0012 F7E7     		b	.L6
+ 227              	.L9:
+ 228              		.align	2
+ 229              	.L8:
+ 230 0014 00000000 		.word	.LC0
+ 231              		.cfi_endproc
+ 232              	.LFE142:
+ 234              		.section	.text.HAL_FDCAN_RxFifo0Callback,"ax",%progbits
+ 235              		.align	1
+ 236              		.global	HAL_FDCAN_RxFifo0Callback
+ 237              		.syntax unified
+ 238              		.thumb
+ 239              		.thumb_func
+ 241              	HAL_FDCAN_RxFifo0Callback:
+ 242              	.LVL7:
+ 243              	.LFB135:
+  49:src/CAN.c     ****   if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET) {
+ 244              		.loc 1 49 82 view -0
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+  50:src/CAN.c     ****     /* Retreive Rx messages from RX FIFO0 */
+ 248              		.loc 1 50 3 view .LVU56
+  50:src/CAN.c     ****     /* Retreive Rx messages from RX FIFO0 */
+ 249              		.loc 1 50 5 is_stmt 0 view .LVU57
+ 250 0000 11F0010F 		tst	r1, #1
+ 251 0004 00D1     		bne	.L17
+ 252 0006 7047     		bx	lr
+ 253              	.L17:
+  49:src/CAN.c     ****   if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET) {
+ 254              		.loc 1 49 82 view .LVU58
+ 255 0008 10B5     		push	{r4, lr}
+ARM GAS  /tmp/cc69WLJP.s 			page 15
+
+
+ 256              	.LCFI4:
+ 257              		.cfi_def_cfa_offset 8
+ 258              		.cfi_offset 4, -8
+ 259              		.cfi_offset 14, -4
+ 260 000a 0446     		mov	r4, r0
+  52:src/CAN.c     **** 		/* Reception Error */
+ 261              		.loc 1 52 5 is_stmt 1 view .LVU59
+  52:src/CAN.c     **** 		/* Reception Error */
+ 262              		.loc 1 52 9 is_stmt 0 view .LVU60
+ 263 000c 084B     		ldr	r3, .L20
+ 264 000e 094A     		ldr	r2, .L20+4
+ 265 0010 4021     		movs	r1, #64
+ 266              	.LVL8:
+  52:src/CAN.c     **** 		/* Reception Error */
+ 267              		.loc 1 52 9 view .LVU61
+ 268 0012 FFF7FEFF 		bl	HAL_FDCAN_GetRxMessage
+ 269              	.LVL9:
+  52:src/CAN.c     **** 		/* Reception Error */
+ 270              		.loc 1 52 8 discriminator 1 view .LVU62
+ 271 0016 30B9     		cbnz	r0, .L18
+  57:src/CAN.c     ****       /* Notification Error */
+ 272              		.loc 1 57 5 is_stmt 1 view .LVU63
+  57:src/CAN.c     ****       /* Notification Error */
+ 273              		.loc 1 57 9 is_stmt 0 view .LVU64
+ 274 0018 0022     		movs	r2, #0
+ 275 001a 0121     		movs	r1, #1
+ 276 001c 2046     		mov	r0, r4
+ 277 001e FFF7FEFF 		bl	HAL_FDCAN_ActivateNotification
+ 278              	.LVL10:
+  57:src/CAN.c     ****       /* Notification Error */
+ 279              		.loc 1 57 8 discriminator 1 view .LVU65
+ 280 0022 10B9     		cbnz	r0, .L19
+  62:src/CAN.c     **** 
+ 281              		.loc 1 62 1 view .LVU66
+ 282 0024 10BD     		pop	{r4, pc}
+ 283              	.LVL11:
+ 284              	.L18:
+  54:src/CAN.c     ****     }
+ 285              		.loc 1 54 3 is_stmt 1 view .LVU67
+ 286 0026 FFF7FEFF 		bl	Error_Handler
+ 287              	.LVL12:
+ 288              	.L19:
+  59:src/CAN.c     ****     }
+ 289              		.loc 1 59 7 view .LVU68
+ 290 002a FFF7FEFF 		bl	Error_Handler
+ 291              	.LVL13:
+ 292              	.L21:
+ 293 002e 00BF     		.align	2
+ 294              	.L20:
+ 295 0030 00000000 		.word	fdcan1RxData
+ 296 0034 00000000 		.word	fdcan1RxHeader
+ 297              		.cfi_endproc
+ 298              	.LFE135:
+ 300              		.section	.text.HAL_FDCAN_RxFifo1Callback,"ax",%progbits
+ 301              		.align	1
+ 302              		.global	HAL_FDCAN_RxFifo1Callback
+ 303              		.syntax unified
+ARM GAS  /tmp/cc69WLJP.s 			page 16
+
+
+ 304              		.thumb
+ 305              		.thumb_func
+ 307              	HAL_FDCAN_RxFifo1Callback:
+ 308              	.LVL14:
+ 309              	.LFB136:
+  67:src/CAN.c     ****   if((RxFifo1ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET) {
+ 310              		.loc 1 67 1 view -0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+  68:src/CAN.c     ****     /* Retreive Rx messages from RX FIFO0 */
+ 314              		.loc 1 68 3 view .LVU70
+  68:src/CAN.c     ****     /* Retreive Rx messages from RX FIFO0 */
+ 315              		.loc 1 68 5 is_stmt 0 view .LVU71
+ 316 0000 11F0080F 		tst	r1, #8
+ 317 0004 00D1     		bne	.L29
+ 318 0006 7047     		bx	lr
+ 319              	.L29:
+  67:src/CAN.c     ****   if((RxFifo1ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET) {
+ 320              		.loc 1 67 1 view .LVU72
+ 321 0008 10B5     		push	{r4, lr}
+ 322              	.LCFI5:
+ 323              		.cfi_def_cfa_offset 8
+ 324              		.cfi_offset 4, -8
+ 325              		.cfi_offset 14, -4
+ 326 000a 0446     		mov	r4, r0
+  70:src/CAN.c     **** 		/* Reception Error */
+ 327              		.loc 1 70 5 is_stmt 1 view .LVU73
+  70:src/CAN.c     **** 		/* Reception Error */
+ 328              		.loc 1 70 9 is_stmt 0 view .LVU74
+ 329 000c 084B     		ldr	r3, .L32
+ 330 000e 094A     		ldr	r2, .L32+4
+ 331 0010 4121     		movs	r1, #65
+ 332              	.LVL15:
+  70:src/CAN.c     **** 		/* Reception Error */
+ 333              		.loc 1 70 9 view .LVU75
+ 334 0012 FFF7FEFF 		bl	HAL_FDCAN_GetRxMessage
+ 335              	.LVL16:
+  70:src/CAN.c     **** 		/* Reception Error */
+ 336              		.loc 1 70 8 discriminator 1 view .LVU76
+ 337 0016 30B9     		cbnz	r0, .L30
+  75:src/CAN.c     ****       /* Notification Error */
+ 338              		.loc 1 75 5 is_stmt 1 view .LVU77
+  75:src/CAN.c     ****       /* Notification Error */
+ 339              		.loc 1 75 9 is_stmt 0 view .LVU78
+ 340 0018 0022     		movs	r2, #0
+ 341 001a 0821     		movs	r1, #8
+ 342 001c 2046     		mov	r0, r4
+ 343 001e FFF7FEFF 		bl	HAL_FDCAN_ActivateNotification
+ 344              	.LVL17:
+  75:src/CAN.c     ****       /* Notification Error */
+ 345              		.loc 1 75 8 discriminator 1 view .LVU79
+ 346 0022 10B9     		cbnz	r0, .L31
+  80:src/CAN.c     **** 
+ 347              		.loc 1 80 1 view .LVU80
+ 348 0024 10BD     		pop	{r4, pc}
+ 349              	.LVL18:
+ARM GAS  /tmp/cc69WLJP.s 			page 17
+
+
+ 350              	.L30:
+  72:src/CAN.c     ****     }
+ 351              		.loc 1 72 3 is_stmt 1 view .LVU81
+ 352 0026 FFF7FEFF 		bl	Error_Handler
+ 353              	.LVL19:
+ 354              	.L31:
+  77:src/CAN.c     ****     }
+ 355              		.loc 1 77 7 view .LVU82
+ 356 002a FFF7FEFF 		bl	Error_Handler
+ 357              	.LVL20:
+ 358              	.L33:
+ 359 002e 00BF     		.align	2
+ 360              	.L32:
+ 361 0030 00000000 		.word	fdcan2RxData
+ 362 0034 00000000 		.word	fdcan2RxHeader
+ 363              		.cfi_endproc
+ 364              	.LFE136:
+ 366              		.section	.text.FDCAN_Config,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	FDCAN_Config
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 373              	FDCAN_Config:
+ 374              	.LFB137:
+  84:src/CAN.c     ****   // STart FDCAN1
+ 375              		.loc 1 84 1 view -0
+ 376              		.cfi_startproc
+ 377              		@ args = 0, pretend = 0, frame = 0
+ 378              		@ frame_needed = 0, uses_anonymous_args = 0
+ 379 0000 38B5     		push	{r3, r4, r5, lr}
+ 380              	.LCFI6:
+ 381              		.cfi_def_cfa_offset 16
+ 382              		.cfi_offset 3, -16
+ 383              		.cfi_offset 4, -12
+ 384              		.cfi_offset 5, -8
+ 385              		.cfi_offset 14, -4
+  86:src/CAN.c     **** 	  Error_Handler();
+ 386              		.loc 1 86 3 view .LVU84
+  86:src/CAN.c     **** 	  Error_Handler();
+ 387              		.loc 1 86 6 is_stmt 0 view .LVU85
+ 388 0002 1E48     		ldr	r0, .L44
+ 389 0004 FFF7FEFF 		bl	HAL_FDCAN_Start
+ 390              	.LVL21:
+  86:src/CAN.c     **** 	  Error_Handler();
+ 391              		.loc 1 86 5 discriminator 1 view .LVU86
+ 392 0008 0028     		cmp	r0, #0
+ 393 000a 2ED1     		bne	.L40
+  91:src/CAN.c     **** 	  Error_Handler();
+ 394              		.loc 1 91 3 is_stmt 1 view .LVU87
+  91:src/CAN.c     **** 	  Error_Handler();
+ 395              		.loc 1 91 6 is_stmt 0 view .LVU88
+ 396 000c 1C48     		ldr	r0, .L44+4
+ 397 000e FFF7FEFF 		bl	HAL_FDCAN_Start
+ 398              	.LVL22:
+  91:src/CAN.c     **** 	  Error_Handler();
+ 399              		.loc 1 91 5 discriminator 1 view .LVU89
+ARM GAS  /tmp/cc69WLJP.s 			page 18
+
+
+ 400 0012 0028     		cmp	r0, #0
+ 401 0014 2BD1     		bne	.L41
+  96:src/CAN.c     ****     /* Notification Error */
+ 402              		.loc 1 96 3 is_stmt 1 view .LVU90
+  96:src/CAN.c     ****     /* Notification Error */
+ 403              		.loc 1 96 7 is_stmt 0 view .LVU91
+ 404 0016 0022     		movs	r2, #0
+ 405 0018 0121     		movs	r1, #1
+ 406 001a 1848     		ldr	r0, .L44
+ 407 001c FFF7FEFF 		bl	HAL_FDCAN_ActivateNotification
+ 408              	.LVL23:
+  96:src/CAN.c     ****     /* Notification Error */
+ 409              		.loc 1 96 6 discriminator 1 view .LVU92
+ 410 0020 38BB     		cbnz	r0, .L42
+ 102:src/CAN.c     ****     /* Notification Error */
+ 411              		.loc 1 102 3 is_stmt 1 view .LVU93
+ 102:src/CAN.c     ****     /* Notification Error */
+ 412              		.loc 1 102 7 is_stmt 0 view .LVU94
+ 413 0022 0022     		movs	r2, #0
+ 414 0024 0821     		movs	r1, #8
+ 415 0026 1648     		ldr	r0, .L44+4
+ 416 0028 FFF7FEFF 		bl	HAL_FDCAN_ActivateNotification
+ 417              	.LVL24:
+ 102:src/CAN.c     ****     /* Notification Error */
+ 418              		.loc 1 102 6 discriminator 1 view .LVU95
+ 419 002c 18BB     		cbnz	r0, .L43
+ 109:src/CAN.c     ****   fdcan1TxHeader.IdType = FDCAN_STANDARD_ID;
+ 420              		.loc 1 109 3 is_stmt 1 view .LVU96
+ 109:src/CAN.c     ****   fdcan1TxHeader.IdType = FDCAN_STANDARD_ID;
+ 421              		.loc 1 109 29 is_stmt 0 view .LVU97
+ 422 002e 154A     		ldr	r2, .L44+8
+ 423 0030 0123     		movs	r3, #1
+ 424 0032 1360     		str	r3, [r2]
+ 110:src/CAN.c     ****   fdcan1TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+ 425              		.loc 1 110 3 is_stmt 1 view .LVU98
+ 110:src/CAN.c     ****   fdcan1TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+ 426              		.loc 1 110 25 is_stmt 0 view .LVU99
+ 427 0034 0023     		movs	r3, #0
+ 428 0036 5360     		str	r3, [r2, #4]
+ 111:src/CAN.c     ****   fdcan1TxHeader.DataLength = FDCAN_DLC_BYTES_32;
+ 429              		.loc 1 111 3 is_stmt 1 view .LVU100
+ 111:src/CAN.c     ****   fdcan1TxHeader.DataLength = FDCAN_DLC_BYTES_32;
+ 430              		.loc 1 111 30 is_stmt 0 view .LVU101
+ 431 0038 9360     		str	r3, [r2, #8]
+ 112:src/CAN.c     ****   fdcan1TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+ 432              		.loc 1 112 3 is_stmt 1 view .LVU102
+ 112:src/CAN.c     ****   fdcan1TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+ 433              		.loc 1 112 29 is_stmt 0 view .LVU103
+ 434 003a 0D24     		movs	r4, #13
+ 435 003c D460     		str	r4, [r2, #12]
+ 113:src/CAN.c     ****   fdcan1TxHeader.BitRateSwitch = FDCAN_BRS_ON;
+ 436              		.loc 1 113 3 is_stmt 1 view .LVU104
+ 113:src/CAN.c     ****   fdcan1TxHeader.BitRateSwitch = FDCAN_BRS_ON;
+ 437              		.loc 1 113 38 is_stmt 0 view .LVU105
+ 438 003e 1361     		str	r3, [r2, #16]
+ 114:src/CAN.c     ****   fdcan1TxHeader.FDFormat = FDCAN_FD_CAN;
+ 439              		.loc 1 114 3 is_stmt 1 view .LVU106
+ARM GAS  /tmp/cc69WLJP.s 			page 19
+
+
+ 114:src/CAN.c     ****   fdcan1TxHeader.FDFormat = FDCAN_FD_CAN;
+ 440              		.loc 1 114 32 is_stmt 0 view .LVU107
+ 441 0040 4FF48010 		mov	r0, #1048576
+ 442 0044 5061     		str	r0, [r2, #20]
+ 115:src/CAN.c     ****   fdcan1TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+ 443              		.loc 1 115 3 is_stmt 1 view .LVU108
+ 115:src/CAN.c     ****   fdcan1TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+ 444              		.loc 1 115 27 is_stmt 0 view .LVU109
+ 445 0046 4FF40011 		mov	r1, #2097152
+ 446 004a 9161     		str	r1, [r2, #24]
+ 116:src/CAN.c     ****   fdcan1TxHeader.MessageMarker = 0;
+ 447              		.loc 1 116 3 is_stmt 1 view .LVU110
+ 116:src/CAN.c     ****   fdcan1TxHeader.MessageMarker = 0;
+ 448              		.loc 1 116 37 is_stmt 0 view .LVU111
+ 449 004c D361     		str	r3, [r2, #28]
+ 117:src/CAN.c     **** 
+ 450              		.loc 1 117 3 is_stmt 1 view .LVU112
+ 117:src/CAN.c     **** 
+ 451              		.loc 1 117 32 is_stmt 0 view .LVU113
+ 452 004e 1362     		str	r3, [r2, #32]
+ 120:src/CAN.c     ****   fdcan2TxHeader.IdType = FDCAN_STANDARD_ID;
+ 453              		.loc 1 120 3 is_stmt 1 view .LVU114
+ 120:src/CAN.c     ****   fdcan2TxHeader.IdType = FDCAN_STANDARD_ID;
+ 454              		.loc 1 120 29 is_stmt 0 view .LVU115
+ 455 0050 0D4A     		ldr	r2, .L44+12
+ 456 0052 0E4D     		ldr	r5, .L44+16
+ 457 0054 2D88     		ldrh	r5, [r5]
+ 458 0056 1560     		str	r5, [r2]
+ 121:src/CAN.c     ****   fdcan2TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+ 459              		.loc 1 121 3 is_stmt 1 view .LVU116
+ 121:src/CAN.c     ****   fdcan2TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+ 460              		.loc 1 121 25 is_stmt 0 view .LVU117
+ 461 0058 5360     		str	r3, [r2, #4]
+ 122:src/CAN.c     ****   fdcan2TxHeader.DataLength = FDCAN_DLC_BYTES_32;
+ 462              		.loc 1 122 3 is_stmt 1 view .LVU118
+ 122:src/CAN.c     ****   fdcan2TxHeader.DataLength = FDCAN_DLC_BYTES_32;
+ 463              		.loc 1 122 30 is_stmt 0 view .LVU119
+ 464 005a 9360     		str	r3, [r2, #8]
+ 123:src/CAN.c     ****   fdcan2TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+ 465              		.loc 1 123 3 is_stmt 1 view .LVU120
+ 123:src/CAN.c     ****   fdcan2TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+ 466              		.loc 1 123 29 is_stmt 0 view .LVU121
+ 467 005c D460     		str	r4, [r2, #12]
+ 124:src/CAN.c     ****   fdcan2TxHeader.BitRateSwitch = FDCAN_BRS_ON;
+ 468              		.loc 1 124 3 is_stmt 1 view .LVU122
+ 124:src/CAN.c     ****   fdcan2TxHeader.BitRateSwitch = FDCAN_BRS_ON;
+ 469              		.loc 1 124 38 is_stmt 0 view .LVU123
+ 470 005e 1361     		str	r3, [r2, #16]
+ 125:src/CAN.c     ****   fdcan2TxHeader.FDFormat = FDCAN_FD_CAN;
+ 471              		.loc 1 125 3 is_stmt 1 view .LVU124
+ 125:src/CAN.c     ****   fdcan2TxHeader.FDFormat = FDCAN_FD_CAN;
+ 472              		.loc 1 125 32 is_stmt 0 view .LVU125
+ 473 0060 5061     		str	r0, [r2, #20]
+ 126:src/CAN.c     ****   fdcan2TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+ 474              		.loc 1 126 3 is_stmt 1 view .LVU126
+ 126:src/CAN.c     ****   fdcan2TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+ 475              		.loc 1 126 27 is_stmt 0 view .LVU127
+ARM GAS  /tmp/cc69WLJP.s 			page 20
+
+
+ 476 0062 9161     		str	r1, [r2, #24]
+ 127:src/CAN.c     ****   fdcan2TxHeader.MessageMarker = 0;
+ 477              		.loc 1 127 3 is_stmt 1 view .LVU128
+ 127:src/CAN.c     ****   fdcan2TxHeader.MessageMarker = 0;
+ 478              		.loc 1 127 37 is_stmt 0 view .LVU129
+ 479 0064 D361     		str	r3, [r2, #28]
+ 128:src/CAN.c     **** }
+ 480              		.loc 1 128 3 is_stmt 1 view .LVU130
+ 128:src/CAN.c     **** }
+ 481              		.loc 1 128 32 is_stmt 0 view .LVU131
+ 482 0066 1362     		str	r3, [r2, #32]
+ 129:src/CAN.c     **** 
+ 483              		.loc 1 129 1 view .LVU132
+ 484 0068 38BD     		pop	{r3, r4, r5, pc}
+ 485              	.L40:
+  87:src/CAN.c     ****   }
+ 486              		.loc 1 87 4 is_stmt 1 view .LVU133
+ 487 006a FFF7FEFF 		bl	Error_Handler
+ 488              	.LVL25:
+ 489              	.L41:
+  92:src/CAN.c     ****   }
+ 490              		.loc 1 92 4 view .LVU134
+ 491 006e FFF7FEFF 		bl	Error_Handler
+ 492              	.LVL26:
+ 493              	.L42:
+  98:src/CAN.c     ****   }
+ 494              		.loc 1 98 5 view .LVU135
+ 495 0072 FFF7FEFF 		bl	Error_Handler
+ 496              	.LVL27:
+ 497              	.L43:
+ 104:src/CAN.c     ****   }
+ 498              		.loc 1 104 5 view .LVU136
+ 499 0076 FFF7FEFF 		bl	Error_Handler
+ 500              	.LVL28:
+ 501              	.L45:
+ 502 007a 00BF     		.align	2
+ 503              	.L44:
+ 504 007c 00000000 		.word	hfdcan1
+ 505 0080 00000000 		.word	hfdcan2
+ 506 0084 00000000 		.word	fdcan1TxHeader
+ 507 0088 00000000 		.word	fdcan2TxHeader
+ 508 008c 00000000 		.word	device_can_id
+ 509              		.cfi_endproc
+ 510              	.LFE137:
+ 512              		.section	.text.SystemClock_Config,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	SystemClock_Config
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 519              	SystemClock_Config:
+ 520              	.LFB138:
+ 138:src/CAN.c     ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 521              		.loc 1 138 1 view -0
+ 522              		.cfi_startproc
+ 523              		@ args = 0, pretend = 0, frame = 80
+ 524              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc69WLJP.s 			page 21
+
+
+ 525 0000 10B5     		push	{r4, lr}
+ 526              	.LCFI7:
+ 527              		.cfi_def_cfa_offset 8
+ 528              		.cfi_offset 4, -8
+ 529              		.cfi_offset 14, -4
+ 530 0002 94B0     		sub	sp, sp, #80
+ 531              	.LCFI8:
+ 532              		.cfi_def_cfa_offset 88
+ 139:src/CAN.c     ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 533              		.loc 1 139 3 view .LVU138
+ 139:src/CAN.c     ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 534              		.loc 1 139 22 is_stmt 0 view .LVU139
+ 535 0004 06AC     		add	r4, sp, #24
+ 536 0006 3822     		movs	r2, #56
+ 537 0008 0021     		movs	r1, #0
+ 538 000a 2046     		mov	r0, r4
+ 539 000c FFF7FEFF 		bl	memset
+ 540              	.LVL29:
+ 140:src/CAN.c     **** 
+ 541              		.loc 1 140 3 is_stmt 1 view .LVU140
+ 140:src/CAN.c     **** 
+ 542              		.loc 1 140 22 is_stmt 0 view .LVU141
+ 543 0010 0020     		movs	r0, #0
+ 544 0012 0190     		str	r0, [sp, #4]
+ 545 0014 0290     		str	r0, [sp, #8]
+ 546 0016 0390     		str	r0, [sp, #12]
+ 547 0018 0490     		str	r0, [sp, #16]
+ 548 001a 0590     		str	r0, [sp, #20]
+ 144:src/CAN.c     **** 
+ 549              		.loc 1 144 3 is_stmt 1 view .LVU142
+ 550 001c FFF7FEFF 		bl	HAL_PWREx_ControlVoltageScaling
+ 551              	.LVL30:
+ 149:src/CAN.c     ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 552              		.loc 1 149 3 view .LVU143
+ 149:src/CAN.c     ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 553              		.loc 1 149 36 is_stmt 0 view .LVU144
+ 554 0020 0223     		movs	r3, #2
+ 555 0022 0693     		str	r3, [sp, #24]
+ 150:src/CAN.c     ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 556              		.loc 1 150 3 is_stmt 1 view .LVU145
+ 150:src/CAN.c     ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 557              		.loc 1 150 30 is_stmt 0 view .LVU146
+ 558 0024 4FF48072 		mov	r2, #256
+ 559 0028 0992     		str	r2, [sp, #36]
+ 151:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 560              		.loc 1 151 3 is_stmt 1 view .LVU147
+ 151:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 561              		.loc 1 151 41 is_stmt 0 view .LVU148
+ 562 002a 4022     		movs	r2, #64
+ 563 002c 0A92     		str	r2, [sp, #40]
+ 152:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+ 564              		.loc 1 152 3 is_stmt 1 view .LVU149
+ 152:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+ 565              		.loc 1 152 34 is_stmt 0 view .LVU150
+ 566 002e 0D93     		str	r3, [sp, #52]
+ 153:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV4;
+ 567              		.loc 1 153 3 is_stmt 1 view .LVU151
+ARM GAS  /tmp/cc69WLJP.s 			page 22
+
+
+ 153:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV4;
+ 568              		.loc 1 153 35 is_stmt 0 view .LVU152
+ 569 0030 0E93     		str	r3, [sp, #56]
+ 154:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLN = 85;
+ 570              		.loc 1 154 3 is_stmt 1 view .LVU153
+ 154:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLN = 85;
+ 571              		.loc 1 154 30 is_stmt 0 view .LVU154
+ 572 0032 0422     		movs	r2, #4
+ 573 0034 0F92     		str	r2, [sp, #60]
+ 155:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 574              		.loc 1 155 3 is_stmt 1 view .LVU155
+ 155:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 575              		.loc 1 155 30 is_stmt 0 view .LVU156
+ 576 0036 5522     		movs	r2, #85
+ 577 0038 1092     		str	r2, [sp, #64]
+ 156:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+ 578              		.loc 1 156 3 is_stmt 1 view .LVU157
+ 156:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+ 579              		.loc 1 156 30 is_stmt 0 view .LVU158
+ 580 003a 1193     		str	r3, [sp, #68]
+ 157:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+ 581              		.loc 1 157 3 is_stmt 1 view .LVU159
+ 157:src/CAN.c     ****   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+ 582              		.loc 1 157 30 is_stmt 0 view .LVU160
+ 583 003c 1293     		str	r3, [sp, #72]
+ 158:src/CAN.c     ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 584              		.loc 1 158 3 is_stmt 1 view .LVU161
+ 158:src/CAN.c     ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 585              		.loc 1 158 30 is_stmt 0 view .LVU162
+ 586 003e 1393     		str	r3, [sp, #76]
+ 159:src/CAN.c     ****   {
+ 587              		.loc 1 159 3 is_stmt 1 view .LVU163
+ 159:src/CAN.c     ****   {
+ 588              		.loc 1 159 7 is_stmt 0 view .LVU164
+ 589 0040 2046     		mov	r0, r4
+ 590 0042 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 591              	.LVL31:
+ 159:src/CAN.c     ****   {
+ 592              		.loc 1 159 6 discriminator 1 view .LVU165
+ 593 0046 78B9     		cbnz	r0, .L50
+ 166:src/CAN.c     ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 594              		.loc 1 166 3 is_stmt 1 view .LVU166
+ 166:src/CAN.c     ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 595              		.loc 1 166 31 is_stmt 0 view .LVU167
+ 596 0048 0F23     		movs	r3, #15
+ 597 004a 0193     		str	r3, [sp, #4]
+ 168:src/CAN.c     ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 598              		.loc 1 168 3 is_stmt 1 view .LVU168
+ 168:src/CAN.c     ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 599              		.loc 1 168 34 is_stmt 0 view .LVU169
+ 600 004c 0323     		movs	r3, #3
+ 601 004e 0293     		str	r3, [sp, #8]
+ 169:src/CAN.c     ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 602              		.loc 1 169 3 is_stmt 1 view .LVU170
+ 169:src/CAN.c     ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 603              		.loc 1 169 35 is_stmt 0 view .LVU171
+ 604 0050 0023     		movs	r3, #0
+ARM GAS  /tmp/cc69WLJP.s 			page 23
+
+
+ 605 0052 0393     		str	r3, [sp, #12]
+ 170:src/CAN.c     ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 606              		.loc 1 170 3 is_stmt 1 view .LVU172
+ 170:src/CAN.c     ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 607              		.loc 1 170 36 is_stmt 0 view .LVU173
+ 608 0054 0493     		str	r3, [sp, #16]
+ 171:src/CAN.c     **** 
+ 609              		.loc 1 171 3 is_stmt 1 view .LVU174
+ 171:src/CAN.c     **** 
+ 610              		.loc 1 171 36 is_stmt 0 view .LVU175
+ 611 0056 0593     		str	r3, [sp, #20]
+ 173:src/CAN.c     ****   {
+ 612              		.loc 1 173 3 is_stmt 1 view .LVU176
+ 173:src/CAN.c     ****   {
+ 613              		.loc 1 173 7 is_stmt 0 view .LVU177
+ 614 0058 0421     		movs	r1, #4
+ 615 005a 0DEB0100 		add	r0, sp, r1
+ 616 005e FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 617              	.LVL32:
+ 173:src/CAN.c     ****   {
+ 618              		.loc 1 173 6 discriminator 1 view .LVU178
+ 619 0062 18B9     		cbnz	r0, .L51
+ 177:src/CAN.c     **** 
+ 620              		.loc 1 177 1 view .LVU179
+ 621 0064 14B0     		add	sp, sp, #80
+ 622              	.LCFI9:
+ 623              		.cfi_remember_state
+ 624              		.cfi_def_cfa_offset 8
+ 625              		@ sp needed
+ 626 0066 10BD     		pop	{r4, pc}
+ 627              	.L50:
+ 628              	.LCFI10:
+ 629              		.cfi_restore_state
+ 161:src/CAN.c     ****   }
+ 630              		.loc 1 161 5 is_stmt 1 view .LVU180
+ 631 0068 FFF7FEFF 		bl	Error_Handler
+ 632              	.LVL33:
+ 633              	.L51:
+ 175:src/CAN.c     ****   }
+ 634              		.loc 1 175 5 view .LVU181
+ 635 006c FFF7FEFF 		bl	Error_Handler
+ 636              	.LVL34:
+ 637              		.cfi_endproc
+ 638              	.LFE138:
+ 640              		.section	.text.MX_FDCAN1_Init,"ax",%progbits
+ 641              		.align	1
+ 642              		.global	MX_FDCAN1_Init
+ 643              		.syntax unified
+ 644              		.thumb
+ 645              		.thumb_func
+ 647              	MX_FDCAN1_Init:
+ 648              	.LFB139:
+ 185:src/CAN.c     **** 
+ 649              		.loc 1 185 1 view -0
+ 650              		.cfi_startproc
+ 651              		@ args = 0, pretend = 0, frame = 24
+ 652              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc69WLJP.s 			page 24
+
+
+ 653 0000 30B5     		push	{r4, r5, lr}
+ 654              	.LCFI11:
+ 655              		.cfi_def_cfa_offset 12
+ 656              		.cfi_offset 4, -12
+ 657              		.cfi_offset 5, -8
+ 658              		.cfi_offset 14, -4
+ 659 0002 87B0     		sub	sp, sp, #28
+ 660              	.LCFI12:
+ 661              		.cfi_def_cfa_offset 40
+ 188:src/CAN.c     ****   hfdcan1.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+ 662              		.loc 1 188 3 view .LVU183
+ 188:src/CAN.c     ****   hfdcan1.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+ 663              		.loc 1 188 20 is_stmt 0 view .LVU184
+ 664 0004 1948     		ldr	r0, .L58
+ 665 0006 1A4B     		ldr	r3, .L58+4
+ 666 0008 0360     		str	r3, [r0]
+ 189:src/CAN.c     ****   hfdcan1.Init.FrameFormat = FDCAN_FRAME_FD_BRS;
+ 667              		.loc 1 189 3 is_stmt 1 view .LVU185
+ 189:src/CAN.c     ****   hfdcan1.Init.FrameFormat = FDCAN_FRAME_FD_BRS;
+ 668              		.loc 1 189 29 is_stmt 0 view .LVU186
+ 669 000a 0023     		movs	r3, #0
+ 670 000c 4360     		str	r3, [r0, #4]
+ 190:src/CAN.c     ****   hfdcan1.Init.Mode = FDCAN_MODE_NORMAL;
+ 671              		.loc 1 190 3 is_stmt 1 view .LVU187
+ 190:src/CAN.c     ****   hfdcan1.Init.Mode = FDCAN_MODE_NORMAL;
+ 672              		.loc 1 190 28 is_stmt 0 view .LVU188
+ 673 000e 4FF44072 		mov	r2, #768
+ 674 0012 8260     		str	r2, [r0, #8]
+ 191:src/CAN.c     ****   hfdcan1.Init.AutoRetransmission = DISABLE;
+ 675              		.loc 1 191 3 is_stmt 1 view .LVU189
+ 191:src/CAN.c     ****   hfdcan1.Init.AutoRetransmission = DISABLE;
+ 676              		.loc 1 191 21 is_stmt 0 view .LVU190
+ 677 0014 C360     		str	r3, [r0, #12]
+ 192:src/CAN.c     ****   hfdcan1.Init.TransmitPause = DISABLE;
+ 678              		.loc 1 192 3 is_stmt 1 view .LVU191
+ 192:src/CAN.c     ****   hfdcan1.Init.TransmitPause = DISABLE;
+ 679              		.loc 1 192 35 is_stmt 0 view .LVU192
+ 680 0016 0374     		strb	r3, [r0, #16]
+ 193:src/CAN.c     ****   hfdcan1.Init.ProtocolException = ENABLE;
+ 681              		.loc 1 193 3 is_stmt 1 view .LVU193
+ 193:src/CAN.c     ****   hfdcan1.Init.ProtocolException = ENABLE;
+ 682              		.loc 1 193 30 is_stmt 0 view .LVU194
+ 683 0018 4374     		strb	r3, [r0, #17]
+ 194:src/CAN.c     ****   hfdcan1.Init.NominalPrescaler = 5;
+ 684              		.loc 1 194 3 is_stmt 1 view .LVU195
+ 194:src/CAN.c     ****   hfdcan1.Init.NominalPrescaler = 5;
+ 685              		.loc 1 194 34 is_stmt 0 view .LVU196
+ 686 001a 0122     		movs	r2, #1
+ 687 001c 8274     		strb	r2, [r0, #18]
+ 195:src/CAN.c     ****   hfdcan1.Init.NominalSyncJumpWidth = 11;
+ 688              		.loc 1 195 3 is_stmt 1 view .LVU197
+ 195:src/CAN.c     ****   hfdcan1.Init.NominalSyncJumpWidth = 11;
+ 689              		.loc 1 195 33 is_stmt 0 view .LVU198
+ 690 001e 0521     		movs	r1, #5
+ 691 0020 4161     		str	r1, [r0, #20]
+ 196:src/CAN.c     ****   hfdcan1.Init.NominalTimeSeg1 = 56;
+ 692              		.loc 1 196 3 is_stmt 1 view .LVU199
+ARM GAS  /tmp/cc69WLJP.s 			page 25
+
+
+ 196:src/CAN.c     ****   hfdcan1.Init.NominalTimeSeg1 = 56;
+ 693              		.loc 1 196 37 is_stmt 0 view .LVU200
+ 694 0022 0B24     		movs	r4, #11
+ 695 0024 8461     		str	r4, [r0, #24]
+ 197:src/CAN.c     ****   hfdcan1.Init.NominalTimeSeg2 = 11;
+ 696              		.loc 1 197 3 is_stmt 1 view .LVU201
+ 197:src/CAN.c     ****   hfdcan1.Init.NominalTimeSeg2 = 11;
+ 697              		.loc 1 197 32 is_stmt 0 view .LVU202
+ 698 0026 3825     		movs	r5, #56
+ 699 0028 C561     		str	r5, [r0, #28]
+ 198:src/CAN.c     ****   hfdcan1.Init.DataPrescaler = 5;
+ 700              		.loc 1 198 3 is_stmt 1 view .LVU203
+ 198:src/CAN.c     ****   hfdcan1.Init.DataPrescaler = 5;
+ 701              		.loc 1 198 32 is_stmt 0 view .LVU204
+ 702 002a 0462     		str	r4, [r0, #32]
+ 199:src/CAN.c     ****   hfdcan1.Init.DataSyncJumpWidth = 4;
+ 703              		.loc 1 199 3 is_stmt 1 view .LVU205
+ 199:src/CAN.c     ****   hfdcan1.Init.DataSyncJumpWidth = 4;
+ 704              		.loc 1 199 30 is_stmt 0 view .LVU206
+ 705 002c 4162     		str	r1, [r0, #36]
+ 200:src/CAN.c     ****   hfdcan1.Init.DataTimeSeg1 = 12;
+ 706              		.loc 1 200 3 is_stmt 1 view .LVU207
+ 200:src/CAN.c     ****   hfdcan1.Init.DataTimeSeg1 = 12;
+ 707              		.loc 1 200 34 is_stmt 0 view .LVU208
+ 708 002e 0421     		movs	r1, #4
+ 709 0030 8162     		str	r1, [r0, #40]
+ 201:src/CAN.c     ****   hfdcan1.Init.DataTimeSeg2 = 4;
+ 710              		.loc 1 201 3 is_stmt 1 view .LVU209
+ 201:src/CAN.c     ****   hfdcan1.Init.DataTimeSeg2 = 4;
+ 711              		.loc 1 201 29 is_stmt 0 view .LVU210
+ 712 0032 0C24     		movs	r4, #12
+ 713 0034 C462     		str	r4, [r0, #44]
+ 202:src/CAN.c     ****   hfdcan1.Init.StdFiltersNbr = 1;
+ 714              		.loc 1 202 3 is_stmt 1 view .LVU211
+ 202:src/CAN.c     ****   hfdcan1.Init.StdFiltersNbr = 1;
+ 715              		.loc 1 202 29 is_stmt 0 view .LVU212
+ 716 0036 0163     		str	r1, [r0, #48]
+ 203:src/CAN.c     ****   hfdcan1.Init.ExtFiltersNbr = 0;
+ 717              		.loc 1 203 3 is_stmt 1 view .LVU213
+ 203:src/CAN.c     ****   hfdcan1.Init.ExtFiltersNbr = 0;
+ 718              		.loc 1 203 30 is_stmt 0 view .LVU214
+ 719 0038 4263     		str	r2, [r0, #52]
+ 204:src/CAN.c     ****   hfdcan1.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+ 720              		.loc 1 204 3 is_stmt 1 view .LVU215
+ 204:src/CAN.c     ****   hfdcan1.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+ 721              		.loc 1 204 30 is_stmt 0 view .LVU216
+ 722 003a 8363     		str	r3, [r0, #56]
+ 205:src/CAN.c     ****   if (HAL_FDCAN_Init(&hfdcan1) != HAL_OK)
+ 723              		.loc 1 205 3 is_stmt 1 view .LVU217
+ 205:src/CAN.c     ****   if (HAL_FDCAN_Init(&hfdcan1) != HAL_OK)
+ 724              		.loc 1 205 32 is_stmt 0 view .LVU218
+ 725 003c C363     		str	r3, [r0, #60]
+ 206:src/CAN.c     ****   {
+ 726              		.loc 1 206 3 is_stmt 1 view .LVU219
+ 206:src/CAN.c     ****   {
+ 727              		.loc 1 206 7 is_stmt 0 view .LVU220
+ 728 003e FFF7FEFF 		bl	HAL_FDCAN_Init
+ARM GAS  /tmp/cc69WLJP.s 			page 26
+
+
+ 729              	.LVL35:
+ 206:src/CAN.c     ****   {
+ 730              		.loc 1 206 6 discriminator 1 view .LVU221
+ 731 0042 78B9     		cbnz	r0, .L56
+ 211:src/CAN.c     ****   sFilterConfig.IdType = FDCAN_STANDARD_ID;
+ 732              		.loc 1 211 3 is_stmt 1 view .LVU222
+ 212:src/CAN.c     ****   sFilterConfig.FilterIndex = 0;
+ 733              		.loc 1 212 3 view .LVU223
+ 212:src/CAN.c     ****   sFilterConfig.FilterIndex = 0;
+ 734              		.loc 1 212 24 is_stmt 0 view .LVU224
+ 735 0044 0023     		movs	r3, #0
+ 736 0046 0093     		str	r3, [sp]
+ 213:src/CAN.c     ****   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+ 737              		.loc 1 213 3 is_stmt 1 view .LVU225
+ 213:src/CAN.c     ****   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+ 738              		.loc 1 213 29 is_stmt 0 view .LVU226
+ 739 0048 0193     		str	r3, [sp, #4]
+ 214:src/CAN.c     ****   sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+ 740              		.loc 1 214 3 is_stmt 1 view .LVU227
+ 214:src/CAN.c     ****   sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+ 741              		.loc 1 214 28 is_stmt 0 view .LVU228
+ 742 004a 0223     		movs	r3, #2
+ 743 004c 0293     		str	r3, [sp, #8]
+ 215:src/CAN.c     ****   sFilterConfig.FilterID1 = 0x2;
+ 744              		.loc 1 215 3 is_stmt 1 view .LVU229
+ 215:src/CAN.c     ****   sFilterConfig.FilterID1 = 0x2;
+ 745              		.loc 1 215 30 is_stmt 0 view .LVU230
+ 746 004e 0122     		movs	r2, #1
+ 747 0050 0392     		str	r2, [sp, #12]
+ 216:src/CAN.c     ****   sFilterConfig.FilterID2 = 0x2;
+ 748              		.loc 1 216 3 is_stmt 1 view .LVU231
+ 216:src/CAN.c     ****   sFilterConfig.FilterID2 = 0x2;
+ 749              		.loc 1 216 27 is_stmt 0 view .LVU232
+ 750 0052 0493     		str	r3, [sp, #16]
+ 217:src/CAN.c     ****   //sFilterConfig.RxBufferIndex = 0;
+ 751              		.loc 1 217 3 is_stmt 1 view .LVU233
+ 217:src/CAN.c     ****   //sFilterConfig.RxBufferIndex = 0;
+ 752              		.loc 1 217 27 is_stmt 0 view .LVU234
+ 753 0054 0593     		str	r3, [sp, #20]
+ 219:src/CAN.c     ****     /* Filter configuration Error */
+ 754              		.loc 1 219 3 is_stmt 1 view .LVU235
+ 219:src/CAN.c     ****     /* Filter configuration Error */
+ 755              		.loc 1 219 7 is_stmt 0 view .LVU236
+ 756 0056 6946     		mov	r1, sp
+ 757 0058 0448     		ldr	r0, .L58
+ 758 005a FFF7FEFF 		bl	HAL_FDCAN_ConfigFilter
+ 759              	.LVL36:
+ 219:src/CAN.c     ****     /* Filter configuration Error */
+ 760              		.loc 1 219 6 discriminator 1 view .LVU237
+ 761 005e 18B9     		cbnz	r0, .L57
+ 224:src/CAN.c     **** 
+ 762              		.loc 1 224 1 view .LVU238
+ 763 0060 07B0     		add	sp, sp, #28
+ 764              	.LCFI13:
+ 765              		.cfi_remember_state
+ 766              		.cfi_def_cfa_offset 12
+ 767              		@ sp needed
+ARM GAS  /tmp/cc69WLJP.s 			page 27
+
+
+ 768 0062 30BD     		pop	{r4, r5, pc}
+ 769              	.L56:
+ 770              	.LCFI14:
+ 771              		.cfi_restore_state
+ 208:src/CAN.c     ****   }
+ 772              		.loc 1 208 5 is_stmt 1 view .LVU239
+ 773 0064 FFF7FEFF 		bl	Error_Handler
+ 774              	.LVL37:
+ 775              	.L57:
+ 221:src/CAN.c     ****   }
+ 776              		.loc 1 221 5 view .LVU240
+ 777 0068 FFF7FEFF 		bl	Error_Handler
+ 778              	.LVL38:
+ 779              	.L59:
+ 780              		.align	2
+ 781              	.L58:
+ 782 006c 00000000 		.word	hfdcan1
+ 783 0070 00640040 		.word	1073767424
+ 784              		.cfi_endproc
+ 785              	.LFE139:
+ 787              		.section	.text.MX_FDCAN2_Init,"ax",%progbits
+ 788              		.align	1
+ 789              		.global	MX_FDCAN2_Init
+ 790              		.syntax unified
+ 791              		.thumb
+ 792              		.thumb_func
+ 794              	MX_FDCAN2_Init:
+ 795              	.LFB140:
+ 232:src/CAN.c     **** 
+ 796              		.loc 1 232 1 view -0
+ 797              		.cfi_startproc
+ 798              		@ args = 0, pretend = 0, frame = 24
+ 799              		@ frame_needed = 0, uses_anonymous_args = 0
+ 800 0000 30B5     		push	{r4, r5, lr}
+ 801              	.LCFI15:
+ 802              		.cfi_def_cfa_offset 12
+ 803              		.cfi_offset 4, -12
+ 804              		.cfi_offset 5, -8
+ 805              		.cfi_offset 14, -4
+ 806 0002 87B0     		sub	sp, sp, #28
+ 807              	.LCFI16:
+ 808              		.cfi_def_cfa_offset 40
+ 236:src/CAN.c     ****   hfdcan2.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+ 809              		.loc 1 236 3 view .LVU242
+ 236:src/CAN.c     ****   hfdcan2.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+ 810              		.loc 1 236 20 is_stmt 0 view .LVU243
+ 811 0004 1948     		ldr	r0, .L66
+ 812 0006 1A4B     		ldr	r3, .L66+4
+ 813 0008 0360     		str	r3, [r0]
+ 237:src/CAN.c     ****   hfdcan2.Init.FrameFormat = FDCAN_FRAME_FD_BRS;
+ 814              		.loc 1 237 3 is_stmt 1 view .LVU244
+ 237:src/CAN.c     ****   hfdcan2.Init.FrameFormat = FDCAN_FRAME_FD_BRS;
+ 815              		.loc 1 237 29 is_stmt 0 view .LVU245
+ 816 000a 0023     		movs	r3, #0
+ 817 000c 4360     		str	r3, [r0, #4]
+ 238:src/CAN.c     ****   hfdcan2.Init.Mode = FDCAN_MODE_NORMAL;
+ 818              		.loc 1 238 3 is_stmt 1 view .LVU246
+ARM GAS  /tmp/cc69WLJP.s 			page 28
+
+
+ 238:src/CAN.c     ****   hfdcan2.Init.Mode = FDCAN_MODE_NORMAL;
+ 819              		.loc 1 238 28 is_stmt 0 view .LVU247
+ 820 000e 4FF44072 		mov	r2, #768
+ 821 0012 8260     		str	r2, [r0, #8]
+ 239:src/CAN.c     ****   hfdcan2.Init.AutoRetransmission = DISABLE;
+ 822              		.loc 1 239 3 is_stmt 1 view .LVU248
+ 239:src/CAN.c     ****   hfdcan2.Init.AutoRetransmission = DISABLE;
+ 823              		.loc 1 239 21 is_stmt 0 view .LVU249
+ 824 0014 C360     		str	r3, [r0, #12]
+ 240:src/CAN.c     ****   hfdcan2.Init.TransmitPause = DISABLE;
+ 825              		.loc 1 240 3 is_stmt 1 view .LVU250
+ 240:src/CAN.c     ****   hfdcan2.Init.TransmitPause = DISABLE;
+ 826              		.loc 1 240 35 is_stmt 0 view .LVU251
+ 827 0016 0374     		strb	r3, [r0, #16]
+ 241:src/CAN.c     ****   hfdcan2.Init.ProtocolException = ENABLE;
+ 828              		.loc 1 241 3 is_stmt 1 view .LVU252
+ 241:src/CAN.c     ****   hfdcan2.Init.ProtocolException = ENABLE;
+ 829              		.loc 1 241 30 is_stmt 0 view .LVU253
+ 830 0018 4374     		strb	r3, [r0, #17]
+ 242:src/CAN.c     ****   hfdcan2.Init.NominalPrescaler = 5;
+ 831              		.loc 1 242 3 is_stmt 1 view .LVU254
+ 242:src/CAN.c     ****   hfdcan2.Init.NominalPrescaler = 5;
+ 832              		.loc 1 242 34 is_stmt 0 view .LVU255
+ 833 001a 0122     		movs	r2, #1
+ 834 001c 8274     		strb	r2, [r0, #18]
+ 243:src/CAN.c     ****   hfdcan2.Init.NominalSyncJumpWidth = 11;
+ 835              		.loc 1 243 3 is_stmt 1 view .LVU256
+ 243:src/CAN.c     ****   hfdcan2.Init.NominalSyncJumpWidth = 11;
+ 836              		.loc 1 243 33 is_stmt 0 view .LVU257
+ 837 001e 0521     		movs	r1, #5
+ 838 0020 4161     		str	r1, [r0, #20]
+ 244:src/CAN.c     ****   hfdcan2.Init.NominalTimeSeg1 = 56;
+ 839              		.loc 1 244 3 is_stmt 1 view .LVU258
+ 244:src/CAN.c     ****   hfdcan2.Init.NominalTimeSeg1 = 56;
+ 840              		.loc 1 244 37 is_stmt 0 view .LVU259
+ 841 0022 0B24     		movs	r4, #11
+ 842 0024 8461     		str	r4, [r0, #24]
+ 245:src/CAN.c     ****   hfdcan2.Init.NominalTimeSeg2 = 11;
+ 843              		.loc 1 245 3 is_stmt 1 view .LVU260
+ 245:src/CAN.c     ****   hfdcan2.Init.NominalTimeSeg2 = 11;
+ 844              		.loc 1 245 32 is_stmt 0 view .LVU261
+ 845 0026 3825     		movs	r5, #56
+ 846 0028 C561     		str	r5, [r0, #28]
+ 246:src/CAN.c     ****   hfdcan2.Init.DataPrescaler = 5;
+ 847              		.loc 1 246 3 is_stmt 1 view .LVU262
+ 246:src/CAN.c     ****   hfdcan2.Init.DataPrescaler = 5;
+ 848              		.loc 1 246 32 is_stmt 0 view .LVU263
+ 849 002a 0462     		str	r4, [r0, #32]
+ 247:src/CAN.c     ****   hfdcan2.Init.DataSyncJumpWidth = 4;
+ 850              		.loc 1 247 3 is_stmt 1 view .LVU264
+ 247:src/CAN.c     ****   hfdcan2.Init.DataSyncJumpWidth = 4;
+ 851              		.loc 1 247 30 is_stmt 0 view .LVU265
+ 852 002c 4162     		str	r1, [r0, #36]
+ 248:src/CAN.c     ****   hfdcan2.Init.DataTimeSeg1 = 12;
+ 853              		.loc 1 248 3 is_stmt 1 view .LVU266
+ 248:src/CAN.c     ****   hfdcan2.Init.DataTimeSeg1 = 12;
+ 854              		.loc 1 248 34 is_stmt 0 view .LVU267
+ARM GAS  /tmp/cc69WLJP.s 			page 29
+
+
+ 855 002e 0421     		movs	r1, #4
+ 856 0030 8162     		str	r1, [r0, #40]
+ 249:src/CAN.c     ****   hfdcan2.Init.DataTimeSeg2 = 4;
+ 857              		.loc 1 249 3 is_stmt 1 view .LVU268
+ 249:src/CAN.c     ****   hfdcan2.Init.DataTimeSeg2 = 4;
+ 858              		.loc 1 249 29 is_stmt 0 view .LVU269
+ 859 0032 0C24     		movs	r4, #12
+ 860 0034 C462     		str	r4, [r0, #44]
+ 250:src/CAN.c     ****   hfdcan2.Init.StdFiltersNbr = 1;
+ 861              		.loc 1 250 3 is_stmt 1 view .LVU270
+ 250:src/CAN.c     ****   hfdcan2.Init.StdFiltersNbr = 1;
+ 862              		.loc 1 250 29 is_stmt 0 view .LVU271
+ 863 0036 0163     		str	r1, [r0, #48]
+ 251:src/CAN.c     ****   hfdcan2.Init.ExtFiltersNbr = 0;
+ 864              		.loc 1 251 3 is_stmt 1 view .LVU272
+ 251:src/CAN.c     ****   hfdcan2.Init.ExtFiltersNbr = 0;
+ 865              		.loc 1 251 30 is_stmt 0 view .LVU273
+ 866 0038 4263     		str	r2, [r0, #52]
+ 252:src/CAN.c     ****   hfdcan2.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+ 867              		.loc 1 252 3 is_stmt 1 view .LVU274
+ 252:src/CAN.c     ****   hfdcan2.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+ 868              		.loc 1 252 30 is_stmt 0 view .LVU275
+ 869 003a 8363     		str	r3, [r0, #56]
+ 253:src/CAN.c     ****   if (HAL_FDCAN_Init(&hfdcan2) != HAL_OK)
+ 870              		.loc 1 253 3 is_stmt 1 view .LVU276
+ 253:src/CAN.c     ****   if (HAL_FDCAN_Init(&hfdcan2) != HAL_OK)
+ 871              		.loc 1 253 32 is_stmt 0 view .LVU277
+ 872 003c C363     		str	r3, [r0, #60]
+ 254:src/CAN.c     ****   {
+ 873              		.loc 1 254 3 is_stmt 1 view .LVU278
+ 254:src/CAN.c     ****   {
+ 874              		.loc 1 254 7 is_stmt 0 view .LVU279
+ 875 003e FFF7FEFF 		bl	HAL_FDCAN_Init
+ 876              	.LVL39:
+ 254:src/CAN.c     ****   {
+ 877              		.loc 1 254 6 discriminator 1 view .LVU280
+ 878 0042 78B9     		cbnz	r0, .L64
+ 260:src/CAN.c     ****   sFilterConfig.IdType = FDCAN_STANDARD_ID;
+ 879              		.loc 1 260 3 is_stmt 1 view .LVU281
+ 261:src/CAN.c     ****   sFilterConfig.FilterIndex = 0;
+ 880              		.loc 1 261 3 view .LVU282
+ 261:src/CAN.c     ****   sFilterConfig.FilterIndex = 0;
+ 881              		.loc 1 261 24 is_stmt 0 view .LVU283
+ 882 0044 0023     		movs	r3, #0
+ 883 0046 0093     		str	r3, [sp]
+ 262:src/CAN.c     ****   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+ 884              		.loc 1 262 3 is_stmt 1 view .LVU284
+ 262:src/CAN.c     ****   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+ 885              		.loc 1 262 29 is_stmt 0 view .LVU285
+ 886 0048 0193     		str	r3, [sp, #4]
+ 263:src/CAN.c     ****   sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO1;
+ 887              		.loc 1 263 3 is_stmt 1 view .LVU286
+ 263:src/CAN.c     ****   sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO1;
+ 888              		.loc 1 263 28 is_stmt 0 view .LVU287
+ 889 004a 0223     		movs	r3, #2
+ 890 004c 0293     		str	r3, [sp, #8]
+ 264:src/CAN.c     ****   sFilterConfig.FilterID1 = 0x1;
+ARM GAS  /tmp/cc69WLJP.s 			page 30
+
+
+ 891              		.loc 1 264 3 is_stmt 1 view .LVU288
+ 264:src/CAN.c     ****   sFilterConfig.FilterID1 = 0x1;
+ 892              		.loc 1 264 30 is_stmt 0 view .LVU289
+ 893 004e 0393     		str	r3, [sp, #12]
+ 265:src/CAN.c     ****   sFilterConfig.FilterID2 = 0x1;
+ 894              		.loc 1 265 3 is_stmt 1 view .LVU290
+ 265:src/CAN.c     ****   sFilterConfig.FilterID2 = 0x1;
+ 895              		.loc 1 265 27 is_stmt 0 view .LVU291
+ 896 0050 0123     		movs	r3, #1
+ 897 0052 0493     		str	r3, [sp, #16]
+ 266:src/CAN.c     ****   //sFilterConfig.RxBufferIndex = 0;
+ 898              		.loc 1 266 3 is_stmt 1 view .LVU292
+ 266:src/CAN.c     ****   //sFilterConfig.RxBufferIndex = 0;
+ 899              		.loc 1 266 27 is_stmt 0 view .LVU293
+ 900 0054 0593     		str	r3, [sp, #20]
+ 268:src/CAN.c     ****     /* Filter configuration Error */
+ 901              		.loc 1 268 3 is_stmt 1 view .LVU294
+ 268:src/CAN.c     ****     /* Filter configuration Error */
+ 902              		.loc 1 268 7 is_stmt 0 view .LVU295
+ 903 0056 6946     		mov	r1, sp
+ 904 0058 0448     		ldr	r0, .L66
+ 905 005a FFF7FEFF 		bl	HAL_FDCAN_ConfigFilter
+ 906              	.LVL40:
+ 268:src/CAN.c     ****     /* Filter configuration Error */
+ 907              		.loc 1 268 6 discriminator 1 view .LVU296
+ 908 005e 18B9     		cbnz	r0, .L65
+ 273:src/CAN.c     **** 
+ 909              		.loc 1 273 1 view .LVU297
+ 910 0060 07B0     		add	sp, sp, #28
+ 911              	.LCFI17:
+ 912              		.cfi_remember_state
+ 913              		.cfi_def_cfa_offset 12
+ 914              		@ sp needed
+ 915 0062 30BD     		pop	{r4, r5, pc}
+ 916              	.L64:
+ 917              	.LCFI18:
+ 918              		.cfi_restore_state
+ 256:src/CAN.c     ****   }
+ 919              		.loc 1 256 5 is_stmt 1 view .LVU298
+ 920 0064 FFF7FEFF 		bl	Error_Handler
+ 921              	.LVL41:
+ 922              	.L65:
+ 270:src/CAN.c     ****   }
+ 923              		.loc 1 270 5 view .LVU299
+ 924 0068 FFF7FEFF 		bl	Error_Handler
+ 925              	.LVL42:
+ 926              	.L67:
+ 927              		.align	2
+ 928              	.L66:
+ 929 006c 00000000 		.word	hfdcan2
+ 930 0070 00680040 		.word	1073768448
+ 931              		.cfi_endproc
+ 932              	.LFE140:
+ 934              		.global	dataLen
+ 935              		.section	.data.dataLen,"aw"
+ 936              		.align	2
+ 939              	dataLen:
+ARM GAS  /tmp/cc69WLJP.s 			page 31
+
+
+ 940 0000 20000000 		.word	32
+ 941              		.global	fdcan2RxData
+ 942              		.section	.bss.fdcan2RxData,"aw",%nobits
+ 943              		.align	2
+ 946              	fdcan2RxData:
+ 947 0000 00000000 		.space	64
+ 947      00000000 
+ 947      00000000 
+ 947      00000000 
+ 947      00000000 
+ 948              		.global	fdcan2TxData
+ 949              		.section	.bss.fdcan2TxData,"aw",%nobits
+ 950              		.align	2
+ 953              	fdcan2TxData:
+ 954 0000 00000000 		.space	64
+ 954      00000000 
+ 954      00000000 
+ 954      00000000 
+ 954      00000000 
+ 955              		.global	fdcan2RxHeader
+ 956              		.section	.bss.fdcan2RxHeader,"aw",%nobits
+ 957              		.align	2
+ 960              	fdcan2RxHeader:
+ 961 0000 00000000 		.space	40
+ 961      00000000 
+ 961      00000000 
+ 961      00000000 
+ 961      00000000 
+ 962              		.global	fdcan2TxHeader
+ 963              		.section	.bss.fdcan2TxHeader,"aw",%nobits
+ 964              		.align	2
+ 967              	fdcan2TxHeader:
+ 968 0000 00000000 		.space	36
+ 968      00000000 
+ 968      00000000 
+ 968      00000000 
+ 968      00000000 
+ 969              		.global	fdcan1RxData
+ 970              		.section	.bss.fdcan1RxData,"aw",%nobits
+ 971              		.align	2
+ 974              	fdcan1RxData:
+ 975 0000 00000000 		.space	64
+ 975      00000000 
+ 975      00000000 
+ 975      00000000 
+ 975      00000000 
+ 976              		.global	fdcan1TxData
+ 977              		.section	.bss.fdcan1TxData,"aw",%nobits
+ 978              		.align	2
+ 981              	fdcan1TxData:
+ 982 0000 00000000 		.space	64
+ 982      00000000 
+ 982      00000000 
+ 982      00000000 
+ 982      00000000 
+ 983              		.global	fdcan1RxHeader
+ 984              		.section	.bss.fdcan1RxHeader,"aw",%nobits
+ARM GAS  /tmp/cc69WLJP.s 			page 32
+
+
+ 985              		.align	2
+ 988              	fdcan1RxHeader:
+ 989 0000 00000000 		.space	40
+ 989      00000000 
+ 989      00000000 
+ 989      00000000 
+ 989      00000000 
+ 990              		.global	fdcan1TxHeader
+ 991              		.section	.bss.fdcan1TxHeader,"aw",%nobits
+ 992              		.align	2
+ 995              	fdcan1TxHeader:
+ 996 0000 00000000 		.space	36
+ 996      00000000 
+ 996      00000000 
+ 996      00000000 
+ 996      00000000 
+ 997              		.global	hfdcan2
+ 998              		.section	.bss.hfdcan2,"aw",%nobits
+ 999              		.align	2
+ 1002              	hfdcan2:
+ 1003 0000 00000000 		.space	100
+ 1003      00000000 
+ 1003      00000000 
+ 1003      00000000 
+ 1003      00000000 
+ 1004              		.global	hfdcan1
+ 1005              		.section	.bss.hfdcan1,"aw",%nobits
+ 1006              		.align	2
+ 1009              	hfdcan1:
+ 1010 0000 00000000 		.space	100
+ 1010      00000000 
+ 1010      00000000 
+ 1010      00000000 
+ 1010      00000000 
+ 1011              		.global	device_can_id
+ 1012              		.section	.data.device_can_id,"aw"
+ 1013              		.align	1
+ 1016              	device_can_id:
+ 1017 0000 2301     		.short	291
+ 1018              		.text
+ 1019              	.Letext0:
+ 1020              		.file 3 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 1021              		.file 4 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 1022              		.file 5 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 1023              		.file 6 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h"
+ 1024              		.file 7 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 1025              		.file 8 "platform/HAL/inc/stm32g4xx_hal_rcc.h"
+ 1026              		.file 9 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
+ 1027              		.file 10 "platform/HAL/inc/stm32g4xx_hal_fdcan.h"
+ 1028              		.file 11 "platform/HAL/inc/stm32g4xx_hal.h"
+ 1029              		.file 12 "platform/HAL/inc/stm32g4xx_hal_cortex.h"
+ 1030              		.file 13 "platform/HAL/inc/stm32g4xx_hal_pwr_ex.h"
+ 1031              		.file 14 "<built-in>"
+ARM GAS  /tmp/cc69WLJP.s 			page 33
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 CAN.c
+     /tmp/cc69WLJP.s:21     .text.MX_GPIO_Init:00000000 $t
+     /tmp/cc69WLJP.s:27     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+     /tmp/cc69WLJP.s:172    .text.MX_GPIO_Init:000000a8 $d
+     /tmp/cc69WLJP.s:178    .rodata.Error_Handler.str1.4:00000000 $d
+     /tmp/cc69WLJP.s:182    .text.Error_Handler:00000000 $t
+     /tmp/cc69WLJP.s:188    .text.Error_Handler:00000000 Error_Handler
+     /tmp/cc69WLJP.s:230    .text.Error_Handler:00000014 $d
+     /tmp/cc69WLJP.s:235    .text.HAL_FDCAN_RxFifo0Callback:00000000 $t
+     /tmp/cc69WLJP.s:241    .text.HAL_FDCAN_RxFifo0Callback:00000000 HAL_FDCAN_RxFifo0Callback
+     /tmp/cc69WLJP.s:295    .text.HAL_FDCAN_RxFifo0Callback:00000030 $d
+     /tmp/cc69WLJP.s:974    .bss.fdcan1RxData:00000000 fdcan1RxData
+     /tmp/cc69WLJP.s:988    .bss.fdcan1RxHeader:00000000 fdcan1RxHeader
+     /tmp/cc69WLJP.s:301    .text.HAL_FDCAN_RxFifo1Callback:00000000 $t
+     /tmp/cc69WLJP.s:307    .text.HAL_FDCAN_RxFifo1Callback:00000000 HAL_FDCAN_RxFifo1Callback
+     /tmp/cc69WLJP.s:361    .text.HAL_FDCAN_RxFifo1Callback:00000030 $d
+     /tmp/cc69WLJP.s:946    .bss.fdcan2RxData:00000000 fdcan2RxData
+     /tmp/cc69WLJP.s:960    .bss.fdcan2RxHeader:00000000 fdcan2RxHeader
+     /tmp/cc69WLJP.s:367    .text.FDCAN_Config:00000000 $t
+     /tmp/cc69WLJP.s:373    .text.FDCAN_Config:00000000 FDCAN_Config
+     /tmp/cc69WLJP.s:504    .text.FDCAN_Config:0000007c $d
+     /tmp/cc69WLJP.s:1009   .bss.hfdcan1:00000000 hfdcan1
+     /tmp/cc69WLJP.s:1002   .bss.hfdcan2:00000000 hfdcan2
+     /tmp/cc69WLJP.s:995    .bss.fdcan1TxHeader:00000000 fdcan1TxHeader
+     /tmp/cc69WLJP.s:967    .bss.fdcan2TxHeader:00000000 fdcan2TxHeader
+     /tmp/cc69WLJP.s:1016   .data.device_can_id:00000000 device_can_id
+     /tmp/cc69WLJP.s:513    .text.SystemClock_Config:00000000 $t
+     /tmp/cc69WLJP.s:519    .text.SystemClock_Config:00000000 SystemClock_Config
+     /tmp/cc69WLJP.s:641    .text.MX_FDCAN1_Init:00000000 $t
+     /tmp/cc69WLJP.s:647    .text.MX_FDCAN1_Init:00000000 MX_FDCAN1_Init
+     /tmp/cc69WLJP.s:782    .text.MX_FDCAN1_Init:0000006c $d
+     /tmp/cc69WLJP.s:788    .text.MX_FDCAN2_Init:00000000 $t
+     /tmp/cc69WLJP.s:794    .text.MX_FDCAN2_Init:00000000 MX_FDCAN2_Init
+     /tmp/cc69WLJP.s:929    .text.MX_FDCAN2_Init:0000006c $d
+     /tmp/cc69WLJP.s:939    .data.dataLen:00000000 dataLen
+     /tmp/cc69WLJP.s:936    .data.dataLen:00000000 $d
+     /tmp/cc69WLJP.s:943    .bss.fdcan2RxData:00000000 $d
+     /tmp/cc69WLJP.s:953    .bss.fdcan2TxData:00000000 fdcan2TxData
+     /tmp/cc69WLJP.s:950    .bss.fdcan2TxData:00000000 $d
+     /tmp/cc69WLJP.s:957    .bss.fdcan2RxHeader:00000000 $d
+     /tmp/cc69WLJP.s:964    .bss.fdcan2TxHeader:00000000 $d
+     /tmp/cc69WLJP.s:971    .bss.fdcan1RxData:00000000 $d
+     /tmp/cc69WLJP.s:981    .bss.fdcan1TxData:00000000 fdcan1TxData
+     /tmp/cc69WLJP.s:978    .bss.fdcan1TxData:00000000 $d
+     /tmp/cc69WLJP.s:985    .bss.fdcan1RxHeader:00000000 $d
+     /tmp/cc69WLJP.s:992    .bss.fdcan1TxHeader:00000000 $d
+     /tmp/cc69WLJP.s:999    .bss.hfdcan2:00000000 $d
+     /tmp/cc69WLJP.s:1006   .bss.hfdcan1:00000000 $d
+     /tmp/cc69WLJP.s:1013   .data.device_can_id:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+puts
+ARM GAS  /tmp/cc69WLJP.s 			page 34
+
+
+HAL_Delay
+HAL_FDCAN_GetRxMessage
+HAL_FDCAN_ActivateNotification
+HAL_FDCAN_Start
+memset
+HAL_PWREx_ControlVoltageScaling
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_FDCAN_Init
+HAL_FDCAN_ConfigFilter

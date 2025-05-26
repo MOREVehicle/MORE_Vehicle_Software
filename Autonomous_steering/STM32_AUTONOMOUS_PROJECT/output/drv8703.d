@@ -1,14 +1,13 @@
-output/main.o: src/main.c \
- platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h \
- platform/CMSIS/Include/core_cm4.h platform/CMSIS/Include/cmsis_version.h \
- platform/CMSIS/Include/cmsis_compiler.h \
- platform/CMSIS/Include/cmsis_gcc.h platform/CMSIS/Include/mpu_armv7.h \
- platform/CMSIS/Device/ST/STM32G4xx/Include/system_stm32g4xx.h \
+output/drv8703.o: src/drv8703.c inc/drv8703.h \
  platform/HAL/inc/stm32g4xx_hal.h platform/HAL/stm32g4xx_hal_conf.h \
  platform/HAL/inc/stm32g4xx_hal_rcc.h \
  platform/HAL/inc/stm32g4xx_hal_def.h \
  platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h \
  platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h \
+ platform/CMSIS/Include/core_cm4.h platform/CMSIS/Include/cmsis_version.h \
+ platform/CMSIS/Include/cmsis_compiler.h \
+ platform/CMSIS/Include/cmsis_gcc.h platform/CMSIS/Include/mpu_armv7.h \
+ platform/CMSIS/Device/ST/STM32G4xx/Include/system_stm32g4xx.h \
  platform/HAL/inc/Legacy/stm32_hal_legacy.h \
  platform/HAL/inc/stm32g4xx_hal_rcc_ex.h \
  platform/HAL/inc/stm32g4xx_hal_gpio.h \
@@ -26,6 +25,12 @@ output/main.o: src/main.c \
  platform/HAL/inc/stm32g4xx_hal_spi_ex.h \
  platform/HAL/inc/stm32g4xx_hal_uart.h \
  platform/HAL/inc/stm32g4xx_hal_uart_ex.h
+inc/drv8703.h:
+platform/HAL/inc/stm32g4xx_hal.h:
+platform/HAL/stm32g4xx_hal_conf.h:
+platform/HAL/inc/stm32g4xx_hal_rcc.h:
+platform/HAL/inc/stm32g4xx_hal_def.h:
+platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h:
 platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h:
 platform/CMSIS/Include/core_cm4.h:
 platform/CMSIS/Include/cmsis_version.h:
@@ -33,12 +38,6 @@ platform/CMSIS/Include/cmsis_compiler.h:
 platform/CMSIS/Include/cmsis_gcc.h:
 platform/CMSIS/Include/mpu_armv7.h:
 platform/CMSIS/Device/ST/STM32G4xx/Include/system_stm32g4xx.h:
-platform/HAL/inc/stm32g4xx_hal.h:
-platform/HAL/stm32g4xx_hal_conf.h:
-platform/HAL/inc/stm32g4xx_hal_rcc.h:
-platform/HAL/inc/stm32g4xx_hal_def.h:
-platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h:
-platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h:
 platform/HAL/inc/Legacy/stm32_hal_legacy.h:
 platform/HAL/inc/stm32g4xx_hal_rcc_ex.h:
 platform/HAL/inc/stm32g4xx_hal_gpio.h:
