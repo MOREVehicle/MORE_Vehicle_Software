@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccI8gsNh.s 			page 1
+ARM GAS  /tmp/ccGo3zr3.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -28,7 +28,7 @@ ARM GAS  /tmp/ccI8gsNh.s 			page 1
   25              		.thumb_func
   27              	HAL_SPIEx_FlushRxFifo:
   28              	.LVL0:
-  29              	.LFB132:
+  29              	.LFB329:
    1:platform/HAL/src/stm32g4xx_hal_spi_ex.c **** /**
    2:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****   ******************************************************************************
    3:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****   * @file    stm32g4xx_hal_spi_ex.c
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccI8gsNh.s 			page 1
   27:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****   * @{
   28:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****   */
   29:platform/HAL/src/stm32g4xx_hal_spi_ex.c **** 
-ARM GAS  /tmp/ccI8gsNh.s 			page 2
+ARM GAS  /tmp/ccGo3zr3.s 			page 2
 
 
   30:platform/HAL/src/stm32g4xx_hal_spi_ex.c **** /** @defgroup SPIEx SPIEx
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccI8gsNh.s 			page 1
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
   81:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****   __IO uint32_t tmpreg;
-ARM GAS  /tmp/ccI8gsNh.s 			page 3
+ARM GAS  /tmp/ccGo3zr3.s 			page 3
 
 
   35              		.loc 1 81 3 view .LVU1
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccI8gsNh.s 			page 1
   80 0024 042B     		cmp	r3, #4
   81 0026 F3D1     		bne	.L12
   89:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****     {
-ARM GAS  /tmp/ccI8gsNh.s 			page 4
+ARM GAS  /tmp/ccGo3zr3.s 			page 4
 
 
   90:platform/HAL/src/stm32g4xx_hal_spi_ex.c ****       return HAL_TIMEOUT;
@@ -219,7 +219,7 @@ ARM GAS  /tmp/ccI8gsNh.s 			page 1
  109              		.loc 1 94 1 view .LVU28
  110 0034 7047     		bx	lr
  111              		.cfi_endproc
- 112              	.LFE132:
+ 112              	.LFE329:
  114              		.text
  115              	.Letext0:
  116              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
@@ -228,12 +228,12 @@ ARM GAS  /tmp/ccI8gsNh.s 			page 1
  119              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
  120              		.file 6 "platform/HAL/inc/stm32g4xx_hal_dma.h"
  121              		.file 7 "platform/HAL/inc/stm32g4xx_hal_spi.h"
-ARM GAS  /tmp/ccI8gsNh.s 			page 5
+ARM GAS  /tmp/ccGo3zr3.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32g4xx_hal_spi_ex.c
-     /tmp/ccI8gsNh.s:21     .text.HAL_SPIEx_FlushRxFifo:00000000 $t
-     /tmp/ccI8gsNh.s:27     .text.HAL_SPIEx_FlushRxFifo:00000000 HAL_SPIEx_FlushRxFifo
+     /tmp/ccGo3zr3.s:21     .text.HAL_SPIEx_FlushRxFifo:00000000 $t
+     /tmp/ccGo3zr3.s:27     .text.HAL_SPIEx_FlushRxFifo:00000000 HAL_SPIEx_FlushRxFifo
 
 NO UNDEFINED SYMBOLS

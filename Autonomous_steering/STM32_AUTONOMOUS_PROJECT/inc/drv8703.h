@@ -13,7 +13,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "stm32g4xx_hal.h"
+#include <stm32g4xx_hal.h>
 
 /**
  * @def Register Map

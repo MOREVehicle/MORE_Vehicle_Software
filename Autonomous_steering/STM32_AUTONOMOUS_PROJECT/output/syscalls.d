@@ -1,1 +1,1 @@
-output/syscalls.o: src/syscalls.c
+output/syscalls.o: platform/HAL/syscalls.c

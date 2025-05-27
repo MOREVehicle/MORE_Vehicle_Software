@@ -14,10 +14,15 @@ output/adc.o: src/adc.c inc/adc.h platform/HAL/inc/stm32g4xx_hal.h \
  platform/HAL/inc/stm32g4xx_hal_dma.h \
  platform/HAL/inc/stm32g4xx_hal_dma_ex.h \
  platform/HAL/inc/stm32g4xx_hal_cortex.h \
+ platform/HAL/inc/stm32g4xx_hal_adc.h platform/HAL/inc/stm32g4xx_hal.h \
+ platform/HAL/inc/stm32g4xx_ll_adc.h \
+ platform/HAL/inc/stm32g4xx_hal_adc_ex.h \
  platform/HAL/inc/stm32g4xx_hal_exti.h \
  platform/HAL/inc/stm32g4xx_hal_flash.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ex.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h \
+ platform/HAL/inc/stm32g4xx_hal_i2c.h \
+ platform/HAL/inc/stm32g4xx_hal_i2c_ex.h \
  platform/HAL/inc/stm32g4xx_hal_pwr.h \
  platform/HAL/inc/stm32g4xx_hal_pwr_ex.h \
  platform/HAL/inc/stm32g4xx_hal_spi.h \
@@ -44,10 +49,16 @@ platform/HAL/inc/stm32g4xx_hal_gpio_ex.h:
 platform/HAL/inc/stm32g4xx_hal_dma.h:
 platform/HAL/inc/stm32g4xx_hal_dma_ex.h:
 platform/HAL/inc/stm32g4xx_hal_cortex.h:
+platform/HAL/inc/stm32g4xx_hal_adc.h:
+platform/HAL/inc/stm32g4xx_hal.h:
+platform/HAL/inc/stm32g4xx_ll_adc.h:
+platform/HAL/inc/stm32g4xx_hal_adc_ex.h:
 platform/HAL/inc/stm32g4xx_hal_exti.h:
 platform/HAL/inc/stm32g4xx_hal_flash.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ex.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h:
+platform/HAL/inc/stm32g4xx_hal_i2c.h:
+platform/HAL/inc/stm32g4xx_hal_i2c_ex.h:
 platform/HAL/inc/stm32g4xx_hal_pwr.h:
 platform/HAL/inc/stm32g4xx_hal_pwr_ex.h:
 platform/HAL/inc/stm32g4xx_hal_spi.h:

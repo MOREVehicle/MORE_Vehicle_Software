@@ -1,1 +1,1 @@
-output/sysmem.o: src/sysmem.c
+output/sysmem.o: platform/HAL/sysmem.c

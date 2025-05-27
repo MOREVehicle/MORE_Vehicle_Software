@@ -1,0 +1,220 @@
+ARM GAS  /tmp/ccrptBpS.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"uart.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/uart.c"
+  20              		.section	.text.UART_init,"ax",%progbits
+  21              		.align	1
+  22              		.global	UART_init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	UART_init:
+  28              	.LFB329:
+   1:src/uart.c    **** #include "uart.h"
+   2:src/uart.c    **** #include "stm32g4xx_hal.h"
+   3:src/uart.c    **** #include "stm32g4xx_hal_uart.h"
+   4:src/uart.c    **** 
+   5:src/uart.c    **** UART_HandleTypeDef huart2;
+   6:src/uart.c    **** 
+   7:src/uart.c    **** void UART_init(void) {
+  29              		.loc 1 7 22 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 32
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 30B5     		push	{r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 12
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  39 0002 89B0     		sub	sp, sp, #36
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 48
+   8:src/uart.c    ****     __HAL_RCC_USART2_CLK_ENABLE();
+  42              		.loc 1 8 5 view .LVU1
+  43              	.LBB2:
+  44              		.loc 1 8 5 view .LVU2
+  45              		.loc 1 8 5 view .LVU3
+  46 0004 1A4B     		ldr	r3, .L3
+  47 0006 9A6D     		ldr	r2, [r3, #88]
+  48 0008 42F40032 		orr	r2, r2, #131072
+  49 000c 9A65     		str	r2, [r3, #88]
+  50              		.loc 1 8 5 view .LVU4
+ARM GAS  /tmp/ccrptBpS.s 			page 2
+
+
+  51 000e 9A6D     		ldr	r2, [r3, #88]
+  52 0010 02F40032 		and	r2, r2, #131072
+  53 0014 0192     		str	r2, [sp, #4]
+  54              		.loc 1 8 5 view .LVU5
+  55 0016 019A     		ldr	r2, [sp, #4]
+  56              	.LBE2:
+  57              		.loc 1 8 5 view .LVU6
+   9:src/uart.c    ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+  58              		.loc 1 9 5 view .LVU7
+  59              	.LBB3:
+  60              		.loc 1 9 5 view .LVU8
+  61              		.loc 1 9 5 view .LVU9
+  62 0018 DA6C     		ldr	r2, [r3, #76]
+  63 001a 42F00102 		orr	r2, r2, #1
+  64 001e DA64     		str	r2, [r3, #76]
+  65              		.loc 1 9 5 view .LVU10
+  66 0020 DB6C     		ldr	r3, [r3, #76]
+  67 0022 03F00103 		and	r3, r3, #1
+  68 0026 0293     		str	r3, [sp, #8]
+  69              		.loc 1 9 5 view .LVU11
+  70 0028 029B     		ldr	r3, [sp, #8]
+  71              	.LBE3:
+  72              		.loc 1 9 5 view .LVU12
+  10:src/uart.c    **** 
+  11:src/uart.c    ****     GPIO_InitTypeDef GPIO_InitStruct = {0};
+  73              		.loc 1 11 5 view .LVU13
+  74              		.loc 1 11 22 is_stmt 0 view .LVU14
+  75 002a 03A9     		add	r1, sp, #12
+  76 002c 0024     		movs	r4, #0
+  77 002e 0394     		str	r4, [sp, #12]
+  78 0030 4C60     		str	r4, [r1, #4]
+  79 0032 8C60     		str	r4, [r1, #8]
+  80 0034 CC60     		str	r4, [r1, #12]
+  81 0036 0C61     		str	r4, [r1, #16]
+  12:src/uart.c    **** 
+  13:src/uart.c    ****     GPIO_InitStruct.Pin = GPIO_PIN_2 | GPIO_PIN_3;
+  82              		.loc 1 13 5 is_stmt 1 view .LVU15
+  83              		.loc 1 13 25 is_stmt 0 view .LVU16
+  84 0038 0C25     		movs	r5, #12
+  85 003a 0395     		str	r5, [sp, #12]
+  14:src/uart.c    ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  86              		.loc 1 14 5 is_stmt 1 view .LVU17
+  87              		.loc 1 14 26 is_stmt 0 view .LVU18
+  88 003c 0223     		movs	r3, #2
+  89 003e 0493     		str	r3, [sp, #16]
+  15:src/uart.c    ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+  90              		.loc 1 15 5 is_stmt 1 view .LVU19
+  91              		.loc 1 15 26 is_stmt 0 view .LVU20
+  92 0040 0123     		movs	r3, #1
+  93 0042 0593     		str	r3, [sp, #20]
+  16:src/uart.c    ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  94              		.loc 1 16 5 is_stmt 1 view .LVU21
+  17:src/uart.c    ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+  95              		.loc 1 17 5 view .LVU22
+  96              		.loc 1 17 31 is_stmt 0 view .LVU23
+  97 0044 0723     		movs	r3, #7
+  98 0046 0793     		str	r3, [sp, #28]
+ARM GAS  /tmp/ccrptBpS.s 			page 3
+
+
+  18:src/uart.c    ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  99              		.loc 1 18 5 is_stmt 1 view .LVU24
+ 100 0048 4FF09040 		mov	r0, #1207959552
+ 101 004c FFF7FEFF 		bl	HAL_GPIO_Init
+ 102              	.LVL0:
+  19:src/uart.c    **** 
+  20:src/uart.c    ****     huart2.Instance = USART2;
+ 103              		.loc 1 20 5 view .LVU25
+ 104              		.loc 1 20 21 is_stmt 0 view .LVU26
+ 105 0050 0848     		ldr	r0, .L3+4
+ 106 0052 094B     		ldr	r3, .L3+8
+ 107 0054 0360     		str	r3, [r0]
+  21:src/uart.c    ****     huart2.Init.BaudRate = 115200;
+ 108              		.loc 1 21 5 is_stmt 1 view .LVU27
+ 109              		.loc 1 21 26 is_stmt 0 view .LVU28
+ 110 0056 4FF4E133 		mov	r3, #115200
+ 111 005a 4360     		str	r3, [r0, #4]
+  22:src/uart.c    ****     huart2.Init.WordLength = UART_WORDLENGTH_8B;
+ 112              		.loc 1 22 5 is_stmt 1 view .LVU29
+ 113              		.loc 1 22 28 is_stmt 0 view .LVU30
+ 114 005c 8460     		str	r4, [r0, #8]
+  23:src/uart.c    ****     huart2.Init.StopBits = UART_STOPBITS_1;
+ 115              		.loc 1 23 5 is_stmt 1 view .LVU31
+ 116              		.loc 1 23 26 is_stmt 0 view .LVU32
+ 117 005e C460     		str	r4, [r0, #12]
+  24:src/uart.c    ****     huart2.Init.Parity = UART_PARITY_NONE;
+ 118              		.loc 1 24 5 is_stmt 1 view .LVU33
+ 119              		.loc 1 24 24 is_stmt 0 view .LVU34
+ 120 0060 0461     		str	r4, [r0, #16]
+  25:src/uart.c    ****     huart2.Init.Mode = UART_MODE_TX_RX;
+ 121              		.loc 1 25 5 is_stmt 1 view .LVU35
+ 122              		.loc 1 25 22 is_stmt 0 view .LVU36
+ 123 0062 4561     		str	r5, [r0, #20]
+  26:src/uart.c    ****     huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 124              		.loc 1 26 5 is_stmt 1 view .LVU37
+ 125              		.loc 1 26 27 is_stmt 0 view .LVU38
+ 126 0064 8461     		str	r4, [r0, #24]
+  27:src/uart.c    ****     huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+ 127              		.loc 1 27 5 is_stmt 1 view .LVU39
+ 128              		.loc 1 27 30 is_stmt 0 view .LVU40
+ 129 0066 C461     		str	r4, [r0, #28]
+  28:src/uart.c    **** 
+  29:src/uart.c    ****     HAL_UART_Init(&huart2);
+ 130              		.loc 1 29 5 is_stmt 1 view .LVU41
+ 131 0068 FFF7FEFF 		bl	HAL_UART_Init
+ 132              	.LVL1:
+  30:src/uart.c    **** }
+ 133              		.loc 1 30 1 is_stmt 0 view .LVU42
+ 134 006c 09B0     		add	sp, sp, #36
+ 135              	.LCFI2:
+ 136              		.cfi_def_cfa_offset 12
+ 137              		@ sp needed
+ 138 006e 30BD     		pop	{r4, r5, pc}
+ 139              	.L4:
+ 140              		.align	2
+ 141              	.L3:
+ 142 0070 00100240 		.word	1073876992
+ARM GAS  /tmp/ccrptBpS.s 			page 4
+
+
+ 143 0074 00000000 		.word	huart2
+ 144 0078 00440040 		.word	1073759232
+ 145              		.cfi_endproc
+ 146              	.LFE329:
+ 148              		.global	huart2
+ 149              		.section	.bss.huart2,"aw",%nobits
+ 150              		.align	2
+ 153              	huart2:
+ 154 0000 00000000 		.space	148
+ 154      00000000 
+ 154      00000000 
+ 154      00000000 
+ 154      00000000 
+ 155              		.text
+ 156              	.Letext0:
+ 157              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 158              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 159              		.file 4 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 160              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 161              		.file 6 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
+ 162              		.file 7 "platform/HAL/inc/stm32g4xx_hal_dma.h"
+ 163              		.file 8 "platform/HAL/inc/stm32g4xx_hal_uart.h"
+ 164              		.file 9 "inc/uart.h"
+ARM GAS  /tmp/ccrptBpS.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+     /tmp/ccrptBpS.s:21     .text.UART_init:00000000 $t
+     /tmp/ccrptBpS.s:27     .text.UART_init:00000000 UART_init
+     /tmp/ccrptBpS.s:142    .text.UART_init:00000070 $d
+     /tmp/ccrptBpS.s:153    .bss.huart2:00000000 huart2
+     /tmp/ccrptBpS.s:150    .bss.huart2:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_UART_Init

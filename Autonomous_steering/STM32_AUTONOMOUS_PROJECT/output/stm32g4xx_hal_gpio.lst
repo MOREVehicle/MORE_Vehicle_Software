@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccjscGoT.s 			page 1
+ARM GAS  /tmp/cc5qp9UC.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -28,7 +28,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
   25              		.thumb_func
   27              	HAL_GPIO_Init:
   28              	.LVL0:
-  29              	.LFB132:
+  29              	.LFB329:
    1:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
    2:platform/HAL/src/stm32g4xx_hal_gpio.c ****   ******************************************************************************
    3:platform/HAL/src/stm32g4xx_hal_gpio.c ****   * @file    stm32g4xx_hal_gpio.c
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
   27:platform/HAL/src/stm32g4xx_hal_gpio.c ****     (+) Each port bit of the general-purpose I/O (GPIO) ports can be individually
   28:platform/HAL/src/stm32g4xx_hal_gpio.c ****         configured by software in several modes:
   29:platform/HAL/src/stm32g4xx_hal_gpio.c ****         (++) Input mode
-ARM GAS  /tmp/ccjscGoT.s 			page 2
+ARM GAS  /tmp/cc5qp9UC.s 			page 2
 
 
   30:platform/HAL/src/stm32g4xx_hal_gpio.c ****         (++) Analog mode
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
   84:platform/HAL/src/stm32g4xx_hal_gpio.c ****     (#) To set/reset the level of a pin configured in output mode use
   85:platform/HAL/src/stm32g4xx_hal_gpio.c ****         HAL_GPIO_WritePin()/HAL_GPIO_TogglePin().
   86:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
-ARM GAS  /tmp/ccjscGoT.s 			page 3
+ARM GAS  /tmp/cc5qp9UC.s 			page 3
 
 
   87:platform/HAL/src/stm32g4xx_hal_gpio.c ****    (#) To lock pin configuration until next reset use HAL_GPIO_LockPin().
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  141:platform/HAL/src/stm32g4xx_hal_gpio.c ****   */
  142:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  143:platform/HAL/src/stm32g4xx_hal_gpio.c **** /** @defgroup GPIO_Exported_Functions_Group1 Initialization/de-initialization functions
-ARM GAS  /tmp/ccjscGoT.s 			page 4
+ARM GAS  /tmp/cc5qp9UC.s 			page 4
 
 
  144:platform/HAL/src/stm32g4xx_hal_gpio.c ****   *  @brief    Initialization and Configuration functions
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
   53              		.loc 1 174 3 view .LVU8
  164:platform/HAL/src/stm32g4xx_hal_gpio.c ****   uint32_t iocurrent;
   54              		.loc 1 164 12 is_stmt 0 view .LVU9
-ARM GAS  /tmp/ccjscGoT.s 			page 5
+ARM GAS  /tmp/cc5qp9UC.s 			page 5
 
 
   55 0004 0023     		movs	r3, #0
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
   88              	.LVL6:
  196:platform/HAL/src/stm32g4xx_hal_gpio.c ****         temp &= ~(GPIO_OTYPER_OT0 << position) ;
   89              		.loc 1 196 9 is_stmt 1 view .LVU26
-ARM GAS  /tmp/ccjscGoT.s 			page 6
+ARM GAS  /tmp/cc5qp9UC.s 			page 6
 
 
   90              		.loc 1 196 14 is_stmt 0 view .LVU27
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  222:platform/HAL/src/stm32g4xx_hal_gpio.c ****         temp = GPIOx->AFR[position >> 3U];
  118              		.loc 1 222 9 view .LVU39
  119              		.loc 1 222 36 is_stmt 0 view .LVU40
-ARM GAS  /tmp/ccjscGoT.s 			page 7
+ARM GAS  /tmp/cc5qp9UC.s 			page 7
 
 
  120 0038 DD08     		lsrs	r5, r3, #3
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  153              	.L14:
  154              		.loc 1 243 18 discriminator 2 view .LVU54
  155 0068 0024     		movs	r4, #0
-ARM GAS  /tmp/ccjscGoT.s 			page 8
+ARM GAS  /tmp/cc5qp9UC.s 			page 8
 
 
  156              	.L8:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  256:platform/HAL/src/stm32g4xx_hal_gpio.c ****         temp &= ~(iocurrent);
  198              		.loc 1 256 9 is_stmt 1 view .LVU73
  199              		.loc 1 256 14 is_stmt 0 view .LVU74
-ARM GAS  /tmp/ccjscGoT.s 			page 9
+ARM GAS  /tmp/cc5qp9UC.s 			page 9
 
 
  200 0096 04EA0506 		and	r6, r4, r5
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  238              		.loc 1 272 9 is_stmt 1 view .LVU91
  239              		.loc 1 272 14 is_stmt 0 view .LVU92
  240 00c0 2D68     		ldr	r5, [r5]
-ARM GAS  /tmp/ccjscGoT.s 			page 10
+ARM GAS  /tmp/cc5qp9UC.s 			page 10
 
 
  241              	.LVL25:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  280              	.LVL31:
  179:platform/HAL/src/stm32g4xx_hal_gpio.c ****     {
  281              		.loc 1 179 5 is_stmt 1 view .LVU110
-ARM GAS  /tmp/ccjscGoT.s 			page 11
+ARM GAS  /tmp/cc5qp9UC.s 			page 11
 
 
  179:platform/HAL/src/stm32g4xx_hal_gpio.c ****     {
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  318              		.loc 1 209 14 view .LVU128
  319 0110 24EA0C0C 		bic	ip, r4, ip
  320              	.LVL34:
-ARM GAS  /tmp/ccjscGoT.s 			page 12
+ARM GAS  /tmp/cc5qp9UC.s 			page 12
 
 
  210:platform/HAL/src/stm32g4xx_hal_gpio.c ****         GPIOx->PUPDR = temp;
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  357              		.loc 1 231 26 is_stmt 0 view .LVU146
  358 013c 4C68     		ldr	r4, [r1, #4]
  231:platform/HAL/src/stm32g4xx_hal_gpio.c ****       GPIOx->MODER = temp;
-ARM GAS  /tmp/ccjscGoT.s 			page 13
+ARM GAS  /tmp/cc5qp9UC.s 			page 13
 
 
  359              		.loc 1 231 33 view .LVU147
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  397 016c 0CF10205 		add	r5, ip, #2
  398 0170 174C     		ldr	r4, .L26
  399 0172 54F82550 		ldr	r5, [r4, r5, lsl #2]
-ARM GAS  /tmp/ccjscGoT.s 			page 14
+ARM GAS  /tmp/cc5qp9UC.s 			page 14
 
 
  400              	.LVL42:
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  440              		.loc 1 243 18 discriminator 4 view .LVU177
  441 01bc 0124     		movs	r4, #1
  442 01be 54E7     		b	.L8
-ARM GAS  /tmp/ccjscGoT.s 			page 15
+ARM GAS  /tmp/cc5qp9UC.s 			page 15
 
 
  443              	.L16:
@@ -874,7 +874,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  468 01d8 00100240 		.word	1073876992
  469 01dc 00040048 		.word	1207960576
  470              		.cfi_endproc
- 471              	.LFE132:
+ 471              	.LFE329:
  473              		.section	.text.HAL_GPIO_DeInit,"ax",%progbits
  474              		.align	1
  475              		.global	HAL_GPIO_DeInit
@@ -883,7 +883,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  478              		.thumb_func
  480              	HAL_GPIO_DeInit:
  481              	.LVL45:
- 482              	.LFB133:
+ 482              	.LFB330:
  285:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  286:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
  287:platform/HAL/src/stm32g4xx_hal_gpio.c ****   * @brief  De-initialize the GPIOx peripheral registers to their default reset values.
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  484              		.cfi_startproc
  485              		@ args = 0, pretend = 0, frame = 0
  486              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccjscGoT.s 			page 16
+ARM GAS  /tmp/cc5qp9UC.s 			page 16
 
 
  295:platform/HAL/src/stm32g4xx_hal_gpio.c ****   uint32_t position = 0x00U;
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  517              	.L31:
  518              		.loc 1 316 41 discriminator 24 view .LVU194
  519 0014 05FA0CF5 		lsl	r5, r5, ip
-ARM GAS  /tmp/ccjscGoT.s 			page 17
+ARM GAS  /tmp/cc5qp9UC.s 			page 17
 
 
  520              		.loc 1 316 10 discriminator 24 view .LVU195
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  552              		.loc 1 338 12 is_stmt 0 view .LVU208
  553 004c C468     		ldr	r4, [r0, #12]
  554              		.loc 1 338 20 view .LVU209
-ARM GAS  /tmp/ccjscGoT.s 			page 18
+ARM GAS  /tmp/cc5qp9UC.s 			page 18
 
 
  555 004e 24EA0C04 		bic	r4, r4, ip
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  314:platform/HAL/src/stm32g4xx_hal_gpio.c ****       tmp &= (0x0FUL << (4U * (position & 0x03U)));
  593              		.loc 1 314 37 is_stmt 0 view .LVU226
  594 0076 4FEA930E 		lsr	lr, r3, #2
-ARM GAS  /tmp/ccjscGoT.s 			page 19
+ARM GAS  /tmp/cc5qp9UC.s 			page 19
 
 
  314:platform/HAL/src/stm32g4xx_hal_gpio.c ****       tmp &= (0x0FUL << (4U * (position & 0x03U)));
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  635              		.loc 1 316 19 discriminator 12 view .LVU240
  636 00c0 0625     		movs	r5, #6
  637 00c2 A7E7     		b	.L31
-ARM GAS  /tmp/ccjscGoT.s 			page 20
+ARM GAS  /tmp/cc5qp9UC.s 			page 20
 
 
  638              	.L35:
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  324:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  677              		.loc 1 324 13 is_stmt 0 view .LVU256
  678 00ee A568     		ldr	r5, [r4, #8]
-ARM GAS  /tmp/ccjscGoT.s 			page 21
+ARM GAS  /tmp/cc5qp9UC.s 			page 21
 
 
  324:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
@@ -1247,7 +1247,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  714 0114 00040048 		.word	1207960576
  715 0118 00040140 		.word	1073808384
  716              		.cfi_endproc
- 717              	.LFE133:
+ 717              	.LFE330:
  719              		.section	.text.HAL_GPIO_ReadPin,"ax",%progbits
  720              		.align	1
  721              		.global	HAL_GPIO_ReadPin
@@ -1256,9 +1256,9 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  724              		.thumb_func
  726              	HAL_GPIO_ReadPin:
  727              	.LVL61:
- 728              	.LFB134:
+ 728              	.LFB331:
  350:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
-ARM GAS  /tmp/ccjscGoT.s 			page 22
+ARM GAS  /tmp/cc5qp9UC.s 			page 22
 
 
  351:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  385:platform/HAL/src/stm32g4xx_hal_gpio.c ****   else
  386:platform/HAL/src/stm32g4xx_hal_gpio.c ****   {
  387:platform/HAL/src/stm32g4xx_hal_gpio.c ****     bitstatus = GPIO_PIN_RESET;
-ARM GAS  /tmp/ccjscGoT.s 			page 23
+ARM GAS  /tmp/cc5qp9UC.s 			page 23
 
 
  749              		.loc 1 387 15 view .LVU273
@@ -1331,7 +1331,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  753              		.loc 1 390 1 is_stmt 0 view .LVU275
  754 000c 7047     		bx	lr
  755              		.cfi_endproc
- 756              	.LFE134:
+ 756              	.LFE331:
  758              		.section	.text.HAL_GPIO_WritePin,"ax",%progbits
  759              		.align	1
  760              		.global	HAL_GPIO_WritePin
@@ -1340,7 +1340,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  763              		.thumb_func
  765              	HAL_GPIO_WritePin:
  766              	.LVL65:
- 767              	.LFB135:
+ 767              	.LFB332:
  391:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  392:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
  393:platform/HAL/src/stm32g4xx_hal_gpio.c ****   * @brief  Set or clear the selected data port bit.
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  415:platform/HAL/src/stm32g4xx_hal_gpio.c ****   {
  416:platform/HAL/src/stm32g4xx_hal_gpio.c ****     GPIOx->BSRR = (uint32_t)GPIO_Pin;
  778              		.loc 1 416 5 is_stmt 1 view .LVU281
-ARM GAS  /tmp/ccjscGoT.s 			page 24
+ARM GAS  /tmp/cc5qp9UC.s 			page 24
 
 
  779              		.loc 1 416 17 is_stmt 0 view .LVU282
@@ -1397,7 +1397,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  786              		.loc 1 422 1 view .LVU285
  787 0008 7047     		bx	lr
  788              		.cfi_endproc
- 789              	.LFE135:
+ 789              	.LFE332:
  791              		.section	.text.HAL_GPIO_TogglePin,"ax",%progbits
  792              		.align	1
  793              		.global	HAL_GPIO_TogglePin
@@ -1406,7 +1406,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  796              		.thumb_func
  798              	HAL_GPIO_TogglePin:
  799              	.LVL66:
- 800              	.LFB136:
+ 800              	.LFB333:
  423:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  424:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
  425:platform/HAL/src/stm32g4xx_hal_gpio.c ****   * @brief  Toggle the specified GPIO pin.
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  440:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  441:platform/HAL/src/stm32g4xx_hal_gpio.c ****   /* Set selected pins that were at low level, and reset ones that were high */
  442:platform/HAL/src/stm32g4xx_hal_gpio.c ****   GPIOx->BSRR = ((odr & GPIO_Pin) << GPIO_NUMBER) | (~odr & GPIO_Pin);
-ARM GAS  /tmp/ccjscGoT.s 			page 25
+ARM GAS  /tmp/cc5qp9UC.s 			page 25
 
 
  812              		.loc 1 442 3 is_stmt 1 view .LVU291
@@ -1455,7 +1455,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  822              		.loc 1 443 1 view .LVU296
  823 0010 7047     		bx	lr
  824              		.cfi_endproc
- 825              	.LFE136:
+ 825              	.LFE333:
  827              		.section	.text.HAL_GPIO_LockPin,"ax",%progbits
  828              		.align	1
  829              		.global	HAL_GPIO_LockPin
@@ -1464,7 +1464,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  832              		.thumb_func
  834              	HAL_GPIO_LockPin:
  835              	.LVL69:
- 836              	.LFB137:
+ 836              	.LFB334:
  444:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  445:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
  446:platform/HAL/src/stm32g4xx_hal_gpio.c ****   * @brief  Lock GPIO Pins configuration registers.
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  461:platform/HAL/src/stm32g4xx_hal_gpio.c ****   assert_param(IS_GPIO_LOCK_INSTANCE(GPIOx));
  850              		.loc 1 461 3 is_stmt 1 view .LVU301
  462:platform/HAL/src/stm32g4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
-ARM GAS  /tmp/ccjscGoT.s 			page 26
+ARM GAS  /tmp/cc5qp9UC.s 			page 26
 
 
  851              		.loc 1 462 3 view .LVU302
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  883              		.loc 1 484 1 view .LVU318
  884 0026 02B0     		add	sp, sp, #8
  885              	.LCFI6:
-ARM GAS  /tmp/ccjscGoT.s 			page 27
+ARM GAS  /tmp/cc5qp9UC.s 			page 27
 
 
  886              		.cfi_remember_state
@@ -1577,7 +1577,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  897              		.loc 1 482 12 view .LVU320
  898 002c FBE7     		b	.L57
  899              		.cfi_endproc
- 900              	.LFE137:
+ 900              	.LFE334:
  902              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
  903              		.align	1
  904              		.weak	HAL_GPIO_EXTI_Callback
@@ -1586,7 +1586,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  907              		.thumb_func
  909              	HAL_GPIO_EXTI_Callback:
  910              	.LVL73:
- 911              	.LFB139:
+ 911              	.LFB336:
  485:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  486:platform/HAL/src/stm32g4xx_hal_gpio.c **** /**
  487:platform/HAL/src/stm32g4xx_hal_gpio.c ****   * @brief  Handle EXTI interrupt request.
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  508:platform/HAL/src/stm32g4xx_hal_gpio.c ****   /* Prevent unused argument(s) compilation warning */
  509:platform/HAL/src/stm32g4xx_hal_gpio.c ****   UNUSED(GPIO_Pin);
  917              		.loc 1 509 3 view .LVU322
-ARM GAS  /tmp/ccjscGoT.s 			page 28
+ARM GAS  /tmp/cc5qp9UC.s 			page 28
 
 
  510:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
@@ -1629,7 +1629,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  918              		.loc 1 514 1 is_stmt 0 view .LVU323
  919 0000 7047     		bx	lr
  920              		.cfi_endproc
- 921              	.LFE139:
+ 921              	.LFE336:
  923              		.section	.text.HAL_GPIO_EXTI_IRQHandler,"ax",%progbits
  924              		.align	1
  925              		.global	HAL_GPIO_EXTI_IRQHandler
@@ -1638,7 +1638,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  928              		.thumb_func
  930              	HAL_GPIO_EXTI_IRQHandler:
  931              	.LVL74:
- 932              	.LFB138:
+ 932              	.LFB335:
  492:platform/HAL/src/stm32g4xx_hal_gpio.c ****   /* EXTI line interrupt detected */
  933              		.loc 1 492 1 is_stmt 1 view -0
  934              		.cfi_startproc
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  961              	.LVL77:
  499:platform/HAL/src/stm32g4xx_hal_gpio.c **** 
  962              		.loc 1 499 1 is_stmt 0 view .LVU332
-ARM GAS  /tmp/ccjscGoT.s 			page 29
+ARM GAS  /tmp/cc5qp9UC.s 			page 29
 
 
  963 0014 F9E7     		b	.L61
@@ -1687,7 +1687,7 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  966              	.L65:
  967 0018 00040140 		.word	1073808384
  968              		.cfi_endproc
- 969              	.LFE138:
+ 969              	.LFE335:
  971              		.text
  972              	.Letext0:
  973              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
@@ -1695,29 +1695,29 @@ ARM GAS  /tmp/ccjscGoT.s 			page 1
  975              		.file 4 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
  976              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
  977              		.file 6 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
-ARM GAS  /tmp/ccjscGoT.s 			page 30
+ARM GAS  /tmp/cc5qp9UC.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32g4xx_hal_gpio.c
-     /tmp/ccjscGoT.s:21     .text.HAL_GPIO_Init:00000000 $t
-     /tmp/ccjscGoT.s:27     .text.HAL_GPIO_Init:00000000 HAL_GPIO_Init
-     /tmp/ccjscGoT.s:466    .text.HAL_GPIO_Init:000001d0 $d
-     /tmp/ccjscGoT.s:474    .text.HAL_GPIO_DeInit:00000000 $t
-     /tmp/ccjscGoT.s:480    .text.HAL_GPIO_DeInit:00000000 HAL_GPIO_DeInit
-     /tmp/ccjscGoT.s:713    .text.HAL_GPIO_DeInit:00000110 $d
-     /tmp/ccjscGoT.s:720    .text.HAL_GPIO_ReadPin:00000000 $t
-     /tmp/ccjscGoT.s:726    .text.HAL_GPIO_ReadPin:00000000 HAL_GPIO_ReadPin
-     /tmp/ccjscGoT.s:759    .text.HAL_GPIO_WritePin:00000000 $t
-     /tmp/ccjscGoT.s:765    .text.HAL_GPIO_WritePin:00000000 HAL_GPIO_WritePin
-     /tmp/ccjscGoT.s:792    .text.HAL_GPIO_TogglePin:00000000 $t
-     /tmp/ccjscGoT.s:798    .text.HAL_GPIO_TogglePin:00000000 HAL_GPIO_TogglePin
-     /tmp/ccjscGoT.s:828    .text.HAL_GPIO_LockPin:00000000 $t
-     /tmp/ccjscGoT.s:834    .text.HAL_GPIO_LockPin:00000000 HAL_GPIO_LockPin
-     /tmp/ccjscGoT.s:903    .text.HAL_GPIO_EXTI_Callback:00000000 $t
-     /tmp/ccjscGoT.s:909    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
-     /tmp/ccjscGoT.s:924    .text.HAL_GPIO_EXTI_IRQHandler:00000000 $t
-     /tmp/ccjscGoT.s:930    .text.HAL_GPIO_EXTI_IRQHandler:00000000 HAL_GPIO_EXTI_IRQHandler
-     /tmp/ccjscGoT.s:967    .text.HAL_GPIO_EXTI_IRQHandler:00000018 $d
+     /tmp/cc5qp9UC.s:21     .text.HAL_GPIO_Init:00000000 $t
+     /tmp/cc5qp9UC.s:27     .text.HAL_GPIO_Init:00000000 HAL_GPIO_Init
+     /tmp/cc5qp9UC.s:466    .text.HAL_GPIO_Init:000001d0 $d
+     /tmp/cc5qp9UC.s:474    .text.HAL_GPIO_DeInit:00000000 $t
+     /tmp/cc5qp9UC.s:480    .text.HAL_GPIO_DeInit:00000000 HAL_GPIO_DeInit
+     /tmp/cc5qp9UC.s:713    .text.HAL_GPIO_DeInit:00000110 $d
+     /tmp/cc5qp9UC.s:720    .text.HAL_GPIO_ReadPin:00000000 $t
+     /tmp/cc5qp9UC.s:726    .text.HAL_GPIO_ReadPin:00000000 HAL_GPIO_ReadPin
+     /tmp/cc5qp9UC.s:759    .text.HAL_GPIO_WritePin:00000000 $t
+     /tmp/cc5qp9UC.s:765    .text.HAL_GPIO_WritePin:00000000 HAL_GPIO_WritePin
+     /tmp/cc5qp9UC.s:792    .text.HAL_GPIO_TogglePin:00000000 $t
+     /tmp/cc5qp9UC.s:798    .text.HAL_GPIO_TogglePin:00000000 HAL_GPIO_TogglePin
+     /tmp/cc5qp9UC.s:828    .text.HAL_GPIO_LockPin:00000000 $t
+     /tmp/cc5qp9UC.s:834    .text.HAL_GPIO_LockPin:00000000 HAL_GPIO_LockPin
+     /tmp/cc5qp9UC.s:903    .text.HAL_GPIO_EXTI_Callback:00000000 $t
+     /tmp/cc5qp9UC.s:909    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+     /tmp/cc5qp9UC.s:924    .text.HAL_GPIO_EXTI_IRQHandler:00000000 $t
+     /tmp/cc5qp9UC.s:930    .text.HAL_GPIO_EXTI_IRQHandler:00000000 HAL_GPIO_EXTI_IRQHandler
+     /tmp/cc5qp9UC.s:967    .text.HAL_GPIO_EXTI_IRQHandler:00000018 $d
 
 NO UNDEFINED SYMBOLS
