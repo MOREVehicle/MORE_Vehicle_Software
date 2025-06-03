@@ -28,6 +28,8 @@ output/drv8703.o: src/drv8703.c inc/drv8703.h \
  platform/HAL/inc/stm32g4xx_hal_pwr_ex.h \
  platform/HAL/inc/stm32g4xx_hal_spi.h \
  platform/HAL/inc/stm32g4xx_hal_spi_ex.h \
+ platform/HAL/inc/stm32g4xx_hal_tim.h \
+ platform/HAL/inc/stm32g4xx_hal_tim_ex.h \
  platform/HAL/inc/stm32g4xx_hal_uart.h \
  platform/HAL/inc/stm32g4xx_hal_uart_ex.h
 inc/drv8703.h:
@@ -64,5 +66,7 @@ platform/HAL/inc/stm32g4xx_hal_pwr.h:
 platform/HAL/inc/stm32g4xx_hal_pwr_ex.h:
 platform/HAL/inc/stm32g4xx_hal_spi.h:
 platform/HAL/inc/stm32g4xx_hal_spi_ex.h:
+platform/HAL/inc/stm32g4xx_hal_tim.h:
+platform/HAL/inc/stm32g4xx_hal_tim_ex.h:
 platform/HAL/inc/stm32g4xx_hal_uart.h:
 platform/HAL/inc/stm32g4xx_hal_uart_ex.h:

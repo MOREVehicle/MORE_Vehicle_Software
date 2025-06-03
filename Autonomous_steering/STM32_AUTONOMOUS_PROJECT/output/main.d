@@ -27,8 +27,10 @@ output/main.o: src/main.c inc/adc.h platform/HAL/inc/stm32g4xx_hal.h \
  platform/HAL/inc/stm32g4xx_hal_pwr_ex.h \
  platform/HAL/inc/stm32g4xx_hal_spi.h \
  platform/HAL/inc/stm32g4xx_hal_spi_ex.h \
+ platform/HAL/inc/stm32g4xx_hal_tim.h \
+ platform/HAL/inc/stm32g4xx_hal_tim_ex.h \
  platform/HAL/inc/stm32g4xx_hal_uart.h \
- platform/HAL/inc/stm32g4xx_hal_uart_ex.h inc/uart.h
+ platform/HAL/inc/stm32g4xx_hal_uart_ex.h inc/tim.h inc/uart.h
 inc/adc.h:
 platform/HAL/inc/stm32g4xx_hal.h:
 platform/HAL/stm32g4xx_hal_conf.h:
@@ -63,6 +65,9 @@ platform/HAL/inc/stm32g4xx_hal_pwr.h:
 platform/HAL/inc/stm32g4xx_hal_pwr_ex.h:
 platform/HAL/inc/stm32g4xx_hal_spi.h:
 platform/HAL/inc/stm32g4xx_hal_spi_ex.h:
+platform/HAL/inc/stm32g4xx_hal_tim.h:
+platform/HAL/inc/stm32g4xx_hal_tim_ex.h:
 platform/HAL/inc/stm32g4xx_hal_uart.h:
 platform/HAL/inc/stm32g4xx_hal_uart_ex.h:
+inc/tim.h:
 inc/uart.h:

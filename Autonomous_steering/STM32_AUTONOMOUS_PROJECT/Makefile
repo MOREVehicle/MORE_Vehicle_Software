@@ -46,6 +46,15 @@ ASMM_SOURCES =
 
 AS_INCLUDES = 
 
+# EDIT IF ANOTHER MODULE IS SUED FOR MODULE ENABLED
+C_DEFS =  \
+-DUSE_NUCLEO_64 \
+-DUSE_HAL_DRIVER \
+-DSTM32G474xx \
+-DHAL_ADC_MODULE_ENABLED \
+-DHAL_TIM_MODULE_ENABLED \
+-DHAL_I2C_MODULE_ENABLED
+
 PREFIX = arm-none-eabi-
 # The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
 # either it can be added to the PATH environment variable.
@@ -68,14 +77,6 @@ FPU = -mfpu=fpv4-sp-d16
 FLOAT-ABI = -mfloat-abi=hard
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 AS_DEFS = 
-
-# EDIT IF ANOTHER MODULE IS SUED FOR MODULE ENABLED
-C_DEFS =  \
--DUSE_NUCLEO_64 \
--DUSE_HAL_DRIVER \
--DSTM32G474xx \
--DHAL_ADC_MODULE_ENABLED \
--DHAL_I2C_MODULE_ENABLED
 
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

@@ -1,0 +1,35 @@
+\doxysection{adc.\+h}
+\hypertarget{adc_8h_source}{}\label{adc_8h_source}\index{STM32\_AUTONOMOUS\_PROJECT/inc/adc.h@{STM32\_AUTONOMOUS\_PROJECT/inc/adc.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ADC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ADC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stm32g4xx\_hal.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stm32g4xx\_hal\_adc.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{extern}\ ADC\_HandleTypeDef\ ADC\_INTERFACE;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ADC\_V\_REF\ \ \ \ \ \ \ 3.3}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ ADC\_A\_V\ \ \ \ \ \ \ \ \ 19.8}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ADC\_R\_SENSE\ \ \ \ \ 0.0002}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ADC\_DELAY\ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ ADC\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{float}\ ADC\_readCurrent(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ ADC\_error();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

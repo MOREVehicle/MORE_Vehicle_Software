@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc4NxHGp.s 			page 1
+ARM GAS  /tmp/ccHqHjh7.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
   28:platform/HAL/stm32g4xx_it.c **** /* USER CODE BEGIN TD */
   29:platform/HAL/stm32g4xx_it.c **** 
   30:platform/HAL/stm32g4xx_it.c **** /* USER CODE END TD */
-ARM GAS  /tmp/cc4NxHGp.s 			page 2
+ARM GAS  /tmp/ccHqHjh7.s 			page 2
 
 
   31:platform/HAL/stm32g4xx_it.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
   77:platform/HAL/stm32g4xx_it.c ****   }
   37              		.loc 1 77 3 view .LVU2
   75:platform/HAL/stm32g4xx_it.c ****   {
-ARM GAS  /tmp/cc4NxHGp.s 			page 3
+ARM GAS  /tmp/ccHqHjh7.s 			page 3
 
 
   38              		.loc 1 75 10 view .LVU3
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
   98:platform/HAL/stm32g4xx_it.c ****   */
   99:platform/HAL/stm32g4xx_it.c **** void MemManage_Handler(void)
  100:platform/HAL/stm32g4xx_it.c **** {
-ARM GAS  /tmp/cc4NxHGp.s 			page 4
+ARM GAS  /tmp/ccHqHjh7.s 			page 4
 
 
   75              		.loc 1 100 1 view -0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
  119:platform/HAL/stm32g4xx_it.c ****   {
  107              		.loc 1 119 9 view .LVU15
  108 0000 FEE7     		b	.L8
-ARM GAS  /tmp/cc4NxHGp.s 			page 5
+ARM GAS  /tmp/ccHqHjh7.s 			page 5
 
 
  109              		.cfi_endproc
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
  144              		.loc 1 145 1 view -0
  145              		.cfi_startproc
  146              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/cc4NxHGp.s 			page 6
+ARM GAS  /tmp/ccHqHjh7.s 			page 6
 
 
  147              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
  169:platform/HAL/stm32g4xx_it.c ****   */
  170:platform/HAL/stm32g4xx_it.c **** void PendSV_Handler(void)
  171:platform/HAL/stm32g4xx_it.c **** {
-ARM GAS  /tmp/cc4NxHGp.s 			page 7
+ARM GAS  /tmp/ccHqHjh7.s 			page 7
 
 
  182              		.loc 1 171 1 view -0
@@ -377,55 +377,28 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
  188 0000 7047     		bx	lr
  189              		.cfi_endproc
  190              	.LFE336:
- 192              		.section	.text.SysTick_Handler,"ax",%progbits
+ 192              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
  193              		.align	1
- 194              		.global	SysTick_Handler
+ 194              		.global	EXTI15_10_IRQHandler
  195              		.syntax unified
  196              		.thumb
  197              		.thumb_func
- 199              	SysTick_Handler:
+ 199              	EXTI15_10_IRQHandler:
  200              	.LFB337:
  179:platform/HAL/stm32g4xx_it.c **** 
  180:platform/HAL/stm32g4xx_it.c **** /**
  181:platform/HAL/stm32g4xx_it.c ****   * @brief This function handles System tick timer.
  182:platform/HAL/stm32g4xx_it.c ****   */
- 183:platform/HAL/stm32g4xx_it.c **** void SysTick_Handler(void)
- 184:platform/HAL/stm32g4xx_it.c **** {
- 201              		.loc 1 184 1 view -0
- 202              		.cfi_startproc
- 203              		@ args = 0, pretend = 0, frame = 0
- 204              		@ frame_needed = 0, uses_anonymous_args = 0
- 205 0000 08B5     		push	{r3, lr}
- 206              	.LCFI0:
- 207              		.cfi_def_cfa_offset 8
- 208              		.cfi_offset 3, -8
- 209              		.cfi_offset 14, -4
- 185:platform/HAL/stm32g4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
- 186:platform/HAL/stm32g4xx_it.c **** 
- 187:platform/HAL/stm32g4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
- 188:platform/HAL/stm32g4xx_it.c ****   HAL_IncTick();
- 210              		.loc 1 188 3 view .LVU27
- 211 0002 FFF7FEFF 		bl	HAL_IncTick
- 212              	.LVL0:
- 189:platform/HAL/stm32g4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
- 190:platform/HAL/stm32g4xx_it.c **** 
- 191:platform/HAL/stm32g4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
- 192:platform/HAL/stm32g4xx_it.c **** }
- 213              		.loc 1 192 1 is_stmt 0 view .LVU28
- 214 0006 08BD     		pop	{r3, pc}
- 215              		.cfi_endproc
- 216              	.LFE337:
- 218              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
- 219              		.align	1
- 220              		.global	EXTI15_10_IRQHandler
-ARM GAS  /tmp/cc4NxHGp.s 			page 8
-
-
- 221              		.syntax unified
- 222              		.thumb
- 223              		.thumb_func
- 225              	EXTI15_10_IRQHandler:
- 226              	.LFB338:
+ 183:platform/HAL/stm32g4xx_it.c **** // void SysTick_Handler(void)
+ 184:platform/HAL/stm32g4xx_it.c **** // {
+ 185:platform/HAL/stm32g4xx_it.c **** //   /* USER CODE BEGIN SysTick_IRQn 0 */
+ 186:platform/HAL/stm32g4xx_it.c **** //
+ 187:platform/HAL/stm32g4xx_it.c **** //   /* USER CODE END SysTick_IRQn 0 */
+ 188:platform/HAL/stm32g4xx_it.c **** //   HAL_IncTick();
+ 189:platform/HAL/stm32g4xx_it.c **** //   /* USER CODE BEGIN SysTick_IRQn 1 */
+ 190:platform/HAL/stm32g4xx_it.c **** //
+ 191:platform/HAL/stm32g4xx_it.c **** //   /* USER CODE END SysTick_IRQn 1 */
+ 192:platform/HAL/stm32g4xx_it.c **** // }
  193:platform/HAL/stm32g4xx_it.c **** 
  194:platform/HAL/stm32g4xx_it.c **** /******************************************************************************/
  195:platform/HAL/stm32g4xx_it.c **** /* STM32G4xx Peripheral Interrupt Handlers                                    */
@@ -439,61 +412,60 @@ ARM GAS  /tmp/cc4NxHGp.s 			page 1
  203:platform/HAL/stm32g4xx_it.c ****   */
  204:platform/HAL/stm32g4xx_it.c **** void EXTI15_10_IRQHandler(void)
  205:platform/HAL/stm32g4xx_it.c **** {
- 227              		.loc 1 205 1 is_stmt 1 view -0
- 228              		.cfi_startproc
- 229              		@ args = 0, pretend = 0, frame = 0
- 230              		@ frame_needed = 0, uses_anonymous_args = 0
- 231 0000 08B5     		push	{r3, lr}
- 232              	.LCFI1:
- 233              		.cfi_def_cfa_offset 8
- 234              		.cfi_offset 3, -8
- 235              		.cfi_offset 14, -4
+ 201              		.loc 1 205 1 view -0
+ 202              		.cfi_startproc
+ 203              		@ args = 0, pretend = 0, frame = 0
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 205 0000 08B5     		push	{r3, lr}
+ 206              	.LCFI0:
+ARM GAS  /tmp/ccHqHjh7.s 			page 8
+
+
+ 207              		.cfi_def_cfa_offset 8
+ 208              		.cfi_offset 3, -8
+ 209              		.cfi_offset 14, -4
  206:platform/HAL/stm32g4xx_it.c ****   /* USER CODE BEGIN EXTI15_10_IRQn 0 */
  207:platform/HAL/stm32g4xx_it.c **** 
  208:platform/HAL/stm32g4xx_it.c ****   /* USER CODE END EXTI15_10_IRQn 0 */
  209:platform/HAL/stm32g4xx_it.c ****   BSP_PB_IRQHandler(BUTTON_USER);
- 236              		.loc 1 209 3 view .LVU30
- 237 0002 0020     		movs	r0, #0
- 238 0004 FFF7FEFF 		bl	BSP_PB_IRQHandler
- 239              	.LVL1:
+ 210              		.loc 1 209 3 view .LVU27
+ 211 0002 0020     		movs	r0, #0
+ 212 0004 FFF7FEFF 		bl	BSP_PB_IRQHandler
+ 213              	.LVL0:
  210:platform/HAL/stm32g4xx_it.c ****   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
  211:platform/HAL/stm32g4xx_it.c **** 
  212:platform/HAL/stm32g4xx_it.c ****   /* USER CODE END EXTI15_10_IRQn 1 */
  213:platform/HAL/stm32g4xx_it.c **** }
- 240              		.loc 1 213 1 is_stmt 0 view .LVU31
- 241 0008 08BD     		pop	{r3, pc}
- 242              		.cfi_endproc
- 243              	.LFE338:
- 245              		.text
- 246              	.Letext0:
- 247              		.file 2 "platform/BSP/stm32g4xx_nucleo.h"
- 248              		.file 3 "platform/HAL/inc/stm32g4xx_hal.h"
-ARM GAS  /tmp/cc4NxHGp.s 			page 9
+ 214              		.loc 1 213 1 is_stmt 0 view .LVU28
+ 215 0008 08BD     		pop	{r3, pc}
+ 216              		.cfi_endproc
+ 217              	.LFE337:
+ 219              		.text
+ 220              	.Letext0:
+ 221              		.file 2 "platform/BSP/stm32g4xx_nucleo.h"
+ARM GAS  /tmp/ccHqHjh7.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32g4xx_it.c
-     /tmp/cc4NxHGp.s:21     .text.NMI_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:27     .text.NMI_Handler:00000000 NMI_Handler
-     /tmp/cc4NxHGp.s:44     .text.HardFault_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-     /tmp/cc4NxHGp.s:67     .text.MemManage_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-     /tmp/cc4NxHGp.s:90     .text.BusFault_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-     /tmp/cc4NxHGp.s:113    .text.UsageFault_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-     /tmp/cc4NxHGp.s:136    .text.SVC_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:142    .text.SVC_Handler:00000000 SVC_Handler
-     /tmp/cc4NxHGp.s:155    .text.DebugMon_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-     /tmp/cc4NxHGp.s:174    .text.PendSV_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-     /tmp/cc4NxHGp.s:193    .text.SysTick_Handler:00000000 $t
-     /tmp/cc4NxHGp.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-     /tmp/cc4NxHGp.s:219    .text.EXTI15_10_IRQHandler:00000000 $t
-     /tmp/cc4NxHGp.s:225    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+     /tmp/ccHqHjh7.s:21     .text.NMI_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:27     .text.NMI_Handler:00000000 NMI_Handler
+     /tmp/ccHqHjh7.s:44     .text.HardFault_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+     /tmp/ccHqHjh7.s:67     .text.MemManage_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+     /tmp/ccHqHjh7.s:90     .text.BusFault_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+     /tmp/ccHqHjh7.s:113    .text.UsageFault_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+     /tmp/ccHqHjh7.s:136    .text.SVC_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:142    .text.SVC_Handler:00000000 SVC_Handler
+     /tmp/ccHqHjh7.s:155    .text.DebugMon_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+     /tmp/ccHqHjh7.s:174    .text.PendSV_Handler:00000000 $t
+     /tmp/ccHqHjh7.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+     /tmp/ccHqHjh7.s:193    .text.EXTI15_10_IRQHandler:00000000 $t
+     /tmp/ccHqHjh7.s:199    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
 
 UNDEFINED SYMBOLS
-HAL_IncTick
 BSP_PB_IRQHandler

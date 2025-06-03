@@ -1,0 +1,10 @@
+<map id="TMP_getTemperatureSingle" name="TMP_getTemperatureSingle">
+<area shape="rect" id="Node000001" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,31,479,57"/>
+<area shape="rect" id="Node000002" href="$dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,34,249,30,250,25,282,29"/>
+<area shape="rect" id="Node000004" href="$dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,56,212,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="282,59,213,68,213,62,281,54"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,37,56,42,55,37,87,32"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="123,63,55,51,55,46,124,58"/>
+</map>

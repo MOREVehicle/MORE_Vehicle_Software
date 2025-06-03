@@ -129,7 +129,6 @@ extern "C" {
  * @brief used spi channel on mcu.
  * Rest of the settings for setup of driver should be here too?
  */
-#define DRV_SPI_INTERFACE               hspi3
 extern SPI_HandleTypeDef 				DRV_SPI_INTERFACE;
 
 /**

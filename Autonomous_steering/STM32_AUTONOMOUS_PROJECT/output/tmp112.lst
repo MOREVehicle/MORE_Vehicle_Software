@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccBB1y4H.s 			page 1
+ARM GAS  /tmp/ccGYPPVC.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
   27:src/tmp112.c  ****     }
   28:src/tmp112.c  **** 
   29:src/tmp112.c  ****     average /= TMP_ADDR_AMOUNT;
-ARM GAS  /tmp/ccBB1y4H.s 			page 2
+ARM GAS  /tmp/ccGYPPVC.s 			page 2
 
 
   30:src/tmp112.c  ****     return average;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
   58 001e 0A46     		mov	r2, r1
   59              	.LVL2:
   60              		.loc 1 55 9 view .LVU7
-ARM GAS  /tmp/ccBB1y4H.s 			page 3
+ARM GAS  /tmp/ccGYPPVC.s 			page 3
 
 
   61 0020 0146     		mov	r1, r0
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  111              		.loc 1 47 55 is_stmt 0 view .LVU16
  112 0000 08B5     		push	{r3, lr}
  113              	.LCFI4:
-ARM GAS  /tmp/ccBB1y4H.s 			page 4
+ARM GAS  /tmp/ccGYPPVC.s 			page 4
 
 
  114              		.cfi_def_cfa_offset 8
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  159              		.loc 1 64 5 view .LVU26
  160              		.loc 1 64 9 is_stmt 0 view .LVU27
  161 000c 4FF0FF33 		mov	r3, #-1
-ARM GAS  /tmp/ccBB1y4H.s 			page 5
+ARM GAS  /tmp/ccGYPPVC.s 			page 5
 
 
  162 0010 0293     		str	r3, [sp, #8]
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  213              		.thumb
  214              		.thumb_func
  216              	TMP_celcius_to_data:
-ARM GAS  /tmp/ccBB1y4H.s 			page 6
+ARM GAS  /tmp/ccGYPPVC.s 			page 6
 
 
  217              	.LVL18:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  264              	.L17:
  265 0014 0000803D 		.word	1031798784
  266              		.cfi_endproc
-ARM GAS  /tmp/ccBB1y4H.s 			page 7
+ARM GAS  /tmp/ccGYPPVC.s 			page 7
 
 
  267              	.LFE338:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  315              		.thumb_func
  317              	TMP_getTemperature:
  318              	.LFB330:
-ARM GAS  /tmp/ccBB1y4H.s 			page 8
+ARM GAS  /tmp/ccGYPPVC.s 			page 8
 
 
   22:src/tmp112.c  ****     uint16_t average = 0;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  360              		.loc 1 25 47 is_stmt 0 discriminator 3 view .LVU69
  361 001a E4B2     		uxtb	r4, r4
  362              	.LVL31:
-ARM GAS  /tmp/ccBB1y4H.s 			page 9
+ARM GAS  /tmp/ccGYPPVC.s 			page 9
 
 
  363              	.L22:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  408 000e FFF7FEFF 		bl	TMP_data_to_celcius
  409              	.LVL36:
   40:src/tmp112.c  **** }
-ARM GAS  /tmp/ccBB1y4H.s 			page 10
+ARM GAS  /tmp/ccGYPPVC.s 			page 10
 
 
  410              		.loc 1 40 12 discriminator 1 view .LVU81
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  457 0012 BCEEC00A 		vcvt.u32.f32	s0, s0
  458 0016 10EE103A 		vmov	r3, s0	@ int
  459 001a 9AB2     		uxth	r2, r3
-ARM GAS  /tmp/ccBB1y4H.s 			page 11
+ARM GAS  /tmp/ccGYPPVC.s 			page 11
 
 
  460 001c 0321     		movs	r1, #3
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  504              		@ frame_needed = 0, uses_anonymous_args = 0
  505 0000 08B5     		push	{r3, lr}
  506              	.LCFI13:
-ARM GAS  /tmp/ccBB1y4H.s 			page 12
+ARM GAS  /tmp/ccGYPPVC.s 			page 12
 
 
  507              		.cfi_def_cfa_offset 8
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  101:src/tmp112.c  **** 		TMP_error();
  102:src/tmp112.c  **** 	}
  103:src/tmp112.c  **** 	if (HAL_I2CEx_ConfigAnalogFilter(&TMP_I2C_INTERFACE, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
-ARM GAS  /tmp/ccBB1y4H.s 			page 13
+ARM GAS  /tmp/ccGYPPVC.s 			page 13
 
 
  549              		.loc 1 103 2 is_stmt 1 view .LVU118
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  594              	TMP_init:
  595              	.LFB329:
   10:src/tmp112.c  **** 	MX_I2C_Init();
-ARM GAS  /tmp/ccBB1y4H.s 			page 14
+ARM GAS  /tmp/ccGYPPVC.s 			page 14
 
 
  596              		.loc 1 10 17 view -0
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
   18:src/tmp112.c  ****     }
  641              		.loc 1 18 9 view .LVU138
  642 0038 2046     		mov	r0, r4
-ARM GAS  /tmp/ccBB1y4H.s 			page 15
+ARM GAS  /tmp/ccGYPPVC.s 			page 15
 
 
  643 003a FFF7FEFF 		bl	TMP_getTemperatureSingle
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  691 0004 0446     		mov	r4, r0
  115:src/tmp112.c  ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
  692              		.loc 1 115 3 is_stmt 1 view .LVU146
-ARM GAS  /tmp/ccBB1y4H.s 			page 16
+ARM GAS  /tmp/ccGYPPVC.s 			page 16
 
 
  693              		.loc 1 115 20 is_stmt 0 view .LVU147
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  727              		.cfi_restore_state
  119:src/tmp112.c  ****     PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
  728              		.loc 1 119 5 is_stmt 1 view .LVU155
-ARM GAS  /tmp/ccBB1y4H.s 			page 17
+ARM GAS  /tmp/ccGYPPVC.s 			page 17
 
 
  119:src/tmp112.c  ****     PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  766              		.loc 1 129 5 is_stmt 1 view .LVU172
  129:src/tmp112.c  ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  767              		.loc 1 129 26 is_stmt 0 view .LVU173
-ARM GAS  /tmp/ccBB1y4H.s 			page 18
+ARM GAS  /tmp/ccGYPPVC.s 			page 18
 
 
  768 0052 0023     		movs	r3, #0
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  810              		.cfi_endproc
  811              	.LFE341:
  813              		.section	.text.HAL_I2C_MspDeInit,"ax",%progbits
-ARM GAS  /tmp/ccBB1y4H.s 			page 19
+ARM GAS  /tmp/ccGYPPVC.s 			page 19
 
 
  814              		.align	1
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  859              	.LVL72:
  145:src/tmp112.c  ****   }
  146:src/tmp112.c  **** }
-ARM GAS  /tmp/ccBB1y4H.s 			page 20
+ARM GAS  /tmp/ccGYPPVC.s 			page 20
 
 
  860              		.loc 1 146 1 is_stmt 0 view .LVU196
@@ -1173,48 +1173,48 @@ ARM GAS  /tmp/ccBB1y4H.s 			page 1
  888              		.file 10 "platform/HAL/inc/stm32g4xx_hal_i2c_ex.h"
  889              		.file 11 "inc/tmp112.h"
  890              		.file 12 "<built-in>"
-ARM GAS  /tmp/ccBB1y4H.s 			page 21
+ARM GAS  /tmp/ccGYPPVC.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 tmp112.c
-     /tmp/ccBB1y4H.s:21     .text.TMP_write:00000000 $t
-     /tmp/ccBB1y4H.s:27     .text.TMP_write:00000000 TMP_write
-     /tmp/ccBB1y4H.s:93     .text.TMP_write:00000038 $d
-     /tmp/ccBB1y4H.s:876    .bss.hi2c1:00000000 hi2c1
-     /tmp/ccBB1y4H.s:98     .text.TMP_setConfig:00000000 $t
-     /tmp/ccBB1y4H.s:104    .text.TMP_setConfig:00000000 TMP_setConfig
-     /tmp/ccBB1y4H.s:131    .text.TMP_read:00000000 $t
-     /tmp/ccBB1y4H.s:137    .text.TMP_read:00000000 TMP_read
-     /tmp/ccBB1y4H.s:205    .text.TMP_read:00000040 $d
-     /tmp/ccBB1y4H.s:210    .text.TMP_celcius_to_data:00000000 $t
-     /tmp/ccBB1y4H.s:216    .text.TMP_celcius_to_data:00000000 TMP_celcius_to_data
-     /tmp/ccBB1y4H.s:239    .text.TMP_data_to_celcius:00000000 $t
-     /tmp/ccBB1y4H.s:245    .text.TMP_data_to_celcius:00000000 TMP_data_to_celcius
-     /tmp/ccBB1y4H.s:265    .text.TMP_data_to_celcius:00000014 $d
-     /tmp/ccBB1y4H.s:270    .text.TMP_getTemperatureSingle:00000000 $t
-     /tmp/ccBB1y4H.s:276    .text.TMP_getTemperatureSingle:00000000 TMP_getTemperatureSingle
-     /tmp/ccBB1y4H.s:311    .text.TMP_getTemperature:00000000 $t
-     /tmp/ccBB1y4H.s:317    .text.TMP_getTemperature:00000000 TMP_getTemperature
-     /tmp/ccBB1y4H.s:379    .text.TMP_setTLow:00000000 $t
-     /tmp/ccBB1y4H.s:385    .text.TMP_setTLow:00000000 TMP_setTLow
-     /tmp/ccBB1y4H.s:425    .text.TMP_setTHigh:00000000 $t
-     /tmp/ccBB1y4H.s:431    .text.TMP_setTHigh:00000000 TMP_setTHigh
-     /tmp/ccBB1y4H.s:471    .text.TMP_error:00000000 $t
-     /tmp/ccBB1y4H.s:477    .text.TMP_error:00000000 TMP_error
-     /tmp/ccBB1y4H.s:493    .text.MX_I2C_Init:00000000 $t
-     /tmp/ccBB1y4H.s:499    .text.MX_I2C_Init:00000000 MX_I2C_Init
-     /tmp/ccBB1y4H.s:582    .text.MX_I2C_Init:0000004c $d
-     /tmp/ccBB1y4H.s:588    .text.TMP_init:00000000 $t
-     /tmp/ccBB1y4H.s:594    .text.TMP_init:00000000 TMP_init
-     /tmp/ccBB1y4H.s:663    .text.TMP_init:00000048 $d
-     /tmp/ccBB1y4H.s:669    .text.HAL_I2C_MspInit:00000000 $t
-     /tmp/ccBB1y4H.s:675    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-     /tmp/ccBB1y4H.s:807    .text.HAL_I2C_MspInit:0000007c $d
-     /tmp/ccBB1y4H.s:814    .text.HAL_I2C_MspDeInit:00000000 $t
-     /tmp/ccBB1y4H.s:820    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-     /tmp/ccBB1y4H.s:865    .text.HAL_I2C_MspDeInit:00000030 $d
-     /tmp/ccBB1y4H.s:873    .bss.hi2c1:00000000 $d
+     /tmp/ccGYPPVC.s:21     .text.TMP_write:00000000 $t
+     /tmp/ccGYPPVC.s:27     .text.TMP_write:00000000 TMP_write
+     /tmp/ccGYPPVC.s:93     .text.TMP_write:00000038 $d
+     /tmp/ccGYPPVC.s:876    .bss.hi2c1:00000000 hi2c1
+     /tmp/ccGYPPVC.s:98     .text.TMP_setConfig:00000000 $t
+     /tmp/ccGYPPVC.s:104    .text.TMP_setConfig:00000000 TMP_setConfig
+     /tmp/ccGYPPVC.s:131    .text.TMP_read:00000000 $t
+     /tmp/ccGYPPVC.s:137    .text.TMP_read:00000000 TMP_read
+     /tmp/ccGYPPVC.s:205    .text.TMP_read:00000040 $d
+     /tmp/ccGYPPVC.s:210    .text.TMP_celcius_to_data:00000000 $t
+     /tmp/ccGYPPVC.s:216    .text.TMP_celcius_to_data:00000000 TMP_celcius_to_data
+     /tmp/ccGYPPVC.s:239    .text.TMP_data_to_celcius:00000000 $t
+     /tmp/ccGYPPVC.s:245    .text.TMP_data_to_celcius:00000000 TMP_data_to_celcius
+     /tmp/ccGYPPVC.s:265    .text.TMP_data_to_celcius:00000014 $d
+     /tmp/ccGYPPVC.s:270    .text.TMP_getTemperatureSingle:00000000 $t
+     /tmp/ccGYPPVC.s:276    .text.TMP_getTemperatureSingle:00000000 TMP_getTemperatureSingle
+     /tmp/ccGYPPVC.s:311    .text.TMP_getTemperature:00000000 $t
+     /tmp/ccGYPPVC.s:317    .text.TMP_getTemperature:00000000 TMP_getTemperature
+     /tmp/ccGYPPVC.s:379    .text.TMP_setTLow:00000000 $t
+     /tmp/ccGYPPVC.s:385    .text.TMP_setTLow:00000000 TMP_setTLow
+     /tmp/ccGYPPVC.s:425    .text.TMP_setTHigh:00000000 $t
+     /tmp/ccGYPPVC.s:431    .text.TMP_setTHigh:00000000 TMP_setTHigh
+     /tmp/ccGYPPVC.s:471    .text.TMP_error:00000000 $t
+     /tmp/ccGYPPVC.s:477    .text.TMP_error:00000000 TMP_error
+     /tmp/ccGYPPVC.s:493    .text.MX_I2C_Init:00000000 $t
+     /tmp/ccGYPPVC.s:499    .text.MX_I2C_Init:00000000 MX_I2C_Init
+     /tmp/ccGYPPVC.s:582    .text.MX_I2C_Init:0000004c $d
+     /tmp/ccGYPPVC.s:588    .text.TMP_init:00000000 $t
+     /tmp/ccGYPPVC.s:594    .text.TMP_init:00000000 TMP_init
+     /tmp/ccGYPPVC.s:663    .text.TMP_init:00000048 $d
+     /tmp/ccGYPPVC.s:669    .text.HAL_I2C_MspInit:00000000 $t
+     /tmp/ccGYPPVC.s:675    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+     /tmp/ccGYPPVC.s:807    .text.HAL_I2C_MspInit:0000007c $d
+     /tmp/ccGYPPVC.s:814    .text.HAL_I2C_MspDeInit:00000000 $t
+     /tmp/ccGYPPVC.s:820    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+     /tmp/ccGYPPVC.s:865    .text.HAL_I2C_MspDeInit:00000030 $d
+     /tmp/ccGYPPVC.s:873    .bss.hi2c1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccg3MWYX.s 			page 1
+ARM GAS  /tmp/ccvSzjb2.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
   27:src/adc.c     ****     multimode.Mode = ADC_MODE_INDEPENDENT;
   28:src/adc.c     ****     if (HAL_ADCEx_MultiModeConfigChannel(&ADC_INTERFACE, &multimode) != HAL_OK)
   29:src/adc.c     ****     {
-ARM GAS  /tmp/ccg3MWYX.s 			page 2
+ARM GAS  /tmp/ccvSzjb2.s 			page 2
 
 
   30:src/adc.c     ****         ADC_error();
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
   84:src/adc.c     **** }
   85:src/adc.c     **** 
   86:src/adc.c     **** /**
-ARM GAS  /tmp/ccg3MWYX.s 			page 3
+ARM GAS  /tmp/ccvSzjb2.s 			page 3
 
 
   87:src/adc.c     ****  * @warning AUTOGEN
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
   72 0028 00040048 		.word	1207960576
   73              		.cfi_endproc
   74              	.LFE332:
-ARM GAS  /tmp/ccg3MWYX.s 			page 4
+ARM GAS  /tmp/ccvSzjb2.s 			page 4
 
 
   76              		.section	.text.ADC_error,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  125 000a 4FF44033 		mov	r3, #196608
  126 000e 4360     		str	r3, [r0, #4]
    8:src/adc.c     ****     ADC_INTERFACE.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-ARM GAS  /tmp/ccg3MWYX.s 			page 5
+ARM GAS  /tmp/ccvSzjb2.s 			page 5
 
 
  127              		.loc 1 8 5 is_stmt 1 view .LVU18
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
   18:src/adc.c     ****     ADC_INTERFACE.Init.DMAContinuousRequests = DISABLE;
  161              		.loc 1 18 45 is_stmt 0 view .LVU39
  162 002c 0363     		str	r3, [r0, #48]
-ARM GAS  /tmp/ccg3MWYX.s 			page 6
+ARM GAS  /tmp/ccvSzjb2.s 			page 6
 
 
   19:src/adc.c     ****     ADC_INTERFACE.Init.Overrun = ADC_OVR_DATA_PRESERVED;
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  197              		.loc 1 35 18 is_stmt 0 view .LVU59
  198 0050 0623     		movs	r3, #6
  199 0052 0293     		str	r3, [sp, #8]
-ARM GAS  /tmp/ccg3MWYX.s 			page 7
+ARM GAS  /tmp/ccvSzjb2.s 			page 7
 
 
   36:src/adc.c     ****     sConfig.SingleDiff = ADC_SINGLE_ENDED;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  240              	.L16:
   42:src/adc.c     ****     }
  241              		.loc 1 42 9 view .LVU74
-ARM GAS  /tmp/ccg3MWYX.s 			page 8
+ARM GAS  /tmp/ccvSzjb2.s 			page 8
 
 
  242 007c FFF7FEFF 		bl	ADC_error
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
   51:src/adc.c     ****         current = (ADC_V_REF - (raw * ADC_A_V)) / (ADC_A_V * ADC_R_SENSE);
  292              		.loc 1 51 9 is_stmt 1 view .LVU81
   51:src/adc.c     ****         current = (ADC_V_REF - (raw * ADC_A_V)) / (ADC_A_V * ADC_R_SENSE);
-ARM GAS  /tmp/ccg3MWYX.s 			page 9
+ARM GAS  /tmp/ccvSzjb2.s 			page 9
 
 
  293              		.loc 1 51 24 is_stmt 0 view .LVU82
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  336              	.LCFI7:
  337              		.cfi_remember_state
  338              		.cfi_restore 80
-ARM GAS  /tmp/ccg3MWYX.s 			page 10
+ARM GAS  /tmp/ccvSzjb2.s 			page 10
 
 
  339              		.cfi_restore 81
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
   66:src/adc.c     ****     RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
  389              		.loc 1 66 22 is_stmt 0 view .LVU99
  390 0006 0021     		movs	r1, #0
-ARM GAS  /tmp/ccg3MWYX.s 			page 11
+ARM GAS  /tmp/ccvSzjb2.s 			page 11
 
 
  391 0008 1791     		str	r1, [sp, #92]
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  432              		.loc 1 72 13 is_stmt 0 view .LVU112
  433 0032 02A8     		add	r0, sp, #8
  434 0034 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
-ARM GAS  /tmp/ccg3MWYX.s 			page 12
+ARM GAS  /tmp/ccvSzjb2.s 			page 12
 
 
  435              	.LVL30:
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  473              		.loc 1 80 9 is_stmt 1 view .LVU128
   80:src/adc.c     ****         GPIO_InitStruct.Pull = GPIO_NOPULL;
  474              		.loc 1 80 30 is_stmt 0 view .LVU129
-ARM GAS  /tmp/ccg3MWYX.s 			page 13
+ARM GAS  /tmp/ccvSzjb2.s 			page 13
 
 
  475 0064 0323     		movs	r3, #3
@@ -774,27 +774,27 @@ ARM GAS  /tmp/ccg3MWYX.s 			page 1
  519              		.file 11 "platform/HAL/inc/stm32g4xx_hal_adc_ex.h"
  520              		.file 12 "inc/adc.h"
  521              		.file 13 "<built-in>"
-ARM GAS  /tmp/ccg3MWYX.s 			page 14
+ARM GAS  /tmp/ccvSzjb2.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 adc.c
-     /tmp/ccg3MWYX.s:21     .text.HAL_ADC_MspDeInit:00000000 $t
-     /tmp/ccg3MWYX.s:27     .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
-     /tmp/ccg3MWYX.s:70     .text.HAL_ADC_MspDeInit:00000020 $d
-     /tmp/ccg3MWYX.s:77     .text.ADC_error:00000000 $t
-     /tmp/ccg3MWYX.s:83     .text.ADC_error:00000000 ADC_error
-     /tmp/ccg3MWYX.s:99     .text.ADC_init:00000000 $t
-     /tmp/ccg3MWYX.s:105    .text.ADC_init:00000000 ADC_init
-     /tmp/ccg3MWYX.s:247    .text.ADC_init:00000080 $d
-     /tmp/ccg3MWYX.s:506    .bss.ADC_INTERFACE:00000000 ADC_INTERFACE
-     /tmp/ccg3MWYX.s:254    .text.ADC_readCurrent:00000000 $t
-     /tmp/ccg3MWYX.s:260    .text.ADC_readCurrent:00000000 ADC_readCurrent
-     /tmp/ccg3MWYX.s:354    .text.ADC_readCurrent:00000068 $d
-     /tmp/ccg3MWYX.s:365    .text.HAL_ADC_MspInit:00000000 $t
-     /tmp/ccg3MWYX.s:371    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
-     /tmp/ccg3MWYX.s:495    .text.HAL_ADC_MspInit:0000007c $d
-     /tmp/ccg3MWYX.s:503    .bss.ADC_INTERFACE:00000000 $d
+     /tmp/ccvSzjb2.s:21     .text.HAL_ADC_MspDeInit:00000000 $t
+     /tmp/ccvSzjb2.s:27     .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+     /tmp/ccvSzjb2.s:70     .text.HAL_ADC_MspDeInit:00000020 $d
+     /tmp/ccvSzjb2.s:77     .text.ADC_error:00000000 $t
+     /tmp/ccvSzjb2.s:83     .text.ADC_error:00000000 ADC_error
+     /tmp/ccvSzjb2.s:99     .text.ADC_init:00000000 $t
+     /tmp/ccvSzjb2.s:105    .text.ADC_init:00000000 ADC_init
+     /tmp/ccvSzjb2.s:247    .text.ADC_init:00000080 $d
+     /tmp/ccvSzjb2.s:506    .bss.ADC_INTERFACE:00000000 ADC_INTERFACE
+     /tmp/ccvSzjb2.s:254    .text.ADC_readCurrent:00000000 $t
+     /tmp/ccvSzjb2.s:260    .text.ADC_readCurrent:00000000 ADC_readCurrent
+     /tmp/ccvSzjb2.s:354    .text.ADC_readCurrent:00000068 $d
+     /tmp/ccvSzjb2.s:365    .text.HAL_ADC_MspInit:00000000 $t
+     /tmp/ccvSzjb2.s:371    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+     /tmp/ccvSzjb2.s:495    .text.HAL_ADC_MspInit:0000007c $d
+     /tmp/ccvSzjb2.s:503    .bss.ADC_INTERFACE:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_DeInit

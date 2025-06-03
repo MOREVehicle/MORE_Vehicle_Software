@@ -1,16 +1,19 @@
-\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/\+Src/drv8703.c File Reference}
-\hypertarget{drv8703_8c}{}\label{drv8703_8c}\index{STM32\_AUTONOMOUS\_PROJECT/Src/drv8703.c@{STM32\_AUTONOMOUS\_PROJECT/Src/drv8703.c}}
+\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/src/drv8703.c File Reference}
+\hypertarget{drv8703_8c}{}\label{drv8703_8c}\index{STM32\_AUTONOMOUS\_PROJECT/src/drv8703.c@{STM32\_AUTONOMOUS\_PROJECT/src/drv8703.c}}
 
 
 Source file for DRV8703 driver functions Handles SPI communication and driver configuration.  
 
 
 {\ttfamily \#include "{}drv8703.\+h"{}}\newline
-Include dependency graph for drv8703.\+c\+:\nopagebreak
+{\ttfamily \#include "{}stm32g4xx\+\_\+hal\+\_\+spi.\+h"{}}\newline
+{\ttfamily \#include "{}stm32g4xx\+\_\+hal\+\_\+gpio.\+h"{}}\newline
+Include dependency graph for drv8703.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=310pt]{dd/dc4/drv8703_8c__incl}
+\includegraphics[width=350pt]{dd/dc4/drv8703_8c__incl}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Functions}
@@ -76,8 +79,7 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{dc/d85/drv8703_8c_aacbd29ce1823b0224c877c38603f093a_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -140,8 +142,7 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=270pt]{dc/d85/drv8703_8c_a530f2207deecc88721dacf30cbec7936_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -168,8 +169,7 @@ Reads data from a specific register in the DRV8703 driver.
 \begin{DoxyReturn}{Returns}
 true if read operation is successful, false otherwise. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -203,8 +203,7 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=275pt]{dc/d85/drv8703_8c_a680b2474db7711bf8c58319f4b2adcc1_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -233,8 +232,7 @@ General low level abstraction to communicate with drivers. Basically wrappers fo
 \begin{DoxyReturn}{Returns}
 true if write operation is successful, false otherwise. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

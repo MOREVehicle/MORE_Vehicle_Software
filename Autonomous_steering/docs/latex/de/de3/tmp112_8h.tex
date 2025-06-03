@@ -1,5 +1,5 @@
-\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/\+Inc/tmp112.h File Reference}
-\hypertarget{tmp112_8h}{}\label{tmp112_8h}\index{STM32\_AUTONOMOUS\_PROJECT/Inc/tmp112.h@{STM32\_AUTONOMOUS\_PROJECT/Inc/tmp112.h}}
+\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/inc/tmp112.h File Reference}
+\hypertarget{tmp112_8h}{}\label{tmp112_8h}\index{STM32\_AUTONOMOUS\_PROJECT/inc/tmp112.h@{STM32\_AUTONOMOUS\_PROJECT/inc/tmp112.h}}
 
 
 Driver for TMP112 Temperature Sensor.  
@@ -8,14 +8,17 @@ Driver for TMP112 Temperature Sensor.
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include "{}stm32g4xx\+\_\+hal.\+h"{}}\newline
-Include dependency graph for tmp112.\+h\+:\nopagebreak
+{\ttfamily \#include "{}stm32g4xx\+\_\+hal\+\_\+i2c.\+h"{}}\newline
+Include dependency graph for tmp112.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=310pt]{d5/d57/tmp112_8h__incl}
+\includegraphics[width=350pt]{d5/d57/tmp112_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -78,8 +81,8 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \Hypertarget{tmp112_8h_ab21934e4859d920b12b549da07bf2eea}\label{tmp112_8h_ab21934e4859d920b12b549da07bf2eea} 
 \#define {\bfseries TMP\+\_\+\+DEGREE\+\_\+\+RESOLUTION}~(float)(TMP\+\_\+\+ABSOLUTE\+\_\+\+RANGE / (float)(1$<$$<$\mbox{\hyperlink{tmp112_8h_a1bdb0b03d0e4cc741693dfe96d571f0c}{TMP\+\_\+\+RESOLUTION}}))
 \item 
-\Hypertarget{tmp112_8h_a8330d736cbce70c6e66383838e4a90d5}\label{tmp112_8h_a8330d736cbce70c6e66383838e4a90d5} 
-\#define {\bfseries TMP\+\_\+\+DEFAULT\+\_\+\+ADDR}~0x48
+\Hypertarget{tmp112_8h_a8a6bdd1d36309a7d241e2049cecaac62}\label{tmp112_8h_a8a6bdd1d36309a7d241e2049cecaac62} 
+\#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+DEFAULT}~0x48
 \item 
 \Hypertarget{tmp112_8h_aa4a689c232207e6dee9bf59bd955a0dd}\label{tmp112_8h_aa4a689c232207e6dee9bf59bd955a0dd} 
 \#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+SIZE}~2
@@ -95,7 +98,21 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 \#define \mbox{\hyperlink{tmp112_8h_afb740195560188d80cf626cc21f3506b}{TMP\+\_\+\+DATA\+\_\+2\+\_\+\+MASK}}(x)
 \item 
-\#define \mbox{\hyperlink{tmp112_8h_a02796926466f844e855116276e45bf4e}{TMP\+\_\+\+ADDR}}~((TMP\+\_\+\+DEFAULT\+\_\+\+ADDR) $<$$<$ 1)
+\#define \mbox{\hyperlink{tmp112_8h_af0cebf64091b4307f36e7a5494d40e34}{TMP\+\_\+\+ADDR\+\_\+\+AMOUNT}}~4
+\item 
+\Hypertarget{tmp112_8h_a7f821f361f8ce77ec313cccf394ccc78}\label{tmp112_8h_a7f821f361f8ce77ec313cccf394ccc78} 
+\#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+HIGHSIDE\+\_\+\+LEFT}~0
+\item 
+\Hypertarget{tmp112_8h_aef137f5b5b21477bfbcf0daaabf40292}\label{tmp112_8h_aef137f5b5b21477bfbcf0daaabf40292} 
+\#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+HIGHSIDE\+\_\+\+RIGHT}~1
+\item 
+\Hypertarget{tmp112_8h_aad93feb5c2ca68a0c18b8dbf3cde984d}\label{tmp112_8h_aad93feb5c2ca68a0c18b8dbf3cde984d} 
+\#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+LOWSIDE\+\_\+\+LEFT}~2
+\item 
+\Hypertarget{tmp112_8h_a94cb46716acb4ecd79e5f943d370feac}\label{tmp112_8h_a94cb46716acb4ecd79e5f943d370feac} 
+\#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+LOWSIDE\+\_\+\+RIGHT}~3
+\item 
+\#define \mbox{\hyperlink{tmp112_8h_a15575023760783d175cbe27775a318a7}{TMP\+\_\+\+ADDR}}(x)
 \item 
 \Hypertarget{tmp112_8h_a6334a57bafb12c780994bc7f79addad6}\label{tmp112_8h_a6334a57bafb12c780994bc7f79addad6} 
 \#define {\bfseries TMP\+\_\+\+I2\+C\+\_\+\+INTERFACE}~hi2c1
@@ -105,20 +122,22 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 void \mbox{\hyperlink{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}{TMP\+\_\+init}} (void)
 \begin{DoxyCompactList}\small\item\em Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communication. \end{DoxyCompactList}\item 
-int16\+\_\+t \mbox{\hyperlink{tmp112_8h_aaf42426edd437c424624a73df238134c}{TMP\+\_\+get\+Temperature}} (void)
+int16\+\_\+t \mbox{\hyperlink{tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72}{TMP\+\_\+get\+Temperature\+Single}} (uint8\+\_\+t address)
 \begin{DoxyCompactList}\small\item\em Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit temperature value from the TMP112 and converts it to Celsius. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93}{TMP\+\_\+write}} (uint8\+\_\+t reg, uint16\+\_\+t data)
+int16\+\_\+t \mbox{\hyperlink{tmp112_8h_ae75b0876f998ebf4e6667e33bb687569}{TMP\+\_\+get\+Temperature}} ()
+\begin{DoxyCompactList}\small\item\em Reads all the temperature sensors. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{tmp112_8h_a1322cef7af405248d9f5acc46db30ccf}{TMP\+\_\+write}} (uint8\+\_\+t address, uint8\+\_\+t reg, uint16\+\_\+t data)
 \begin{DoxyCompactList}\small\item\em basic function to write to TMP112 \end{DoxyCompactList}\item 
-uint16\+\_\+t \mbox{\hyperlink{tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2}{TMP\+\_\+read}} (uint8\+\_\+t reg)
+uint16\+\_\+t \mbox{\hyperlink{tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b}{TMP\+\_\+read}} (uint8\+\_\+t address, uint8\+\_\+t reg)
 \begin{DoxyCompactList}\small\item\em basic function to read to TMP112 \end{DoxyCompactList}\item 
-\Hypertarget{tmp112_8h_a53e8a9a536535b0d052aeda72cd268b8}\label{tmp112_8h_a53e8a9a536535b0d052aeda72cd268b8} 
-uint8\+\_\+t {\bfseries TMP\+\_\+set\+TLow} (float celcius)
+\Hypertarget{tmp112_8h_ab245dd6d2557d920a0bdeef48cb2bd17}\label{tmp112_8h_ab245dd6d2557d920a0bdeef48cb2bd17} 
+uint8\+\_\+t {\bfseries TMP\+\_\+set\+TLow} (uint8\+\_\+t address, float celcius)
 \begin{DoxyCompactList}\small\item\em wrapper of write to set the TLOW and THIGH regisers return success \end{DoxyCompactList}\item 
-\Hypertarget{tmp112_8h_a27d2e5f9f8f1024928af7c203753b69d}\label{tmp112_8h_a27d2e5f9f8f1024928af7c203753b69d} 
-uint8\+\_\+t {\bfseries TMP\+\_\+set\+THigh} (float celcius)
+\Hypertarget{tmp112_8h_a9df028f1bb31cc458a429553d220504d}\label{tmp112_8h_a9df028f1bb31cc458a429553d220504d} 
+uint8\+\_\+t {\bfseries TMP\+\_\+set\+THigh} (uint8\+\_\+t address, float celcius)
 \item 
-\Hypertarget{tmp112_8h_af7b836277f7e32d85ebd88101fb4088c}\label{tmp112_8h_af7b836277f7e32d85ebd88101fb4088c} 
-uint8\+\_\+t {\bfseries TMP\+\_\+set\+Config} (uint16\+\_\+t data)
+\Hypertarget{tmp112_8h_a037d8018fa79231ee467a70837b1c818}\label{tmp112_8h_a037d8018fa79231ee467a70837b1c818} 
+uint8\+\_\+t {\bfseries TMP\+\_\+set\+Config} (uint8\+\_\+t address, uint16\+\_\+t data)
 \begin{DoxyCompactList}\small\item\em wrapper of write to write to config register return success \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5}{TMP\+\_\+data\+\_\+to\+\_\+celcius}} (uint16\+\_\+t data)
 \begin{DoxyCompactList}\small\item\em Converts digital data to degrees celcius. \end{DoxyCompactList}\item 
@@ -142,13 +161,24 @@ Driver for TMP112 Temperature Sensor.
 This file provides functions to interact with the TMP112 temperature sensor over I2C, including reading temperature values and configuring sensor settings. Everything is MSB to LSB 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{tmp112_8h_a02796926466f844e855116276e45bf4e}\index{tmp112.h@{tmp112.h}!TMP\_ADDR@{TMP\_ADDR}}
+\Hypertarget{tmp112_8h_a15575023760783d175cbe27775a318a7}\index{tmp112.h@{tmp112.h}!TMP\_ADDR@{TMP\_ADDR}}
 \index{TMP\_ADDR@{TMP\_ADDR}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_ADDR}{TMP\_ADDR}}
-{\footnotesize\ttfamily \label{tmp112_8h_a02796926466f844e855116276e45bf4e} 
-\#define TMP\+\_\+\+ADDR~((TMP\+\_\+\+DEFAULT\+\_\+\+ADDR) $<$$<$ 1)}
+{\footnotesize\ttfamily \label{tmp112_8h_a15575023760783d175cbe27775a318a7} 
+\#define TMP\+\_\+\+ADDR(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
 
-Used address defined by project, default is default TMP112 address \Hypertarget{tmp112_8h_a3a857f5c9134d11e59b0171d8391daba}\index{tmp112.h@{tmp112.h}!TMP\_CONFIG\_CONVERSION\_RATE\_MASK@{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}}
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint8\_t)(TMP\_ADDR\_DEFAULT\ +\ x))}
+
+\end{DoxyCode}
+\Hypertarget{tmp112_8h_af0cebf64091b4307f36e7a5494d40e34}\index{tmp112.h@{tmp112.h}!TMP\_ADDR\_AMOUNT@{TMP\_ADDR\_AMOUNT}}
+\index{TMP\_ADDR\_AMOUNT@{TMP\_ADDR\_AMOUNT}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_ADDR\_AMOUNT}{TMP\_ADDR\_AMOUNT}}
+{\footnotesize\ttfamily \label{tmp112_8h_af0cebf64091b4307f36e7a5494d40e34} 
+\#define TMP\+\_\+\+ADDR\+\_\+\+AMOUNT~4}
+
+Used address defined by project, default is default TMP112 address \texorpdfstring{$\ast$}{*} number is refering to what sensor is used \Hypertarget{tmp112_8h_a3a857f5c9134d11e59b0171d8391daba}\index{tmp112.h@{tmp112.h}!TMP\_CONFIG\_CONVERSION\_RATE\_MASK@{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}}
 \index{TMP\_CONFIG\_CONVERSION\_RATE\_MASK@{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}{TMP\_CONFIG\_CONVERSION\_RATE\_MASK}}
 {\footnotesize\ttfamily \label{tmp112_8h_a3a857f5c9134d11e59b0171d8391daba} 
@@ -251,8 +281,7 @@ AUTOGEN DO NOT CHANGE THIS Here is the call graph for this function\+:\nopagebre
 \includegraphics[width=249pt]{de/de3/tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -309,19 +338,47 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily \label{tmp112_8h_ab734280be7c71b47e4182f47756226d8} 
 void TMP\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
-Error state function Here is the caller graph for this function\+:
-\nopagebreak
+Error state function Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{de/de3/tmp112_8h_ab734280be7c71b47e4182f47756226d8_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8h_aaf42426edd437c424624a73df238134c}\index{tmp112.h@{tmp112.h}!TMP\_getTemperature@{TMP\_getTemperature}}
+\Hypertarget{tmp112_8h_ae75b0876f998ebf4e6667e33bb687569}\index{tmp112.h@{tmp112.h}!TMP\_getTemperature@{TMP\_getTemperature}}
 \index{TMP\_getTemperature@{TMP\_getTemperature}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_getTemperature()}{TMP\_getTemperature()}}
-{\footnotesize\ttfamily \label{tmp112_8h_aaf42426edd437c424624a73df238134c} 
-int16\+\_\+t TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8h_ae75b0876f998ebf4e6667e33bb687569} 
+int16\+\_\+t TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reads all the temperature sensors. 
+
+\begin{DoxyReturn}{Returns}
+Average temperature of all sensors 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{de/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72}\index{tmp112.h@{tmp112.h}!TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}}
+\index{TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}!tmp112.h@{tmp112.h}}
+\doxysubsubsection{\texorpdfstring{TMP\_getTemperatureSingle()}{TMP\_getTemperatureSingle()}}
+{\footnotesize\ttfamily \label{tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72} 
+int16\+\_\+t TMP\+\_\+get\+Temperature\+Single (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
 
 
 
@@ -330,11 +387,12 @@ Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit tempera
 \begin{DoxyReturn}{Returns}
 Temperature in Celsius as a 16-\/bit signed integer. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=336pt]{de/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_cgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -342,7 +400,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=263pt]{de/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_icgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}\index{tmp112.h@{tmp112.h}!TMP\_init@{TMP\_init}}
@@ -358,26 +416,26 @@ Initializes the TMP112 sensor. Configures the sensor for default settings and pr
 \begin{DoxyReturn}{Returns}
 0 if initialization is successful, non-\/zero if an error occurs. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{de/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=208pt]{de/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2}\index{tmp112.h@{tmp112.h}!TMP\_read@{TMP\_read}}
+\Hypertarget{tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b}\index{tmp112.h@{tmp112.h}!TMP\_read@{TMP\_read}}
 \index{TMP\_read@{TMP\_read}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_read()}{TMP\_read()}}
-{\footnotesize\ttfamily \label{tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2} 
-uint16\+\_\+t TMP\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b} 
+uint16\+\_\+t TMP\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{reg}{}\end{DoxyParamCaption})}
 
 
 
@@ -396,14 +454,14 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/de3/tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2_icgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93}\index{tmp112.h@{tmp112.h}!TMP\_write@{TMP\_write}}
+\Hypertarget{tmp112_8h_a1322cef7af405248d9f5acc46db30ccf}\index{tmp112.h@{tmp112.h}!TMP\_write@{TMP\_write}}
 \index{TMP\_write@{TMP\_write}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_write()}{TMP\_write()}}
-{\footnotesize\ttfamily \label{tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93} 
-uint8\+\_\+t TMP\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{, }\item[{uint16\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8h_a1322cef7af405248d9f5acc46db30ccf} 
+uint8\+\_\+t TMP\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{reg}{, }\item[{uint16\+\_\+t}]{data}{}\end{DoxyParamCaption})}
 
 
 
@@ -424,6 +482,6 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/de3/tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93_icgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_a1322cef7af405248d9f5acc46db30ccf_icgraph}
 \end{center}
 \end{figure}

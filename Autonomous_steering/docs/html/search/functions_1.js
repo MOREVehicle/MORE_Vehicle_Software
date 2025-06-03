@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['busfault_5fhandler_0',['BusFault_Handler',['../d1/d33/stm32g4xx__it_8c.html#a850cefb17a977292ae5eb4cafa9976c3',1,'BusFault_Handler(void):&#160;stm32g4xx_it.c'],['../d9/d3a/stm32g4xx__it_8h.html#a850cefb17a977292ae5eb4cafa9976c3',1,'BusFault_Handler(void):&#160;stm32g4xx_it.c']]]
+  ['hal_5fspi_5fmspdeinit_0',['HAL_SPI_MspDeInit',['../dc/d85/drv8703_8c.html#af9af6cae4cb9386b709196d3a3ab4f78',1,'drv8703.c']]],
+  ['hal_5fspi_5fmspinit_1',['HAL_SPI_MspInit',['../dc/d85/drv8703_8c.html#a8e1dadd744299fa6f8bca0e1bcbd2c00',1,'drv8703.c']]]
 ];

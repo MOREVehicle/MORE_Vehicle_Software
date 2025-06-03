@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MORE Autonomous steering: STM32_AUTONOMOUS_PROJECT/Inc/drv8703.h Source File</title>
+<title>MORE Autonomous steering: STM32_AUTONOMOUS_PROJECT/inc/drv8703.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -111,13 +111,13 @@ $(function(){initNavTree('d7/d15/drv8703_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef __DRV8703_H_</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define __DRV8703_H_</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;stm32g4xx_hal.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stm32g4xx_hal.h&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define DRV_REG_MAP_SIZE                (uint8_t)0x05</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
@@ -180,42 +180,41 @@ $(function(){initNavTree('d7/d15/drv8703_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#define DRV_DATA_MASK(x)                ((((uint8_t)x) &amp; 0xFF) &lt;&lt; 0) </span><span class="comment">//byte #2</span></div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#define DRV_SPI_TIMEOUT                 (uint8_t)10  </span></div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#define DRV_SPI_INTERFACE               hspi3</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keyword">extern</span> SPI_HandleTypeDef                DRV_SPI_INTERFACE;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#aacbd29ce1823b0224c877c38603f093a">DRV_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#ac5040b78f563159a60fefa0191052830">DRV_write</a>(uint8_t address, uint8_t data);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#ae0903f440d0fa565fd3947ee31c70a31">DRV_read</a>(uint8_t address, uint8_t* data);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a530f2207deecc88721dacf30cbec7936">DRV_modify_set</a>(uint8_t address, uint8_t data);</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a5469ae17c293c62f53612deb421ae9f5">DRV_modify_reset</a>(uint8_t address, uint8_t data);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a5a80a0e31e16e54224183cd2721308eb">DRV_writeRegister</a>(uint8_t* data, uint8_t filter);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a680b2474db7711bf8c58319f4b2adcc1">DRV_readRegister</a>(uint8_t* data, uint8_t filter);</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad">MX_SPI_init</a>();</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="keywordtype">void</span> MX_GPIO_init();</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="adrv8703_8h_html_a530f2207deecc88721dacf30cbec7936"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a530f2207deecc88721dacf30cbec7936">DRV_modify_set</a></div><div class="ttdeci">bool DRV_modify_set(uint8_t address, uint8_t data)</div><div class="ttdoc">modifies register with only bits mentioned and the rest unchanged.</div><div class="ttdef"><b>Definition</b> drv8703.c:80</div></div>
-<div class="ttc" id="adrv8703_8h_html_a5469ae17c293c62f53612deb421ae9f5"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a5469ae17c293c62f53612deb421ae9f5">DRV_modify_reset</a></div><div class="ttdeci">bool DRV_modify_reset(uint8_t address, uint8_t data)</div><div class="ttdoc">Modifies data in specific register in the DRV8703 driver.</div><div class="ttdef"><b>Definition</b> drv8703.c:98</div></div>
-<div class="ttc" id="adrv8703_8h_html_a5a80a0e31e16e54224183cd2721308eb"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a5a80a0e31e16e54224183cd2721308eb">DRV_writeRegister</a></div><div class="ttdeci">bool DRV_writeRegister(uint8_t *data, uint8_t filter)</div><div class="ttdoc">Write/Read all registers and returns them from highest address to lowest address.</div><div class="ttdef"><b>Definition</b> drv8703.c:116</div></div>
-<div class="ttc" id="adrv8703_8h_html_a680b2474db7711bf8c58319f4b2adcc1"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a680b2474db7711bf8c58319f4b2adcc1">DRV_readRegister</a></div><div class="ttdeci">bool DRV_readRegister(uint8_t *data, uint8_t filter)</div><div class="ttdoc">Reads data from all registers in the DRV8703 driver.</div><div class="ttdef"><b>Definition</b> drv8703.c:135</div></div>
-<div class="ttc" id="adrv8703_8h_html_aacbd29ce1823b0224c877c38603f093a"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#aacbd29ce1823b0224c877c38603f093a">DRV_init</a></div><div class="ttdeci">void DRV_init(void)</div><div class="ttdoc">Initialisation according to SPI settings defined earlier.</div><div class="ttdef"><b>Definition</b> drv8703.c:16</div></div>
-<div class="ttc" id="adrv8703_8h_html_ac5040b78f563159a60fefa0191052830"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#ac5040b78f563159a60fefa0191052830">DRV_write</a></div><div class="ttdeci">bool DRV_write(uint8_t address, uint8_t data)</div><div class="ttdoc">General low level abstraction to communicate with drivers. Basically wrappers for HAL_SPI_....</div><div class="ttdef"><b>Definition</b> drv8703.c:32</div></div>
-<div class="ttc" id="adrv8703_8h_html_adc50917bef3b15ac8dd7e70c889b94ad"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad">MX_SPI_init</a></div><div class="ttdeci">int MX_SPI_init()</div><div class="ttdoc">THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an...</div><div class="ttdef"><b>Definition</b> drv8703.c:156</div></div>
-<div class="ttc" id="adrv8703_8h_html_ae0903f440d0fa565fd3947ee31c70a31"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#ae0903f440d0fa565fd3947ee31c70a31">DRV_read</a></div><div class="ttdeci">bool DRV_read(uint8_t address, uint8_t *data)</div><div class="ttdoc">Reads data from a specific register in the DRV8703 driver.</div><div class="ttdef"><b>Definition</b> drv8703.c:56</div></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keyword">extern</span> SPI_HandleTypeDef                DRV_SPI_INTERFACE;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#aacbd29ce1823b0224c877c38603f093a">DRV_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#ac5040b78f563159a60fefa0191052830">DRV_write</a>(uint8_t address, uint8_t data);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#ae0903f440d0fa565fd3947ee31c70a31">DRV_read</a>(uint8_t address, uint8_t* data);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a530f2207deecc88721dacf30cbec7936">DRV_modify_set</a>(uint8_t address, uint8_t data);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a5469ae17c293c62f53612deb421ae9f5">DRV_modify_reset</a>(uint8_t address, uint8_t data);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a5a80a0e31e16e54224183cd2721308eb">DRV_writeRegister</a>(uint8_t* data, uint8_t filter);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#a680b2474db7711bf8c58319f4b2adcc1">DRV_readRegister</a>(uint8_t* data, uint8_t filter);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad">MX_SPI_init</a>();</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keywordtype">void</span> MX_GPIO_init();</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>}</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="adrv8703_8h_html_a530f2207deecc88721dacf30cbec7936"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a530f2207deecc88721dacf30cbec7936">DRV_modify_set</a></div><div class="ttdeci">bool DRV_modify_set(uint8_t address, uint8_t data)</div><div class="ttdoc">modifies register with only bits mentioned and the rest unchanged.</div><div class="ttdef"><b>Definition</b> drv8703.c:82</div></div>
+<div class="ttc" id="adrv8703_8h_html_a5469ae17c293c62f53612deb421ae9f5"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a5469ae17c293c62f53612deb421ae9f5">DRV_modify_reset</a></div><div class="ttdeci">bool DRV_modify_reset(uint8_t address, uint8_t data)</div><div class="ttdoc">Modifies data in specific register in the DRV8703 driver.</div><div class="ttdef"><b>Definition</b> drv8703.c:100</div></div>
+<div class="ttc" id="adrv8703_8h_html_a5a80a0e31e16e54224183cd2721308eb"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a5a80a0e31e16e54224183cd2721308eb">DRV_writeRegister</a></div><div class="ttdeci">bool DRV_writeRegister(uint8_t *data, uint8_t filter)</div><div class="ttdoc">Write/Read all registers and returns them from highest address to lowest address.</div><div class="ttdef"><b>Definition</b> drv8703.c:118</div></div>
+<div class="ttc" id="adrv8703_8h_html_a680b2474db7711bf8c58319f4b2adcc1"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#a680b2474db7711bf8c58319f4b2adcc1">DRV_readRegister</a></div><div class="ttdeci">bool DRV_readRegister(uint8_t *data, uint8_t filter)</div><div class="ttdoc">Reads data from all registers in the DRV8703 driver.</div><div class="ttdef"><b>Definition</b> drv8703.c:137</div></div>
+<div class="ttc" id="adrv8703_8h_html_aacbd29ce1823b0224c877c38603f093a"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#aacbd29ce1823b0224c877c38603f093a">DRV_init</a></div><div class="ttdeci">void DRV_init(void)</div><div class="ttdoc">Initialisation according to SPI settings defined earlier.</div><div class="ttdef"><b>Definition</b> drv8703.c:18</div></div>
+<div class="ttc" id="adrv8703_8h_html_ac5040b78f563159a60fefa0191052830"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#ac5040b78f563159a60fefa0191052830">DRV_write</a></div><div class="ttdeci">bool DRV_write(uint8_t address, uint8_t data)</div><div class="ttdoc">General low level abstraction to communicate with drivers. Basically wrappers for HAL_SPI_....</div><div class="ttdef"><b>Definition</b> drv8703.c:34</div></div>
+<div class="ttc" id="adrv8703_8h_html_adc50917bef3b15ac8dd7e70c889b94ad"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad">MX_SPI_init</a></div><div class="ttdeci">int MX_SPI_init()</div><div class="ttdoc">THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an...</div><div class="ttdef"><b>Definition</b> drv8703.c:158</div></div>
+<div class="ttc" id="adrv8703_8h_html_ae0903f440d0fa565fd3947ee31c70a31"><div class="ttname"><a href="../../d7/d15/drv8703_8h.html#ae0903f440d0fa565fd3947ee31c70a31">DRV_read</a></div><div class="ttdeci">bool DRV_read(uint8_t address, uint8_t *data)</div><div class="ttdoc">Reads data from a specific register in the DRV8703 driver.</div><div class="ttdef"><b>Definition</b> drv8703.c:58</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_1f6a81285d2e99ccd007e40c9b009fa8.html">STM32_AUTONOMOUS_PROJECT</a></li><li class="navelem"><a class="el" href="../../dir_3572a21815e105ca855d2f4dd3b48299.html">Inc</a></li><li class="navelem"><a class="el" href="../../d7/d15/drv8703_8h.html">drv8703.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_1f6a81285d2e99ccd007e40c9b009fa8.html">STM32_AUTONOMOUS_PROJECT</a></li><li class="navelem"><a class="el" href="../../dir_d5c1a6dc28e58b26a999d090c6e975da.html">inc</a></li><li class="navelem"><a class="el" href="../../d7/d15/drv8703_8h.html">drv8703.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

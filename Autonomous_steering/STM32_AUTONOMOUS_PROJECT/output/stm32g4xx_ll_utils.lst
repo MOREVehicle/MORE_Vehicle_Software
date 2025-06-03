@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccCR19RB.s 			page 1
+ARM GAS  /tmp/ccY3Jimf.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   28:platform/HAL/src/stm32g4xx_ll_utils.c **** #endif /* USE_FULL_ASSERT */
   29:platform/HAL/src/stm32g4xx_ll_utils.c **** 
   30:platform/HAL/src/stm32g4xx_ll_utils.c **** /** @addtogroup STM32G4xx_LL_Driver
-ARM GAS  /tmp/ccCR19RB.s 			page 2
+ARM GAS  /tmp/ccY3Jimf.s 			page 2
 
 
   31:platform/HAL/src/stm32g4xx_ll_utils.c ****   * @{
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   85:platform/HAL/src/stm32g4xx_ll_utils.c ****                                         || ((__VALUE__) == LL_RCC_SYSCLK_DIV_16)  \
   86:platform/HAL/src/stm32g4xx_ll_utils.c ****                                         || ((__VALUE__) == LL_RCC_SYSCLK_DIV_64)  \
   87:platform/HAL/src/stm32g4xx_ll_utils.c ****                                         || ((__VALUE__) == LL_RCC_SYSCLK_DIV_128) \
-ARM GAS  /tmp/ccCR19RB.s 			page 3
+ARM GAS  /tmp/ccY3Jimf.s 			page 3
 
 
   88:platform/HAL/src/stm32g4xx_ll_utils.c ****                                         || ((__VALUE__) == LL_RCC_SYSCLK_DIV_256) \
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  142:platform/HAL/src/stm32g4xx_ll_utils.c **** /** @defgroup UTILS_LL_Private_Functions UTILS Private functions
  143:platform/HAL/src/stm32g4xx_ll_utils.c ****   * @{
  144:platform/HAL/src/stm32g4xx_ll_utils.c ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 4
+ARM GAS  /tmp/ccY3Jimf.s 			page 4
 
 
  145:platform/HAL/src/stm32g4xx_ll_utils.c **** static uint32_t    UTILS_GetPLLOutputFrequency(uint32_t PLL_InputFrequency,
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  199:platform/HAL/src/stm32g4xx_ll_utils.c ****   while (tmpDelay != 0U)
  200:platform/HAL/src/stm32g4xx_ll_utils.c ****   {
  201:platform/HAL/src/stm32g4xx_ll_utils.c ****     if((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) != 0U)
-ARM GAS  /tmp/ccCR19RB.s 			page 5
+ARM GAS  /tmp/ccY3Jimf.s 			page 5
 
 
  202:platform/HAL/src/stm32g4xx_ll_utils.c ****     {
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  256:platform/HAL/src/stm32g4xx_ll_utils.c ****   */
  257:platform/HAL/src/stm32g4xx_ll_utils.c **** void LL_SetSystemCoreClock(uint32_t HCLKFrequency)
  258:platform/HAL/src/stm32g4xx_ll_utils.c **** {
-ARM GAS  /tmp/ccCR19RB.s 			page 6
+ARM GAS  /tmp/ccY3Jimf.s 			page 6
 
 
  259:platform/HAL/src/stm32g4xx_ll_utils.c ****   /* HCLK clock frequency */
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  313:platform/HAL/src/stm32g4xx_ll_utils.c ****       }
  314:platform/HAL/src/stm32g4xx_ll_utils.c ****     }
  315:platform/HAL/src/stm32g4xx_ll_utils.c ****     /* SCALE1 normal mode*/
-ARM GAS  /tmp/ccCR19RB.s 			page 7
+ARM GAS  /tmp/ccY3Jimf.s 			page 7
 
 
  316:platform/HAL/src/stm32g4xx_ll_utils.c ****     else if(regulatorstatus == LL_PWR_REGU_VOLTAGE_SCALE1)
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  370:platform/HAL/src/stm32g4xx_ll_utils.c ****       /* Check that the new number of wait states is taken into account to access the Flash
  371:platform/HAL/src/stm32g4xx_ll_utils.c ****          memory by reading the FLASH_ACR register */
  372:platform/HAL/src/stm32g4xx_ll_utils.c ****       timeout = 2U;
-ARM GAS  /tmp/ccCR19RB.s 			page 8
+ARM GAS  /tmp/ccY3Jimf.s 			page 8
 
 
  373:platform/HAL/src/stm32g4xx_ll_utils.c ****       do
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  427:platform/HAL/src/stm32g4xx_ll_utils.c ****     }
  428:platform/HAL/src/stm32g4xx_ll_utils.c **** 
  429:platform/HAL/src/stm32g4xx_ll_utils.c ****     /* Configure PLL */
-ARM GAS  /tmp/ccCR19RB.s 			page 9
+ARM GAS  /tmp/ccY3Jimf.s 			page 9
 
 
  430:platform/HAL/src/stm32g4xx_ll_utils.c ****     LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, UTILS_PLLInitStruct->PLLM, UTILS_PLLInitStruc
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  484:platform/HAL/src/stm32g4xx_ll_utils.c ****   * @retval An ErrorStatus enumeration value:
  485:platform/HAL/src/stm32g4xx_ll_utils.c ****   *          - SUCCESS: Max frequency configuration done
  486:platform/HAL/src/stm32g4xx_ll_utils.c ****   *          - ERROR: Max frequency configuration not done
-ARM GAS  /tmp/ccCR19RB.s 			page 10
+ARM GAS  /tmp/ccY3Jimf.s 			page 10
 
 
  487:platform/HAL/src/stm32g4xx_ll_utils.c ****   */
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  541:platform/HAL/src/stm32g4xx_ll_utils.c ****     status = UTILS_EnablePLLAndSwitchSystem(pllfreq, UTILS_ClkInitStruct);
  542:platform/HAL/src/stm32g4xx_ll_utils.c **** 
  543:platform/HAL/src/stm32g4xx_ll_utils.c ****     /* Apply definitive AHB prescaler value if necessary */
-ARM GAS  /tmp/ccCR19RB.s 			page 11
+ARM GAS  /tmp/ccY3Jimf.s 			page 11
 
 
  544:platform/HAL/src/stm32g4xx_ll_utils.c ****     if ((status == SUCCESS) && (hpre != LL_RCC_SYSCLK_DIV_1))
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   36              		.loc 1 590 3 view .LVU3
  591:platform/HAL/src/stm32g4xx_ll_utils.c ****   assert_param(IS_LL_UTILS_PLLR_VALUE(UTILS_PLLInitStruct->PLLR));
   37              		.loc 1 591 3 view .LVU4
-ARM GAS  /tmp/ccCR19RB.s 			page 12
+ARM GAS  /tmp/ccY3Jimf.s 			page 12
 
 
  592:platform/HAL/src/stm32g4xx_ll_utils.c **** 
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   76              	.LFE639:
   78              		.section	.text.UTILS_PLL_IsBusy,"ax",%progbits
   79              		.align	1
-ARM GAS  /tmp/ccCR19RB.s 			page 13
+ARM GAS  /tmp/ccY3Jimf.s 			page 13
 
 
   80              		.syntax unified
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   26:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /* Includes ------------------------------------------------------------------*/
   27:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #include "stm32g4xx.h"
   28:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
-ARM GAS  /tmp/ccCR19RB.s 			page 14
+ARM GAS  /tmp/ccY3Jimf.s 			page 14
 
 
   29:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /** @addtogroup STM32G4xx_LL_Driver
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   83:platform/HAL/inc/stm32g4xx_ll_rcc.h **** typedef struct
   84:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
   85:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   uint32_t SYSCLK_Frequency;        /*!< SYSCLK clock frequency */
-ARM GAS  /tmp/ccCR19RB.s 			page 15
+ARM GAS  /tmp/ccY3Jimf.s 			page 15
 
 
   86:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   uint32_t HCLK_Frequency;          /*!< HCLK clock frequency */
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  140:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief    Flags defines which can be used with LL_RCC_WriteReg function
  141:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @{
  142:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 16
+ARM GAS  /tmp/ccY3Jimf.s 			page 16
 
 
  143:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_CICR_LSIRDYC                RCC_CICR_LSIRDYC     /*!< LSI Ready Interrupt Clear */
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  197:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_LSEDRIVE_MEDIUMLOW          RCC_BDCR_LSEDRV_0       /*!< Xtal mode medium low drivin
  198:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_LSEDRIVE_MEDIUMHIGH         RCC_BDCR_LSEDRV_1       /*!< Xtal mode medium high drivi
  199:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_LSEDRIVE_HIGH               RCC_BDCR_LSEDRV         /*!< Xtal mode higher driving ca
-ARM GAS  /tmp/ccCR19RB.s 			page 17
+ARM GAS  /tmp/ccY3Jimf.s 			page 17
 
 
  200:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  254:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_APB1_DIV_4                  RCC_CFGR_PPRE1_DIV4  /*!< HCLK divided by 4 */
  255:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_APB1_DIV_8                  RCC_CFGR_PPRE1_DIV8  /*!< HCLK divided by 8 */
  256:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_APB1_DIV_16                 RCC_CFGR_PPRE1_DIV16 /*!< HCLK divided by 16 */
-ARM GAS  /tmp/ccCR19RB.s 			page 18
+ARM GAS  /tmp/ccY3Jimf.s 			page 18
 
 
  257:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  311:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /** @defgroup RCC_LL_EC_USARTx_CLKSOURCE  Peripheral USART clock source selection
  312:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @{
  313:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 19
+ARM GAS  /tmp/ccY3Jimf.s 			page 19
 
 
  314:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_USART1_CLKSOURCE_PCLK2      (RCC_CCIPR_USART1SEL << 16U)                           /
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  368:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_I2C2_CLKSOURCE_PCLK1        (((uint32_t)RCC_OFFSET_CCIPR << 24U) | ((uint32_t)RCC_CC
  369:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_I2C2_CLKSOURCE_SYSCLK       (((uint32_t)RCC_OFFSET_CCIPR << 24U) | ((uint32_t)RCC_CC
  370:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_I2C2_CLKSOURCE_HSI          (((uint32_t)RCC_OFFSET_CCIPR << 24U) | ((uint32_t)RCC_CC
-ARM GAS  /tmp/ccCR19RB.s 			page 20
+ARM GAS  /tmp/ccY3Jimf.s 			page 20
 
 
  371:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_I2C3_CLKSOURCE_PCLK1        (((uint32_t)RCC_OFFSET_CCIPR << 24U) | ((uint32_t)RCC_CC
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  425:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
  426:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #endif /* FDCAN1 */
  427:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
-ARM GAS  /tmp/ccCR19RB.s 			page 21
+ARM GAS  /tmp/ccY3Jimf.s 			page 21
 
 
  428:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /** @defgroup RCC_LL_EC_RNG_CLKSOURCE  Peripheral RNG clock source selection
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  482:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
  483:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
  484:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /** @defgroup RCC_LL_EC_UARTx Peripheral UART get clock source
-ARM GAS  /tmp/ccCR19RB.s 			page 22
+ARM GAS  /tmp/ccY3Jimf.s 			page 22
 
 
  485:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @{
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  539:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_I2S_CLKSOURCE              RCC_CCIPR_I2S23SEL /*!< I2S Clock source selection */
  540:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
  541:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @}
-ARM GAS  /tmp/ccCR19RB.s 			page 23
+ARM GAS  /tmp/ccY3Jimf.s 			page 23
 
 
  542:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  596:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_RTC_CLKSOURCE_HSE_DIV32     RCC_BDCR_RTCSEL         /*!< HSE oscillator clock divide
  597:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
  598:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @}
-ARM GAS  /tmp/ccCR19RB.s 			page 24
+ARM GAS  /tmp/ccY3Jimf.s 			page 24
 
 
  599:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  653:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_PLLP_DIV_6                  (RCC_PLLCFGR_PLLPDIV_2|RCC_PLLCFGR_PLLPDIV_1)           
  654:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_PLLP_DIV_7                  (RCC_PLLCFGR_PLLPDIV_2|RCC_PLLCFGR_PLLPDIV_1|RCC_PLLCFGR
  655:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_PLLP_DIV_8                  (RCC_PLLCFGR_PLLPDIV_3)                                 
-ARM GAS  /tmp/ccCR19RB.s 			page 25
+ARM GAS  /tmp/ccY3Jimf.s 			page 25
 
 
  656:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_PLLP_DIV_9                  (RCC_PLLCFGR_PLLPDIV_3|RCC_PLLCFGR_PLLPDIV_0)           
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  710:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  __VALUE__ Value to be written in the register
  711:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
  712:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 26
+ARM GAS  /tmp/ccY3Jimf.s 			page 26
 
 
  713:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define LL_RCC_WriteReg(__REG__, __VALUE__) WRITE_REG(RCC->__REG__, __VALUE__)
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  767:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  __PLLM__ This parameter can be one of the following values:
  768:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_1
  769:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_2
-ARM GAS  /tmp/ccCR19RB.s 			page 27
+ARM GAS  /tmp/ccY3Jimf.s 			page 27
 
 
  770:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_3
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  824:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @note ex: @ref __LL_RCC_CALC_PLLCLK_48M_FREQ (HSE_VALUE,@ref LL_RCC_PLL_GetDivider (),
  825:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *             @ref LL_RCC_PLL_GetN (), @ref LL_RCC_PLL_GetQ ());
  826:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  __INPUTFREQ__ PLL Input frequency (based on HSE/HSI)
-ARM GAS  /tmp/ccCR19RB.s 			page 28
+ARM GAS  /tmp/ccY3Jimf.s 			page 28
 
 
  827:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  __PLLM__ This parameter can be one of the following values:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  881:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval PCLK1 clock frequency (in Hz)
  882:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
  883:platform/HAL/inc/stm32g4xx_ll_rcc.h **** #define __LL_RCC_CALC_PCLK1_FREQ(__HCLKFREQ__, __APB1PRESCALER__) ((__HCLKFREQ__) >> (APBPrescTable
-ARM GAS  /tmp/ccCR19RB.s 			page 29
+ARM GAS  /tmp/ccY3Jimf.s 			page 29
 
 
  884:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  938:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
  939:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
  940:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE void LL_RCC_HSE_DisableBypass(void)
-ARM GAS  /tmp/ccCR19RB.s 			page 30
+ARM GAS  /tmp/ccY3Jimf.s 			page 30
 
 
  941:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  995:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Disable HSI in stop mode
  996:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CR           HSIKERON      LL_RCC_HSI_DisableInStopMode
  997:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
-ARM GAS  /tmp/ccCR19RB.s 			page 31
+ARM GAS  /tmp/ccY3Jimf.s 			page 31
 
 
  998:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1052:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  Value Between Min_Data = 0 and Max_Data = 127
 1053:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
 1054:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 32
+ARM GAS  /tmp/ccY3Jimf.s 			page 32
 
 
 1055:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE void LL_RCC_HSI_SetCalibTrimming(uint32_t Value)
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1109:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Get HSI48 Calibration value
 1110:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CRRCR          HSI48CAL      LL_RCC_HSI48_GetCalibration
 1111:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval Between Min_Data = 0x00 and Max_Data = 0x1FF
-ARM GAS  /tmp/ccCR19RB.s 			page 33
+ARM GAS  /tmp/ccY3Jimf.s 			page 33
 
 
 1112:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1166:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
 1167:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Set LSE oscillator drive capability
 1168:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @note The oscillator is in Xtal mode when it is not in bypass mode.
-ARM GAS  /tmp/ccCR19RB.s 			page 34
+ARM GAS  /tmp/ccY3Jimf.s 			page 34
 
 
 1169:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll BDCR         LSEDRV        LL_RCC_LSE_SetDriveCapability
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1223:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE uint32_t LL_RCC_LSE_IsReady(void)
 1224:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
 1225:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   return ((READ_BIT(RCC->BDCR, RCC_BDCR_LSERDY) == (RCC_BDCR_LSERDY)) ? 1UL : 0UL);
-ARM GAS  /tmp/ccCR19RB.s 			page 35
+ARM GAS  /tmp/ccY3Jimf.s 			page 35
 
 
 1226:platform/HAL/inc/stm32g4xx_ll_rcc.h **** }
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1280:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /** @defgroup RCC_LL_EF_LSCO LSCO
 1281:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @{
 1282:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 36
+ARM GAS  /tmp/ccY3Jimf.s 			page 36
 
 
 1283:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1337:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
 1338:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Configure the system clock source
 1339:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CFGR         SW            LL_RCC_SetSysClkSource
-ARM GAS  /tmp/ccCR19RB.s 			page 37
+ARM GAS  /tmp/ccY3Jimf.s 			page 37
 
 
 1340:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  Source This parameter can be one of the following values:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1394:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
 1395:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE void LL_RCC_SetAPB1Prescaler(uint32_t Prescaler)
 1396:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
-ARM GAS  /tmp/ccCR19RB.s 			page 38
+ARM GAS  /tmp/ccY3Jimf.s 			page 38
 
 
 1397:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   MODIFY_REG(RCC->CFGR, RCC_CFGR_PPRE1, Prescaler);
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1451:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Get APB2 prescaler
 1452:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CFGR         PPRE2         LL_RCC_GetAPB2Prescaler
 1453:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval Returned value can be one of the following values:
-ARM GAS  /tmp/ccCR19RB.s 			page 39
+ARM GAS  /tmp/ccY3Jimf.s 			page 39
 
 
 1454:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_APB2_DIV_1
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1508:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
 1509:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
 1510:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Configure USARTx clock source
-ARM GAS  /tmp/ccCR19RB.s 			page 40
+ARM GAS  /tmp/ccY3Jimf.s 			page 40
 
 
 1511:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CCIPR        USARTxSEL     LL_RCC_SetUSARTClockSource
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1565:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE void LL_RCC_SetLPUARTClockSource(uint32_t LPUARTxSource)
 1566:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
 1567:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   MODIFY_REG(RCC->CCIPR, RCC_CCIPR_LPUART1SEL, LPUARTxSource);
-ARM GAS  /tmp/ccCR19RB.s 			page 41
+ARM GAS  /tmp/ccY3Jimf.s 			page 41
 
 
 1568:platform/HAL/inc/stm32g4xx_ll_rcc.h **** }
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1622:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
 1623:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
 1624:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE void LL_RCC_SetSAIClockSource(uint32_t SAIxSource)
-ARM GAS  /tmp/ccCR19RB.s 			page 42
+ARM GAS  /tmp/ccY3Jimf.s 			page 42
 
 
 1625:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1679:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  USBxSource This parameter can be one of the following values:
 1680:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_USB_CLKSOURCE_HSI48
 1681:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_USB_CLKSOURCE_PLL
-ARM GAS  /tmp/ccCR19RB.s 			page 43
+ARM GAS  /tmp/ccY3Jimf.s 			page 43
 
 
 1682:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1736:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_USART1_CLKSOURCE_LSE
 1737:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_USART2_CLKSOURCE_PCLK1
 1738:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_USART2_CLKSOURCE_SYSCLK
-ARM GAS  /tmp/ccCR19RB.s 			page 44
+ARM GAS  /tmp/ccY3Jimf.s 			page 44
 
 
 1739:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_USART2_CLKSOURCE_HSI
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1793:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Get I2Cx clock source
 1794:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CCIPR        I2CxSEL       LL_RCC_GetI2CClockSource
 1795:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param  I2Cx This parameter can be one of the following values:
-ARM GAS  /tmp/ccCR19RB.s 			page 45
+ARM GAS  /tmp/ccY3Jimf.s 			page 45
 
 
 1796:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_I2C1_CLKSOURCE
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1850:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_SAI1_CLKSOURCE_PIN
 1851:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_SAI1_CLKSOURCE_HSI
 1852:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *
-ARM GAS  /tmp/ccCR19RB.s 			page 46
+ARM GAS  /tmp/ccY3Jimf.s 			page 46
 
 
 1853:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         (*) value not defined in all devices.
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1907:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
 1908:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
 1909:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Get USBx clock source
-ARM GAS  /tmp/ccCR19RB.s 			page 47
+ARM GAS  /tmp/ccY3Jimf.s 			page 47
 
 
 1910:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CCIPR        CLK48SEL      LL_RCC_GetUSBClockSource
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1964:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @{
 1965:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
 1966:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
-ARM GAS  /tmp/ccCR19RB.s 			page 48
+ARM GAS  /tmp/ccY3Jimf.s 			page 48
 
 
 1967:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2021:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll BDCR         RTCEN         LL_RCC_IsEnabledRTC
 2022:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval State of bit (1 or 0).
 2023:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 49
+ARM GAS  /tmp/ccY3Jimf.s 			page 49
 
 
 2024:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE uint32_t LL_RCC_IsEnabledRTC(void)
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2078:platform/HAL/inc/stm32g4xx_ll_rcc.h **** 
 2079:platform/HAL/inc/stm32g4xx_ll_rcc.h **** /**
 2080:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Check if PLL Ready
-ARM GAS  /tmp/ccCR19RB.s 			page 50
+ARM GAS  /tmp/ccY3Jimf.s 			page 50
 
 
 2081:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll CR           PLLRDY        LL_RCC_PLL_IsReady
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  138              		@ frame_needed = 0, uses_anonymous_args = 0
  139              		@ link register save eliminated.
  173:platform/HAL/src/stm32g4xx_ll_utils.c **** }
-ARM GAS  /tmp/ccCR19RB.s 			page 51
+ARM GAS  /tmp/ccY3Jimf.s 			page 51
 
 
  140              		.loc 1 173 3 view .LVU37
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   51:platform/HAL/inc/stm32g4xx_ll_utils.h **** /* Private variables ---------------------------------------------------------*/
   52:platform/HAL/inc/stm32g4xx_ll_utils.h **** 
   53:platform/HAL/inc/stm32g4xx_ll_utils.h **** /* Private constants ---------------------------------------------------------*/
-ARM GAS  /tmp/ccCR19RB.s 			page 52
+ARM GAS  /tmp/ccY3Jimf.s 			page 52
 
 
   54:platform/HAL/inc/stm32g4xx_ll_utils.h **** /** @defgroup UTILS_LL_Private_Constants UTILS Private Constants
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  108:platform/HAL/inc/stm32g4xx_ll_utils.h ****   uint32_t PLLR;   /*!< Division for the main system clock.
  109:platform/HAL/inc/stm32g4xx_ll_utils.h ****                         This parameter can be a value of @ref RCC_LL_EC_PLLR_DIV
  110:platform/HAL/inc/stm32g4xx_ll_utils.h **** 
-ARM GAS  /tmp/ccCR19RB.s 			page 53
+ARM GAS  /tmp/ccY3Jimf.s 			page 53
 
 
  111:platform/HAL/inc/stm32g4xx_ll_utils.h ****                         This feature can be modified afterwards using unitary function
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  165:platform/HAL/inc/stm32g4xx_ll_utils.h **** #define LL_UTILS_PACKAGETYPE_LQFP100_LQFP80     0x00000002U /*!< LQFP100 \ LQFP80 package type     
  166:platform/HAL/inc/stm32g4xx_ll_utils.h **** #define LL_UTILS_PACKAGETYPE_LQFP100 LL_UTILS_PACKAGETYPE_LQFP100_LQFP80  /*!< For backward compati
  167:platform/HAL/inc/stm32g4xx_ll_utils.h **** #else
-ARM GAS  /tmp/ccCR19RB.s 			page 54
+ARM GAS  /tmp/ccY3Jimf.s 			page 54
 
 
  168:platform/HAL/inc/stm32g4xx_ll_utils.h **** #define LL_UTILS_PACKAGETYPE_LQFP100            0x00000002U /*!< LQFP100 package type              
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  222:platform/HAL/inc/stm32g4xx_ll_utils.h **** 
  223:platform/HAL/inc/stm32g4xx_ll_utils.h **** /**
  224:platform/HAL/inc/stm32g4xx_ll_utils.h ****   * @brief  Get Word2 of the unique device identifier (UID based on 96 bits)
-ARM GAS  /tmp/ccCR19RB.s 			page 55
+ARM GAS  /tmp/ccY3Jimf.s 			page 55
 
 
  225:platform/HAL/inc/stm32g4xx_ll_utils.h ****   * @retval UID[95:64]: Lot number (ASCII encoded) - LOT_NUM[55:24]
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  279:platform/HAL/inc/stm32g4xx_ll_utils.h ****   * @retval None
  280:platform/HAL/inc/stm32g4xx_ll_utils.h ****   */
  281:platform/HAL/inc/stm32g4xx_ll_utils.h **** __STATIC_INLINE void LL_InitTick(uint32_t HCLKFrequency, uint32_t Ticks)
-ARM GAS  /tmp/ccCR19RB.s 			page 56
+ARM GAS  /tmp/ccY3Jimf.s 			page 56
 
 
  144              		.loc 3 281 22 view .LVU38
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  192              		.loc 1 187 1 is_stmt 0 view .LVU50
  193 0000 82B0     		sub	sp, sp, #8
  194              	.LCFI0:
-ARM GAS  /tmp/ccCR19RB.s 			page 57
+ARM GAS  /tmp/ccY3Jimf.s 			page 57
 
 
  195              		.cfi_def_cfa_offset 8
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  231 0024 F6E7     		b	.L12
  232              	.LVL13:
  233              	.L16:
-ARM GAS  /tmp/ccCR19RB.s 			page 58
+ARM GAS  /tmp/ccY3Jimf.s 			page 58
 
 
  206:platform/HAL/src/stm32g4xx_ll_utils.c **** 
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  273:platform/HAL/src/stm32g4xx_ll_utils.c ****   uint32_t getlatency;
  286              		.loc 1 273 3 view .LVU75
  274:platform/HAL/src/stm32g4xx_ll_utils.c ****   ErrorStatus status = SUCCESS;
-ARM GAS  /tmp/ccCR19RB.s 			page 59
+ARM GAS  /tmp/ccY3Jimf.s 			page 59
 
 
  287              		.loc 1 274 3 view .LVU76
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   47:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /* Exported types ------------------------------------------------------------*/
   48:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /* Exported constants --------------------------------------------------------*/
   49:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /** @defgroup PWR_LL_Exported_Constants PWR Exported Constants
-ARM GAS  /tmp/ccCR19RB.s 			page 60
+ARM GAS  /tmp/ccY3Jimf.s 			page 60
 
 
   50:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   * @{
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  104:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /**
  105:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   * @}
  106:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 61
+ARM GAS  /tmp/ccY3Jimf.s 			page 61
 
 
  107:platform/HAL/inc/stm32g4xx_ll_pwr.h **** 
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  161:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /**
  162:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   * @}
  163:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 62
+ARM GAS  /tmp/ccY3Jimf.s 			page 62
 
 
  164:platform/HAL/inc/stm32g4xx_ll_pwr.h **** 
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  218:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   */
  219:platform/HAL/inc/stm32g4xx_ll_pwr.h **** 
  220:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /** @defgroup PWR_LL_EM_WRITE_READ Common Write and read registers Macros
-ARM GAS  /tmp/ccCR19RB.s 			page 63
+ARM GAS  /tmp/ccY3Jimf.s 			page 63
 
 
  221:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   * @{
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  275:platform/HAL/inc/stm32g4xx_ll_pwr.h **** 
  276:platform/HAL/inc/stm32g4xx_ll_pwr.h **** /**
  277:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   * @brief  Check if the regulator is in low-power mode
-ARM GAS  /tmp/ccCR19RB.s 			page 64
+ARM GAS  /tmp/ccY3Jimf.s 			page 64
 
 
  278:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   * @rmtoll CR1          LPR           LL_PWR_IsEnabledLowPowerRunMode
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  294              	.LBB59:
  331:platform/HAL/inc/stm32g4xx_ll_pwr.h **** {
  332:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   return (uint32_t)(READ_BIT(PWR->CR1, PWR_CR1_VOS));
-ARM GAS  /tmp/ccCR19RB.s 			page 65
+ARM GAS  /tmp/ccY3Jimf.s 			page 65
 
 
  295              		.loc 4 332 3 view .LVU80
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  366:platform/HAL/inc/stm32g4xx_ll_pwr.h ****   return ((temp == (0U))?1U:0U);
  315              		.loc 4 366 3 is_stmt 1 view .LVU89
  316              		.loc 4 366 28 is_stmt 0 view .LVU90
-ARM GAS  /tmp/ccCR19RB.s 			page 66
+ARM GAS  /tmp/ccY3Jimf.s 			page 66
 
 
  317 000c 12F4807F 		tst	r2, #256
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
    8:platform/HAL/inc/stm32g4xx_ll_system.h ****   *
    9:platform/HAL/inc/stm32g4xx_ll_system.h ****   * Copyright (c) 2019 STMicroelectronics.
   10:platform/HAL/inc/stm32g4xx_ll_system.h ****   * All rights reserved.
-ARM GAS  /tmp/ccCR19RB.s 			page 67
+ARM GAS  /tmp/ccY3Jimf.s 			page 67
 
 
   11:platform/HAL/inc/stm32g4xx_ll_system.h ****   *
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
   65:platform/HAL/inc/stm32g4xx_ll_system.h **** /**
   66:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @brief Power-down in Run mode Flash key
   67:platform/HAL/inc/stm32g4xx_ll_system.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 68
+ARM GAS  /tmp/ccY3Jimf.s 			page 68
 
 
   68:platform/HAL/inc/stm32g4xx_ll_system.h **** #define FLASH_PDKEY1                  0x04152637U /*!< Flash power down key1 */
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  122:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_SYSCFG_I2C_FASTMODEPLUS_I2C1    SYSCFG_CFGR1_I2C1_FMP     /*!< Enable Fast Mode Plus on 
  123:platform/HAL/inc/stm32g4xx_ll_system.h **** #if defined(I2C2)
  124:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_SYSCFG_I2C_FASTMODEPLUS_I2C2    SYSCFG_CFGR1_I2C2_FMP     /*!< Enable Fast Mode Plus on 
-ARM GAS  /tmp/ccCR19RB.s 			page 69
+ARM GAS  /tmp/ccY3Jimf.s 			page 69
 
 
  125:platform/HAL/inc/stm32g4xx_ll_system.h **** #endif /* I2C2 */
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  179:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_SYSCFG_TIMBREAK_SRAM_PARITY     SYSCFG_CFGR2_SPL   /*!< Enables and locks the SRAM_PARIT
  180:platform/HAL/inc/stm32g4xx_ll_system.h ****                                                                    with Break Input of TIM1/8/15/16
  181:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_SYSCFG_TIMBREAK_LOCKUP          SYSCFG_CFGR2_CLL   /*!< Enables and locks the LOCKUP out
-ARM GAS  /tmp/ccCR19RB.s 			page 70
+ARM GAS  /tmp/ccY3Jimf.s 			page 70
 
 
  182:platform/HAL/inc/stm32g4xx_ll_system.h ****                                                                    with Break Input of TIM1/15/16/1
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  236:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_DBGMCU_TRACE_SYNCH_SIZE2        (DBGMCU_CR_TRACE_IOEN | DBGMCU_CR_TRACE_MODE_1) /*!< TRA
  237:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_DBGMCU_TRACE_SYNCH_SIZE4        (DBGMCU_CR_TRACE_IOEN | DBGMCU_CR_TRACE_MODE)   /*!< TRA
  238:platform/HAL/inc/stm32g4xx_ll_system.h **** /**
-ARM GAS  /tmp/ccCR19RB.s 			page 71
+ARM GAS  /tmp/ccY3Jimf.s 			page 71
 
 
  239:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @}
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  293:platform/HAL/inc/stm32g4xx_ll_system.h **** #if defined(TIM17)
  294:platform/HAL/inc/stm32g4xx_ll_system.h **** #define LL_DBGMCU_APB2_GRP1_TIM17_STOP     DBGMCU_APB2FZ_DBG_TIM17_STOP    /*!< The counter clock o
  295:platform/HAL/inc/stm32g4xx_ll_system.h **** #endif /* TIM17 */
-ARM GAS  /tmp/ccCR19RB.s 			page 72
+ARM GAS  /tmp/ccY3Jimf.s 			page 72
 
 
  296:platform/HAL/inc/stm32g4xx_ll_system.h **** #if defined(TIM20)
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  350:platform/HAL/inc/stm32g4xx_ll_system.h **** /** @defgroup SYSTEM_LL_Exported_Functions SYSTEM Exported Functions
  351:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @{
  352:platform/HAL/inc/stm32g4xx_ll_system.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 73
+ARM GAS  /tmp/ccY3Jimf.s 			page 73
 
 
  353:platform/HAL/inc/stm32g4xx_ll_system.h **** 
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  407:platform/HAL/inc/stm32g4xx_ll_system.h **** /**
  408:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @brief  Get Flash bank mode (Bank flashed at 0x08000000)
  409:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @rmtoll SYSCFG_MEMRMP FB_MODE       LL_SYSCFG_GetFlashBankMode
-ARM GAS  /tmp/ccCR19RB.s 			page 74
+ARM GAS  /tmp/ccY3Jimf.s 			page 74
 
 
  410:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @retval Returned value can be one of the following values:
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  464:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_I2C_FASTMODEPLUS_PB7
  465:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_I2C_FASTMODEPLUS_PB8 (*)
  466:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_I2C_FASTMODEPLUS_PB9 (*)
-ARM GAS  /tmp/ccCR19RB.s 			page 75
+ARM GAS  /tmp/ccY3Jimf.s 			page 75
 
 
  467:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_I2C_FASTMODEPLUS_I2C1
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  521:platform/HAL/inc/stm32g4xx_ll_system.h **** 
  522:platform/HAL/inc/stm32g4xx_ll_system.h **** /**
  523:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @brief  Enable Floating Point Unit Underflow Interrupt
-ARM GAS  /tmp/ccCR19RB.s 			page 76
+ARM GAS  /tmp/ccY3Jimf.s 			page 76
 
 
  524:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @rmtoll SYSCFG_CFGR1 FPU_IE_2      LL_SYSCFG_EnableIT_FPU_UFC
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  578:platform/HAL/inc/stm32g4xx_ll_system.h **** {
  579:platform/HAL/inc/stm32g4xx_ll_system.h ****   CLEAR_BIT(SYSCFG->CFGR1, SYSCFG_CFGR1_FPU_IE_1);
  580:platform/HAL/inc/stm32g4xx_ll_system.h **** }
-ARM GAS  /tmp/ccCR19RB.s 			page 77
+ARM GAS  /tmp/ccY3Jimf.s 			page 77
 
 
  581:platform/HAL/inc/stm32g4xx_ll_system.h **** 
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  635:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @retval State of bit (1 or 0).
  636:platform/HAL/inc/stm32g4xx_ll_system.h ****   */
  637:platform/HAL/inc/stm32g4xx_ll_system.h **** __STATIC_INLINE uint32_t LL_SYSCFG_IsEnabledIT_FPU_DZC(void)
-ARM GAS  /tmp/ccCR19RB.s 			page 78
+ARM GAS  /tmp/ccY3Jimf.s 			page 78
 
 
  638:platform/HAL/inc/stm32g4xx_ll_system.h **** {
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  692:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTD
  693:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTE
  694:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTF
-ARM GAS  /tmp/ccCR19RB.s 			page 79
+ARM GAS  /tmp/ccY3Jimf.s 			page 79
 
 
  695:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTG
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  749:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTD
  750:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTE
  751:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTF
-ARM GAS  /tmp/ccCR19RB.s 			page 80
+ARM GAS  /tmp/ccY3Jimf.s 			page 80
 
 
  752:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_EXTI_PORTG
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  806:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @rmtoll SYSCFG_CFGR2 CLL           LL_SYSCFG_GetTIMBreakInputs\n
  807:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         SYSCFG_CFGR2 SPL           LL_SYSCFG_GetTIMBreakInputs\n
  808:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         SYSCFG_CFGR2 PVDL          LL_SYSCFG_GetTIMBreakInputs\n
-ARM GAS  /tmp/ccCR19RB.s 			page 81
+ARM GAS  /tmp/ccY3Jimf.s 			page 81
 
 
  809:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         SYSCFG_CFGR2 ECCL          LL_SYSCFG_GetTIMBreakInputs
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  863:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_CCMSRAMWRP_PAGE17 (*)
  864:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_CCMSRAMWRP_PAGE18 (*)
  865:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_CCMSRAMWRP_PAGE19 (*)
-ARM GAS  /tmp/ccCR19RB.s 			page 82
+ARM GAS  /tmp/ccY3Jimf.s 			page 82
 
 
  866:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_SYSCFG_CCMSRAMWRP_PAGE20 (*)
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  920:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @rmtoll DBGMCU_IDCODE DEV_ID        LL_DBGMCU_GetDeviceID
  921:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @retval Values between Min_Data=0x00 and Max_Data=0x0FFF (ex: device ID is 0x6415)
  922:platform/HAL/inc/stm32g4xx_ll_system.h ****   */
-ARM GAS  /tmp/ccCR19RB.s 			page 83
+ARM GAS  /tmp/ccY3Jimf.s 			page 83
 
 
  923:platform/HAL/inc/stm32g4xx_ll_system.h **** __STATIC_INLINE uint32_t LL_DBGMCU_GetDeviceID(void)
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  977:platform/HAL/inc/stm32g4xx_ll_system.h **** }
  978:platform/HAL/inc/stm32g4xx_ll_system.h **** 
  979:platform/HAL/inc/stm32g4xx_ll_system.h **** /**
-ARM GAS  /tmp/ccCR19RB.s 			page 84
+ARM GAS  /tmp/ccY3Jimf.s 			page 84
 
 
  980:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @brief  Enable the Debug Module during STANDBY mode
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1034:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @rmtoll DBGMCU_APB1FZR1 DBG_xxxx_STOP  LL_DBGMCU_APB1_GRP1_FreezePeriph
 1035:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @param  Periphs This parameter can be a combination of the following values:
 1036:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_DBGMCU_APB1_GRP1_TIM2_STOP
-ARM GAS  /tmp/ccCR19RB.s 			page 85
+ARM GAS  /tmp/ccY3Jimf.s 			page 85
 
 
 1037:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_DBGMCU_APB1_GRP1_TIM3_STOP
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1091:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @retval None
 1092:platform/HAL/inc/stm32g4xx_ll_system.h ****   */
 1093:platform/HAL/inc/stm32g4xx_ll_system.h **** __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_UnFreezePeriph(uint32_t Periphs)
-ARM GAS  /tmp/ccCR19RB.s 			page 86
+ARM GAS  /tmp/ccY3Jimf.s 			page 86
 
 
 1094:platform/HAL/inc/stm32g4xx_ll_system.h **** {
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1148:platform/HAL/inc/stm32g4xx_ll_system.h **** {
 1149:platform/HAL/inc/stm32g4xx_ll_system.h ****   CLEAR_BIT(DBGMCU->APB2FZ, Periphs);
 1150:platform/HAL/inc/stm32g4xx_ll_system.h **** }
-ARM GAS  /tmp/ccCR19RB.s 			page 87
+ARM GAS  /tmp/ccY3Jimf.s 			page 87
 
 
 1151:platform/HAL/inc/stm32g4xx_ll_system.h **** 
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1205:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_VREFBUF_VOLTAGE_SCALE0
 1206:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_VREFBUF_VOLTAGE_SCALE1
 1207:platform/HAL/inc/stm32g4xx_ll_system.h ****   *         @arg @ref LL_VREFBUF_VOLTAGE_SCALE2
-ARM GAS  /tmp/ccCR19RB.s 			page 88
+ARM GAS  /tmp/ccY3Jimf.s 			page 88
 
 
 1208:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @retval None
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1262:platform/HAL/inc/stm32g4xx_ll_system.h **** #endif /* VREFBUF */
 1263:platform/HAL/inc/stm32g4xx_ll_system.h **** 
 1264:platform/HAL/inc/stm32g4xx_ll_system.h **** /** @defgroup SYSTEM_LL_EF_FLASH FLASH
-ARM GAS  /tmp/ccCR19RB.s 			page 89
+ARM GAS  /tmp/ccY3Jimf.s 			page 89
 
 
 1265:platform/HAL/inc/stm32g4xx_ll_system.h ****   * @{
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  372              	.LBI65:
 1295:platform/HAL/inc/stm32g4xx_ll_system.h **** }
 1296:platform/HAL/inc/stm32g4xx_ll_system.h **** 
-ARM GAS  /tmp/ccCR19RB.s 			page 90
+ARM GAS  /tmp/ccY3Jimf.s 			page 90
 
 
 1297:platform/HAL/inc/stm32g4xx_ll_system.h **** /**
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  396              		.loc 1 380 7 is_stmt 1 view .LVU121
  380:platform/HAL/src/stm32g4xx_ll_utils.c ****       {
  397              		.loc 1 380 9 is_stmt 0 view .LVU122
-ARM GAS  /tmp/ccCR19RB.s 			page 91
+ARM GAS  /tmp/ccY3Jimf.s 			page 91
 
 
  398 0050 9C45     		cmp	ip, r3
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  439              		.loc 1 335 9 is_stmt 1 view .LVU137
  335:platform/HAL/src/stm32g4xx_ll_utils.c ****         {
  440              		.loc 1 335 11 is_stmt 0 view .LVU138
-ARM GAS  /tmp/ccCR19RB.s 			page 92
+ARM GAS  /tmp/ccY3Jimf.s 			page 92
 
 
  441 0076 244B     		ldr	r3, .L45+24
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  279:platform/HAL/src/stm32g4xx_ll_utils.c **** 
  481              		.loc 1 279 12 view .LVU153
  482 00a4 C3E7     		b	.L25
-ARM GAS  /tmp/ccCR19RB.s 			page 93
+ARM GAS  /tmp/ccY3Jimf.s 			page 93
 
 
  483              	.LVL34:
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  524              	.L33:
  321:platform/HAL/src/stm32g4xx_ll_utils.c ****       }
  525              		.loc 1 321 17 view .LVU167
-ARM GAS  /tmp/ccCR19RB.s 			page 94
+ARM GAS  /tmp/ccY3Jimf.s 			page 94
 
 
  526 00ca 4FF0040C 		mov	ip, #4
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  568 00ec 0120     		movs	r0, #1
  569              	.LVL56:
  284:platform/HAL/src/stm32g4xx_ll_utils.c ****   }
-ARM GAS  /tmp/ccCR19RB.s 			page 95
+ARM GAS  /tmp/ccY3Jimf.s 			page 95
 
 
  570              		.loc 1 284 12 view .LVU180
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  613              	.LVL58:
  641:platform/HAL/src/stm32g4xx_ll_utils.c ****   uint32_t hclk_frequency;
  614              		.loc 1 641 3 view .LVU184
-ARM GAS  /tmp/ccCR19RB.s 			page 96
+ARM GAS  /tmp/ccY3Jimf.s 			page 96
 
 
  642:platform/HAL/src/stm32g4xx_ll_utils.c **** 
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  646 0022 1A68     		ldr	r2, [r3]
  647 0024 42F08072 		orr	r2, r2, #16777216
  648 0028 1A60     		str	r2, [r3]
-ARM GAS  /tmp/ccCR19RB.s 			page 97
+ARM GAS  /tmp/ccY3Jimf.s 			page 97
 
 
  649              	.LBE69:
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2135:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @note PLL Source and PLLM Divider can be written only when PLL
 2136:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *       is disabled.
 2137:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @note PLLN/PLLP can be written only when PLL is disabled.
-ARM GAS  /tmp/ccCR19RB.s 			page 98
+ARM GAS  /tmp/ccY3Jimf.s 			page 98
 
 
 2138:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll PLLCFGR      PLLSRC        LL_RCC_PLL_ConfigDomain_ADC\n
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2192:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_29
 2193:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_30
 2194:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_31
-ARM GAS  /tmp/ccCR19RB.s 			page 99
+ARM GAS  /tmp/ccY3Jimf.s 			page 99
 
 
 2195:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2249:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @brief  Configure PLL clock source
 2250:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @rmtoll PLLCFGR      PLLSRC        LL_RCC_PLL_SetMainSource
 2251:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @param PLLSource This parameter can be one of the following values:
-ARM GAS  /tmp/ccCR19RB.s 			page 100
+ARM GAS  /tmp/ccY3Jimf.s 			page 100
 
 
 2252:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLSOURCE_NONE
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2306:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_17
 2307:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_18
 2308:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_19
-ARM GAS  /tmp/ccCR19RB.s 			page 101
+ARM GAS  /tmp/ccY3Jimf.s 			page 101
 
 
 2309:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLP_DIV_20
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2363:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_3
 2364:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_4
 2365:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_5
-ARM GAS  /tmp/ccCR19RB.s 			page 102
+ARM GAS  /tmp/ccY3Jimf.s 			page 102
 
 
 2366:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   *         @arg @ref LL_RCC_PLLM_DIV_6
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 2420:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   * @retval None
 2421:platform/HAL/inc/stm32g4xx_ll_rcc.h ****   */
 2422:platform/HAL/inc/stm32g4xx_ll_rcc.h **** __STATIC_INLINE void LL_RCC_PLL_EnableDomain_48M(void)
-ARM GAS  /tmp/ccCR19RB.s 			page 103
+ARM GAS  /tmp/ccY3Jimf.s 			page 103
 
 
 2423:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  670              	.LBE72:
  671              	.LBE73:
  654:platform/HAL/src/stm32g4xx_ll_utils.c ****   }
-ARM GAS  /tmp/ccCR19RB.s 			page 104
+ARM GAS  /tmp/ccY3Jimf.s 			page 104
 
 
  672              		.loc 1 654 5 is_stmt 1 view .LVU204
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  710 0052 2268     		ldr	r2, [r4]
  711              	.LVL65:
  712              	.LBB76:
-ARM GAS  /tmp/ccCR19RB.s 			page 105
+ARM GAS  /tmp/ccY3Jimf.s 			page 105
 
 
  713              	.LBI76:
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  751 0068 134B     		ldr	r3, .L61+8
  752 006a 9B68     		ldr	r3, [r3, #8]
 1361:platform/HAL/inc/stm32g4xx_ll_rcc.h **** }
-ARM GAS  /tmp/ccCR19RB.s 			page 106
+ARM GAS  /tmp/ccY3Jimf.s 			page 106
 
 
  753              		.loc 2 1361 10 view .LVU232
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
 1413:platform/HAL/inc/stm32g4xx_ll_rcc.h **** }
  795              		.loc 2 1413 3 view .LVU243
  796              	.LBE85:
-ARM GAS  /tmp/ccCR19RB.s 			page 107
+ARM GAS  /tmp/ccY3Jimf.s 			page 107
 
 
  797              	.LBE84:
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  831              	.L62:
  832 00ae 00BF     		.align	2
  833              	.L61:
-ARM GAS  /tmp/ccCR19RB.s 			page 108
+ARM GAS  /tmp/ccY3Jimf.s 			page 108
 
 
  834 00b0 00000000 		.word	AHBPrescTable
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  880 0010 2548     		ldr	r0, .L73
  881 0012 FFF7FEFF 		bl	UTILS_GetPLLOutputFrequency
  882              	.LVL83:
-ARM GAS  /tmp/ccCR19RB.s 			page 109
+ARM GAS  /tmp/ccY3Jimf.s 			page 109
 
 
  883 0016 0646     		mov	r6, r0
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  924              		.loc 1 423 35 discriminator 1 view .LVU276
  925              	.LBB92:
  926              	.LBI92:
-ARM GAS  /tmp/ccCR19RB.s 			page 110
+ARM GAS  /tmp/ccY3Jimf.s 			page 110
 
 
 1029:platform/HAL/inc/stm32g4xx_ll_rcc.h **** {
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  969              	.LBE95:
  970              	.LBE94:
  434:platform/HAL/src/stm32g4xx_ll_utils.c ****     {
-ARM GAS  /tmp/ccCR19RB.s 			page 111
+ARM GAS  /tmp/ccY3Jimf.s 			page 111
 
 
  971              		.loc 1 434 5 is_stmt 1 view .LVU289
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1009 007c 3046     		mov	r0, r6
  1010              	.LVL94:
  450:platform/HAL/src/stm32g4xx_ll_utils.c ****       if (status == SUCCESS)
-ARM GAS  /tmp/ccCR19RB.s 			page 112
+ARM GAS  /tmp/ccY3Jimf.s 			page 112
 
 
  1011              		.loc 1 450 16 view .LVU306
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1053              	.LVL102:
  1054              	.L64:
  465:platform/HAL/src/stm32g4xx_ll_utils.c **** }
-ARM GAS  /tmp/ccCR19RB.s 			page 113
+ARM GAS  /tmp/ccY3Jimf.s 			page 113
 
 
  1055              		.loc 1 465 3 is_stmt 1 view .LVU319
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1103              		.loc 1 496 3 view .LVU327
  497:platform/HAL/src/stm32g4xx_ll_utils.c **** 
  1104              		.loc 1 497 3 view .LVU328
-ARM GAS  /tmp/ccCR19RB.s 			page 114
+ARM GAS  /tmp/ccY3Jimf.s 			page 114
 
 
  500:platform/HAL/src/stm32g4xx_ll_utils.c ****   {
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1144 002e 274A     		ldr	r2, .L88
  1145 0030 1368     		ldr	r3, [r2]
  1146 0032 23F48023 		bic	r3, r3, #262144
-ARM GAS  /tmp/ccCR19RB.s 			page 115
+ARM GAS  /tmp/ccY3Jimf.s 			page 115
 
 
  1147 0036 1360     		str	r3, [r2]
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1190 0052 06D0     		beq	.L77
  1191              	.L81:
  523:platform/HAL/src/stm32g4xx_ll_utils.c ****     }
-ARM GAS  /tmp/ccCR19RB.s 			page 116
+ARM GAS  /tmp/ccY3Jimf.s 			page 116
 
 
  1192              		.loc 1 523 7 is_stmt 1 view .LVU355
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1234 007a 1343     		orrs	r3, r3, r2
  1235 007c C360     		str	r3, [r0, #12]
  1236              	.LVL114:
-ARM GAS  /tmp/ccCR19RB.s 			page 117
+ARM GAS  /tmp/ccY3Jimf.s 			page 117
 
 
 2129:platform/HAL/inc/stm32g4xx_ll_rcc.h ****              Source | PLLM | (PLLN << RCC_PLLCFGR_PLLN_Pos) | PLLR);
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1275 009c 95B1     		cbz	r5, .L76
  547:platform/HAL/src/stm32g4xx_ll_utils.c ****       if (status == SUCCESS)
  1276              		.loc 1 547 7 is_stmt 1 view .LVU384
-ARM GAS  /tmp/ccCR19RB.s 			page 118
+ARM GAS  /tmp/ccY3Jimf.s 			page 118
 
 
  547:platform/HAL/src/stm32g4xx_ll_utils.c ****       if (status == SUCCESS)
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1318              	.LVL126:
  1319              	.L83:
  559:platform/HAL/src/stm32g4xx_ll_utils.c ****   }
-ARM GAS  /tmp/ccCR19RB.s 			page 119
+ARM GAS  /tmp/ccY3Jimf.s 			page 119
 
 
  1320              		.loc 1 559 12 view .LVU398
@@ -7110,36 +7110,36 @@ ARM GAS  /tmp/ccCR19RB.s 			page 1
  1344              		.file 9 "platform/CMSIS/Device/ST/STM32G4xx/Include/system_stm32g4xx.h"
  1345              		.file 10 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
  1346              		.file 11 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h"
-ARM GAS  /tmp/ccCR19RB.s 			page 120
+ARM GAS  /tmp/ccY3Jimf.s 			page 120
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32g4xx_ll_utils.c
-     /tmp/ccCR19RB.s:21     .text.UTILS_GetPLLOutputFrequency:00000000 $t
-     /tmp/ccCR19RB.s:26     .text.UTILS_GetPLLOutputFrequency:00000000 UTILS_GetPLLOutputFrequency
-     /tmp/ccCR19RB.s:79     .text.UTILS_PLL_IsBusy:00000000 $t
-     /tmp/ccCR19RB.s:84     .text.UTILS_PLL_IsBusy:00000000 UTILS_PLL_IsBusy
-     /tmp/ccCR19RB.s:121    .text.UTILS_PLL_IsBusy:00000014 $d
-     /tmp/ccCR19RB.s:126    .text.LL_Init1msTick:00000000 $t
-     /tmp/ccCR19RB.s:132    .text.LL_Init1msTick:00000000 LL_Init1msTick
-     /tmp/ccCR19RB.s:173    .text.LL_Init1msTick:0000001c $d
-     /tmp/ccCR19RB.s:178    .text.LL_mDelay:00000000 $t
-     /tmp/ccCR19RB.s:184    .text.LL_mDelay:00000000 LL_mDelay
-     /tmp/ccCR19RB.s:244    .text.LL_SetSystemCoreClock:00000000 $t
-     /tmp/ccCR19RB.s:250    .text.LL_SetSystemCoreClock:00000000 LL_SetSystemCoreClock
-     /tmp/ccCR19RB.s:267    .text.LL_SetSystemCoreClock:00000008 $d
-     /tmp/ccCR19RB.s:272    .text.LL_SetFlashLatency:00000000 $t
-     /tmp/ccCR19RB.s:278    .text.LL_SetFlashLatency:00000000 LL_SetFlashLatency
-     /tmp/ccCR19RB.s:575    .text.LL_SetFlashLatency:000000f0 $d
-     /tmp/ccCR19RB.s:591    .text.UTILS_EnablePLLAndSwitchSystem:00000000 $t
-     /tmp/ccCR19RB.s:596    .text.UTILS_EnablePLLAndSwitchSystem:00000000 UTILS_EnablePLLAndSwitchSystem
-     /tmp/ccCR19RB.s:834    .text.UTILS_EnablePLLAndSwitchSystem:000000b0 $d
-     /tmp/ccCR19RB.s:841    .text.LL_PLL_ConfigSystemClock_HSI:00000000 $t
-     /tmp/ccCR19RB.s:847    .text.LL_PLL_ConfigSystemClock_HSI:00000000 LL_PLL_ConfigSystemClock_HSI
-     /tmp/ccCR19RB.s:1064   .text.LL_PLL_ConfigSystemClock_HSI:000000a8 $d
-     /tmp/ccCR19RB.s:1072   .text.LL_PLL_ConfigSystemClock_HSE:00000000 $t
-     /tmp/ccCR19RB.s:1078   .text.LL_PLL_ConfigSystemClock_HSE:00000000 LL_PLL_ConfigSystemClock_HSE
-     /tmp/ccCR19RB.s:1333   .text.LL_PLL_ConfigSystemClock_HSE:000000cc $d
+     /tmp/ccY3Jimf.s:21     .text.UTILS_GetPLLOutputFrequency:00000000 $t
+     /tmp/ccY3Jimf.s:26     .text.UTILS_GetPLLOutputFrequency:00000000 UTILS_GetPLLOutputFrequency
+     /tmp/ccY3Jimf.s:79     .text.UTILS_PLL_IsBusy:00000000 $t
+     /tmp/ccY3Jimf.s:84     .text.UTILS_PLL_IsBusy:00000000 UTILS_PLL_IsBusy
+     /tmp/ccY3Jimf.s:121    .text.UTILS_PLL_IsBusy:00000014 $d
+     /tmp/ccY3Jimf.s:126    .text.LL_Init1msTick:00000000 $t
+     /tmp/ccY3Jimf.s:132    .text.LL_Init1msTick:00000000 LL_Init1msTick
+     /tmp/ccY3Jimf.s:173    .text.LL_Init1msTick:0000001c $d
+     /tmp/ccY3Jimf.s:178    .text.LL_mDelay:00000000 $t
+     /tmp/ccY3Jimf.s:184    .text.LL_mDelay:00000000 LL_mDelay
+     /tmp/ccY3Jimf.s:244    .text.LL_SetSystemCoreClock:00000000 $t
+     /tmp/ccY3Jimf.s:250    .text.LL_SetSystemCoreClock:00000000 LL_SetSystemCoreClock
+     /tmp/ccY3Jimf.s:267    .text.LL_SetSystemCoreClock:00000008 $d
+     /tmp/ccY3Jimf.s:272    .text.LL_SetFlashLatency:00000000 $t
+     /tmp/ccY3Jimf.s:278    .text.LL_SetFlashLatency:00000000 LL_SetFlashLatency
+     /tmp/ccY3Jimf.s:575    .text.LL_SetFlashLatency:000000f0 $d
+     /tmp/ccY3Jimf.s:591    .text.UTILS_EnablePLLAndSwitchSystem:00000000 $t
+     /tmp/ccY3Jimf.s:596    .text.UTILS_EnablePLLAndSwitchSystem:00000000 UTILS_EnablePLLAndSwitchSystem
+     /tmp/ccY3Jimf.s:834    .text.UTILS_EnablePLLAndSwitchSystem:000000b0 $d
+     /tmp/ccY3Jimf.s:841    .text.LL_PLL_ConfigSystemClock_HSI:00000000 $t
+     /tmp/ccY3Jimf.s:847    .text.LL_PLL_ConfigSystemClock_HSI:00000000 LL_PLL_ConfigSystemClock_HSI
+     /tmp/ccY3Jimf.s:1064   .text.LL_PLL_ConfigSystemClock_HSI:000000a8 $d
+     /tmp/ccY3Jimf.s:1072   .text.LL_PLL_ConfigSystemClock_HSE:00000000 $t
+     /tmp/ccY3Jimf.s:1078   .text.LL_PLL_ConfigSystemClock_HSE:00000000 LL_PLL_ConfigSystemClock_HSE
+     /tmp/ccY3Jimf.s:1333   .text.LL_PLL_ConfigSystemClock_HSE:000000cc $d
 
 UNDEFINED SYMBOLS
 SystemCoreClock

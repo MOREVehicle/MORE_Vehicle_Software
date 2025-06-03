@@ -1,23 +1,29 @@
-<map id="STM32_AUTONOMOUS_PROJECT/Src/main.c" name="STM32_AUTONOMOUS_PROJECT/Src/main.c">
-<area shape="rect" id="Node000001" title=": Main program body" alt="" coords="204,5,441,48"/>
-<area shape="rect" id="Node000002" href="$d7/d15/drv8703_8h.html" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="138,96,250,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,51,229,90,226,85,288,46"/>
-<area shape="rect" id="Node000006" href="$d6/dfe/CAN_8h_source.html" title=" " alt="" coords="274,96,370,123"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="325,49,325,80,320,80,320,49"/>
-<area shape="rect" id="Node000007" href="$de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="5,96,114,123"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="255,51,116,94,115,88,254,46"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="394,96,490,123"/>
-<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="355,46,412,85,409,89,352,51"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="514,96,603,123"/>
-<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="384,46,507,88,506,93,382,51"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="121,171,185,197"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="189,125,170,159,165,156,185,122"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="22,171,97,197"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="172,126,98,165,95,160,169,121"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="209,171,329,197"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="209,121,247,158,243,162,205,125"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="315,125,289,160,285,157,311,122"/>
-<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="77,121,126,159,123,163,74,125"/>
-<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="62,123,62,155,57,155,57,123"/>
-<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="97,121,219,163,217,168,95,126"/>
+<map id="STM32_AUTONOMOUS_PROJECT/src/main.c" name="STM32_AUTONOMOUS_PROJECT/src/main.c">
+<area shape="rect" id="Node000001" title="main loop of the steering box" alt="" coords="247,5,484,48"/>
+<area shape="rect" id="Node000002" href="$d7/d15/drv8703_8h.html" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="282,96,361,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="357,50,338,83,333,81,352,47"/>
+<area shape="rect" id="Node000006" href="$de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="184,96,259,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="330,51,259,90,256,86,327,46"/>
+<area shape="rect" id="Node000008" href="$d7/d19/adc_8h_source.html" title=" " alt="" coords="459,96,512,123"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="398,46,456,85,453,89,395,51"/>
+<area shape="rect" id="Node000010" href="$d3/db0/tim_8h.html" title="file sets up safety timer used in the main code" alt="" coords="384,96,435,123"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="379,47,398,81,393,83,374,50"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="272,171,336,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="321,124,313,156,308,155,316,123"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="174,171,248,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,125,244,164,241,160,301,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="360,171,480,197"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="340,121,393,159,390,164,337,125"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="238,121,280,158,277,162,234,125"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="222,124,218,156,212,155,217,123"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="257,121,372,162,370,167,255,126"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,171,150,197"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="198,126,118,166,115,161,195,121"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="476,125,443,161,439,157,472,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="674,171,822,197"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="513,116,689,164,687,169,512,121"/>
+<area shape="poly" id="edge16_Node000010_Node000003" title=" " alt="" coords="393,125,337,164,334,159,390,121"/>
+<area shape="poly" id="edge14_Node000010_Node000005" title=" " alt="" coords="414,123,419,155,413,156,409,124"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="505,171,650,197"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="436,119,535,162,533,167,434,124"/>
 </map>

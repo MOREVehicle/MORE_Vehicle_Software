@@ -1,0 +1,5 @@
+<map id="STM32_AUTONOMOUS_PROJECT/inc/tim.h" name="STM32_AUTONOMOUS_PROJECT/inc/tim.h">
+<area shape="rect" id="Node000001" title="file sets up safety timer used in the main code" alt="" coords="5,5,243,48"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html" title="main loop of the steering box" alt="" coords="5,96,243,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,64,127,96,121,96,121,64"/>
+</map>

@@ -1,4 +1,4 @@
-<map id="STM32_AUTONOMOUS_PROJECT/Inc/drv8703.h" name="STM32_AUTONOMOUS_PROJECT/Inc/drv8703.h">
+<map id="STM32_AUTONOMOUS_PROJECT/inc/drv8703.h" name="STM32_AUTONOMOUS_PROJECT/inc/drv8703.h">
 <area shape="rect" id="Node000001" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="12,5,250,48"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,96,70,123"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,51,65,88,62,84,105,47"/>

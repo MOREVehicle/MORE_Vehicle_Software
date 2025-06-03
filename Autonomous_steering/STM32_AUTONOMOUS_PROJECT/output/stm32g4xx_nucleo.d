@@ -29,6 +29,8 @@ output/stm32g4xx_nucleo.o: platform/BSP/stm32g4xx_nucleo.c \
  platform/HAL/inc/stm32g4xx_hal_pwr_ex.h \
  platform/HAL/inc/stm32g4xx_hal_spi.h \
  platform/HAL/inc/stm32g4xx_hal_spi_ex.h \
+ platform/HAL/inc/stm32g4xx_hal_tim.h \
+ platform/HAL/inc/stm32g4xx_hal_tim_ex.h \
  platform/HAL/inc/stm32g4xx_hal_uart.h \
  platform/HAL/inc/stm32g4xx_hal_uart_ex.h
 platform/BSP/stm32g4xx_nucleo.h:
@@ -67,5 +69,7 @@ platform/HAL/inc/stm32g4xx_hal_pwr.h:
 platform/HAL/inc/stm32g4xx_hal_pwr_ex.h:
 platform/HAL/inc/stm32g4xx_hal_spi.h:
 platform/HAL/inc/stm32g4xx_hal_spi_ex.h:
+platform/HAL/inc/stm32g4xx_hal_tim.h:
+platform/HAL/inc/stm32g4xx_hal_tim_ex.h:
 platform/HAL/inc/stm32g4xx_hal_uart.h:
 platform/HAL/inc/stm32g4xx_hal_uart_ex.h:

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cch7aXqE.s 			page 1
+ARM GAS  /tmp/ccbiY3jf.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
   27:src/drv8703.c **** 
   28:src/drv8703.c **** /**
   29:src/drv8703.c ****  * @brief Writes data to a specific register in the DRV8703 driver.
-ARM GAS  /tmp/cch7aXqE.s 			page 2
+ARM GAS  /tmp/ccbiY3jf.s 			page 2
 
 
   30:src/drv8703.c ****  * @param address 4-bit register address.
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
   63              	.LCFI2:
   64              		.cfi_remember_state
   65              		.cfi_def_cfa_offset 8
-ARM GAS  /tmp/cch7aXqE.s 			page 3
+ARM GAS  /tmp/ccbiY3jf.s 			page 3
 
 
   66              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  107              		.loc 1 46 9 is_stmt 1 view .LVU23
  108 004a 0122     		movs	r2, #1
  109 004c 1021     		movs	r1, #16
-ARM GAS  /tmp/cch7aXqE.s 			page 4
+ARM GAS  /tmp/ccbiY3jf.s 			page 4
 
 
  110 004e 4FF09040 		mov	r0, #1207959552
@@ -194,7 +194,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  119              	.L9:
  120              		.align	2
  121              	.L8:
- 122 005c 00000000 		.word	hspi3
+ 122 005c 00000000 		.word	DRV_SPI_INTERFACE
  123              		.cfi_endproc
  124              	.LFE330:
  126              		.section	.text.DRV_read,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  155 0006 0023     		movs	r3, #0
  156 0008 8DF80F30 		strb	r3, [sp, #15]
  157              		.loc 1 60 24 view .LVU30
-ARM GAS  /tmp/cch7aXqE.s 			page 5
+ARM GAS  /tmp/ccbiY3jf.s 			page 5
 
 
  158 000c 8DF80E30 		strb	r3, [sp, #14]
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  193 002c 8DF80F00 		strb	r0, [sp, #15]
   65:src/drv8703.c **** 	        if (HAL_SPI_TransmitReceive(&DRV_SPI_INTERFACE, &message, &buffer, 2, DRV_SPI_TIMEOUT) != 
  194              		.loc 1 65 7 is_stmt 1 view .LVU43
-ARM GAS  /tmp/cch7aXqE.s 			page 6
+ARM GAS  /tmp/ccbiY3jf.s 			page 6
 
 
  195 0030 1A46     		mov	r2, r3
@@ -346,7 +346,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  230              	.L18:
  231 0066 00BF     		.align	2
  232              	.L17:
- 233 0068 00000000 		.word	hspi3
+ 233 0068 00000000 		.word	DRV_SPI_INTERFACE
  234              		.cfi_endproc
  235              	.LFE331:
  237              		.section	.text.DRV_modify_set,"ax",%progbits
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  244              	DRV_modify_set:
  245              	.LVL22:
  246              	.LFB332:
-ARM GAS  /tmp/cch7aXqE.s 			page 7
+ARM GAS  /tmp/ccbiY3jf.s 			page 7
 
 
   75:src/drv8703.c **** 
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  283 0018 03B0     		add	sp, sp, #12
  284              	.LCFI10:
  285              		.cfi_remember_state
-ARM GAS  /tmp/cch7aXqE.s 			page 8
+ARM GAS  /tmp/ccbiY3jf.s 			page 8
 
 
  286              		.cfi_def_cfa_offset 12
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  330 0002 83B0     		sub	sp, sp, #12
  331              	.LCFI13:
  332              		.cfi_def_cfa_offset 24
-ARM GAS  /tmp/cch7aXqE.s 			page 9
+ARM GAS  /tmp/ccbiY3jf.s 			page 9
 
 
  333 0004 0546     		mov	r5, r0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  373              		.loc 1 107 19 is_stmt 0 view .LVU82
  374 002a 2846     		mov	r0, r5
  375 002c FFF7FEFF 		bl	DRV_write
-ARM GAS  /tmp/cch7aXqE.s 			page 10
+ARM GAS  /tmp/ccbiY3jf.s 			page 10
 
 
  376              	.LVL35:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  420              		.loc 1 121 48 is_stmt 1 discriminator 2 view .LVU91
  421 000c 0134     		adds	r4, r4, #1
  422              	.LVL39:
-ARM GAS  /tmp/cch7aXqE.s 			page 11
+ARM GAS  /tmp/ccbiY3jf.s 			page 11
 
 
  423              	.L28:
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  132:src/drv8703.c ****  * @brief Reads data from all registers in the DRV8703 driver.
  133:src/drv8703.c ****  * @param data Pointer to an array where register data will be stored.
  134:src/drv8703.c ****  * @param filter Bit mask to filter out specific registers.
-ARM GAS  /tmp/cch7aXqE.s 			page 12
+ARM GAS  /tmp/ccbiY3jf.s 			page 12
 
 
  135:src/drv8703.c ****  * @return true if read operation is successful, false otherwise.
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  143:src/drv8703.c ****             success = DRV_read(DRV_REG_MAP_SIZE-i, data);
  514              		.loc 1 143 13 is_stmt 1 view .LVU120
  515              		.loc 1 143 23 is_stmt 0 view .LVU121
-ARM GAS  /tmp/cch7aXqE.s 			page 13
+ARM GAS  /tmp/ccbiY3jf.s 			page 13
 
 
  516 0020 C4F10500 		rsb	r0, r4, #5
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  557              		@ frame_needed = 0, uses_anonymous_args = 0
  558 0000 08B5     		push	{r3, lr}
  559              	.LCFI18:
-ARM GAS  /tmp/cch7aXqE.s 			page 14
+ARM GAS  /tmp/ccbiY3jf.s 			page 14
 
 
  560              		.cfi_def_cfa_offset 8
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  602 002a 4362     		str	r3, [r0, #36]
  171:src/drv8703.c ****     DRV_SPI_INTERFACE.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
  603              		.loc 1 171 5 is_stmt 1 view .LVU154
-ARM GAS  /tmp/cch7aXqE.s 			page 15
+ARM GAS  /tmp/ccbiY3jf.s 			page 15
 
 
  604              		.loc 1 171 43 is_stmt 0 view .LVU155
@@ -884,7 +884,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  634              	.L44:
  635              		.align	2
  636              	.L43:
- 637 0044 00000000 		.word	hspi3
+ 637 0044 00000000 		.word	DRV_SPI_INTERFACE
  638 0048 003C0040 		.word	1073757184
  639              		.cfi_endproc
  640              	.LFE336:
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  650              	.LVL54:
  651              	.LFB337:
  181:src/drv8703.c **** 
-ARM GAS  /tmp/cch7aXqE.s 			page 16
+ARM GAS  /tmp/ccbiY3jf.s 			page 16
 
 
  182:src/drv8703.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle) {
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  687 001a 5DF804FB 		ldr	pc, [sp], #4
  688              	.LVL56:
  689              	.L48:
-ARM GAS  /tmp/cch7aXqE.s 			page 17
+ARM GAS  /tmp/ccbiY3jf.s 			page 17
 
 
  690              	.LCFI22:
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  728              		.loc 1 194 30 is_stmt 0 view .LVU192
  729 004c 0223     		movs	r3, #2
  730 004e 0493     		str	r3, [sp, #16]
-ARM GAS  /tmp/cch7aXqE.s 			page 18
+ARM GAS  /tmp/ccbiY3jf.s 			page 18
 
 
  195:src/drv8703.c ****         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  778 0004 074B     		ldr	r3, .L55
  779 0006 9A42     		cmp	r2, r3
  780 0008 00D0     		beq	.L54
-ARM GAS  /tmp/cch7aXqE.s 			page 19
+ARM GAS  /tmp/ccbiY3jf.s 			page 19
 
 
  781              	.LVL60:
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  822              		@ frame_needed = 0, uses_anonymous_args = 0
  823 0000 70B5     		push	{r4, r5, r6, lr}
  824              	.LCFI24:
-ARM GAS  /tmp/cch7aXqE.s 			page 20
+ARM GAS  /tmp/ccbiY3jf.s 			page 20
 
 
  825              		.cfi_def_cfa_offset 16
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  873              		.loc 1 221 2 view .LVU225
  874              	.LBB10:
  875              		.loc 1 221 2 view .LVU226
-ARM GAS  /tmp/cch7aXqE.s 			page 21
+ARM GAS  /tmp/ccbiY3jf.s 			page 21
 
 
  876              		.loc 1 221 2 view .LVU227
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  920              		.loc 1 231 2 is_stmt 1 view .LVU244
  921              		.loc 1 231 24 is_stmt 0 view .LVU245
  922 0072 0893     		str	r3, [sp, #32]
-ARM GAS  /tmp/cch7aXqE.s 			page 22
+ARM GAS  /tmp/ccbiY3jf.s 			page 22
 
 
  232:src/drv8703.c **** 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  969              		.loc 1 18 21 is_stmt 1 view -0
  970              		.cfi_startproc
  971              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  /tmp/cch7aXqE.s 			page 23
+ARM GAS  /tmp/ccbiY3jf.s 			page 23
 
 
  972              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1372,13 +1372,13 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  1012 002e 10BD     		pop	{r4, pc}
  1013              		.cfi_endproc
  1014              	.LFE329:
- 1016              		.global	hspi3
- 1017              		.section	.bss.hspi3,"aw",%nobits
+ 1016              		.global	DRV_SPI_INTERFACE
+ 1017              		.section	.bss.DRV_SPI_INTERFACE,"aw",%nobits
  1018              		.align	2
- 1021              	hspi3:
+ 1021              	DRV_SPI_INTERFACE:
  1022 0000 00000000 		.space	100
  1022      00000000 
-ARM GAS  /tmp/cch7aXqE.s 			page 24
+ARM GAS  /tmp/ccbiY3jf.s 			page 24
 
 
  1022      00000000 
@@ -1394,41 +1394,41 @@ ARM GAS  /tmp/cch7aXqE.s 			page 1
  1030              		.file 7 "platform/HAL/inc/stm32g4xx_hal_dma.h"
  1031              		.file 8 "platform/HAL/inc/stm32g4xx_hal_spi.h"
  1032              		.file 9 "inc/drv8703.h"
-ARM GAS  /tmp/cch7aXqE.s 			page 25
+ARM GAS  /tmp/ccbiY3jf.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 drv8703.c
-     /tmp/cch7aXqE.s:21     .text.DRV_write:00000000 $t
-     /tmp/cch7aXqE.s:27     .text.DRV_write:00000000 DRV_write
-     /tmp/cch7aXqE.s:122    .text.DRV_write:0000005c $d
-     /tmp/cch7aXqE.s:1021   .bss.hspi3:00000000 hspi3
-     /tmp/cch7aXqE.s:127    .text.DRV_read:00000000 $t
-     /tmp/cch7aXqE.s:133    .text.DRV_read:00000000 DRV_read
-     /tmp/cch7aXqE.s:233    .text.DRV_read:00000068 $d
-     /tmp/cch7aXqE.s:238    .text.DRV_modify_set:00000000 $t
-     /tmp/cch7aXqE.s:244    .text.DRV_modify_set:00000000 DRV_modify_set
-     /tmp/cch7aXqE.s:310    .text.DRV_modify_reset:00000000 $t
-     /tmp/cch7aXqE.s:316    .text.DRV_modify_reset:00000000 DRV_modify_reset
-     /tmp/cch7aXqE.s:382    .text.DRV_writeRegister:00000000 $t
-     /tmp/cch7aXqE.s:388    .text.DRV_writeRegister:00000000 DRV_writeRegister
-     /tmp/cch7aXqE.s:460    .text.DRV_readRegister:00000000 $t
-     /tmp/cch7aXqE.s:466    .text.DRV_readRegister:00000000 DRV_readRegister
-     /tmp/cch7aXqE.s:546    .text.MX_SPI_init:00000000 $t
-     /tmp/cch7aXqE.s:552    .text.MX_SPI_init:00000000 MX_SPI_init
-     /tmp/cch7aXqE.s:637    .text.MX_SPI_init:00000044 $d
-     /tmp/cch7aXqE.s:643    .text.HAL_SPI_MspInit:00000000 $t
-     /tmp/cch7aXqE.s:649    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
-     /tmp/cch7aXqE.s:749    .text.HAL_SPI_MspInit:00000060 $d
-     /tmp/cch7aXqE.s:755    .text.HAL_SPI_MspDeInit:00000000 $t
-     /tmp/cch7aXqE.s:761    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
-     /tmp/cch7aXqE.s:804    .text.HAL_SPI_MspDeInit:00000024 $d
-     /tmp/cch7aXqE.s:811    .text.MX_GPIO_init:00000000 $t
-     /tmp/cch7aXqE.s:817    .text.MX_GPIO_init:00000000 MX_GPIO_init
-     /tmp/cch7aXqE.s:956    .text.MX_GPIO_init:00000098 $d
-     /tmp/cch7aXqE.s:961    .text.DRV_init:00000000 $t
-     /tmp/cch7aXqE.s:967    .text.DRV_init:00000000 DRV_init
-     /tmp/cch7aXqE.s:1018   .bss.hspi3:00000000 $d
+     /tmp/ccbiY3jf.s:21     .text.DRV_write:00000000 $t
+     /tmp/ccbiY3jf.s:27     .text.DRV_write:00000000 DRV_write
+     /tmp/ccbiY3jf.s:122    .text.DRV_write:0000005c $d
+     /tmp/ccbiY3jf.s:1021   .bss.DRV_SPI_INTERFACE:00000000 DRV_SPI_INTERFACE
+     /tmp/ccbiY3jf.s:127    .text.DRV_read:00000000 $t
+     /tmp/ccbiY3jf.s:133    .text.DRV_read:00000000 DRV_read
+     /tmp/ccbiY3jf.s:233    .text.DRV_read:00000068 $d
+     /tmp/ccbiY3jf.s:238    .text.DRV_modify_set:00000000 $t
+     /tmp/ccbiY3jf.s:244    .text.DRV_modify_set:00000000 DRV_modify_set
+     /tmp/ccbiY3jf.s:310    .text.DRV_modify_reset:00000000 $t
+     /tmp/ccbiY3jf.s:316    .text.DRV_modify_reset:00000000 DRV_modify_reset
+     /tmp/ccbiY3jf.s:382    .text.DRV_writeRegister:00000000 $t
+     /tmp/ccbiY3jf.s:388    .text.DRV_writeRegister:00000000 DRV_writeRegister
+     /tmp/ccbiY3jf.s:460    .text.DRV_readRegister:00000000 $t
+     /tmp/ccbiY3jf.s:466    .text.DRV_readRegister:00000000 DRV_readRegister
+     /tmp/ccbiY3jf.s:546    .text.MX_SPI_init:00000000 $t
+     /tmp/ccbiY3jf.s:552    .text.MX_SPI_init:00000000 MX_SPI_init
+     /tmp/ccbiY3jf.s:637    .text.MX_SPI_init:00000044 $d
+     /tmp/ccbiY3jf.s:643    .text.HAL_SPI_MspInit:00000000 $t
+     /tmp/ccbiY3jf.s:649    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+     /tmp/ccbiY3jf.s:749    .text.HAL_SPI_MspInit:00000060 $d
+     /tmp/ccbiY3jf.s:755    .text.HAL_SPI_MspDeInit:00000000 $t
+     /tmp/ccbiY3jf.s:761    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+     /tmp/ccbiY3jf.s:804    .text.HAL_SPI_MspDeInit:00000024 $d
+     /tmp/ccbiY3jf.s:811    .text.MX_GPIO_init:00000000 $t
+     /tmp/ccbiY3jf.s:817    .text.MX_GPIO_init:00000000 MX_GPIO_init
+     /tmp/ccbiY3jf.s:956    .text.MX_GPIO_init:00000098 $d
+     /tmp/ccbiY3jf.s:961    .text.DRV_init:00000000 $t
+     /tmp/ccbiY3jf.s:967    .text.DRV_init:00000000 DRV_init
+     /tmp/ccbiY3jf.s:1018   .bss.DRV_SPI_INTERFACE:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

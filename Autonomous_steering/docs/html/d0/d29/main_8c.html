@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MORE Autonomous steering: STM32_AUTONOMOUS_PROJECT/Src/main.c File Reference</title>
+<title>MORE Autonomous steering: STM32_AUTONOMOUS_PROJECT/src/main.c File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -105,45 +105,49 @@ $(function(){initNavTree('d0/d29/main_8c.html','../../'); initResizable(true); }
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>: Main program body  
+<p>main loop of the steering box  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d7/d15/drv8703_8h_source.html">../Inc/drv8703.h</a>&quot;</code><br />
-<code>#include &quot;../Inc/CAN.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../de/de3/tmp112_8h_source.html">../Inc/tmp112.h</a>&quot;</code><br />
-<code>#include &quot;../Inc/ADC.h&quot;</code><br />
-<code>#include &quot;../Inc/TIM.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d7/d15/drv8703_8h_source.html">drv8703.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/de3/tmp112_8h_source.html">tmp112.h</a>&quot;</code><br />
+<code>#include &quot;adc.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/db0/tim_8h_source.html">tim.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d4/d10/main_8c__incl.png" border="0" usemap="#aSTM32__AUTONOMOUS__PROJECT_2Src_2main_8c" alt=""/></div>
-<map name="aSTM32__AUTONOMOUS__PROJECT_2Src_2main_8c" id="aSTM32__AUTONOMOUS__PROJECT_2Src_2main_8c">
-<area shape="rect" title=": Main program body" alt="" coords="204,5,441,48"/>
-<area shape="rect" href="../../d7/d15/drv8703_8h.html" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="138,96,250,123"/>
-<area shape="poly" title=" " alt="" coords="291,51,229,90,226,85,288,46"/>
-<area shape="rect" href="../../d6/dfe/CAN_8h_source.html" title=" " alt="" coords="274,96,370,123"/>
-<area shape="poly" title=" " alt="" coords="325,49,325,80,320,80,320,49"/>
-<area shape="rect" href="../../de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="5,96,114,123"/>
-<area shape="poly" title=" " alt="" coords="255,51,116,94,115,88,254,46"/>
-<area shape="rect" title=" " alt="" coords="394,96,490,123"/>
-<area shape="poly" title=" " alt="" coords="355,46,412,85,409,89,352,51"/>
-<area shape="rect" title=" " alt="" coords="514,96,603,123"/>
-<area shape="poly" title=" " alt="" coords="384,46,507,88,506,93,382,51"/>
-<area shape="rect" title=" " alt="" coords="121,171,185,197"/>
-<area shape="poly" title=" " alt="" coords="189,125,170,159,165,156,185,122"/>
-<area shape="rect" title=" " alt="" coords="22,171,97,197"/>
-<area shape="poly" title=" " alt="" coords="172,126,98,165,95,160,169,121"/>
-<area shape="rect" title=" " alt="" coords="209,171,329,197"/>
-<area shape="poly" title=" " alt="" coords="209,121,247,158,243,162,205,125"/>
-<area shape="poly" title=" " alt="" coords="315,125,289,160,285,157,311,122"/>
-<area shape="poly" title=" " alt="" coords="77,121,126,159,123,163,74,125"/>
-<area shape="poly" title=" " alt="" coords="62,123,62,155,57,155,57,123"/>
-<area shape="poly" title=" " alt="" coords="97,121,219,163,217,168,95,126"/>
+<div class="center"><img src="../../d4/d10/main_8c__incl.png" border="0" usemap="#aSTM32__AUTONOMOUS__PROJECT_2src_2main_8c" alt=""/></div>
+<map name="aSTM32__AUTONOMOUS__PROJECT_2src_2main_8c" id="aSTM32__AUTONOMOUS__PROJECT_2src_2main_8c">
+<area shape="rect" title="main loop of the steering box" alt="" coords="247,5,484,48"/>
+<area shape="rect" href="../../d7/d15/drv8703_8h.html" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="282,96,361,123"/>
+<area shape="poly" title=" " alt="" coords="357,50,338,83,333,81,352,47"/>
+<area shape="rect" href="../../de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="184,96,259,123"/>
+<area shape="poly" title=" " alt="" coords="330,51,259,90,256,86,327,46"/>
+<area shape="rect" href="../../d7/d19/adc_8h_source.html" title=" " alt="" coords="459,96,512,123"/>
+<area shape="poly" title=" " alt="" coords="398,46,456,85,453,89,395,51"/>
+<area shape="rect" href="../../d3/db0/tim_8h.html" title="file sets up safety timer used in the main code" alt="" coords="384,96,435,123"/>
+<area shape="poly" title=" " alt="" coords="379,47,398,81,393,83,374,50"/>
+<area shape="rect" title=" " alt="" coords="272,171,336,197"/>
+<area shape="poly" title=" " alt="" coords="321,124,313,156,308,155,316,123"/>
+<area shape="rect" title=" " alt="" coords="174,171,248,197"/>
+<area shape="poly" title=" " alt="" coords="304,125,244,164,241,160,301,121"/>
+<area shape="rect" title=" " alt="" coords="360,171,480,197"/>
+<area shape="poly" title=" " alt="" coords="340,121,393,159,390,164,337,125"/>
+<area shape="poly" title=" " alt="" coords="238,121,280,158,277,162,234,125"/>
+<area shape="poly" title=" " alt="" coords="222,124,218,156,212,155,217,123"/>
+<area shape="poly" title=" " alt="" coords="257,121,372,162,370,167,255,126"/>
+<area shape="rect" title=" " alt="" coords="5,171,150,197"/>
+<area shape="poly" title=" " alt="" coords="198,126,118,166,115,161,195,121"/>
+<area shape="poly" title=" " alt="" coords="476,125,443,161,439,157,472,121"/>
+<area shape="rect" title=" " alt="" coords="674,171,822,197"/>
+<area shape="poly" title=" " alt="" coords="513,116,689,164,687,169,512,121"/>
+<area shape="poly" title=" " alt="" coords="393,125,337,164,334,159,390,121"/>
+<area shape="poly" title=" " alt="" coords="414,123,419,155,413,156,409,124"/>
+<area shape="rect" title=" " alt="" coords="505,171,650,197"/>
+<area shape="poly" title=" " alt="" coords="436,119,535,162,533,167,434,124"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -157,34 +161,12 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a3b0ad512a6e6c6157440b68d395eac" id="r_a8a3b0ad512a6e6c6157440b68d395eac"><td class="memItemLeft" align="right" valign="top"><a id="a8a3b0ad512a6e6c6157440b68d395eac" name="a8a3b0ad512a6e6c6157440b68d395eac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>HAL_TIM_PeriodElapsedCallback</b> (TIM_HandleTypeDef *htim)</td></tr>
-<tr class="memdesc:a8a3b0ad512a6e6c6157440b68d395eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt for saftety timer which ensures the systems shutsdown after some time, if the angle sensor isn't working anymnore It just sets a flag on, the CAN_error function in main then handles the situationo. <br /></td></tr>
-<tr class="separator:a8a3b0ad512a6e6c6157440b68d395eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8aaa1c9e353fec4aaf953b5c329d358a" id="r_a8aaa1c9e353fec4aaf953b5c329d358a"><td class="memItemLeft" align="right" valign="top"><a id="a8aaa1c9e353fec4aaf953b5c329d358a" name="a8aaa1c9e353fec4aaf953b5c329d358a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>TIM_init</b> (void)</td></tr>
-<tr class="memdesc:a8aaa1c9e353fec4aaf953b5c329d358a"><td class="mdescLeft">&#160;</td><td class="mdescRight">settings for 100ms timer, used for escaping from fault situation, in cause of unresponsive angle sensor <br /></td></tr>
-<tr class="separator:a8aaa1c9e353fec4aaf953b5c329d358a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38ad4725462bdc5e86c4ead4f04b9fc2" id="r_a38ad4725462bdc5e86c4ead4f04b9fc2"><td class="memItemLeft" align="right" valign="top"><a id="a38ad4725462bdc5e86c4ead4f04b9fc2" name="a38ad4725462bdc5e86c4ead4f04b9fc2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>TIM2_IRQHandler</b> (void)</td></tr>
-<tr class="memdesc:a38ad4725462bdc5e86c4ead4f04b9fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup IRQ for Timer <br /></td></tr>
-<tr class="separator:a38ad4725462bdc5e86c4ead4f04b9fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ab2febb9f275720efc5912587f9f1bc36" id="r_ab2febb9f275720efc5912587f9f1bc36"><td class="memItemLeft" align="right" valign="top"><a id="ab2febb9f275720efc5912587f9f1bc36" name="ab2febb9f275720efc5912587f9f1bc36"></a>
-volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>timeout_flag</b> = 0</td></tr>
-<tr class="separator:ab2febb9f275720efc5912587f9f1bc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37188e58ceedf28432372aa1c3e751c6" id="r_a37188e58ceedf28432372aa1c3e751c6"><td class="memItemLeft" align="right" valign="top"><a id="a37188e58ceedf28432372aa1c3e751c6" name="a37188e58ceedf28432372aa1c3e751c6"></a>
-TIM_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>TIM_TIMER_INTERFACE</b></td></tr>
-<tr class="separator:a37188e58ceedf28432372aa1c3e751c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70af21c671abfcc773614a9a4f63d920" id="r_a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top"><a id="a70af21c671abfcc773614a9a4f63d920" name="a70af21c671abfcc773614a9a4f63d920"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SystemClock_Config</b> (void)</td></tr>
+<tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>: Main program body </p>
-<p>main loop of the steering box</p>
-<dl class="section attention"><dt>Attention</dt><dd></dd></dl>
-<p>Copyright (c) 2023 STMicroelectronics. All rights reserved.</p>
-<p>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</p>
+<div class="textblock"><p>main loop of the steering box </p>
 <p>The main file initialises the modules and then loops wait for an event to occur. 1: The angle sensor send data to CAN 2 2: The car's main can bus has send data to CAN 1 3: event 1 hasn't occured for X amount of time</p>
 <p>Event 1 means data is ready so it gathers all other data and sends it over CAN 1 to the rest of the car. Event 2 means that a command has been send from the car's CAN bus, once this happens this command is processed. Event 3 means that the angle sensor is unresponsive, so it sends a error message (and shut the system down???) </p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -209,44 +191,45 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d29/main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#ad0/d29/main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" alt=""/></div>
 <map name="ad0/d29/main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" id="ad0/d29/main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,259,55,285"/>
-<area shape="rect" href="../../dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="139,107,212,133"/>
-<area shape="poly" title=" " alt="" coords="42,257,150,143,153,146,46,260"/>
-<area shape="rect" href="../../dc/d85/drv8703_8c.html#ae0903f440d0fa565fd3947ee31c70a31" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="508,132,590,159"/>
-<area shape="poly" title=" " alt="" coords="54,260,102,244,318,190,493,153,494,158,319,195,103,249,56,265"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#a8aaa1c9e353fec4aaf953b5c329d358a" title="settings for 100ms timer, used for escaping from fault situation, in cause of unresponsive angle sens..." alt="" coords="142,259,210,285"/>
-<area shape="poly" title=" " alt="" coords="55,269,126,269,126,275,55,275"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="103,309,249,336"/>
-<area shape="poly" title=" " alt="" coords="56,278,104,295,122,301,120,306,102,300,54,283"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,385,212,412"/>
-<area shape="poly" title=" " alt="" coords="45,284,71,313,104,346,141,374,138,378,101,350,67,317,41,287"/>
-<area shape="rect" href="../../dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="302,5,422,32"/>
-<area shape="poly" title=" " alt="" coords="195,104,240,74,296,42,307,36,309,41,298,46,243,78,198,108"/>
-<area shape="poly" title=" " alt="" coords="214,127,297,143,401,148,493,146,493,151,401,153,297,148,213,132"/>
-<area shape="rect" href="../../dc/d85/drv8703_8c.html#a680b2474db7711bf8c58319f4b2adcc1" title="Reads data from all registers in the DRV8703 driver." alt="" coords="297,107,427,133"/>
-<area shape="poly" title=" " alt="" coords="213,117,281,117,281,123,213,123"/>
-<area shape="rect" href="../../dc/d85/drv8703_8c.html#adc50917bef3b15ac8dd7e70c889b94ad" title="THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an..." alt="" coords="315,56,409,83"/>
-<area shape="poly" title=" " alt="" coords="212,108,299,84,301,89,214,113"/>
-<area shape="poly" title=" " alt="" coords="405,30,429,42,482,80,525,119,522,123,479,84,426,46,403,35"/>
-<area shape="rect" href="../../dc/d85/drv8703_8c.html#ac5040b78f563159a60fefa0191052830" title="Writes data to a specific register in the DRV8703 driver." alt="" coords="507,5,591,32"/>
-<area shape="poly" title=" " alt="" coords="423,16,491,16,491,21,423,21"/>
-<area shape="poly" title=" " alt="" coords="428,126,493,135,492,140,428,132"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="475,296,623,323"/>
-<area shape="poly" title=" " alt="" coords="231,306,297,295,381,292,460,296,460,301,381,297,297,300,232,311"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a6137c84baa05ccdfc2c416f4b8882ce2" title="basic function to read to TMP112" alt="" coords="322,309,403,336"/>
-<area shape="poly" title=" " alt="" coords="249,320,306,320,306,325,249,325"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3" title="THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an..." alt="" coords="315,461,409,488"/>
-<area shape="poly" title=" " alt="" coords="211,410,298,447,312,453,310,458,296,452,209,415"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#af7b836277f7e32d85ebd88101fb4088c" title="wrapper of write to write to config register return success" alt="" coords="306,411,418,437"/>
-<area shape="poly" title=" " alt="" coords="213,401,291,412,290,417,213,406"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a53e8a9a536535b0d052aeda72cd268b8" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="309,360,415,387"/>
-<area shape="poly" title=" " alt="" coords="213,391,293,380,294,385,213,396"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab734280be7c71b47e4182f47756226d8" title=" " alt="" coords="508,461,590,488"/>
-<area shape="poly" title=" " alt="" coords="410,472,492,472,492,477,410,477"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aede0239bb8d75685e7d3334c4b57cf93" title="basic function to write to TMP112" alt="" coords="507,385,591,412"/>
-<area shape="poly" title=" " alt="" coords="418,414,492,404,492,409,419,419"/>
-<area shape="poly" title=" " alt="" coords="403,357,492,326,494,331,404,362"/>
-<area shape="poly" title=" " alt="" coords="416,378,492,388,491,394,415,383"/>
+<area shape="rect" title=" " alt="" coords="5,129,55,156"/>
+<area shape="rect" href="../../dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="139,104,212,131"/>
+<area shape="poly" title=" " alt="" coords="55,136,124,124,125,129,55,141"/>
+<area shape="rect" href="../../dc/d85/drv8703_8c.html#ae0903f440d0fa565fd3947ee31c70a31" title="Reads data from a specific register in the DRV8703 driver." alt="" coords="560,28,642,55"/>
+<area shape="poly" title=" " alt="" coords="47,127,101,90,195,41,239,25,297,12,347,4,388,3,480,12,546,24,545,29,479,17,388,8,348,10,297,17,240,31,197,46,104,94,50,131"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads all the temperature sensors." alt="" coords="103,180,249,207"/>
+<area shape="poly" title=" " alt="" coords="56,149,122,172,120,177,54,154"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,256,212,283"/>
+<area shape="poly" title=" " alt="" coords="45,155,71,184,104,217,141,245,138,249,101,221,67,188,41,158"/>
+<area shape="rect" href="../../dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="328,104,448,131"/>
+<area shape="poly" title=" " alt="" coords="213,115,312,115,312,120,213,120"/>
+<area shape="poly" title=" " alt="" coords="191,102,236,68,265,51,296,39,362,26,429,22,492,24,545,30,545,35,492,30,429,27,363,31,298,44,267,56,239,72,194,106"/>
+<area shape="rect" href="../../dc/d85/drv8703_8c.html#a680b2474db7711bf8c58319f4b2adcc1" title="Reads data from all registers in the DRV8703 driver." alt="" coords="323,53,453,80"/>
+<area shape="poly" title=" " alt="" coords="212,106,314,82,315,87,213,111"/>
+<area shape="rect" href="../../dc/d85/drv8703_8c.html#adc50917bef3b15ac8dd7e70c889b94ad" title="THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an..." alt="" coords="341,155,435,181"/>
+<area shape="poly" title=" " alt="" coords="213,123,326,151,325,156,212,129"/>
+<area shape="poly" title=" " alt="" coords="442,101,478,90,554,59,556,64,480,95,444,106"/>
+<area shape="rect" href="../../dc/d85/drv8703_8c.html#ac5040b78f563159a60fefa0191052830" title="Writes data to a specific register in the DRV8703 driver." alt="" coords="559,104,643,131"/>
+<area shape="poly" title=" " alt="" coords="449,115,543,115,543,120,449,120"/>
+<area shape="poly" title=" " alt="" coords="453,56,545,45,545,51,454,62"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,205,479,232"/>
+<area shape="poly" title=" " alt="" coords="250,200,282,203,281,209,249,205"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="527,256,675,283"/>
+<area shape="poly" title=" " alt="" coords="448,230,528,249,526,254,447,235"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a2cfbd99f9d7c39571c084b3ec30dd51b" title="basic function to read to TMP112" alt="" coords="560,205,642,232"/>
+<area shape="poly" title=" " alt="" coords="480,216,545,216,545,221,480,221"/>
+<area shape="poly" title=" " alt="" coords="212,258,314,234,315,239,213,263"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3" title="THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an..." alt="" coords="341,357,435,384"/>
+<area shape="poly" title=" " alt="" coords="197,281,242,312,298,343,327,354,325,359,296,348,239,316,194,286"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a037d8018fa79231ee467a70837b1c818" title="wrapper of write to write to config register return success" alt="" coords="332,307,444,333"/>
+<area shape="poly" title=" " alt="" coords="213,275,318,301,317,306,212,281"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab245dd6d2557d920a0bdeef48cb2bd17" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="335,256,441,283"/>
+<area shape="poly" title=" " alt="" coords="213,267,319,267,319,272,213,272"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab734280be7c71b47e4182f47756226d8" title=" " alt="" coords="560,357,642,384"/>
+<area shape="poly" title=" " alt="" coords="436,368,544,368,544,373,436,373"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a1322cef7af405248d9f5acc46db30ccf" title="basic function to write to TMP112" alt="" coords="559,307,643,333"/>
+<area shape="poly" title=" " alt="" coords="445,317,543,317,543,323,445,323"/>
+<area shape="poly" title=" " alt="" coords="442,267,512,267,512,272,442,272"/>
+<area shape="poly" title=" " alt="" coords="443,279,544,304,543,309,441,285"/>
 </map>
 </div>
 
@@ -257,7 +240,7 @@ Here is the call graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_1f6a81285d2e99ccd007e40c9b009fa8.html">STM32_AUTONOMOUS_PROJECT</a></li><li class="navelem"><a class="el" href="../../dir_ad374f3c46b94b0bb2ed174f5d45909f.html">Src</a></li><li class="navelem"><a class="el" href="../../d0/d29/main_8c.html">main.c</a></li>
+    <li class="navelem"><a class="el" href="../../dir_1f6a81285d2e99ccd007e40c9b009fa8.html">STM32_AUTONOMOUS_PROJECT</a></li><li class="navelem"><a class="el" href="../../dir_185834073c8e8e6cea6ebcfae73572c6.html">src</a></li><li class="navelem"><a class="el" href="../../d0/d29/main_8c.html">main.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

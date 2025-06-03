@@ -5,7 +5,6 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stm32g4xx_hal.h>
 #include <stm32g4xx_hal_adc.h>
 

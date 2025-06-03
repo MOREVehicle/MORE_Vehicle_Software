@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['48mhz_20for_20rng_20disabled_0',['Require 48MHz for RNG                  | Disabled',['../df/d54/system__stm32g4xx_8c.html#autotoc_md12',1,'']]]
+  ['main_0',['main',['../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['main_2ec_1',['main.c',['../d0/d29/main_8c.html',1,'']]],
+  ['mx_5fi2c_5finit_2',['MX_I2C_Init',['../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3',1,'MX_I2C_Init(void):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#ab64ab683d25afcb6e453938a38ea93b3',1,'MX_I2C_Init(void):&#160;tmp112.c']]],
+  ['mx_5fspi_5finit_3',['MX_SPI_init',['../dc/d85/drv8703_8c.html#adc50917bef3b15ac8dd7e70c889b94ad',1,'MX_SPI_init():&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad',1,'MX_SPI_init():&#160;drv8703.c']]]
 ];

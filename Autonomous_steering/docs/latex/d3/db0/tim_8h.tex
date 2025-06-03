@@ -1,0 +1,46 @@
+\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/inc/tim.h File Reference}
+\hypertarget{tim_8h}{}\label{tim_8h}\index{STM32\_AUTONOMOUS\_PROJECT/inc/tim.h@{STM32\_AUTONOMOUS\_PROJECT/inc/tim.h}}
+
+
+file sets up safety timer used in the main code  
+
+
+{\ttfamily \#include $<$stm32g4xx\+\_\+hal.\+h$>$}\newline
+{\ttfamily \#include $<$stm32g4xx\+\_\+hal\+\_\+tim.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for tim.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d4f/tim_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{db/d86/tim_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tim_8h_a8aaa1c9e353fec4aaf953b5c329d358a}\label{tim_8h_a8aaa1c9e353fec4aaf953b5c329d358a} 
+void {\bfseries TIM\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em settings for 100ms timer, used for escaping from fault situation, in cause of unresponsive angle sensor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tim_8h_a37188e58ceedf28432372aa1c3e751c6}\label{tim_8h_a37188e58ceedf28432372aa1c3e751c6} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries TIM\+\_\+\+TIMER\+\_\+\+INTERFACE}
+\begin{DoxyCompactList}\small\item\em used TIM interface \end{DoxyCompactList}\item 
+\Hypertarget{tim_8h_a829671833c8ddfa7c739aa7f76c03342}\label{tim_8h_a829671833c8ddfa7c739aa7f76c03342} 
+volatile uint8\+\_\+t {\bfseries TIM\+\_\+interuptflag}
+\begin{DoxyCompactList}\small\item\em global variable used to check if interrupt occured \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+file sets up safety timer used in the main code 
+

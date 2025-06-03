@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MORE Autonomous steering: STM32_AUTONOMOUS_PROJECT/Inc/tmp112.h File Reference</title>
+<title>MORE Autonomous steering: STM32_AUTONOMOUS_PROJECT/inc/tmp112.h File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -116,27 +116,30 @@ $(function(){initNavTree('de/de3/tmp112_8h.html','../../'); initResizable(true);
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &quot;stm32g4xx_hal.h&quot;</code><br />
+<code>#include &quot;stm32g4xx_hal_i2c.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tmp112.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d5/d57/tmp112_8h__incl.png" border="0" usemap="#aSTM32__AUTONOMOUS__PROJECT_2Inc_2tmp112_8h" alt=""/></div>
-<map name="aSTM32__AUTONOMOUS__PROJECT_2Inc_2tmp112_8h" id="aSTM32__AUTONOMOUS__PROJECT_2Inc_2tmp112_8h">
-<area shape="rect" title="Driver for TMP112 Temperature Sensor." alt="" coords="12,5,250,48"/>
+<div class="center"><img src="../../d5/d57/tmp112_8h__incl.png" border="0" usemap="#aSTM32__AUTONOMOUS__PROJECT_2inc_2tmp112_8h" alt=""/></div>
+<map name="aSTM32__AUTONOMOUS__PROJECT_2inc_2tmp112_8h" id="aSTM32__AUTONOMOUS__PROJECT_2inc_2tmp112_8h">
+<area shape="rect" title="Driver for TMP112 Temperature Sensor." alt="" coords="72,5,310,48"/>
 <area shape="rect" title=" " alt="" coords="5,96,70,123"/>
-<area shape="poly" title=" " alt="" coords="109,51,65,88,62,84,105,47"/>
+<area shape="poly" title=" " alt="" coords="153,51,76,91,74,86,150,46"/>
 <area shape="rect" title=" " alt="" coords="94,96,168,123"/>
-<area shape="poly" title=" " alt="" coords="134,49,134,80,128,80,128,49"/>
+<area shape="poly" title=" " alt="" coords="178,50,151,85,147,82,173,47"/>
 <area shape="rect" title=" " alt="" coords="192,96,312,123"/>
-<area shape="poly" title=" " alt="" coords="164,46,222,85,219,89,161,51"/>
+<area shape="poly" title=" " alt="" coords="209,47,235,82,231,85,205,50"/>
+<area shape="rect" title=" " alt="" coords="336,96,480,123"/>
+<area shape="poly" title=" " alt="" coords="248,46,361,88,359,93,246,51"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d7/dc6/tmp112_8h__dep__incl.png" border="0" usemap="#aSTM32__AUTONOMOUS__PROJECT_2Inc_2tmp112_8hdep" alt=""/></div>
-<map name="aSTM32__AUTONOMOUS__PROJECT_2Inc_2tmp112_8hdep" id="aSTM32__AUTONOMOUS__PROJECT_2Inc_2tmp112_8hdep">
+<div class="center"><img src="../../d7/dc6/tmp112_8h__dep__incl.png" border="0" usemap="#aSTM32__AUTONOMOUS__PROJECT_2inc_2tmp112_8hdep" alt=""/></div>
+<map name="aSTM32__AUTONOMOUS__PROJECT_2inc_2tmp112_8hdep" id="aSTM32__AUTONOMOUS__PROJECT_2inc_2tmp112_8hdep">
 <area shape="rect" title="Driver for TMP112 Temperature Sensor." alt="" coords="136,5,373,48"/>
-<area shape="rect" href="../../d0/d29/main_8c.html" title=": Main program body" alt="" coords="5,96,243,139"/>
+<area shape="rect" href="../../d0/d29/main_8c.html" title="main loop of the steering box" alt="" coords="5,96,243,139"/>
 <area shape="poly" title=" " alt="" coords="213,59,156,98,153,93,210,55"/>
 <area shape="rect" href="../../dd/dd0/tmp112_8c.html" title="Source file for TMP112 temperature sensor driver functions Handles I2C communication and driver confi..." alt="" coords="267,96,504,139"/>
 <area shape="poly" title=" " alt="" coords="299,55,356,93,353,98,296,59"/>
@@ -200,9 +203,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ab21934e4859d920b12b549da07bf2eea" id="r_ab21934e4859d920b12b549da07bf2eea"><td class="memItemLeft" align="right" valign="top"><a id="ab21934e4859d920b12b549da07bf2eea" name="ab21934e4859d920b12b549da07bf2eea"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_DEGREE_RESOLUTION</b>&#160;&#160;&#160;(float)(TMP_ABSOLUTE_RANGE / (float)(1&lt;&lt;<a class="el" href="#a1bdb0b03d0e4cc741693dfe96d571f0c">TMP_RESOLUTION</a>))</td></tr>
 <tr class="separator:ab21934e4859d920b12b549da07bf2eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8330d736cbce70c6e66383838e4a90d5" id="r_a8330d736cbce70c6e66383838e4a90d5"><td class="memItemLeft" align="right" valign="top"><a id="a8330d736cbce70c6e66383838e4a90d5" name="a8330d736cbce70c6e66383838e4a90d5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_DEFAULT_ADDR</b>&#160;&#160;&#160;0x48</td></tr>
-<tr class="separator:a8330d736cbce70c6e66383838e4a90d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a6bdd1d36309a7d241e2049cecaac62" id="r_a8a6bdd1d36309a7d241e2049cecaac62"><td class="memItemLeft" align="right" valign="top"><a id="a8a6bdd1d36309a7d241e2049cecaac62" name="a8a6bdd1d36309a7d241e2049cecaac62"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_DEFAULT</b>&#160;&#160;&#160;0x48</td></tr>
+<tr class="separator:a8a6bdd1d36309a7d241e2049cecaac62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4a689c232207e6dee9bf59bd955a0dd" id="r_aa4a689c232207e6dee9bf59bd955a0dd"><td class="memItemLeft" align="right" valign="top"><a id="aa4a689c232207e6dee9bf59bd955a0dd" name="aa4a689c232207e6dee9bf59bd955a0dd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_SIZE</b>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:aa4a689c232207e6dee9bf59bd955a0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,8 +220,22 @@ Macros</h2></td></tr>
 <tr class="separator:a57bfbc3af265244234dfb171305a515d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb740195560188d80cf626cc21f3506b" id="r_afb740195560188d80cf626cc21f3506b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb740195560188d80cf626cc21f3506b">TMP_DATA_2_MASK</a>(x)</td></tr>
 <tr class="separator:afb740195560188d80cf626cc21f3506b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02796926466f844e855116276e45bf4e" id="r_a02796926466f844e855116276e45bf4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02796926466f844e855116276e45bf4e">TMP_ADDR</a>&#160;&#160;&#160;((TMP_DEFAULT_ADDR) &lt;&lt; 1)</td></tr>
-<tr class="separator:a02796926466f844e855116276e45bf4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0cebf64091b4307f36e7a5494d40e34" id="r_af0cebf64091b4307f36e7a5494d40e34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0cebf64091b4307f36e7a5494d40e34">TMP_ADDR_AMOUNT</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:af0cebf64091b4307f36e7a5494d40e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f821f361f8ce77ec313cccf394ccc78" id="r_a7f821f361f8ce77ec313cccf394ccc78"><td class="memItemLeft" align="right" valign="top"><a id="a7f821f361f8ce77ec313cccf394ccc78" name="a7f821f361f8ce77ec313cccf394ccc78"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_HIGHSIDE_LEFT</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a7f821f361f8ce77ec313cccf394ccc78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef137f5b5b21477bfbcf0daaabf40292" id="r_aef137f5b5b21477bfbcf0daaabf40292"><td class="memItemLeft" align="right" valign="top"><a id="aef137f5b5b21477bfbcf0daaabf40292" name="aef137f5b5b21477bfbcf0daaabf40292"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_HIGHSIDE_RIGHT</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aef137f5b5b21477bfbcf0daaabf40292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad93feb5c2ca68a0c18b8dbf3cde984d" id="r_aad93feb5c2ca68a0c18b8dbf3cde984d"><td class="memItemLeft" align="right" valign="top"><a id="aad93feb5c2ca68a0c18b8dbf3cde984d" name="aad93feb5c2ca68a0c18b8dbf3cde984d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_LOWSIDE_LEFT</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:aad93feb5c2ca68a0c18b8dbf3cde984d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94cb46716acb4ecd79e5f943d370feac" id="r_a94cb46716acb4ecd79e5f943d370feac"><td class="memItemLeft" align="right" valign="top"><a id="a94cb46716acb4ecd79e5f943d370feac" name="a94cb46716acb4ecd79e5f943d370feac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_LOWSIDE_RIGHT</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a94cb46716acb4ecd79e5f943d370feac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15575023760783d175cbe27775a318a7" id="r_a15575023760783d175cbe27775a318a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15575023760783d175cbe27775a318a7">TMP_ADDR</a>(x)</td></tr>
+<tr class="separator:a15575023760783d175cbe27775a318a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6334a57bafb12c780994bc7f79addad6" id="r_a6334a57bafb12c780994bc7f79addad6"><td class="memItemLeft" align="right" valign="top"><a id="a6334a57bafb12c780994bc7f79addad6" name="a6334a57bafb12c780994bc7f79addad6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_I2C_INTERFACE</b>&#160;&#160;&#160;hi2c1</td></tr>
 <tr class="memdesc:a6334a57bafb12c780994bc7f79addad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">used i2c channel on mcu. <br /></td></tr>
@@ -229,26 +246,29 @@ Functions</h2></td></tr>
 <tr class="memitem:a82091535043d8c73cd57a2cf319c48ff" id="r_a82091535043d8c73cd57a2cf319c48ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82091535043d8c73cd57a2cf319c48ff">TMP_init</a> (void)</td></tr>
 <tr class="memdesc:a82091535043d8c73cd57a2cf319c48ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communication.  <br /></td></tr>
 <tr class="separator:a82091535043d8c73cd57a2cf319c48ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf42426edd437c424624a73df238134c" id="r_aaf42426edd437c424624a73df238134c"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf42426edd437c424624a73df238134c">TMP_getTemperature</a> (void)</td></tr>
-<tr class="memdesc:aaf42426edd437c424624a73df238134c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current temperature from the TMP112 sensor. Reads the 16-bit temperature value from the TMP112 and converts it to Celsius.  <br /></td></tr>
-<tr class="separator:aaf42426edd437c424624a73df238134c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aede0239bb8d75685e7d3334c4b57cf93" id="r_aede0239bb8d75685e7d3334c4b57cf93"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aede0239bb8d75685e7d3334c4b57cf93">TMP_write</a> (uint8_t reg, uint16_t data)</td></tr>
-<tr class="memdesc:aede0239bb8d75685e7d3334c4b57cf93"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic function to write to TMP112  <br /></td></tr>
-<tr class="separator:aede0239bb8d75685e7d3334c4b57cf93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6137c84baa05ccdfc2c416f4b8882ce2" id="r_a6137c84baa05ccdfc2c416f4b8882ce2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6137c84baa05ccdfc2c416f4b8882ce2">TMP_read</a> (uint8_t reg)</td></tr>
-<tr class="memdesc:a6137c84baa05ccdfc2c416f4b8882ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic function to read to TMP112  <br /></td></tr>
-<tr class="separator:a6137c84baa05ccdfc2c416f4b8882ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53e8a9a536535b0d052aeda72cd268b8" id="r_a53e8a9a536535b0d052aeda72cd268b8"><td class="memItemLeft" align="right" valign="top"><a id="a53e8a9a536535b0d052aeda72cd268b8" name="a53e8a9a536535b0d052aeda72cd268b8"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_setTLow</b> (float celcius)</td></tr>
-<tr class="memdesc:a53e8a9a536535b0d052aeda72cd268b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">wrapper of write to set the TLOW and THIGH regisers return success <br /></td></tr>
-<tr class="separator:a53e8a9a536535b0d052aeda72cd268b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27d2e5f9f8f1024928af7c203753b69d" id="r_a27d2e5f9f8f1024928af7c203753b69d"><td class="memItemLeft" align="right" valign="top"><a id="a27d2e5f9f8f1024928af7c203753b69d" name="a27d2e5f9f8f1024928af7c203753b69d"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_setTHigh</b> (float celcius)</td></tr>
-<tr class="separator:a27d2e5f9f8f1024928af7c203753b69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7b836277f7e32d85ebd88101fb4088c" id="r_af7b836277f7e32d85ebd88101fb4088c"><td class="memItemLeft" align="right" valign="top"><a id="af7b836277f7e32d85ebd88101fb4088c" name="af7b836277f7e32d85ebd88101fb4088c"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_setConfig</b> (uint16_t data)</td></tr>
-<tr class="memdesc:af7b836277f7e32d85ebd88101fb4088c"><td class="mdescLeft">&#160;</td><td class="mdescRight">wrapper of write to write to config register return success <br /></td></tr>
-<tr class="separator:af7b836277f7e32d85ebd88101fb4088c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1fa86c47cd8d51a938ce88336d6c72" id="r_aaa1fa86c47cd8d51a938ce88336d6c72"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa1fa86c47cd8d51a938ce88336d6c72">TMP_getTemperatureSingle</a> (uint8_t address)</td></tr>
+<tr class="memdesc:aaa1fa86c47cd8d51a938ce88336d6c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current temperature from the TMP112 sensor. Reads the 16-bit temperature value from the TMP112 and converts it to Celsius.  <br /></td></tr>
+<tr class="separator:aaa1fa86c47cd8d51a938ce88336d6c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae75b0876f998ebf4e6667e33bb687569" id="r_ae75b0876f998ebf4e6667e33bb687569"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae75b0876f998ebf4e6667e33bb687569">TMP_getTemperature</a> ()</td></tr>
+<tr class="memdesc:ae75b0876f998ebf4e6667e33bb687569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads all the temperature sensors.  <br /></td></tr>
+<tr class="separator:ae75b0876f998ebf4e6667e33bb687569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1322cef7af405248d9f5acc46db30ccf" id="r_a1322cef7af405248d9f5acc46db30ccf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1322cef7af405248d9f5acc46db30ccf">TMP_write</a> (uint8_t address, uint8_t reg, uint16_t data)</td></tr>
+<tr class="memdesc:a1322cef7af405248d9f5acc46db30ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic function to write to TMP112  <br /></td></tr>
+<tr class="separator:a1322cef7af405248d9f5acc46db30ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cfbd99f9d7c39571c084b3ec30dd51b" id="r_a2cfbd99f9d7c39571c084b3ec30dd51b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cfbd99f9d7c39571c084b3ec30dd51b">TMP_read</a> (uint8_t address, uint8_t reg)</td></tr>
+<tr class="memdesc:a2cfbd99f9d7c39571c084b3ec30dd51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic function to read to TMP112  <br /></td></tr>
+<tr class="separator:a2cfbd99f9d7c39571c084b3ec30dd51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab245dd6d2557d920a0bdeef48cb2bd17" id="r_ab245dd6d2557d920a0bdeef48cb2bd17"><td class="memItemLeft" align="right" valign="top"><a id="ab245dd6d2557d920a0bdeef48cb2bd17" name="ab245dd6d2557d920a0bdeef48cb2bd17"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_setTLow</b> (uint8_t address, float celcius)</td></tr>
+<tr class="memdesc:ab245dd6d2557d920a0bdeef48cb2bd17"><td class="mdescLeft">&#160;</td><td class="mdescRight">wrapper of write to set the TLOW and THIGH regisers return success <br /></td></tr>
+<tr class="separator:ab245dd6d2557d920a0bdeef48cb2bd17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9df028f1bb31cc458a429553d220504d" id="r_a9df028f1bb31cc458a429553d220504d"><td class="memItemLeft" align="right" valign="top"><a id="a9df028f1bb31cc458a429553d220504d" name="a9df028f1bb31cc458a429553d220504d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_setTHigh</b> (uint8_t address, float celcius)</td></tr>
+<tr class="separator:a9df028f1bb31cc458a429553d220504d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037d8018fa79231ee467a70837b1c818" id="r_a037d8018fa79231ee467a70837b1c818"><td class="memItemLeft" align="right" valign="top"><a id="a037d8018fa79231ee467a70837b1c818" name="a037d8018fa79231ee467a70837b1c818"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_setConfig</b> (uint8_t address, uint16_t data)</td></tr>
+<tr class="memdesc:a037d8018fa79231ee467a70837b1c818"><td class="mdescLeft">&#160;</td><td class="mdescRight">wrapper of write to write to config register return success <br /></td></tr>
+<tr class="separator:a037d8018fa79231ee467a70837b1c818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedc7437621a6c895d2d542f351a3fbc5" id="r_aedc7437621a6c895d2d542f351a3fbc5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedc7437621a6c895d2d542f351a3fbc5">TMP_data_to_celcius</a> (uint16_t data)</td></tr>
 <tr class="memdesc:aedc7437621a6c895d2d542f351a3fbc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts digital data to degrees celcius.  <br /></td></tr>
 <tr class="separator:aedc7437621a6c895d2d542f351a3fbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,18 +291,36 @@ I2C_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_I2C_
 <div class="textblock"><p>Driver for TMP112 Temperature Sensor. </p>
 <p>This file provides functions to interact with the TMP112 temperature sensor over I2C, including reading temperature values and configuring sensor settings. Everything is MSB to LSB </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a02796926466f844e855116276e45bf4e" name="a02796926466f844e855116276e45bf4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02796926466f844e855116276e45bf4e">&#9670;&#160;</a></span>TMP_ADDR</h2>
+<a id="a15575023760783d175cbe27775a318a7" name="a15575023760783d175cbe27775a318a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15575023760783d175cbe27775a318a7">&#9670;&#160;</a></span>TMP_ADDR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TMP_ADDR&#160;&#160;&#160;((TMP_DEFAULT_ADDR) &lt;&lt; 1)</td>
+          <td class="memname">#define TMP_ADDR</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Used address defined by project, default is default TMP112 address </p>
+<b>Value:</b><div class="fragment"><div class="line">((uint8_t)(TMP_ADDR_DEFAULT + x))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af0cebf64091b4307f36e7a5494d40e34" name="af0cebf64091b4307f36e7a5494d40e34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0cebf64091b4307f36e7a5494d40e34">&#9670;&#160;</a></span>TMP_ADDR_AMOUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TMP_ADDR_AMOUNT&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Used address defined by project, default is default TMP112 address * number is refering to what sensor is used </p>
 
 </div>
 </div>
@@ -524,16 +562,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/de3/tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5_icgraph" alt=""/></div>
 <map name="ade/de3/tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5_icgraph" id="ade/de3/tmp112_8h_aedc7437621a6c895d2d542f351a3fbc5_icgraph">
-<area shape="rect" title="Converts digital data to degrees celcius." alt="" coords="451,31,599,57"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="103,5,249,32"/>
-<area shape="poly" title=" " alt="" coords="436,40,249,27,249,21,436,35"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a53e8a9a536535b0d052aeda72cd268b8" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="297,56,403,83"/>
-<area shape="poly" title=" " alt="" coords="436,60,404,64,403,59,436,54"/>
+<area shape="rect" title="Converts digital data to degrees celcius." alt="" coords="527,31,675,57"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,5,479,32"/>
+<area shape="poly" title=" " alt="" coords="511,36,479,32,480,27,512,31"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab245dd6d2557d920a0bdeef48cb2bd17" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="335,56,441,83"/>
+<area shape="poly" title=" " alt="" coords="512,57,442,66,441,60,511,52"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
+<area shape="poly" title=" " alt="" coords="281,21,250,21,250,16,281,16"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,56,212,83"/>
+<area shape="poly" title=" " alt="" coords="315,39,214,63,212,58,314,34"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,55,57"/>
 <area shape="poly" title=" " alt="" coords="88,37,56,42,55,37,87,32"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,56,212,83"/>
-<area shape="poly" title=" " alt="" coords="281,72,213,72,213,67,281,67"/>
 <area shape="poly" title=" " alt="" coords="123,63,55,51,55,46,124,58"/>
+<area shape="poly" title=" " alt="" coords="319,72,213,72,213,67,319,67"/>
 </map>
 </div>
 
@@ -571,8 +612,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aaf42426edd437c424624a73df238134c" name="aaf42426edd437c424624a73df238134c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf42426edd437c424624a73df238134c">&#9670;&#160;</a></span>TMP_getTemperature()</h2>
+<a id="ae75b0876f998ebf4e6667e33bb687569" name="ae75b0876f998ebf4e6667e33bb687569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae75b0876f998ebf4e6667e33bb687569">&#9670;&#160;</a></span>TMP_getTemperature()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -580,7 +621,51 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int16_t TMP_getTemperature </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads all the temperature sensors. </p>
+<dl class="section return"><dt>Returns</dt><dd>Average temperature of all sensors </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../de/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_cgraph.png" border="0" usemap="#ade/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_cgraph" alt=""/></div>
+<map name="ade/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_cgraph" id="ade/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_cgraph">
+<area shape="rect" title="Reads all the temperature sensors." alt="" coords="5,31,152,57"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="200,31,382,57"/>
+<area shape="poly" title=" " alt="" coords="152,41,184,41,184,47,152,47"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="430,5,577,32"/>
+<area shape="poly" title=" " alt="" coords="382,30,415,27,415,32,383,36"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a2cfbd99f9d7c39571c084b3ec30dd51b" title="basic function to read to TMP112" alt="" coords="463,56,544,83"/>
+<area shape="poly" title=" " alt="" coords="383,52,448,60,447,65,382,58"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../de/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_icgraph" alt=""/></div>
+<map name="ade/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_icgraph" id="ade/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_icgraph">
+<area shape="rect" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" title=" " alt="" coords="87,21,55,21,55,16,87,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aaa1fa86c47cd8d51a938ce88336d6c72" name="aaa1fa86c47cd8d51a938ce88336d6c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1fa86c47cd8d51a938ce88336d6c72">&#9670;&#160;</a></span>TMP_getTemperatureSingle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t TMP_getTemperatureSingle </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -591,23 +676,28 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../de/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_cgraph.png" border="0" usemap="#ade/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_cgraph" alt=""/></div>
-<map name="ade/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_cgraph" id="ade/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_cgraph">
-<area shape="rect" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="5,31,152,57"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="200,5,347,32"/>
-<area shape="poly" title=" " alt="" coords="152,32,184,28,185,33,152,37"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a6137c84baa05ccdfc2c416f4b8882ce2" title="basic function to read to TMP112" alt="" coords="233,56,314,83"/>
-<area shape="poly" title=" " alt="" coords="152,51,218,60,217,65,152,56"/>
+<div class="center"><img src="../../de/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph.png" border="0" usemap="#ade/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph" alt=""/></div>
+<map name="ade/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph" id="ade/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph">
+<area shape="rect" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="5,31,188,57"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="236,5,383,32"/>
+<area shape="poly" title=" " alt="" coords="188,30,220,27,221,32,189,36"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a2cfbd99f9d7c39571c084b3ec30dd51b" title="basic function to read to TMP112" alt="" coords="269,56,350,83"/>
+<area shape="poly" title=" " alt="" coords="189,52,254,60,253,65,188,58"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../de/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_icgraph" alt=""/></div>
-<map name="ade/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_icgraph" id="ade/de3/tmp112_8h_aaf42426edd437c424624a73df238134c_icgraph">
-<area shape="rect" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="103,5,249,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,55,32"/>
-<area shape="poly" title=" " alt="" coords="87,21,55,21,55,16,87,16"/>
+<div class="center"><img src="../../de/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph" alt=""/></div>
+<map name="ade/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph" id="ade/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph">
+<area shape="rect" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,31,479,57"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
+<area shape="poly" title=" " alt="" coords="281,34,249,30,250,25,282,29"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,56,212,83"/>
+<area shape="poly" title=" " alt="" coords="282,59,213,68,213,62,281,54"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" title=" " alt="" coords="88,37,56,42,55,37,87,32"/>
+<area shape="poly" title=" " alt="" coords="123,63,55,51,55,46,124,58"/>
 </map>
 </div>
 
@@ -635,20 +725,25 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_cgraph.png" border="0" usemap="#ade/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_cgraph" alt=""/></div>
 <map name="ade/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_cgraph" id="ade/de3/tmp112_8h_a82091535043d8c73cd57a2cf319c48ff_cgraph">
-<area shape="rect" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="5,56,79,83"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3" title="THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an..." alt="" coords="136,5,230,32"/>
-<area shape="poly" title=" " alt="" coords="78,54,129,35,130,40,80,59"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#af7b836277f7e32d85ebd88101fb4088c" title="wrapper of write to write to config register return success" alt="" coords="127,56,239,83"/>
-<area shape="poly" title=" " alt="" coords="79,67,111,67,111,72,79,72"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a53e8a9a536535b0d052aeda72cd268b8" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="130,107,236,133"/>
-<area shape="poly" title=" " alt="" coords="80,80,130,98,129,103,78,85"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab734280be7c71b47e4182f47756226d8" title=" " alt="" coords="320,5,402,32"/>
-<area shape="poly" title=" " alt="" coords="231,16,304,16,304,21,231,21"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aede0239bb8d75685e7d3334c4b57cf93" title="basic function to write to TMP112" alt="" coords="318,56,403,83"/>
-<area shape="poly" title=" " alt="" coords="240,67,303,67,303,72,240,72"/>
-<area shape="poly" title=" " alt="" coords="232,103,303,83,305,88,233,109"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="287,107,434,133"/>
-<area shape="poly" title=" " alt="" coords="236,117,271,117,271,123,236,123"/>
+<area shape="rect" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="5,81,79,108"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3" title="THIS IS AUTOGENERATED BY STM32MX, it overides the __weak verions defined in the stm HAL via linker an..." alt="" coords="171,5,265,32"/>
+<area shape="poly" title=" " alt="" coords="61,79,91,60,126,42,155,31,157,36,128,46,93,64,64,83"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="127,56,309,83"/>
+<area shape="poly" title=" " alt="" coords="79,87,111,82,112,87,80,92"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a037d8018fa79231ee467a70837b1c818" title="wrapper of write to write to config register return success" alt="" coords="162,157,274,184"/>
+<area shape="poly" title=" " alt="" coords="64,106,93,125,128,143,148,151,146,156,126,148,91,130,61,111"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab245dd6d2557d920a0bdeef48cb2bd17" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="165,107,271,133"/>
+<area shape="poly" title=" " alt="" coords="80,97,150,108,149,113,79,103"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab734280be7c71b47e4182f47756226d8" title=" " alt="" coords="390,5,472,32"/>
+<area shape="poly" title=" " alt="" coords="265,16,374,16,374,21,265,21"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="357,107,504,133"/>
+<area shape="poly" title=" " alt="" coords="278,81,357,100,356,105,277,86"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a2cfbd99f9d7c39571c084b3ec30dd51b" title="basic function to read to TMP112" alt="" coords="390,56,471,83"/>
+<area shape="poly" title=" " alt="" coords="310,67,375,67,375,72,310,72"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a1322cef7af405248d9f5acc46db30ccf" title="basic function to write to TMP112" alt="" coords="388,157,473,184"/>
+<area shape="poly" title=" " alt="" coords="274,168,373,168,373,173,274,173"/>
+<area shape="poly" title=" " alt="" coords="272,117,341,117,341,123,272,123"/>
+<area shape="poly" title=" " alt="" coords="272,130,374,155,373,160,271,135"/>
 </map>
 </div>
 <div class="dynheader">
@@ -664,8 +759,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a6137c84baa05ccdfc2c416f4b8882ce2" name="a6137c84baa05ccdfc2c416f4b8882ce2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6137c84baa05ccdfc2c416f4b8882ce2">&#9670;&#160;</a></span>TMP_read()</h2>
+<a id="a2cfbd99f9d7c39571c084b3ec30dd51b" name="a2cfbd99f9d7c39571c084b3ec30dd51b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cfbd99f9d7c39571c084b3ec30dd51b">&#9670;&#160;</a></span>TMP_read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -673,8 +768,12 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">uint16_t TMP_read </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -690,20 +789,25 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../de/de3/tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2_icgraph" alt=""/></div>
-<map name="ade/de3/tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2_icgraph" id="ade/de3/tmp112_8h_a6137c84baa05ccdfc2c416f4b8882ce2_icgraph">
-<area shape="rect" title="basic function to read to TMP112" alt="" coords="297,5,378,32"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="103,5,249,32"/>
-<area shape="poly" title=" " alt="" coords="281,21,249,21,249,16,281,16"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,55,32"/>
-<area shape="poly" title=" " alt="" coords="87,21,55,21,55,16,87,16"/>
+<div class="center"><img src="../../de/de3/tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b_icgraph" alt=""/></div>
+<map name="ade/de3/tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b_icgraph" id="ade/de3/tmp112_8h_a2cfbd99f9d7c39571c084b3ec30dd51b_icgraph">
+<area shape="rect" title="basic function to read to TMP112" alt="" coords="527,31,609,57"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,31,479,57"/>
+<area shape="poly" title=" " alt="" coords="512,47,480,47,480,41,512,41"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
+<area shape="poly" title=" " alt="" coords="281,34,249,30,250,25,282,29"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,56,212,83"/>
+<area shape="poly" title=" " alt="" coords="282,59,213,68,213,62,281,54"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" title=" " alt="" coords="88,37,56,42,55,37,87,32"/>
+<area shape="poly" title=" " alt="" coords="123,63,55,51,55,46,124,58"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="aede0239bb8d75685e7d3334c4b57cf93" name="aede0239bb8d75685e7d3334c4b57cf93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aede0239bb8d75685e7d3334c4b57cf93">&#9670;&#160;</a></span>TMP_write()</h2>
+<a id="a1322cef7af405248d9f5acc46db30ccf" name="a1322cef7af405248d9f5acc46db30ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1322cef7af405248d9f5acc46db30ccf">&#9670;&#160;</a></span>TMP_write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -711,6 +815,11 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">uint8_t TMP_write </td>
           <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
         </tr>
         <tr>
@@ -733,12 +842,12 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../de/de3/tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93_icgraph" alt=""/></div>
-<map name="ade/de3/tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93_icgraph" id="ade/de3/tmp112_8h_aede0239bb8d75685e7d3334c4b57cf93_icgraph">
+<div class="center"><img src="../../de/de3/tmp112_8h_a1322cef7af405248d9f5acc46db30ccf_icgraph.png" border="0" usemap="#ade/de3/tmp112_8h_a1322cef7af405248d9f5acc46db30ccf_icgraph" alt=""/></div>
+<map name="ade/de3/tmp112_8h_a1322cef7af405248d9f5acc46db30ccf_icgraph" id="ade/de3/tmp112_8h_a1322cef7af405248d9f5acc46db30ccf_icgraph">
 <area shape="rect" title="basic function to write to TMP112" alt="" coords="384,31,469,57"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#af7b836277f7e32d85ebd88101fb4088c" title="wrapper of write to write to config register return success" alt="" coords="224,5,336,32"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a037d8018fa79231ee467a70837b1c818" title="wrapper of write to write to config register return success" alt="" coords="224,5,336,32"/>
 <area shape="poly" title=" " alt="" coords="368,37,336,31,337,26,369,31"/>
-<area shape="rect" href="../../dd/dd0/tmp112_8c.html#a53e8a9a536535b0d052aeda72cd268b8" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="227,56,333,83"/>
+<area shape="rect" href="../../dd/dd0/tmp112_8c.html#ab245dd6d2557d920a0bdeef48cb2bd17" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="227,56,333,83"/>
 <area shape="poly" title=" " alt="" coords="370,56,334,63,333,57,369,51"/>
 <area shape="rect" href="../../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="103,31,176,57"/>
 <area shape="poly" title=" " alt="" coords="209,34,177,40,176,35,208,29"/>
@@ -755,7 +864,7 @@ Here is the caller graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_1f6a81285d2e99ccd007e40c9b009fa8.html">STM32_AUTONOMOUS_PROJECT</a></li><li class="navelem"><a class="el" href="../../dir_3572a21815e105ca855d2f4dd3b48299.html">Inc</a></li><li class="navelem"><a class="el" href="../../de/de3/tmp112_8h.html">tmp112.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_1f6a81285d2e99ccd007e40c9b009fa8.html">STM32_AUTONOMOUS_PROJECT</a></li><li class="navelem"><a class="el" href="../../dir_d5c1a6dc28e58b26a999d090c6e975da.html">inc</a></li><li class="navelem"><a class="el" href="../../de/de3/tmp112_8h.html">tmp112.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>
