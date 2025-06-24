@@ -1,0 +1,5 @@
+<map id="ADC_read" name="ADC_read">
+<area shape="rect" id="Node000001" title="reads adc" alt="" coords="5,5,88,32"/>
+<area shape="rect" id="Node000002" href="$de/d01/adc_8c.html#a31595feb93ed1fa8785de51f59bd3f78" title="handles errors of adc (currently just while(1))" alt="" coords="136,5,219,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,16,120,16,120,21,88,21"/>
+</map>

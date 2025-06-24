@@ -1,0 +1,8 @@
+<map id="CAN_init" name="CAN_init">
+<area shape="rect" id="Node000001" title="Initializes the CAN peripheral." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="Node000002" href="$d1/dd9/group__CAN__Exported__Functions.html#gafd83ef52c27e2d5c3ff0357daf2544d6" title="This function is executed in case of error occurrence." alt="" coords="128,5,211,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,16,112,16,112,21,80,21"/>
+<area shape="rect" id="Node000003" href="$d1/dd9/group__CAN__Exported__Functions.html#gab7edfcbfee2552e9eb7c9d33103e380e" title="Transmits a CAN FD message using the specified FDCAN peripheral." alt="" coords="259,5,344,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="211,24,244,25,243,30,211,30"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="258,13,227,12,227,7,259,8"/>
+</map>

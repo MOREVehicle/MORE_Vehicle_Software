@@ -1,13 +1,14 @@
 <map id="DRV_write" name="DRV_write">
-<area shape="rect" id="Node000001" title="Writes data to a specific register in the DRV8703 driver." alt="" coords="405,56,490,83"/>
-<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#a5469ae17c293c62f53612deb421ae9f5" title="Modifies data in specific register in the DRV8703 driver." alt="" coords="225,5,356,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="390,54,334,35,335,30,391,49"/>
-<area shape="rect" id="Node000003" href="$dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="230,56,351,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,72,351,72,351,67,390,67"/>
-<area shape="rect" id="Node000006" href="$dc/d85/drv8703_8c.html#a5a80a0e31e16e54224183cd2721308eb" title="Writes data to multiple registers in the DRV8703 driver." alt="" coords="224,107,357,133"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="391,90,335,109,334,103,390,85"/>
-<area shape="rect" id="Node000004" href="$dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="103,56,176,83"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="215,72,177,72,177,67,215,67"/>
-<area shape="rect" id="Node000005" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,56,55,83"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="87,72,55,72,55,67,87,67"/>
+<area shape="rect" id="Node000001" title="Writes data to a specific register in the DRV8703 driver." alt="" coords="405,52,490,79"/>
+<area shape="rect" id="Node000002" href="$dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a" title="Initializes the DRV8703 driver. Configures the SPI interface and initializes required settings." alt="" coords="103,27,176,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="414,45,387,29,357,17,320,10,291,8,225,17,177,29,176,24,223,12,291,3,321,4,358,12,389,24,417,40"/>
+<area shape="rect" id="Node000004" href="$dc/d85/drv8703_8c.html#a5469ae17c293c62f53612deb421ae9f5" title="Modifies data in specific register in the DRV8703 driver." alt="" coords="225,27,356,53"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="390,59,356,53,357,48,390,54"/>
+<area shape="rect" id="Node000005" href="$dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936" title="Sets data in specific register in the DRV8703 driver." alt="" coords="230,77,351,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="390,77,352,84,351,78,390,72"/>
+<area shape="rect" id="Node000006" href="$dc/d85/drv8703_8c.html#a5a80a0e31e16e54224183cd2721308eb" title="Writes data to multiple registers in the DRV8703 driver." alt="" coords="224,128,357,155"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="412,89,358,118,332,130,330,125,356,114,410,85"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,27,55,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,43,55,43,55,37,87,37"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="233,74,176,55,177,50,235,69"/>
 </map>

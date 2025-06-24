@@ -1,15 +1,6 @@
 var searchData=
 [
-  ['tim2_5firqhandler_0',['TIM2_IRQHandler',['../db/db1/tim_8c.html#a38ad4725462bdc5e86c4ead4f04b9fc2',1,'tim.c']]],
-  ['tim_5finit_1',['TIM_init',['../db/db1/tim_8c.html#a8aaa1c9e353fec4aaf953b5c329d358a',1,'TIM_init(void):&#160;tim.c'],['../d3/db0/tim_8h.html#a8aaa1c9e353fec4aaf953b5c329d358a',1,'TIM_init(void):&#160;tim.c']]],
-  ['tmp_5fcelcius_5fto_5fdata_2',['TMP_celcius_to_data',['../dd/dd0/tmp112_8c.html#a29f64ae56085637e163d9b7b4894f0e4',1,'TMP_celcius_to_data(float celcius):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#a29f64ae56085637e163d9b7b4894f0e4',1,'TMP_celcius_to_data(float celcius):&#160;tmp112.c']]],
-  ['tmp_5fdata_5fto_5fcelcius_3',['TMP_data_to_celcius',['../dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5',1,'TMP_data_to_celcius(uint16_t data):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#aedc7437621a6c895d2d542f351a3fbc5',1,'TMP_data_to_celcius(uint16_t data):&#160;tmp112.c']]],
-  ['tmp_5ferror_4',['TMP_error',['../dd/dd0/tmp112_8c.html#ab734280be7c71b47e4182f47756226d8',1,'TMP_error(void):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#ab734280be7c71b47e4182f47756226d8',1,'TMP_error(void):&#160;tmp112.c']]],
-  ['tmp_5fgettemperature_5',['TMP_getTemperature',['../dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c',1,'TMP_getTemperature(void):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#ae75b0876f998ebf4e6667e33bb687569',1,'TMP_getTemperature():&#160;tmp112.c']]],
-  ['tmp_5fgettemperaturesingle_6',['TMP_getTemperatureSingle',['../dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72',1,'TMP_getTemperatureSingle(uint8_t address):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#aaa1fa86c47cd8d51a938ce88336d6c72',1,'TMP_getTemperatureSingle(uint8_t address):&#160;tmp112.c']]],
-  ['tmp_5finit_7',['TMP_init',['../dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac',1,'TMP_init():&#160;tmp112.c'],['../de/de3/tmp112_8h.html#a82091535043d8c73cd57a2cf319c48ff',1,'TMP_init(void):&#160;tmp112.c']]],
-  ['tmp_5fread_8',['TMP_read',['../dd/dd0/tmp112_8c.html#a2cfbd99f9d7c39571c084b3ec30dd51b',1,'TMP_read(uint8_t address, uint8_t reg):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#a2cfbd99f9d7c39571c084b3ec30dd51b',1,'TMP_read(uint8_t address, uint8_t reg):&#160;tmp112.c']]],
-  ['tmp_5fsetconfig_9',['TMP_setConfig',['../dd/dd0/tmp112_8c.html#a037d8018fa79231ee467a70837b1c818',1,'TMP_setConfig(uint8_t address, uint16_t data):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#a037d8018fa79231ee467a70837b1c818',1,'TMP_setConfig(uint8_t address, uint16_t data):&#160;tmp112.c']]],
-  ['tmp_5fsettlow_10',['TMP_setTLow',['../dd/dd0/tmp112_8c.html#ab245dd6d2557d920a0bdeef48cb2bd17',1,'TMP_setTLow(uint8_t address, float celcius):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#ab245dd6d2557d920a0bdeef48cb2bd17',1,'TMP_setTLow(uint8_t address, float celcius):&#160;tmp112.c']]],
-  ['tmp_5fwrite_11',['TMP_write',['../dd/dd0/tmp112_8c.html#a1322cef7af405248d9f5acc46db30ccf',1,'TMP_write(uint8_t address, uint8_t reg, uint16_t data):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#a1322cef7af405248d9f5acc46db30ccf',1,'TMP_write(uint8_t address, uint8_t reg, uint16_t data):&#160;tmp112.c']]]
+  ['main_0',['main',['../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['mx_5fi2c_5finit_1',['MX_I2C_Init',['../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3',1,'MX_I2C_Init(void):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#ab64ab683d25afcb6e453938a38ea93b3',1,'MX_I2C_Init(void):&#160;tmp112.c']]],
+  ['mx_5fspi_5finit_2',['MX_SPI_init',['../dc/d85/drv8703_8c.html#adc50917bef3b15ac8dd7e70c889b94ad',1,'MX_SPI_init():&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad',1,'MX_SPI_init():&#160;drv8703.c']]]
 ];

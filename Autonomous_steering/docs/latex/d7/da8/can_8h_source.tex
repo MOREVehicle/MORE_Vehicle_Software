@@ -1,0 +1,52 @@
+\doxysection{can.\+h}
+\hypertarget{can_8h_source}{}\label{can_8h_source}\index{STM32\_AUTONOMOUS\_PROJECT/inc/can.h@{STM32\_AUTONOMOUS\_PROJECT/inc/can.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ \_\_CAN\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ \_\_CAN\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stm32g4xx\_hal.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stm32g4xx\_hal\_fdcan.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31}{CAN\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7}{LWS\_Send\_Calibration\_Command}}(uint8\_t\ ccw\_value);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_ga4ebbe2ff9d152b9d435462490df311c2}{Calibrate\_LWS\_Sensor}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_gac9fe5c59f9b86ab011f9823a6f9952e7}{CAN\_read}}(FDCAN\_HandleTypeDef\ *hfdcan,uint8\_t\ *data,\ \textcolor{keywordtype}{int}\ Length);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e}{CAN\_write}}(FDCAN\_HandleTypeDef\ *hfdcan,\ uint8\_t\ *data,\ uint16\_t\ device\_on\_can);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6}{CAN\_error}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00074\ uint16\_t\ \mbox{\hyperlink{group__CAN__Exported__Functions_ga55c7a14aa21ac74ae0728a32874e31bc}{CAN\_getAngle}}(\ );}
+\DoxyCodeLine{00080\ uint8\_t\ \mbox{\hyperlink{group__CAN__Exported__Functions_gaf19600bfb79a332cf3b47348b00c3931}{CAN\_getAngleSpeed}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CAN__Exported__Functions_ga8e1fd046e7b3ef9fca880c3fe9effb9a}{CAN\_format}}(uint8\_t*\ buffer,\ int16\_t\ anlge,\ uint16\_t\ angle\_speed,\ \textcolor{keywordtype}{float}\ temperature,\ \textcolor{keywordtype}{float}\ current);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ uint8\_t\ \mbox{\hyperlink{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}{CAN\_BUS\_FLAG}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ CAN\_ANGLE\_SENSOR\_FLAG\ \ \ \ \ \ \ \ (CAN\_BUS\_FLAG\ \&\ 0b00000001)\ \ }\textcolor{comment}{//\ First\ bit\ mask}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ CAN\_MAIN\_BUS\_FLAG\ \ \ \ \ \ \ \ \ \ \ \ (CAN\_BUS\_FLAG\ \&\ 0b00000010)\ \ }\textcolor{comment}{//\ Second\ bit\ mask}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ CAN\_MESSAGE\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ 48}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{group__CAN__Exported__Functions_gafc74920a3ccac06ba101a820af5f664c}{CAN\_Data}}[5];}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ FDCAN\_HandleTypeDef\ \mbox{\hyperlink{group__CAN__Exported__Functions_gad3b5d455aa553cb944a837f93fec2b0c}{CAN\_ANGLE\_BUS}};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ FDCAN\_HandleTypeDef\ \mbox{\hyperlink{group__CAN__Exported__Functions_ga48c9d25f4ce2f3e489b836c5f28caf62}{CAN\_MAIN\_BUS}};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00136\ \}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_CAN\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

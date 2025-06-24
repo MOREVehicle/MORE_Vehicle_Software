@@ -1,0 +1,5 @@
+<map id="ADC_init" name="ADC_init">
+<area shape="rect" id="Node000001" title="Initializes ADC peripheral." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="Node000002" href="$de/d01/adc_8c.html#a31595feb93ed1fa8785de51f59bd3f78" title="handles errors of adc (currently just while(1))" alt="" coords="128,5,211,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,16,112,16,112,21,80,21"/>
+</map>

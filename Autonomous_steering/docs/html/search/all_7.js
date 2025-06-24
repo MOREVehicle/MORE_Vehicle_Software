@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['clock_20as_20follows_3a_0',['This file configures the system clock as follows:',['../df/d54/system__stm32g4xx_8c.html#autotoc_md0',1,'']]],
-  ['clock_20source_20hsi_1',['System Clock source                    | HSI',['../df/d54/system__stm32g4xx_8c.html#autotoc_md1',1,'']]],
-  ['cmsis_2',['CMSIS',['../dd/d3b/group__CMSIS.html',1,'']]],
-  ['config_3',['Config',['../d8/d11/group__STM32G4XX__NUCLEO__CONFIG.html',1,'']]],
-  ['configures_20the_20system_20clock_20as_20follows_3a_4',['This file configures the system clock as follows:',['../df/d54/system__stm32g4xx_8c.html#autotoc_md0',1,'']]],
-  ['constants_5',['Exported Constants',['../d2/d85/group__STM32C0XX__NUCLEO__CONFIG__Exported__Constants.html',1,'']]]
+  ['main_0',['main',['../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['main_2ec_1',['main.c',['../d0/d29/main_8c.html',1,'']]],
+  ['mx_5fi2c_5finit_2',['MX_I2C_Init',['../dd/dd0/tmp112_8c.html#ab64ab683d25afcb6e453938a38ea93b3',1,'MX_I2C_Init(void):&#160;tmp112.c'],['../de/de3/tmp112_8h.html#ab64ab683d25afcb6e453938a38ea93b3',1,'MX_I2C_Init(void):&#160;tmp112.c']]],
+  ['mx_5fspi_5finit_3',['MX_SPI_init',['../dc/d85/drv8703_8c.html#adc50917bef3b15ac8dd7e70c889b94ad',1,'MX_SPI_init():&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#adc50917bef3b15ac8dd7e70c889b94ad',1,'MX_SPI_init():&#160;drv8703.c']]]
 ];

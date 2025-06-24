@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['hal_5fadc_5fmspdeinit_0',['HAL_ADC_MspDeInit',['../de/d01/adc_8c.html#a3f61f2c2af0f122f81a87af8ad7b4360',1,'adc.c']]],
-  ['hal_5fadc_5fmspinit_1',['HAL_ADC_MspInit',['../de/d01/adc_8c.html#ac3139540667c403c5dfd37a99c610b1c',1,'adc.c']]],
-  ['hal_5fspi_5fmspdeinit_2',['HAL_SPI_MspDeInit',['../dc/d85/drv8703_8c.html#af9af6cae4cb9386b709196d3a3ab4f78',1,'drv8703.c']]],
-  ['hal_5fspi_5fmspinit_3',['HAL_SPI_MspInit',['../dc/d85/drv8703_8c.html#a8e1dadd744299fa6f8bca0e1bcbd2c00',1,'drv8703.c']]],
-  ['hal_5ftim_5fperiodelapsedcallback_4',['HAL_TIM_PeriodElapsedCallback',['../db/db1/tim_8c.html#a8a3b0ad512a6e6c6157440b68d395eac',1,'tim.c']]]
+  ['drv8703_2ec_0',['drv8703.c',['../dc/d85/drv8703_8c.html',1,'']]],
+  ['drv8703_2eh_1',['drv8703.h',['../d7/d15/drv8703_8h.html',1,'']]],
+  ['drv_5finit_2',['DRV_init',['../dc/d85/drv8703_8c.html#aacbd29ce1823b0224c877c38603f093a',1,'DRV_init(void):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#aacbd29ce1823b0224c877c38603f093a',1,'DRV_init(void):&#160;drv8703.c']]],
+  ['drv_5fmodify_5freset_3',['DRV_modify_reset',['../dc/d85/drv8703_8c.html#a5469ae17c293c62f53612deb421ae9f5',1,'DRV_modify_reset(uint8_t address, uint8_t data):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#a5469ae17c293c62f53612deb421ae9f5',1,'DRV_modify_reset(uint8_t address, uint8_t data):&#160;drv8703.c']]],
+  ['drv_5fmodify_5fset_4',['DRV_modify_set',['../dc/d85/drv8703_8c.html#a530f2207deecc88721dacf30cbec7936',1,'DRV_modify_set(uint8_t address, uint8_t data):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#a530f2207deecc88721dacf30cbec7936',1,'DRV_modify_set(uint8_t address, uint8_t data):&#160;drv8703.c']]],
+  ['drv_5fread_5',['DRV_read',['../dc/d85/drv8703_8c.html#ae0903f440d0fa565fd3947ee31c70a31',1,'DRV_read(uint8_t address, uint8_t *data):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#ae0903f440d0fa565fd3947ee31c70a31',1,'DRV_read(uint8_t address, uint8_t *data):&#160;drv8703.c']]],
+  ['drv_5freadregister_6',['DRV_readRegister',['../dc/d85/drv8703_8c.html#a680b2474db7711bf8c58319f4b2adcc1',1,'DRV_readRegister(uint8_t *data, uint8_t filter):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#a680b2474db7711bf8c58319f4b2adcc1',1,'DRV_readRegister(uint8_t *data, uint8_t filter):&#160;drv8703.c']]],
+  ['drv_5fwrite_7',['DRV_write',['../dc/d85/drv8703_8c.html#ac5040b78f563159a60fefa0191052830',1,'DRV_write(uint8_t address, uint8_t data):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#ac5040b78f563159a60fefa0191052830',1,'DRV_write(uint8_t address, uint8_t data):&#160;drv8703.c']]],
+  ['drv_5fwriteregister_8',['DRV_writeRegister',['../dc/d85/drv8703_8c.html#a5a80a0e31e16e54224183cd2721308eb',1,'DRV_writeRegister(uint8_t *data, uint8_t filter):&#160;drv8703.c'],['../d7/d15/drv8703_8h.html#a5a80a0e31e16e54224183cd2721308eb',1,'DRV_writeRegister(uint8_t *data, uint8_t filter):&#160;drv8703.c']]]
 ];

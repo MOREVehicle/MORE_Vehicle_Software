@@ -15,22 +15,29 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ ADC\_HandleTypeDef\ ADC\_INTERFACE;}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ ADC\_V\_REF\ \ \ \ \ \ \ 3.3}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ADC\_A\_V\ \ \ \ \ \ \ \ \ 19.8}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ ADC\_R\_SENSE\ \ \ \ \ 0.0002}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ ADC\_DELAY\ \ \ \ \ \ \ 10}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a4b4a2ddcb45df0c8497c47d4ed800e2a}{ADC\_init}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00039\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{adc_8h_a346448f9d0c5837d7dc844d5bc5b070f}{ADC\_readCurrent}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a31595feb93ed1fa8785de51f59bd3f78}{ADC\_error}}();}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
-\DoxyCodeLine{00047\ \}}
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ ADC\_RESOLUTION\ \ 4096.0f}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ADC\_OFFSET\ \ \ \ \ \ 235.0f}\textcolor{comment}{//90.0f}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ ADC\_V\_REF\ \ \ \ \ \ \ 3.3f}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ADC\_A\_V\ \ \ \ \ \ \ \ \ 70.0f}\textcolor{comment}{//39.4f}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ ADC\_R\_SENSE\ \ \ \ \ 0.00067f}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ ADC\_DELAY\ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a4b4a2ddcb45df0c8497c47d4ed800e2a}{ADC\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ uint32\_t\ \mbox{\hyperlink{adc_8h_a366056d6918c8dfa3e9b9621e325b27e}{ADC\_read}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{adc_8h_a346448f9d0c5837d7dc844d5bc5b070f}{ADC\_readCurrent}}(\textcolor{keywordtype}{void});}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{adc_8h_ac30402853a29f8a98d2c36a0f56e9684}{ADC\_calculateCurrent}}(uint32\_t\ raw);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a31595feb93ed1fa8785de51f59bd3f78}{ADC\_error}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00063\ \}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

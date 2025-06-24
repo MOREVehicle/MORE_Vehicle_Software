@@ -18,9 +18,9 @@ Include dependency graph for tmp112.\+c\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{tmp112_8c_a8f14963658756281e630e1f9c47752ac}{TMP\+\_\+init}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communication. \end{DoxyCompactList}\item 
-int16\+\_\+t \mbox{\hyperlink{tmp112_8c_aaf42426edd437c424624a73df238134c}{TMP\+\_\+get\+Temperature}} (void)
+float \mbox{\hyperlink{tmp112_8c_a8594b295cc049f12ce3c27cbc3af0f6a}{TMP\+\_\+get\+Temperature}} (void)
 \begin{DoxyCompactList}\small\item\em Reads all the temperature sensors. \end{DoxyCompactList}\item 
-int16\+\_\+t \mbox{\hyperlink{tmp112_8c_aaa1fa86c47cd8d51a938ce88336d6c72}{TMP\+\_\+get\+Temperature\+Single}} (uint8\+\_\+t address)
+float \mbox{\hyperlink{tmp112_8c_ae6ed7570ef58742cf0c2e08b3aa73d17}{TMP\+\_\+get\+Temperature\+Single}} (uint8\+\_\+t address)
 \begin{DoxyCompactList}\small\item\em Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit temperature value from the TMP112 and converts it to Celsius. \end{DoxyCompactList}\item 
 \Hypertarget{tmp112_8c_ab245dd6d2557d920a0bdeef48cb2bd17}\label{tmp112_8c_ab245dd6d2557d920a0bdeef48cb2bd17} 
 uint8\+\_\+t {\bfseries TMP\+\_\+set\+TLow} (uint8\+\_\+t address, float celcius)
@@ -54,7 +54,7 @@ void {\bfseries HAL\+\_\+\+I2\+C\+\_\+\+Msp\+De\+Init} (I2\+C\+\_\+\+Handle\+Typ
 \item 
 \Hypertarget{tmp112_8c_ae5b77e75ce770bc2b7fbb9fd11ffbc85}\label{tmp112_8c_ae5b77e75ce770bc2b7fbb9fd11ffbc85} 
 I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries TMP\+\_\+\+I2\+C\+\_\+\+INTERFACE}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em used i2c channel on mcu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -62,6 +62,8 @@ Source file for TMP112 temperature sensor driver functions Handles I2C communica
 
 
 
+\label{doc-func-members}
+\Hypertarget{tmp112_8c_doc-func-members}
 \doxysubsection{Function Documentation}
 \Hypertarget{tmp112_8c_ab64ab683d25afcb6e453938a38ea93b3}\index{tmp112.c@{tmp112.c}!MX\_I2C\_Init@{MX\_I2C\_Init}}
 \index{MX\_I2C\_Init@{MX\_I2C\_Init}!tmp112.c@{tmp112.c}}
@@ -123,7 +125,8 @@ Converts digital data to degrees celcius.
 \begin{DoxyReturn}{Returns}
 temperature in degree celcius 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -143,11 +146,11 @@ Error state function Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{dd/dd0/tmp112_8c_ab734280be7c71b47e4182f47756226d8_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8c_aaf42426edd437c424624a73df238134c}\index{tmp112.c@{tmp112.c}!TMP\_getTemperature@{TMP\_getTemperature}}
+\Hypertarget{tmp112_8c_a8594b295cc049f12ce3c27cbc3af0f6a}\index{tmp112.c@{tmp112.c}!TMP\_getTemperature@{TMP\_getTemperature}}
 \index{TMP\_getTemperature@{TMP\_getTemperature}!tmp112.c@{tmp112.c}}
 \doxysubsubsection{\texorpdfstring{TMP\_getTemperature()}{TMP\_getTemperature()}}
-{\footnotesize\ttfamily \label{tmp112_8c_aaf42426edd437c424624a73df238134c} 
-int16\+\_\+t TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8c_a8594b295cc049f12ce3c27cbc3af0f6a} 
+float TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
@@ -156,25 +159,27 @@ Reads all the temperature sensors.
 \begin{DoxyReturn}{Returns}
 Average temperature of all sensors 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dd/dd0/tmp112_8c_aaf42426edd437c424624a73df238134c_cgraph}
+\includegraphics[width=350pt]{dd/dd0/tmp112_8c_a8594b295cc049f12ce3c27cbc3af0f6a_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=263pt]{dd/dd0/tmp112_8c_aaf42426edd437c424624a73df238134c_icgraph}
+\includegraphics[width=263pt]{dd/dd0/tmp112_8c_a8594b295cc049f12ce3c27cbc3af0f6a_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8c_aaa1fa86c47cd8d51a938ce88336d6c72}\index{tmp112.c@{tmp112.c}!TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}}
+\Hypertarget{tmp112_8c_ae6ed7570ef58742cf0c2e08b3aa73d17}\index{tmp112.c@{tmp112.c}!TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}}
 \index{TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}!tmp112.c@{tmp112.c}}
 \doxysubsubsection{\texorpdfstring{TMP\_getTemperatureSingle()}{TMP\_getTemperatureSingle()}}
-{\footnotesize\ttfamily \label{tmp112_8c_aaa1fa86c47cd8d51a938ce88336d6c72} 
-int16\+\_\+t TMP\+\_\+get\+Temperature\+Single (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8c_ae6ed7570ef58742cf0c2e08b3aa73d17} 
+float TMP\+\_\+get\+Temperature\+Single (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
 
 
 
@@ -183,18 +188,20 @@ Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit tempera
 \begin{DoxyReturn}{Returns}
 Temperature in Celsius as a 16-\/bit signed integer. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dd/dd0/tmp112_8c_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph}
+\includegraphics[width=350pt]{dd/dd0/tmp112_8c_ae6ed7570ef58742cf0c2e08b3aa73d17_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dd/dd0/tmp112_8c_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph}
+\includegraphics[width=350pt]{dd/dd0/tmp112_8c_ae6ed7570ef58742cf0c2e08b3aa73d17_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{tmp112_8c_a8f14963658756281e630e1f9c47752ac}\index{tmp112.c@{tmp112.c}!TMP\_init@{TMP\_init}}
@@ -210,7 +217,8 @@ Initializes the TMP112 sensor. Configures the sensor for default settings and pr
 \begin{DoxyReturn}{Returns}
 0 if initialization is successful, non-\/zero if an error occurs. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -242,7 +250,8 @@ basic function to read to TMP112
 \begin{DoxyReturn}{Returns}
 data or 0x\+FFFF if fail 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

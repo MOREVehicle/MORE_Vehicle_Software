@@ -1,29 +1,35 @@
 <map id="STM32_AUTONOMOUS_PROJECT/src/main.c" name="STM32_AUTONOMOUS_PROJECT/src/main.c">
-<area shape="rect" id="Node000001" title="main loop of the steering box" alt="" coords="247,5,484,48"/>
-<area shape="rect" id="Node000002" href="$d7/d15/drv8703_8h.html" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="282,96,361,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="357,50,338,83,333,81,352,47"/>
-<area shape="rect" id="Node000006" href="$de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="184,96,259,123"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="330,51,259,90,256,86,327,46"/>
-<area shape="rect" id="Node000008" href="$d7/d19/adc_8h.html" title="Header file for library definitions used to calculate current from shunt resistor." alt="" coords="459,96,512,123"/>
-<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="398,46,456,85,453,89,395,51"/>
-<area shape="rect" id="Node000010" href="$d3/db0/tim_8h.html" title="file sets up safety timer used in the main code" alt="" coords="384,96,435,123"/>
-<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="379,47,398,81,393,83,374,50"/>
+<area shape="rect" id="Node000001" title="main loop of the steering box" alt="" coords="316,5,554,48"/>
+<area shape="rect" id="Node000002" href="$d7/d15/drv8703_8h.html" title="Header file for library definitions Everything is MSB to LSB." alt="" coords="308,96,386,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="414,51,374,87,370,83,410,47"/>
+<area shape="rect" id="Node000006" href="$d7/da8/can_8h_source.html" title=" " alt="" coords="486,96,539,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="457,47,491,83,488,86,453,50"/>
+<area shape="rect" id="Node000008" href="$de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="210,96,284,123"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="387,51,291,92,289,87,385,46"/>
+<area shape="rect" id="Node000010" href="$d7/d19/adc_8h.html" title="Header file for library definitions used to calculate current from shunt resistor." alt="" coords="564,96,618,123"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="476,46,555,86,552,91,474,51"/>
+<area shape="rect" id="Node000012" href="$d3/db0/tim_8h.html" title="file sets up safety timer used in the main code" alt="" coords="410,96,460,123"/>
+<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="438,49,438,80,432,80,432,49"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="272,171,336,197"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="321,124,313,156,308,155,316,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="342,125,321,159,317,156,337,122"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="174,171,248,197"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,125,244,164,241,160,301,121"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="360,171,480,197"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="340,121,393,159,390,164,337,125"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="238,121,280,158,277,162,234,125"/>
-<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="222,124,218,156,212,155,217,123"/>
-<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="257,121,372,162,370,167,255,126"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="5,171,150,197"/>
-<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="198,126,118,166,115,161,195,121"/>
-<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="476,125,443,161,439,157,472,121"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="674,171,822,197"/>
-<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="513,116,689,164,687,169,512,121"/>
-<area shape="poly" id="edge16_Node000010_Node000003" title=" " alt="" coords="393,125,337,164,334,159,390,121"/>
-<area shape="poly" id="edge14_Node000010_Node000005" title=" " alt="" coords="414,123,419,155,413,156,409,124"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="505,171,650,197"/>
-<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="436,119,535,162,533,167,434,124"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="324,126,249,165,247,161,322,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="531,171,651,197"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="387,120,534,163,533,168,386,125"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="486,123,352,169,350,164,484,118"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="528,121,568,158,564,162,524,125"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="675,171,834,197"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="540,116,553,120,699,163,697,168,551,125,539,121"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="259,122,287,157,283,160,255,125"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="243,124,226,158,221,155,238,122"/>
+<area shape="poly" id="edge12_Node000008_Node000005" title=" " alt="" coords="285,117,297,120,516,165,515,171,296,125,284,123"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,171,150,197"/>
+<area shape="poly" id="edge13_Node000008_Node000009" title=" " alt="" coords="218,126,122,167,120,162,216,121"/>
+<area shape="poly" id="edge15_Node000010_Node000005" title=" " alt="" coords="594,123,594,155,588,155,588,123"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="858,171,1006,197"/>
+<area shape="poly" id="edge16_Node000010_Node000011" title=" " alt="" coords="618,114,858,164,857,170,617,119"/>
+<area shape="poly" id="edge20_Node000012_Node000003" title=" " alt="" coords="413,126,342,165,339,160,411,121"/>
+<area shape="poly" id="edge18_Node000012_Node000005" title=" " alt="" coords="462,120,551,161,548,166,459,125"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="361,171,506,197"/>
+<area shape="poly" id="edge19_Node000012_Node000013" title=" " alt="" coords="437,123,437,155,431,155,432,123"/>
 </map>

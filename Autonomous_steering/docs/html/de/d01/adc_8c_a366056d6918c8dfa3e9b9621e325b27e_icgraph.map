@@ -1,0 +1,7 @@
+<map id="ADC_read" name="ADC_read">
+<area shape="rect" id="Node000001" title="reads adc" alt="" coords="276,5,358,32"/>
+<area shape="rect" id="Node000002" href="$de/d01/adc_8c.html#a2d45ab8799eefa71c7cb4e00f70750e1" title="reads adc and returns the current based on the configurations listed upstair" alt="" coords="103,5,228,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,21,228,21,228,16,260,16"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,21,55,21,55,16,87,16"/>
+</map>

@@ -1,0 +1,498 @@
+\doxysection{CAN Exported Functions }
+\hypertarget{group__CAN__Exported__Functions}{}\label{group__CAN__Exported__Functions}\index{CAN Exported Functions@{CAN Exported Functions}}
+
+
+Functions for CAN initialization, transmission, and reception.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__CAN__Exported__Functions_ga9b70c57999170bb01de933ebf40f0538}{CAN\+\_\+\+ANGLE\+\_\+\+SENSOR\+\_\+\+FLAG}}~(\mbox{\hyperlink{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}{CAN\+\_\+\+BUS\+\_\+\+FLAG}} \& 0b00000001)
+\begin{DoxyCompactList}\small\item\em Check if the angle sensor device is active on the CAN bus. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__CAN__Exported__Functions_gaeb288f7bb2ff1908bdc230471ce3a940}{CAN\+\_\+\+MAIN\+\_\+\+BUS\+\_\+\+FLAG}}~(\mbox{\hyperlink{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}{CAN\+\_\+\+BUS\+\_\+\+FLAG}} \& 0b00000010)
+\begin{DoxyCompactList}\small\item\em Check if the main bus device is active on the CAN bus. \end{DoxyCompactList}\item 
+\Hypertarget{group__CAN__Exported__Functions_gae39651d615f511e45b282d9b413c0b2b}\label{group__CAN__Exported__Functions_gae39651d615f511e45b282d9b413c0b2b} 
+\#define {\bfseries CAN\+\_\+\+MESSAGE\+\_\+\+SIZE}~48
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31}{CAN\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the CAN peripheral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7}{LWS\+\_\+\+Send\+\_\+\+Calibration\+\_\+\+Command}} (uint8\+\_\+t ccw\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Performs a full calibration sequence for the LWS sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_ga4ebbe2ff9d152b9d435462490df311c2}{Calibrate\+\_\+\+LWS\+\_\+\+Sensor}} (void)
+\begin{DoxyCompactList}\small\item\em Initiates a full calibration sequence for the LWS sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_gac9fe5c59f9b86ab011f9823a6f9952e7}{CAN\+\_\+read}} (FDCAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hfdcan, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, int Length)
+\begin{DoxyCompactList}\small\item\em Reads CAN data from a global buffer into the provided data array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e}{CAN\+\_\+write}} (FDCAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hfdcan, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t device\+\_\+on\+\_\+can)
+\begin{DoxyCompactList}\small\item\em Transmits a CAN FD message using the specified FDCAN peripheral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6}{CAN\+\_\+error}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__CAN__Exported__Functions_ga55c7a14aa21ac74ae0728a32874e31bc}{CAN\+\_\+get\+Angle}} ()
+\begin{DoxyCompactList}\small\item\em Sends the steering wheel angle sensor data via CAN. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__CAN__Exported__Functions_gaf19600bfb79a332cf3b47348b00c3931}{CAN\+\_\+get\+Angle\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Sends the steering wheel angle speed data via CAN using the rxdata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CAN__Exported__Functions_ga8e1fd046e7b3ef9fca880c3fe9effb9a}{CAN\+\_\+format}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, int16\+\_\+t anlge, uint16\+\_\+t angle\+\_\+speed, float temperature, float current)
+\begin{DoxyCompactList}\small\item\em formats the data accordinly \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\+\_\+t \mbox{\hyperlink{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}{CAN\+\_\+\+BUS\+\_\+\+FLAG}}
+\begin{DoxyCompactList}\small\item\em Global CAN bus status flag. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__CAN__Exported__Functions_gafc74920a3ccac06ba101a820af5f664c}{CAN\+\_\+\+Data}} \mbox{[}5\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer used for storing CAN data to be transmitted. \end{DoxyCompactList}\item 
+FDCAN\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{group__CAN__Exported__Functions_gad3b5d455aa553cb944a837f93fec2b0c}{CAN\+\_\+\+ANGLE\+\_\+\+BUS}}
+\begin{DoxyCompactList}\small\item\em Handle for the first FDCAN peripheral (FDCAN1). \end{DoxyCompactList}\item 
+FDCAN\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{group__CAN__Exported__Functions_ga48c9d25f4ce2f3e489b836c5f28caf62}{CAN\+\_\+\+MAIN\+\_\+\+BUS}}
+\begin{DoxyCompactList}\small\item\em Handle for the second FDCAN peripheral (FDCAN2). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for CAN initialization, transmission, and reception. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{group__CAN__Exported__Functions_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__CAN__Exported__Functions_ga9b70c57999170bb01de933ebf40f0538}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_ANGLE\_SENSOR\_FLAG@{CAN\_ANGLE\_SENSOR\_FLAG}}
+\index{CAN\_ANGLE\_SENSOR\_FLAG@{CAN\_ANGLE\_SENSOR\_FLAG}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_ANGLE\_SENSOR\_FLAG}{CAN\_ANGLE\_SENSOR\_FLAG}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_ga9b70c57999170bb01de933ebf40f0538} 
+\#define CAN\+\_\+\+ANGLE\+\_\+\+SENSOR\+\_\+\+FLAG~(\mbox{\hyperlink{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}{CAN\+\_\+\+BUS\+\_\+\+FLAG}} \& 0b00000001)}
+
+
+
+Check if the angle sensor device is active on the CAN bus. 
+
+Bit 0 of CAN\+\_\+\+BUS\+\_\+\+FLAG indicates the status of the angle sensor. \Hypertarget{group__CAN__Exported__Functions_gaeb288f7bb2ff1908bdc230471ce3a940}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_MAIN\_BUS\_FLAG@{CAN\_MAIN\_BUS\_FLAG}}
+\index{CAN\_MAIN\_BUS\_FLAG@{CAN\_MAIN\_BUS\_FLAG}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_MAIN\_BUS\_FLAG}{CAN\_MAIN\_BUS\_FLAG}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gaeb288f7bb2ff1908bdc230471ce3a940} 
+\#define CAN\+\_\+\+MAIN\+\_\+\+BUS\+\_\+\+FLAG~(\mbox{\hyperlink{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}{CAN\+\_\+\+BUS\+\_\+\+FLAG}} \& 0b00000010)}
+
+
+
+Check if the main bus device is active on the CAN bus. 
+
+Bit 1 of CAN\+\_\+\+BUS\+\_\+\+FLAG indicates the status of the main CAN device. 
+
+\label{doc-func-members}
+\Hypertarget{group__CAN__Exported__Functions_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__CAN__Exported__Functions_ga4ebbe2ff9d152b9d435462490df311c2}\index{CAN Exported Functions@{CAN Exported Functions}!Calibrate\_LWS\_Sensor@{Calibrate\_LWS\_Sensor}}
+\index{Calibrate\_LWS\_Sensor@{Calibrate\_LWS\_Sensor}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{Calibrate\_LWS\_Sensor()}{Calibrate\_LWS\_Sensor()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_ga4ebbe2ff9d152b9d435462490df311c2} 
+void Calibrate\+\_\+\+LWS\+\_\+\+Sensor (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initiates a full calibration sequence for the LWS sensor. 
+
+Performs a reset of any existing calibration and starts a new calibration cycle.
+
+Initiates a full calibration sequence for the LWS sensor.
+
+This function first sends a reset calibration command and then initiates a new calibration. Delays are inserted to allow the sensor time to process each step. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dd9/group__CAN__Exported__Functions_ga4ebbe2ff9d152b9d435462490df311c2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_error@{CAN\_error}}
+\index{CAN\_error@{CAN\_error}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_error()}{CAN\_error()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6} 
+void CAN\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{d1/dd9/group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dd9/group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_ga8e1fd046e7b3ef9fca880c3fe9effb9a}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_format@{CAN\_format}}
+\index{CAN\_format@{CAN\_format}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_format()}{CAN\_format()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_ga8e1fd046e7b3ef9fca880c3fe9effb9a} 
+void CAN\+\_\+format (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{int16\+\_\+t}]{anlge}{, }\item[{uint16\+\_\+t}]{angle\+\_\+speed}{, }\item[{float}]{temperature}{, }\item[{float}]{current}{}\end{DoxyParamCaption})}
+
+
+
+formats the data accordinly 
+
+
+\begin{DoxyParams}{Parameters}
+{\em All} & data in the steering box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+currently format is hardcoded according to the proposed dbc in the this repository ../../\+MORE\+\_\+\+AUTONOMOUS\+\_\+\+CAN.dbc 
+\end{DoxyWarning}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{d1/dd9/group__CAN__Exported__Functions_ga8e1fd046e7b3ef9fca880c3fe9effb9a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_ga55c7a14aa21ac74ae0728a32874e31bc}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_getAngle@{CAN\_getAngle}}
+\index{CAN\_getAngle@{CAN\_getAngle}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_getAngle()}{CAN\_getAngle()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_ga55c7a14aa21ac74ae0728a32874e31bc} 
+uint16\+\_\+t CAN\+\_\+get\+Angle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sends the steering wheel angle sensor data via CAN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle\+\_\+data} & The 16-\/bit steering wheel angle data (-\/780 to 780). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Angle} & value.\\
+\hline
+\end{DoxyRetVals}
+Sends the steering wheel angle sensor data via CAN.
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle\+\_\+data} & The 16-\/bit steering wheel angle data (-\/780 to 780). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Angle} & value. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d1/dd9/group__CAN__Exported__Functions_ga55c7a14aa21ac74ae0728a32874e31bc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_gaf19600bfb79a332cf3b47348b00c3931}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_getAngleSpeed@{CAN\_getAngleSpeed}}
+\index{CAN\_getAngleSpeed@{CAN\_getAngleSpeed}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_getAngleSpeed()}{CAN\_getAngleSpeed()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gaf19600bfb79a332cf3b47348b00c3931} 
+uint8\+\_\+t CAN\+\_\+get\+Angle\+Speed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sends the steering wheel angle speed data via CAN using the rxdata. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed\+\_\+data} & The 8-\/bit steering speed data (0 to 1016). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em speed.} & \\
+\hline
+\end{DoxyRetVals}
+Sends the steering wheel angle speed data via CAN using the rxdata.
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed\+\_\+data} & The 8-\/bit steering speed data (0 to 1016). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em speed.} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{d1/dd9/group__CAN__Exported__Functions_gaf19600bfb79a332cf3b47348b00c3931_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_init@{CAN\_init}}
+\index{CAN\_init@{CAN\_init}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_init()}{CAN\_init()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31} 
+void CAN\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the CAN peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Initializes the CAN peripheral.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Configures nominal and data timing parameters and enables reception filters. 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{d1/dd9/group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d1/dd9/group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_gac9fe5c59f9b86ab011f9823a6f9952e7}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_read@{CAN\_read}}
+\index{CAN\_read@{CAN\_read}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_read()}{CAN\_read()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gac9fe5c59f9b86ab011f9823a6f9952e7} 
+void CAN\+\_\+read (\begin{DoxyParamCaption}\item[{FDCAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hfdcan}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{int}]{Length}{}\end{DoxyParamCaption})}
+
+
+
+Reads CAN data from a global buffer into the provided data array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfdcan} & Pointer to the FDCAN handle (e.\+g., \&hfdcan1 or \&hfdcan2). (Currently unused in this function.) \\
+\hline
+{\em data} & Pointer to the buffer where the received data will be copied. \\
+\hline
+{\em Length} & Number of bytes to read from the global CAN\+\_\+\+Data buffer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function assumes {\ttfamily CAN\+\_\+\+Data} is populated externally.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hfdcan} & Pointer to the FDCAN handle (e.\+g., \&hfdcan1 or \&hfdcan2). (Currently unused in this function.) \\
+\hline
+{\em data} & Pointer to the buffer where the received data will be copied. \\
+\hline
+{\em Length} & Number of bytes to read from the global CAN\+\_\+\+Data buffer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function simply copies bytes from a global buffer {\ttfamily CAN\+\_\+\+Data} to the provided {\ttfamily data} buffer. It does not interact with the FDCAN peripheral directly. Ensure {\ttfamily CAN\+\_\+\+Data} is filled elsewhere using {\ttfamily HAL\+\_\+\+FDCAN\+\_\+\+Get\+Rx\+Message} or another appropriate function. 
+\end{DoxyNote}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{d1/dd9/group__CAN__Exported__Functions_gac9fe5c59f9b86ab011f9823a6f9952e7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_write@{CAN\_write}}
+\index{CAN\_write@{CAN\_write}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_write()}{CAN\_write()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e} 
+void CAN\+\_\+write (\begin{DoxyParamCaption}\item[{FDCAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hfdcan}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{device\+\_\+on\+\_\+can}{}\end{DoxyParamCaption})}
+
+
+
+Transmits a CAN FD message using the specified FDCAN peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfdcan} & Pointer to the FDCAN handle (e.\+g., \&hfdcan1 or \&hfdcan2). \\
+\hline
+{\em data} & Pointer to the data buffer to be transmitted (up to 32 bytes). \\
+\hline
+{\em device\+\_\+on\+\_\+can} & Standard ID (11-\/bit) of the target CAN device. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Configures and sends a 32-\/byte CAN FD frame. Calls Error\+\_\+\+Handler on failure.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hfdcan} & Pointer to the FDCAN handle (e.\+g., \&hfdcan1 or \&hfdcan2). \\
+\hline
+{\em data} & Pointer to the data buffer to be transmitted (up to 32 bytes based on configured DLC). \\
+\hline
+{\em device\+\_\+on\+\_\+can} & Standard ID (11-\/bit) of the target CAN device. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function configures the FDCAN\+\_\+\+Tx\+Header\+Type\+Def with standard settings for CAN FD, including 32-\/byte data length, bit rate switching, and FD frame format. It adds the message to the transmission FIFO queue. The {\ttfamily \doxylink{group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6}{CAN\+\_\+error()}} function is called if transmission fails. 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{d1/dd9/group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dd9/group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7}\index{CAN Exported Functions@{CAN Exported Functions}!LWS\_Send\_Calibration\_Command@{LWS\_Send\_Calibration\_Command}}
+\index{LWS\_Send\_Calibration\_Command@{LWS\_Send\_Calibration\_Command}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{LWS\_Send\_Calibration\_Command()}{LWS\_Send\_Calibration\_Command()}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7} 
+void LWS\+\_\+\+Send\+\_\+\+Calibration\+\_\+\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ccw\+\_\+value}{}\end{DoxyParamCaption})}
+
+
+
+Performs a full calibration sequence for the LWS sensor. 
+
+This function first sends a reset calibration command and then initiates a new calibration. Delays are inserted to allow the sensor time to process each step.
+
+Performs a full calibration sequence for the LWS sensor.
+
+This function sends a command to the sensor via CAN to perform calibration-\/related actions. The command is encoded in the first byte with only the lower 3 bits used.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ccw\+\_\+value} & The calibration command word (only bits 0–2 are used). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dd9/group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dd9/group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{group__CAN__Exported__Functions_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{group__CAN__Exported__Functions_gad3b5d455aa553cb944a837f93fec2b0c}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_ANGLE\_BUS@{CAN\_ANGLE\_BUS}}
+\index{CAN\_ANGLE\_BUS@{CAN\_ANGLE\_BUS}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_ANGLE\_BUS}{CAN\_ANGLE\_BUS}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gad3b5d455aa553cb944a837f93fec2b0c} 
+FDCAN\+\_\+\+Handle\+Type\+Def CAN\+\_\+\+ANGLE\+\_\+\+BUS\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle for the first FDCAN peripheral (FDCAN1). 
+
+Used to configure and manage communication through the FDCAN1 interface.
+
+Handle for the first FDCAN peripheral (FDCAN1).
+
+Used to configure and manage operations on FDCAN1. \Hypertarget{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_BUS\_FLAG@{CAN\_BUS\_FLAG}}
+\index{CAN\_BUS\_FLAG@{CAN\_BUS\_FLAG}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_BUS\_FLAG}{CAN\_BUS\_FLAG}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_ga0a893ccc544a2ae6e63899f1809d11fa} 
+volatile uint8\+\_\+t CAN\+\_\+\+BUS\+\_\+\+FLAG\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global CAN bus status flag. 
+
+Each bit in this flag represents the status of a different CAN-\/connected device. Use predefined masks to check specific device status.
+
+Global CAN bus status flag. \Hypertarget{group__CAN__Exported__Functions_gafc74920a3ccac06ba101a820af5f664c}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_Data@{CAN\_Data}}
+\index{CAN\_Data@{CAN\_Data}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_Data}{CAN\_Data}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_gafc74920a3ccac06ba101a820af5f664c} 
+uint8\+\_\+t CAN\+\_\+\+Data\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Buffer used for storing CAN data to be transmitted. 
+
+This buffer holds up to 5 bytes of CAN data, typically formatted according to the requirements of the specific CAN message being sent.
+
+Buffer used for storing CAN data to be transmitted.
+
+This array stores up to 5 bytes of CAN data for communication. \Hypertarget{group__CAN__Exported__Functions_ga48c9d25f4ce2f3e489b836c5f28caf62}\index{CAN Exported Functions@{CAN Exported Functions}!CAN\_MAIN\_BUS@{CAN\_MAIN\_BUS}}
+\index{CAN\_MAIN\_BUS@{CAN\_MAIN\_BUS}!CAN Exported Functions@{CAN Exported Functions}}
+\doxysubsubsection{\texorpdfstring{CAN\_MAIN\_BUS}{CAN\_MAIN\_BUS}}
+{\footnotesize\ttfamily \label{group__CAN__Exported__Functions_ga48c9d25f4ce2f3e489b836c5f28caf62} 
+FDCAN\+\_\+\+Handle\+Type\+Def CAN\+\_\+\+MAIN\+\_\+\+BUS\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle for the second FDCAN peripheral (FDCAN2). 
+
+Used to configure and manage communication through the FDCAN2 interface.
+
+Handle for the second FDCAN peripheral (FDCAN2).
+
+Used to configure and manage operations on FDCAN2. 

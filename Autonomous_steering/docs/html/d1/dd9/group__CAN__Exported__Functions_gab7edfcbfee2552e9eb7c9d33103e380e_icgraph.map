@@ -1,0 +1,19 @@
+<map id="CAN_write" name="CAN_write">
+<area shape="rect" id="Node000001" title="Transmits a CAN FD message using the specified FDCAN peripheral." alt="" coords="510,132,596,159"/>
+<area shape="rect" id="Node000002" href="$d1/dd9/group__CAN__Exported__Functions.html#gafd83ef52c27e2d5c3ff0357daf2544d6" title="This function is executed in case of error occurrence." alt="" coords="343,107,426,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="494,148,426,137,427,131,495,143"/>
+<area shape="rect" id="Node000004" href="$d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,81,55,108"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="496,159,417,169,317,175,209,170,154,161,102,148,69,131,43,111,47,106,72,127,104,143,155,156,209,165,317,170,416,164,495,153"/>
+<area shape="rect" id="Node000006" href="$d1/dd9/group__CAN__Exported__Functions.html#gae7d5cd88b0bb9bca27f626ea37f5b2a7" title="Sends a calibration command to the LWS (Lane Watch Sensor)." alt="" coords="307,208,462,251"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="512,168,430,210,428,205,510,164"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="443,117,512,129,511,134,442,123"/>
+<area shape="rect" id="Node000003" href="$d1/dd9/group__CAN__Exported__Functions.html#gace7de72cc97ae2a35d63c3a4a4772a31" title="Initializes the FDCAN1 and FDCAN2 peripheral with predefined settings and STart CAN and activate thr ..." alt="" coords="144,5,218,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="346,101,258,53,217,35,219,30,260,48,349,96"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="327,109,259,97,144,93,55,96,55,90,144,88,259,92,328,104"/>
+<area shape="rect" id="Node000005" href="$d0/d29/main_8c.html#a0458ab0d732d1cf26d43fbbc66f8768e" title="sets up nucleo clock to 170MHZ" alt="" coords="121,107,240,133"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="327,123,241,123,241,117,327,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="130,41,104,53,53,83,51,78,101,48,128,36"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="105,110,55,101,55,96,106,105"/>
+<area shape="rect" id="Node000007" href="$d1/dd9/group__CAN__Exported__Functions.html#ga4ebbe2ff9d152b9d435462490df311c2" title="Performs a full calibration sequence for the LWS sensor." alt="" coords="103,216,259,243"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="292,232,260,232,260,227,292,227"/>
+</map>

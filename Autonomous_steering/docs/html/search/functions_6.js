@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nmi_5fhandler_0',['NMI_Handler',['../d1/d33/stm32g4xx__it_8c.html#a6ad7a5e3ee69cb6db6a6b9111ba898bc',1,'NMI_Handler(void):&#160;stm32g4xx_it.c'],['../d9/d3a/stm32g4xx__it_8h.html#a6ad7a5e3ee69cb6db6a6b9111ba898bc',1,'NMI_Handler(void):&#160;stm32g4xx_it.c']]]
+  ['systemclock_5finit_0',['systemclock_init',['../d0/d29/main_8c.html#a0458ab0d732d1cf26d43fbbc66f8768e',1,'main.c']]]
 ];

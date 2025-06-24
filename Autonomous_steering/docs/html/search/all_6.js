@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['bsp_0',['BSP',['../d5/d65/group__BSP.html',1,'']]],
-  ['busfault_5fhandler_1',['BusFault_Handler',['../d1/d33/stm32g4xx__it_8c.html#a850cefb17a977292ae5eb4cafa9976c3',1,'BusFault_Handler(void):&#160;stm32g4xx_it.c'],['../d9/d3a/stm32g4xx__it_8h.html#a850cefb17a977292ae5eb4cafa9976c3',1,'BusFault_Handler(void):&#160;stm32g4xx_it.c']]]
+  ['lws_5fsend_5fcalibration_5fcommand_0',['LWS_Send_Calibration_Command',['../d1/dd9/group__CAN__Exported__Functions.html#gae7d5cd88b0bb9bca27f626ea37f5b2a7',1,'LWS_Send_Calibration_Command(uint8_t ccw_value):&#160;can.c'],['../d1/dd9/group__CAN__Exported__Functions.html#gae7d5cd88b0bb9bca27f626ea37f5b2a7',1,'LWS_Send_Calibration_Command(uint8_t ccw_value):&#160;can.c']]]
 ];

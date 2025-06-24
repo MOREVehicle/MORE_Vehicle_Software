@@ -1,0 +1,9 @@
+<map id="ADC_readCurrent" name="ADC_readCurrent">
+<area shape="rect" id="Node000001" title="reads adc and returns the current based on the configurations listed upstair" alt="" coords="5,31,131,57"/>
+<area shape="rect" id="Node000002" href="$de/d01/adc_8c.html#ac30402853a29f8a98d2c36a0f56e9684" title="converts raw adc value to current" alt="" coords="179,5,331,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,33,163,28,163,34,132,38"/>
+<area shape="rect" id="Node000003" href="$de/d01/adc_8c.html#a366056d6918c8dfa3e9b9621e325b27e" title="reads adc" alt="" coords="214,56,296,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,50,199,59,198,64,131,55"/>
+<area shape="rect" id="Node000004" href="$de/d01/adc_8c.html#a31595feb93ed1fa8785de51f59bd3f78" title="handles errors of adc (currently just while(1))" alt="" coords="379,56,462,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="297,67,364,67,364,72,297,72"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="HAL_ADC_MspInit" name="HAL_ADC_MspInit">
+<area shape="rect" id="Node000001" title="needs to be adjusted for correct pin used" alt="" coords="5,5,139,32"/>
+<area shape="rect" id="Node000002" href="$de/d01/adc_8c.html#a31595feb93ed1fa8785de51f59bd3f78" title="handles errors of adc (currently just while(1))" alt="" coords="187,5,270,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,16,171,16,171,21,139,21"/>
+</map>

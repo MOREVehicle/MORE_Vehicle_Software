@@ -111,18 +111,15 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \#define {\bfseries TMP\+\_\+\+ADDR\+\_\+\+LOWSIDE\+\_\+\+RIGHT}~3
 \item 
 \#define \mbox{\hyperlink{tmp112_8h_a15575023760783d175cbe27775a318a7}{TMP\+\_\+\+ADDR}}(x)
-\item 
-\Hypertarget{tmp112_8h_a6334a57bafb12c780994bc7f79addad6}\label{tmp112_8h_a6334a57bafb12c780994bc7f79addad6} 
-\#define {\bfseries TMP\+\_\+\+I2\+C\+\_\+\+INTERFACE}~hi2c1
-\begin{DoxyCompactList}\small\item\em used i2c channel on mcu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}{TMP\+\_\+init}} (void)
 \begin{DoxyCompactList}\small\item\em Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communication. \end{DoxyCompactList}\item 
-int16\+\_\+t \mbox{\hyperlink{tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72}{TMP\+\_\+get\+Temperature\+Single}} (uint8\+\_\+t address)
+float \mbox{\hyperlink{tmp112_8h_ae6ed7570ef58742cf0c2e08b3aa73d17}{TMP\+\_\+get\+Temperature\+Single}} (uint8\+\_\+t address)
 \begin{DoxyCompactList}\small\item\em Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit temperature value from the TMP112 and converts it to Celsius. \end{DoxyCompactList}\item 
-int16\+\_\+t \mbox{\hyperlink{tmp112_8h_ae75b0876f998ebf4e6667e33bb687569}{TMP\+\_\+get\+Temperature}} ()
+float \mbox{\hyperlink{tmp112_8h_a60bb3e3c5a56689e33e21939f6fb9a4b}{TMP\+\_\+get\+Temperature}} ()
 \begin{DoxyCompactList}\small\item\em Reads all the temperature sensors. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{tmp112_8h_a1322cef7af405248d9f5acc46db30ccf}{TMP\+\_\+write}} (uint8\+\_\+t address, uint8\+\_\+t reg, uint16\+\_\+t data)
 \begin{DoxyCompactList}\small\item\em basic function to write to TMP112 \end{DoxyCompactList}\item 
@@ -150,7 +147,7 @@ void \mbox{\hyperlink{tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3}{MX\+\_\+\+I2\
 \item 
 \Hypertarget{tmp112_8h_ae5b77e75ce770bc2b7fbb9fd11ffbc85}\label{tmp112_8h_ae5b77e75ce770bc2b7fbb9fd11ffbc85} 
 I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries TMP\+\_\+\+I2\+C\+\_\+\+INTERFACE}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em used i2c channel on mcu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -158,6 +155,8 @@ Driver for TMP112 Temperature Sensor.
 
 This file provides functions to interact with the TMP112 temperature sensor over I2C, including reading temperature values and configuring sensor settings. Everything is MSB to LSB 
 
+\label{doc-define-members}
+\Hypertarget{tmp112_8h_doc-define-members}
 \doxysubsection{Macro Definition Documentation}
 \Hypertarget{tmp112_8h_a15575023760783d175cbe27775a318a7}\index{tmp112.h@{tmp112.h}!TMP\_ADDR@{TMP\_ADDR}}
 \index{TMP\_ADDR@{TMP\_ADDR}!tmp112.h@{tmp112.h}}
@@ -261,6 +260,8 @@ Used address defined by project, default is default TMP112 address \texorpdfstri
 
 12 bit resolution, two\textquotesingle{}s complement, left justified 
 
+\label{doc-func-members}
+\Hypertarget{tmp112_8h_doc-func-members}
 \doxysubsection{Function Documentation}
 \Hypertarget{tmp112_8h_ab64ab683d25afcb6e453938a38ea93b3}\index{tmp112.h@{tmp112.h}!MX\_I2C\_Init@{MX\_I2C\_Init}}
 \index{MX\_I2C\_Init@{MX\_I2C\_Init}!tmp112.h@{tmp112.h}}
@@ -322,7 +323,8 @@ Converts digital data to degrees celcius.
 \begin{DoxyReturn}{Returns}
 temperature in degree celcius 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -342,11 +344,11 @@ Error state function Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{de/de3/tmp112_8h_ab734280be7c71b47e4182f47756226d8_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8h_ae75b0876f998ebf4e6667e33bb687569}\index{tmp112.h@{tmp112.h}!TMP\_getTemperature@{TMP\_getTemperature}}
+\Hypertarget{tmp112_8h_a60bb3e3c5a56689e33e21939f6fb9a4b}\index{tmp112.h@{tmp112.h}!TMP\_getTemperature@{TMP\_getTemperature}}
 \index{TMP\_getTemperature@{TMP\_getTemperature}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_getTemperature()}{TMP\_getTemperature()}}
-{\footnotesize\ttfamily \label{tmp112_8h_ae75b0876f998ebf4e6667e33bb687569} 
-int16\+\_\+t TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8h_a60bb3e3c5a56689e33e21939f6fb9a4b} 
+float TMP\+\_\+get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
@@ -355,25 +357,27 @@ Reads all the temperature sensors.
 \begin{DoxyReturn}{Returns}
 Average temperature of all sensors 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_cgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_a60bb3e3c5a56689e33e21939f6fb9a4b_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=263pt]{de/de3/tmp112_8h_ae75b0876f998ebf4e6667e33bb687569_icgraph}
+\includegraphics[width=263pt]{de/de3/tmp112_8h_a60bb3e3c5a56689e33e21939f6fb9a4b_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72}\index{tmp112.h@{tmp112.h}!TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}}
+\Hypertarget{tmp112_8h_ae6ed7570ef58742cf0c2e08b3aa73d17}\index{tmp112.h@{tmp112.h}!TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}}
 \index{TMP\_getTemperatureSingle@{TMP\_getTemperatureSingle}!tmp112.h@{tmp112.h}}
 \doxysubsubsection{\texorpdfstring{TMP\_getTemperatureSingle()}{TMP\_getTemperatureSingle()}}
-{\footnotesize\ttfamily \label{tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72} 
-int16\+\_\+t TMP\+\_\+get\+Temperature\+Single (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{tmp112_8h_ae6ed7570ef58742cf0c2e08b3aa73d17} 
+float TMP\+\_\+get\+Temperature\+Single (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
 
 
 
@@ -382,18 +386,20 @@ Reads the current temperature from the TMP112 sensor. Reads the 16-\/bit tempera
 \begin{DoxyReturn}{Returns}
 Temperature in Celsius as a 16-\/bit signed integer. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_cgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_ae6ed7570ef58742cf0c2e08b3aa73d17_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/de3/tmp112_8h_aaa1fa86c47cd8d51a938ce88336d6c72_icgraph}
+\includegraphics[width=350pt]{de/de3/tmp112_8h_ae6ed7570ef58742cf0c2e08b3aa73d17_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}\index{tmp112.h@{tmp112.h}!TMP\_init@{TMP\_init}}
@@ -409,7 +415,8 @@ Initializes the TMP112 sensor. Configures the sensor for default settings and pr
 \begin{DoxyReturn}{Returns}
 0 if initialization is successful, non-\/zero if an error occurs. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -441,7 +448,8 @@ basic function to read to TMP112
 \begin{DoxyReturn}{Returns}
 data or 0x\+FFFF if fail 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

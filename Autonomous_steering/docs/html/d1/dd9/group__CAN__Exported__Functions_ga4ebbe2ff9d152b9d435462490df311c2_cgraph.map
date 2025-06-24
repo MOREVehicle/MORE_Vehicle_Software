@@ -1,0 +1,10 @@
+<map id="Calibrate_LWS_Sensor" name="Calibrate_LWS_Sensor">
+<area shape="rect" id="Node000001" title="Initiates a full calibration sequence for the LWS sensor." alt="" coords="5,13,162,40"/>
+<area shape="rect" id="Node000002" href="$d1/dd9/group__CAN__Exported__Functions.html#gae7d5cd88b0bb9bca27f626ea37f5b2a7" title="Sends a calibration command to the LWS (Lane Watch Sensor)." alt="" coords="210,5,365,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,24,194,24,194,29,162,29"/>
+<area shape="rect" id="Node000003" href="$d1/dd9/group__CAN__Exported__Functions.html#gab7edfcbfee2552e9eb7c9d33103e380e" title="Transmits a CAN FD message using the specified FDCAN peripheral." alt="" coords="413,13,498,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="365,24,397,24,397,29,365,29"/>
+<area shape="rect" id="Node000004" href="$d1/dd9/group__CAN__Exported__Functions.html#gafd83ef52c27e2d5c3ff0357daf2544d6" title="This function is executed in case of error occurrence." alt="" coords="546,13,630,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="499,32,531,33,531,38,499,38"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="546,21,514,20,514,15,546,16"/>
+</map>

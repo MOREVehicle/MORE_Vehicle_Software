@@ -1,0 +1,9 @@
+<map id="TMP_getTemperature" name="TMP_getTemperature">
+<area shape="rect" id="Node000001" title="Reads all the temperature sensors." alt="" coords="5,31,152,57"/>
+<area shape="rect" id="Node000002" href="$dd/dd0/tmp112_8c.html#ae6ed7570ef58742cf0c2e08b3aa73d17" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="200,31,382,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,41,184,41,184,47,152,47"/>
+<area shape="rect" id="Node000003" href="$dd/dd0/tmp112_8c.html#aedc7437621a6c895d2d542f351a3fbc5" title="Converts digital data to degrees celcius." alt="" coords="430,5,577,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="382,30,415,27,415,32,383,36"/>
+<area shape="rect" id="Node000004" href="$dd/dd0/tmp112_8c.html#a2cfbd99f9d7c39571c084b3ec30dd51b" title="basic function to read to TMP112" alt="" coords="463,56,544,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="383,52,448,60,447,65,382,58"/>
+</map>

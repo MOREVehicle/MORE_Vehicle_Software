@@ -1,0 +1,5 @@
+<map id="LWS_Send_Calibration_Command" name="LWS_Send_Calibration_Command">
+<area shape="rect" id="Node000001" title="Performs a full calibration sequence for the LWS sensor." alt="" coords="210,5,365,48"/>
+<area shape="rect" id="Node000002" href="$d1/dd9/group__CAN__Exported__Functions.html#ga4ebbe2ff9d152b9d435462490df311c2" title="Performs a full calibration sequence for the LWS sensor." alt="" coords="5,13,162,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,29,162,29,162,24,194,24"/>
+</map>

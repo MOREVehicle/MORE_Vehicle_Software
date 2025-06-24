@@ -1,0 +1,41 @@
+\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/src/tim.c File Reference}
+\hypertarget{tim_8c}{}\label{tim_8c}\index{STM32\_AUTONOMOUS\_PROJECT/src/tim.c@{STM32\_AUTONOMOUS\_PROJECT/src/tim.c}}
+
+
+Source file for TIM functions used as a saftety timer for main code.  
+
+
+{\ttfamily \#include "{}tim.\+h"{}}\newline
+Include dependency graph for tim.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/dc7/tim_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tim_8c_a8aaa1c9e353fec4aaf953b5c329d358a}\label{tim_8c_a8aaa1c9e353fec4aaf953b5c329d358a} 
+void {\bfseries TIM\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em settings for 100ms timer, used for escaping from fault situation, in cause of unresponsive angle sensor \end{DoxyCompactList}\item 
+\Hypertarget{tim_8c_a38ad4725462bdc5e86c4ead4f04b9fc2}\label{tim_8c_a38ad4725462bdc5e86c4ead4f04b9fc2} 
+void {\bfseries TIM2\+\_\+\+IRQHandler} (void)
+\begin{DoxyCompactList}\small\item\em setup IRQ for Timer \end{DoxyCompactList}\item 
+\Hypertarget{tim_8c_a8a3b0ad512a6e6c6157440b68d395eac}\label{tim_8c_a8a3b0ad512a6e6c6157440b68d395eac} 
+void {\bfseries HAL\+\_\+\+TIM\+\_\+\+Period\+Elapsed\+Callback} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim)
+\begin{DoxyCompactList}\small\item\em Interrupt for saftety timer which ensures the systems shutsdown after some time, if the angle sensor isn\textquotesingle{}t working anymnore It just sets a flag on, the CAN\+\_\+error function in main then handles the situationo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tim_8c_a37188e58ceedf28432372aa1c3e751c6}\label{tim_8c_a37188e58ceedf28432372aa1c3e751c6} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries TIM\+\_\+\+TIMER\+\_\+\+INTERFACE}
+\begin{DoxyCompactList}\small\item\em used TIM interface \end{DoxyCompactList}\item 
+\Hypertarget{tim_8c_a829671833c8ddfa7c739aa7f76c03342}\label{tim_8c_a829671833c8ddfa7c739aa7f76c03342} 
+volatile uint8\+\_\+t {\bfseries TIM\+\_\+interuptflag}
+\begin{DoxyCompactList}\small\item\em global variable used to check if interrupt occured \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source file for TIM functions used as a saftety timer for main code. 
+

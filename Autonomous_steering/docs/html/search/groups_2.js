@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exported_20constants_0',['Exported Constants',['../d2/d85/group__STM32C0XX__NUCLEO__CONFIG__Exported__Constants.html',1,'']]]
+  ['functions_0',['CAN Exported Functions',['../d1/dd9/group__CAN__Exported__Functions.html',1,'']]]
 ];

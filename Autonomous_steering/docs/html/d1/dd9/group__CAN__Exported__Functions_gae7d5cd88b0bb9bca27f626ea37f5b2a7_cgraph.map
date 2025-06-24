@@ -1,0 +1,8 @@
+<map id="LWS_Send_Calibration_Command" name="LWS_Send_Calibration_Command">
+<area shape="rect" id="Node000001" title="Performs a full calibration sequence for the LWS sensor." alt="" coords="5,5,161,48"/>
+<area shape="rect" id="Node000002" href="$d1/dd9/group__CAN__Exported__Functions.html#gab7edfcbfee2552e9eb7c9d33103e380e" title="Transmits a CAN FD message using the specified FDCAN peripheral." alt="" coords="209,13,294,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,24,193,24,193,29,161,29"/>
+<area shape="rect" id="Node000003" href="$d1/dd9/group__CAN__Exported__Functions.html#gafd83ef52c27e2d5c3ff0357daf2544d6" title="This function is executed in case of error occurrence." alt="" coords="342,13,425,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,32,326,33,326,38,294,38"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="342,21,309,20,309,15,342,16"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="CAN_error" name="CAN_error">
+<area shape="rect" id="Node000001" title="This function is executed in case of error occurrence." alt="" coords="5,5,89,32"/>
+<area shape="rect" id="Node000002" href="$d1/dd9/group__CAN__Exported__Functions.html#gab7edfcbfee2552e9eb7c9d33103e380e" title="Transmits a CAN FD message using the specified FDCAN peripheral." alt="" coords="137,5,222,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,24,121,25,121,30,89,30"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="136,13,104,12,104,7,136,8"/>
+</map>

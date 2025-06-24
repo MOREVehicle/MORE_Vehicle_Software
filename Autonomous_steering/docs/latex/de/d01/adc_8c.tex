@@ -1,0 +1,194 @@
+\doxysection{STM32\+\_\+\+AUTONOMOUS\+\_\+\+PROJECT/src/adc.c File Reference}
+\hypertarget{adc_8c}{}\label{adc_8c}\index{STM32\_AUTONOMOUS\_PROJECT/src/adc.c@{STM32\_AUTONOMOUS\_PROJECT/src/adc.c}}
+
+
+Source file for adc functions used to calculate current from shunt resistors.  
+
+
+{\ttfamily \#include "{}adc.\+h"{}}\newline
+Include dependency graph for adc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{da/d6c/adc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a}{ADC\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes ADC peripheral. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{adc_8c_a366056d6918c8dfa3e9b9621e325b27e}{ADC\+\_\+read}} (void)
+\begin{DoxyCompactList}\small\item\em reads adc \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{adc_8c_ac30402853a29f8a98d2c36a0f56e9684}{ADC\+\_\+calculate\+Current}} (uint32\+\_\+t raw)
+\begin{DoxyCompactList}\small\item\em converts raw adc value to current \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{adc_8c_a2d45ab8799eefa71c7cb4e00f70750e1}{ADC\+\_\+read\+Current}} ()
+\begin{DoxyCompactList}\small\item\em reads adc and returns the current based on the configurations listed upstair \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_ac3139540667c403c5dfd37a99c610b1c}{HAL\+\_\+\+ADC\+\_\+\+Msp\+Init}} (ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}adc\+Handle)
+\begin{DoxyCompactList}\small\item\em needs to be adjusted for correct pin used \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_a3f61f2c2af0f122f81a87af8ad7b4360}{HAL\+\_\+\+ADC\+\_\+\+Msp\+De\+Init}} (ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}adc\+Handle)
+\begin{DoxyCompactList}\small\item\em needs to be adjusted for correct pin used \end{DoxyCompactList}\item 
+\Hypertarget{adc_8c_a31595feb93ed1fa8785de51f59bd3f78}\label{adc_8c_a31595feb93ed1fa8785de51f59bd3f78} 
+void {\bfseries ADC\+\_\+error} ()
+\begin{DoxyCompactList}\small\item\em handles errors of adc (currently just while(1)) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{adc_8c_a65666635000bd2d465dad3d95c11711c}\label{adc_8c_a65666635000bd2d465dad3d95c11711c} 
+ADC\+\_\+\+Handle\+Type\+Def {\bfseries ADC\+\_\+\+INTERFACE}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source file for adc functions used to calculate current from shunt resistors. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{adc_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{adc_8c_ac30402853a29f8a98d2c36a0f56e9684}\index{adc.c@{adc.c}!ADC\_calculateCurrent@{ADC\_calculateCurrent}}
+\index{ADC\_calculateCurrent@{ADC\_calculateCurrent}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_calculateCurrent()}{ADC\_calculateCurrent()}}
+{\footnotesize\ttfamily \label{adc_8c_ac30402853a29f8a98d2c36a0f56e9684} 
+float ADC\+\_\+calculate\+Current (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{raw}{}\end{DoxyParamCaption})}
+
+
+
+converts raw adc value to current 
+
+\begin{DoxyReturn}{Returns}
+current with 1 number behind decimal 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+CALCULATION IS WRONG 
+\end{DoxyWarning}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d01/adc_8c_ac30402853a29f8a98d2c36a0f56e9684_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a}\index{adc.c@{adc.c}!ADC\_init@{ADC\_init}}
+\index{ADC\_init@{ADC\_init}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_init()}{ADC\_init()}}
+{\footnotesize\ttfamily \label{adc_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a} 
+void ADC\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes ADC peripheral. 
+
+\begin{DoxyWarning}{Warning}
+it has to be properly initialised these are just defaults 
+\end{DoxyWarning}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{de/d01/adc_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{de/d01/adc_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a366056d6918c8dfa3e9b9621e325b27e}\index{adc.c@{adc.c}!ADC\_read@{ADC\_read}}
+\index{ADC\_read@{ADC\_read}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_read()}{ADC\_read()}}
+{\footnotesize\ttfamily \label{adc_8c_a366056d6918c8dfa3e9b9621e325b27e} 
+uint32\+\_\+t ADC\+\_\+read (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+reads adc 
+
+\begin{DoxyReturn}{Returns}
+raw adc value 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+CALCULATION IS WRONG 
+\end{DoxyWarning}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{de/d01/adc_8c_a366056d6918c8dfa3e9b9621e325b27e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{de/d01/adc_8c_a366056d6918c8dfa3e9b9621e325b27e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a2d45ab8799eefa71c7cb4e00f70750e1}\index{adc.c@{adc.c}!ADC\_readCurrent@{ADC\_readCurrent}}
+\index{ADC\_readCurrent@{ADC\_readCurrent}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_readCurrent()}{ADC\_readCurrent()}}
+{\footnotesize\ttfamily \label{adc_8c_a2d45ab8799eefa71c7cb4e00f70750e1} 
+float ADC\+\_\+read\+Current (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+reads adc and returns the current based on the configurations listed upstair 
+
+\begin{DoxyReturn}{Returns}
+current with 1 number behind decimal 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d01/adc_8c_a2d45ab8799eefa71c7cb4e00f70750e1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{de/d01/adc_8c_a2d45ab8799eefa71c7cb4e00f70750e1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a3f61f2c2af0f122f81a87af8ad7b4360}\index{adc.c@{adc.c}!HAL\_ADC\_MspDeInit@{HAL\_ADC\_MspDeInit}}
+\index{HAL\_ADC\_MspDeInit@{HAL\_ADC\_MspDeInit}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_ADC\_MspDeInit()}{HAL\_ADC\_MspDeInit()}}
+{\footnotesize\ttfamily \label{adc_8c_a3f61f2c2af0f122f81a87af8ad7b4360} 
+void HAL\+\_\+\+ADC\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{adc\+Handle}{}\end{DoxyParamCaption})}
+
+
+
+needs to be adjusted for correct pin used 
+
+\begin{DoxyWarning}{Warning}
+AUTOGEN 
+\end{DoxyWarning}
+\Hypertarget{adc_8c_ac3139540667c403c5dfd37a99c610b1c}\index{adc.c@{adc.c}!HAL\_ADC\_MspInit@{HAL\_ADC\_MspInit}}
+\index{HAL\_ADC\_MspInit@{HAL\_ADC\_MspInit}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_ADC\_MspInit()}{HAL\_ADC\_MspInit()}}
+{\footnotesize\ttfamily \label{adc_8c_ac3139540667c403c5dfd37a99c610b1c} 
+void HAL\+\_\+\+ADC\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{adc\+Handle}{}\end{DoxyParamCaption})}
+
+
+
+needs to be adjusted for correct pin used 
+
+\begin{DoxyWarning}{Warning}
+AUTOGEN 
+\end{DoxyWarning}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{de/d01/adc_8c_ac3139540667c403c5dfd37a99c610b1c_cgraph}
+\end{center}
+\end{figure}

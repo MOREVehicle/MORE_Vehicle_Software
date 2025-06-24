@@ -1,10 +1,10 @@
 <map id="TMP_data_to_celcius" name="TMP_data_to_celcius">
 <area shape="rect" id="Node000001" title="Converts digital data to degrees celcius." alt="" coords="527,31,675,57"/>
-<area shape="rect" id="Node000002" href="$dd/dd0/tmp112_8c.html#aaa1fa86c47cd8d51a938ce88336d6c72" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,5,479,32"/>
+<area shape="rect" id="Node000002" href="$dd/dd0/tmp112_8c.html#ae6ed7570ef58742cf0c2e08b3aa73d17" title="Reads the current temperature from the TMP112 sensor. Reads the 16&#45;bit temperature value from the TMP..." alt="" coords="297,5,479,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="511,36,479,32,480,27,512,31"/>
 <area shape="rect" id="Node000006" href="$dd/dd0/tmp112_8c.html#ab245dd6d2557d920a0bdeef48cb2bd17" title="wrapper of write to set the TLOW and THIGH regisers return success" alt="" coords="335,56,441,83"/>
 <area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="512,57,442,66,441,60,511,52"/>
-<area shape="rect" id="Node000003" href="$dd/dd0/tmp112_8c.html#aaf42426edd437c424624a73df238134c" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
+<area shape="rect" id="Node000003" href="$dd/dd0/tmp112_8c.html#a8594b295cc049f12ce3c27cbc3af0f6a" title="Reads all the temperature sensors." alt="" coords="103,5,249,32"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,21,250,21,250,16,281,16"/>
 <area shape="rect" id="Node000005" href="$dd/dd0/tmp112_8c.html#a8f14963658756281e630e1f9c47752ac" title="Initializes the TMP112 sensor. Configures the sensor for default settings and prepares it for communi..." alt="" coords="139,56,212,83"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="315,39,214,63,212,58,314,34"/>
