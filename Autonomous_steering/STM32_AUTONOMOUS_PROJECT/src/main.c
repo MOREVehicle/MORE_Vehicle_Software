@@ -1,31 +1,49 @@
-// #include <stdio.h>
-// #include "adc.h"
-// #include "tim.h"
-// #include "uart.h"
-//
-// void SystemClock_Config(void);
-// void Error_Handler(void);
-//
-// int main(void) {
-//     HAL_Init();
-//     SystemClock_Config();
-//
-//     ADC_init();
-//     UART_init();
-//     TIM_init();
-//
-//     while (1) {
-//         if (TIM_interuptflag) {
-//             TIM_interuptflag = 0;
-//             uint8_t str[64] = {0};
-//             HAL_UART_Transmit(&huart2, str, sizeof(str), HAL_MAX_DELAY);
-//         }
-//     }
-// }
-//
-// void Error_Handler() {
-//     while (1);
-// }
+#include "adc.h"
+#include "tim.h"
+#include "uart.h"
+#include "can.h"
+#include "drv8703.h"
+#include <stdio.h>
+
+void systemclock_init(void);
+void Error_Handler(void);
+
+int main(void) {
+    HAL_Init();
+    systemclock_init();
+
+    ADC_init();
+    DRV_init();
+    UART_init();
+    TIM_init();
+    // TMP_init();
+
+    while (1) {
+        if (TIM_interuptflag) {
+            uint32_t bruh = ADC_read();
+            float nah = ADC_calculateCurrent(bruh);
+            uint8_t str[8] = {0};
+
+            if (nah > 1) {
+                snprintf((char*)str, sizeof(str), "%.1f", nah);
+                HAL_UART_Transmit(&huart2, "Current: ", 11, HAL_MAX_DELAY);
+                HAL_UART_Transmit(&huart2, str, sizeof(str), HAL_MAX_DELAY);
+                HAL_UART_Transmit(&huart2, "A      ", 3, HAL_MAX_DELAY);
+
+                snprintf((char*)str, sizeof(str), "%d", bruh);
+                HAL_UART_Transmit(&huart2, "Raw: ", 7, HAL_MAX_DELAY);
+                HAL_UART_Transmit(&huart2, str, sizeof(str), HAL_MAX_DELAY);
+                HAL_UART_Transmit(&huart2, "\n\r", 3, HAL_MAX_DELAY);
+
+                TIM_interuptflag = 0;
+            }
+        }
+    }
+}
+
+void Error_Handler() {
+    while (1);
+}
 
 /**
  * @file    main.c
@@ -40,62 +58,76 @@
  * Event 2 means that a command has been send from the car's CAN bus, once this happens this command is processed.
  * Event 3 means that the angle sensor is unresponsive, so it sends a error message (and shut the system down???)
  */
-#include "drv8703.h"
-// #include "../inc/CAN.h"
-#include "tmp112.h"
-#include "adc.h"
-#include "tim.h"
+// #include "drv8703.h"
+// #include "can.h"
+// #include "tmp112.h"
+// #include "adc.h"
+// #include "tim.h"
+//
+// #define MESSAGE_BUFFER 64
+// void systemclock_init(void);
+//
+// int main () {
+//     /**
+//      * @note Might wanna add initialisation checks.
+//      */
+//     HAL_Init();
+//     systemClock_init();
+//     ADC_init();
+//     DRV_init();
+//     TMP_init();
+//     TIM_init();
+//     CAN_init();
+//
+//     while (1) {
+//         if (CAN_ANGLE_SENSOR_FLAG) {
+//             uint8_t CAN_message[MESSAGE_BUFFER] = {0};
+//             uint8_t DRV_message = 0;
+//
+//             DRV_read(DRV_FAULT_STATUS_GDF_MASK, &DRV_message);
+//             DRV_message &= DRV_FAULT_STATUS_GDF_MASK;
+//
+//             int16_t angle = CAN_getAngle();
+//             uint16_t angle_speed = CAN_getAngleSpeed();
+//             int16_t temperature = TMP_getTemperature(); 
+//             int16_t current     = ADC_readCurrent();
+//             
+//             uint8_t id = CAN_format(CAN_message, angle, angle_speed, temperature, current);
+//             CAN_write(&CAN_MAIN_BUS, CAN_message, id);
+//
+//             __HAL_TIM_SET_COUNTER(&TIM_TIMER_INTERFACE, 0);
+//             CAN_BUS_FLAG &= ~(CAN_ANGLE_SENSOR_FLAG);
+//         }
+//         if (CAN_MAIN_BUS_FLAG) {
+//             /*
+//              *@warning random size for data
+//             */
+//             uint8_t data[8] = {0};
+//             CAN_read(&CAN_MAIN_BUS, data, sizeof(data));
+//             /*
+//              *@warning this is undefined it should receive commands from main bus and process however said commands are currently unkown
+//             */
+//             CAN_process();
+//             CAN_BUS_FLAG &= ~(CAN_MAIN_BUS_FLAG);
+//         }
+//         if (TIM_interuptflag) {
+//             TIM_interuptflag = 0;
+//             CAN_error();
+//             /**
+//              * @warning I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters softfault
+//             */
+//             break;
+//         }
+//     }
+//
+//     return 0;
+// }
 
-#define MESSAGE_BUFFER 64
-
-int main () {
-    /**
-     * @note Might wanna add initialisation checks.
-     */
-    ADC_init();
-    DRV_init();
-    TMP_init();
-    TIM_init();
-    CAN_init();
-
-    while (1) {
-        if (CAN_ANGLE_SENSOR_FLAG) {
-            uint8_t CAN_message[MESSAGE_BUFFER] = {0};
-            uint8_t DRV_message = 0;
-
-            DRV_read(DRV_FAULT_STATUS_GDF_MASK, &DRV_message);
-            DRV_message &= DRV_FAULT_STATUS_GDF_MASK;
-
-            int16_t angle = CAN_getAngle();
-            uint16_t angleSpeed = CAN_getAngleSpeed();
-            int16_t temperature = TMP_getTemperature(); 
-            int16_t current     = ADC_readCurrent();
-            
-            CAN_format();
-            CAN_write(1);
-
-            __HAL_TIM_SET_COUNTER(&TIM_TIMER_INTERFACE, 0);
-            CAN_FLAG &= ~(CAN_ANGLE_SENSOR_FLAG);
-        }
-        if (CAN_MAIN_BUS_FLAG) {
-            CAN_read(1);
-            CAN_process();
-            CAN_FLAG &= ~(CAN_MAIN_BUS_FLAG);
-        }
-        if (TIM_interuptflag) {
-            TIM_interuptflag = 0;
-            CAN_error();
-            /**
-             * @warning I believe this should be determined by some central cpu of the car if so comment the line
-            */
-            break;
-        }
-    }
-
-    return 0;
-}
-
-void SystemClock_Config(void) {
+/**
+ * @brief sets up nucleo clock to 170MHZ 
+ * @warning currently 64MHZ. change it.
+ */
+void systemclock_init(void) {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
@@ -110,7 +142,7 @@ void SystemClock_Config(void) {
     RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
     RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-        Error_Handler();
+        CAN_error();
     }
 
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK |
@@ -121,6 +153,6 @@ void SystemClock_Config(void) {
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
-        Error_Handler();
+        CAN_error();
     }
 }

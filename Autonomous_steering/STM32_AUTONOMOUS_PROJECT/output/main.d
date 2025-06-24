@@ -18,6 +18,7 @@ output/main.o: src/main.c inc/adc.h platform/HAL/inc/stm32g4xx_hal.h \
  platform/HAL/inc/stm32g4xx_ll_adc.h \
  platform/HAL/inc/stm32g4xx_hal_adc_ex.h \
  platform/HAL/inc/stm32g4xx_hal_exti.h \
+ platform/HAL/inc/stm32g4xx_hal_fdcan.h \
  platform/HAL/inc/stm32g4xx_hal_flash.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ex.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h \
@@ -30,7 +31,8 @@ output/main.o: src/main.c inc/adc.h platform/HAL/inc/stm32g4xx_hal.h \
  platform/HAL/inc/stm32g4xx_hal_tim.h \
  platform/HAL/inc/stm32g4xx_hal_tim_ex.h \
  platform/HAL/inc/stm32g4xx_hal_uart.h \
- platform/HAL/inc/stm32g4xx_hal_uart_ex.h inc/tim.h inc/uart.h
+ platform/HAL/inc/stm32g4xx_hal_uart_ex.h inc/tim.h inc/uart.h inc/can.h \
+ inc/drv8703.h
 inc/adc.h:
 platform/HAL/inc/stm32g4xx_hal.h:
 platform/HAL/stm32g4xx_hal_conf.h:
@@ -56,6 +58,7 @@ platform/HAL/inc/stm32g4xx_hal.h:
 platform/HAL/inc/stm32g4xx_ll_adc.h:
 platform/HAL/inc/stm32g4xx_hal_adc_ex.h:
 platform/HAL/inc/stm32g4xx_hal_exti.h:
+platform/HAL/inc/stm32g4xx_hal_fdcan.h:
 platform/HAL/inc/stm32g4xx_hal_flash.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ex.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h:
@@ -71,3 +74,5 @@ platform/HAL/inc/stm32g4xx_hal_uart.h:
 platform/HAL/inc/stm32g4xx_hal_uart_ex.h:
 inc/tim.h:
 inc/uart.h:
+inc/can.h:
+inc/drv8703.h:

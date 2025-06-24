@@ -1,3 +1,8 @@
+/**
+ * @file adc.c
+ * @brief Source file for adc functions
+ * used to calculate current from shunt resistors
+ */
 #include "adc.h"
 
 ADC_HandleTypeDef ADC_INTERFACE;
@@ -43,19 +48,27 @@ void ADC_init(void) {
     }
 }
 
-float ADC_readCurrent(void) {
-    float current = 0;
+uint32_t ADC_read(void) {
+    uint32_t raw = 0;
 
     HAL_ADC_Start(&ADC_INTERFACE);
     if (HAL_ADC_PollForConversion(&ADC_INTERFACE, ADC_DELAY) == HAL_OK) { 
-        uint32_t raw = HAL_ADC_GetValue(&ADC_INTERFACE);
-        current = (ADC_V_REF - (raw * ADC_A_V)) / (ADC_A_V * ADC_R_SENSE);
+        raw = HAL_ADC_GetValue(&ADC_INTERFACE);
     } 
     else {
         ADC_error();
     }
     HAL_ADC_Stop(&ADC_INTERFACE);
-    return current;
+    return raw;
+}
+
+float ADC_calculateCurrent(uint32_t raw) {
+    float current = ((raw - ADC_OFFSET) / ADC_RESOLUTION * ADC_V_REF) / (ADC_A_V * ADC_R_SENSE);
+    return (current >= 0) ? current : 0;
+}
+
+float ADC_readCurrent() {
+    return ADC_calculateCurrent(ADC_read());
 }
 
 /**

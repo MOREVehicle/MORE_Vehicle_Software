@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccGYPPVC.s 			page 1
+ARM GAS  /tmp/cc9OYggF.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -50,7 +50,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
   19:src/tmp112.c  ****     }
   20:src/tmp112.c  **** }
   21:src/tmp112.c  **** 
-  22:src/tmp112.c  **** int16_t TMP_getTemperature(void) {
+  22:src/tmp112.c  **** float TMP_getTemperature(void) {
   23:src/tmp112.c  ****     uint16_t average = 0;
   24:src/tmp112.c  **** 
   25:src/tmp112.c  ****     for (uint8_t i = 0; i < TMP_ADDR_AMOUNT; i++) {
@@ -58,14 +58,14 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
   27:src/tmp112.c  ****     }
   28:src/tmp112.c  **** 
   29:src/tmp112.c  ****     average /= TMP_ADDR_AMOUNT;
-ARM GAS  /tmp/ccGYPPVC.s 			page 2
+ARM GAS  /tmp/cc9OYggF.s 			page 2
 
 
   30:src/tmp112.c  ****     return average;
   31:src/tmp112.c  **** }
   32:src/tmp112.c  **** 
   33:src/tmp112.c  **** 
-  34:src/tmp112.c  **** int16_t TMP_getTemperatureSingle(uint8_t address) {
+  34:src/tmp112.c  **** float TMP_getTemperatureSingle(uint8_t address) {
   35:src/tmp112.c  **** 	int16_t temperature = (uint16_t)(TMP_read(address, TMP_TEMPERATURE) >> 4);
   36:src/tmp112.c  ****     return TMP_data_to_celcius(temperature);
   37:src/tmp112.c  **** }
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
   58 001e 0A46     		mov	r2, r1
   59              	.LVL2:
   60              		.loc 1 55 9 view .LVU7
-ARM GAS  /tmp/ccGYPPVC.s 			page 3
+ARM GAS  /tmp/cc9OYggF.s 			page 3
 
 
   61 0020 0146     		mov	r1, r0
@@ -157,7 +157,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
   90              	.L6:
   91 0036 00BF     		.align	2
   92              	.L5:
-  93 0038 00000000 		.word	hi2c1
+  93 0038 00000000 		.word	TMP_I2C_INTERFACE
   94              		.cfi_endproc
   95              	.LFE335:
   97              		.section	.text.TMP_setConfig,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  111              		.loc 1 47 55 is_stmt 0 view .LVU16
  112 0000 08B5     		push	{r3, lr}
  113              	.LCFI4:
-ARM GAS  /tmp/ccGYPPVC.s 			page 4
+ARM GAS  /tmp/cc9OYggF.s 			page 4
 
 
  114              		.cfi_def_cfa_offset 8
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  159              		.loc 1 64 5 view .LVU26
  160              		.loc 1 64 9 is_stmt 0 view .LVU27
  161 000c 4FF0FF33 		mov	r3, #-1
-ARM GAS  /tmp/ccGYPPVC.s 			page 5
+ARM GAS  /tmp/cc9OYggF.s 			page 5
 
 
  162 0010 0293     		str	r3, [sp, #8]
@@ -288,7 +288,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  202              	.L14:
  203 003e 00BF     		.align	2
  204              	.L13:
- 205 0040 00000000 		.word	hi2c1
+ 205 0040 00000000 		.word	TMP_I2C_INTERFACE
  206              		.cfi_endproc
  207              	.LFE336:
  209              		.section	.text.TMP_celcius_to_data,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  213              		.thumb
  214              		.thumb_func
  216              	TMP_celcius_to_data:
-ARM GAS  /tmp/ccGYPPVC.s 			page 6
+ARM GAS  /tmp/cc9OYggF.s 			page 6
 
 
  217              	.LVL18:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  264              	.L17:
  265 0014 0000803D 		.word	1031798784
  266              		.cfi_endproc
-ARM GAS  /tmp/ccGYPPVC.s 			page 7
+ARM GAS  /tmp/cc9OYggF.s 			page 7
 
 
  267              	.LFE338:
@@ -372,12 +372,12 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  277              	.LVL21:
  278              	.LFB331:
   34:src/tmp112.c  **** 	int16_t temperature = (uint16_t)(TMP_read(address, TMP_TEMPERATURE) >> 4);
- 279              		.loc 1 34 51 is_stmt 1 view -0
+ 279              		.loc 1 34 49 is_stmt 1 view -0
  280              		.cfi_startproc
  281              		@ args = 0, pretend = 0, frame = 0
  282              		@ frame_needed = 0, uses_anonymous_args = 0
   34:src/tmp112.c  **** 	int16_t temperature = (uint16_t)(TMP_read(address, TMP_TEMPERATURE) >> 4);
- 283              		.loc 1 34 51 is_stmt 0 view .LVU49
+ 283              		.loc 1 34 49 is_stmt 0 view .LVU49
  284 0000 08B5     		push	{r3, lr}
  285              	.LCFI9:
  286              		.cfi_def_cfa_offset 8
@@ -400,249 +400,252 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  298              		.loc 1 36 12 view .LVU54
  299 000c FFF7FEFF 		bl	TMP_data_to_celcius
  300              	.LVL24:
-  36:src/tmp112.c  **** }
- 301              		.loc 1 36 12 discriminator 1 view .LVU55
- 302 0010 BDEEC00A 		vcvt.s32.f32	s0, s0
   37:src/tmp112.c  **** 
- 303              		.loc 1 37 1 view .LVU56
- 304 0014 10EE103A 		vmov	r3, s0	@ int
- 305 0018 18B2     		sxth	r0, r3
- 306 001a 08BD     		pop	{r3, pc}
- 307              		.cfi_endproc
- 308              	.LFE331:
- 310              		.section	.text.TMP_getTemperature,"ax",%progbits
- 311              		.align	1
- 312              		.global	TMP_getTemperature
- 313              		.syntax unified
- 314              		.thumb
- 315              		.thumb_func
- 317              	TMP_getTemperature:
- 318              	.LFB330:
-ARM GAS  /tmp/ccGYPPVC.s 			page 8
-
-
+ 301              		.loc 1 37 1 view .LVU55
+ 302 0010 08BD     		pop	{r3, pc}
+ 303              		.cfi_endproc
+ 304              	.LFE331:
+ 306              		.section	.text.TMP_getTemperature,"ax",%progbits
+ 307              		.align	1
+ 308              		.global	TMP_getTemperature
+ 309              		.syntax unified
+ 310              		.thumb
+ 311              		.thumb_func
+ 313              	TMP_getTemperature:
+ 314              	.LFB330:
   22:src/tmp112.c  ****     uint16_t average = 0;
- 319              		.loc 1 22 34 is_stmt 1 view -0
- 320              		.cfi_startproc
- 321              		@ args = 0, pretend = 0, frame = 0
- 322              		@ frame_needed = 0, uses_anonymous_args = 0
- 323 0000 38B5     		push	{r3, r4, r5, lr}
- 324              	.LCFI10:
- 325              		.cfi_def_cfa_offset 16
- 326              		.cfi_offset 3, -16
- 327              		.cfi_offset 4, -12
- 328              		.cfi_offset 5, -8
- 329              		.cfi_offset 14, -4
-  23:src/tmp112.c  **** 
- 330              		.loc 1 23 5 view .LVU58
- 331              	.LVL25:
-  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 332              		.loc 1 25 5 view .LVU59
- 333              	.LBB2:
-  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 334              		.loc 1 25 10 view .LVU60
-  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 335              		.loc 1 25 18 is_stmt 0 view .LVU61
- 336 0002 0024     		movs	r4, #0
- 337              	.LBE2:
-  23:src/tmp112.c  **** 
- 338              		.loc 1 23 14 view .LVU62
- 339 0004 2546     		mov	r5, r4
- 340              	.LBB3:
-  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 341              		.loc 1 25 5 view .LVU63
- 342 0006 09E0     		b	.L22
- 343              	.LVL26:
- 344              	.L23:
-  26:src/tmp112.c  ****     }
- 345              		.loc 1 26 9 is_stmt 1 view .LVU64
-  26:src/tmp112.c  ****     }
- 346              		.loc 1 26 20 is_stmt 0 view .LVU65
- 347 0008 04F14800 		add	r0, r4, #72
- 348 000c C0B2     		uxtb	r0, r0
- 349 000e FFF7FEFF 		bl	TMP_getTemperatureSingle
- 350              	.LVL27:
-  26:src/tmp112.c  ****     }
- 351              		.loc 1 26 17 discriminator 1 view .LVU66
- 352 0012 15FA80F5 		uxtah	r5, r5, r0
- 353              	.LVL28:
-  26:src/tmp112.c  ****     }
- 354              		.loc 1 26 17 discriminator 1 view .LVU67
- 355 0016 ADB2     		uxth	r5, r5
- 356              	.LVL29:
-  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 357              		.loc 1 25 47 is_stmt 1 discriminator 3 view .LVU68
- 358 0018 0134     		adds	r4, r4, #1
- 359              	.LVL30:
-  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 360              		.loc 1 25 47 is_stmt 0 discriminator 3 view .LVU69
- 361 001a E4B2     		uxtb	r4, r4
- 362              	.LVL31:
-ARM GAS  /tmp/ccGYPPVC.s 			page 9
+ 315              		.loc 1 22 32 is_stmt 1 view -0
+ 316              		.cfi_startproc
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc9OYggF.s 			page 8
 
 
- 363              	.L22:
+ 319 0000 38B5     		push	{r3, r4, r5, lr}
+ 320              	.LCFI10:
+ 321              		.cfi_def_cfa_offset 16
+ 322              		.cfi_offset 3, -16
+ 323              		.cfi_offset 4, -12
+ 324              		.cfi_offset 5, -8
+ 325              		.cfi_offset 14, -4
+  23:src/tmp112.c  **** 
+ 326              		.loc 1 23 5 view .LVU57
+ 327              	.LVL25:
   25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
- 364              		.loc 1 25 27 is_stmt 1 discriminator 1 view .LVU70
- 365 001c 032C     		cmp	r4, #3
- 366 001e F3D9     		bls	.L23
- 367              	.LBE3:
+ 328              		.loc 1 25 5 view .LVU58
+ 329              	.LBB2:
+  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
+ 330              		.loc 1 25 10 view .LVU59
+  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
+ 331              		.loc 1 25 18 is_stmt 0 view .LVU60
+ 332 0002 0025     		movs	r5, #0
+ 333              	.LBE2:
+  23:src/tmp112.c  **** 
+ 334              		.loc 1 23 14 view .LVU61
+ 335 0004 2C46     		mov	r4, r5
+ 336              	.LBB3:
+  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
+ 337              		.loc 1 25 5 view .LVU62
+ 338 0006 11E0     		b	.L22
+ 339              	.LVL26:
+ 340              	.L23:
+  26:src/tmp112.c  ****     }
+ 341              		.loc 1 26 9 is_stmt 1 view .LVU63
+  26:src/tmp112.c  ****     }
+ 342              		.loc 1 26 20 is_stmt 0 view .LVU64
+ 343 0008 05F14800 		add	r0, r5, #72
+ 344 000c C0B2     		uxtb	r0, r0
+ 345 000e FFF7FEFF 		bl	TMP_getTemperatureSingle
+ 346              	.LVL27:
+  26:src/tmp112.c  ****     }
+ 347              		.loc 1 26 17 discriminator 1 view .LVU65
+ 348 0012 07EE904A 		vmov	s15, r4	@ int
+ 349 0016 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 350 001a 37EE800A 		vadd.f32	s0, s15, s0
+ 351 001e BCEEC00A 		vcvt.u32.f32	s0, s0
+ 352 0022 10EE103A 		vmov	r3, s0	@ int
+ 353 0026 9CB2     		uxth	r4, r3
+ 354              	.LVL28:
+  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
+ 355              		.loc 1 25 47 is_stmt 1 discriminator 3 view .LVU66
+ 356 0028 0135     		adds	r5, r5, #1
+ 357              	.LVL29:
+  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
+ 358              		.loc 1 25 47 is_stmt 0 discriminator 3 view .LVU67
+ 359 002a EDB2     		uxtb	r5, r5
+ 360              	.LVL30:
+ 361              	.L22:
+  25:src/tmp112.c  ****         average += TMP_getTemperatureSingle(TMP_ADDR(i));
+ 362              		.loc 1 25 27 is_stmt 1 discriminator 1 view .LVU68
+ 363 002c 032D     		cmp	r5, #3
+ARM GAS  /tmp/cc9OYggF.s 			page 9
+
+
+ 364 002e EBD9     		bls	.L23
+ 365              	.LBE3:
   29:src/tmp112.c  ****     return average;
- 368              		.loc 1 29 5 view .LVU71
- 369              	.LVL32:
+ 366              		.loc 1 29 5 view .LVU69
+  29:src/tmp112.c  ****     return average;
+ 367              		.loc 1 29 13 is_stmt 0 view .LVU70
+ 368 0030 A308     		lsrs	r3, r4, #2
+ 369 0032 00EE103A 		vmov	s0, r3	@ int
+ 370              	.LVL31:
   30:src/tmp112.c  **** }
- 370              		.loc 1 30 5 view .LVU72
+ 371              		.loc 1 30 5 is_stmt 1 view .LVU71
   31:src/tmp112.c  **** 
- 371              		.loc 1 31 1 is_stmt 0 view .LVU73
- 372 0020 A808     		lsrs	r0, r5, #2
- 373 0022 38BD     		pop	{r3, r4, r5, pc}
+ 372              		.loc 1 31 1 is_stmt 0 view .LVU72
+ 373 0036 B8EE400A 		vcvt.f32.u32	s0, s0
+ 374              	.LVL32:
   31:src/tmp112.c  **** 
- 374              		.loc 1 31 1 view .LVU74
- 375              		.cfi_endproc
- 376              	.LFE330:
- 378              		.section	.text.TMP_setTLow,"ax",%progbits
- 379              		.align	1
- 380              		.global	TMP_setTLow
- 381              		.syntax unified
- 382              		.thumb
- 383              		.thumb_func
- 385              	TMP_setTLow:
- 386              	.LVL33:
- 387              	.LFB332:
+ 375              		.loc 1 31 1 view .LVU73
+ 376 003a 38BD     		pop	{r3, r4, r5, pc}
+  31:src/tmp112.c  **** 
+ 377              		.loc 1 31 1 view .LVU74
+ 378              		.cfi_endproc
+ 379              	.LFE330:
+ 381              		.section	.text.TMP_setTLow,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	TMP_setTLow
+ 384              		.syntax unified
+ 385              		.thumb
+ 386              		.thumb_func
+ 388              	TMP_setTLow:
+ 389              	.LVL33:
+ 390              	.LFB332:
   39:src/tmp112.c  ****     return TMP_write(address, TMP_TLOW, TMP_data_to_celcius(celcius));
- 388              		.loc 1 39 53 is_stmt 1 view -0
- 389              		.cfi_startproc
- 390              		@ args = 0, pretend = 0, frame = 0
- 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391              		.loc 1 39 53 is_stmt 1 view -0
+ 392              		.cfi_startproc
+ 393              		@ args = 0, pretend = 0, frame = 0
+ 394              		@ frame_needed = 0, uses_anonymous_args = 0
   39:src/tmp112.c  ****     return TMP_write(address, TMP_TLOW, TMP_data_to_celcius(celcius));
- 392              		.loc 1 39 53 is_stmt 0 view .LVU76
- 393 0000 10B5     		push	{r4, lr}
- 394              	.LCFI11:
- 395              		.cfi_def_cfa_offset 8
- 396              		.cfi_offset 4, -8
- 397              		.cfi_offset 14, -4
- 398 0002 0446     		mov	r4, r0
+ 395              		.loc 1 39 53 is_stmt 0 view .LVU76
+ 396 0000 10B5     		push	{r4, lr}
+ 397              	.LCFI11:
+ 398              		.cfi_def_cfa_offset 8
+ 399              		.cfi_offset 4, -8
+ 400              		.cfi_offset 14, -4
+ 401 0002 0446     		mov	r4, r0
   40:src/tmp112.c  **** }
- 399              		.loc 1 40 5 is_stmt 1 view .LVU77
+ 402              		.loc 1 40 5 is_stmt 1 view .LVU77
   40:src/tmp112.c  **** }
- 400              		.loc 1 40 41 is_stmt 0 view .LVU78
- 401 0004 BCEEC00A 		vcvt.u32.f32	s0, s0
- 402              	.LVL34:
+ 403              		.loc 1 40 41 is_stmt 0 view .LVU78
+ 404 0004 BCEEC00A 		vcvt.u32.f32	s0, s0
+ 405              	.LVL34:
   40:src/tmp112.c  **** }
- 403              		.loc 1 40 41 view .LVU79
- 404 0008 10EE103A 		vmov	r3, s0	@ int
- 405 000c 98B2     		uxth	r0, r3
- 406              	.LVL35:
+ 406              		.loc 1 40 41 view .LVU79
+ 407 0008 10EE103A 		vmov	r3, s0	@ int
+ 408 000c 98B2     		uxth	r0, r3
+ 409              	.LVL35:
   40:src/tmp112.c  **** }
- 407              		.loc 1 40 41 view .LVU80
- 408 000e FFF7FEFF 		bl	TMP_data_to_celcius
- 409              	.LVL36:
-  40:src/tmp112.c  **** }
-ARM GAS  /tmp/ccGYPPVC.s 			page 10
+ 410              		.loc 1 40 41 view .LVU80
+ARM GAS  /tmp/cc9OYggF.s 			page 10
 
 
- 410              		.loc 1 40 12 discriminator 1 view .LVU81
- 411 0012 BCEEC00A 		vcvt.u32.f32	s0, s0
- 412 0016 10EE103A 		vmov	r3, s0	@ int
- 413 001a 9AB2     		uxth	r2, r3
- 414 001c 0221     		movs	r1, #2
- 415 001e 2046     		mov	r0, r4
- 416 0020 FFF7FEFF 		bl	TMP_write
- 417              	.LVL37:
+ 411 000e FFF7FEFF 		bl	TMP_data_to_celcius
+ 412              	.LVL36:
+  40:src/tmp112.c  **** }
+ 413              		.loc 1 40 12 discriminator 1 view .LVU81
+ 414 0012 BCEEC00A 		vcvt.u32.f32	s0, s0
+ 415 0016 10EE103A 		vmov	r3, s0	@ int
+ 416 001a 9AB2     		uxth	r2, r3
+ 417 001c 0221     		movs	r1, #2
+ 418 001e 2046     		mov	r0, r4
+ 419 0020 FFF7FEFF 		bl	TMP_write
+ 420              	.LVL37:
   41:src/tmp112.c  **** 
- 418              		.loc 1 41 1 view .LVU82
- 419 0024 10BD     		pop	{r4, pc}
+ 421              		.loc 1 41 1 view .LVU82
+ 422 0024 10BD     		pop	{r4, pc}
   41:src/tmp112.c  **** 
- 420              		.loc 1 41 1 view .LVU83
- 421              		.cfi_endproc
- 422              	.LFE332:
- 424              		.section	.text.TMP_setTHigh,"ax",%progbits
- 425              		.align	1
- 426              		.global	TMP_setTHigh
- 427              		.syntax unified
- 428              		.thumb
- 429              		.thumb_func
- 431              	TMP_setTHigh:
- 432              	.LVL38:
- 433              	.LFB333:
+ 423              		.loc 1 41 1 view .LVU83
+ 424              		.cfi_endproc
+ 425              	.LFE332:
+ 427              		.section	.text.TMP_setTHigh,"ax",%progbits
+ 428              		.align	1
+ 429              		.global	TMP_setTHigh
+ 430              		.syntax unified
+ 431              		.thumb
+ 432              		.thumb_func
+ 434              	TMP_setTHigh:
+ 435              	.LVL38:
+ 436              	.LFB333:
   43:src/tmp112.c  ****     return TMP_write(address, TMP_THIGH, TMP_data_to_celcius(celcius));
- 434              		.loc 1 43 54 is_stmt 1 view -0
- 435              		.cfi_startproc
- 436              		@ args = 0, pretend = 0, frame = 0
- 437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 437              		.loc 1 43 54 is_stmt 1 view -0
+ 438              		.cfi_startproc
+ 439              		@ args = 0, pretend = 0, frame = 0
+ 440              		@ frame_needed = 0, uses_anonymous_args = 0
   43:src/tmp112.c  ****     return TMP_write(address, TMP_THIGH, TMP_data_to_celcius(celcius));
- 438              		.loc 1 43 54 is_stmt 0 view .LVU85
- 439 0000 10B5     		push	{r4, lr}
- 440              	.LCFI12:
- 441              		.cfi_def_cfa_offset 8
- 442              		.cfi_offset 4, -8
- 443              		.cfi_offset 14, -4
- 444 0002 0446     		mov	r4, r0
+ 441              		.loc 1 43 54 is_stmt 0 view .LVU85
+ 442 0000 10B5     		push	{r4, lr}
+ 443              	.LCFI12:
+ 444              		.cfi_def_cfa_offset 8
+ 445              		.cfi_offset 4, -8
+ 446              		.cfi_offset 14, -4
+ 447 0002 0446     		mov	r4, r0
   44:src/tmp112.c  **** }
- 445              		.loc 1 44 5 is_stmt 1 view .LVU86
+ 448              		.loc 1 44 5 is_stmt 1 view .LVU86
   44:src/tmp112.c  **** }
- 446              		.loc 1 44 42 is_stmt 0 view .LVU87
- 447 0004 BCEEC00A 		vcvt.u32.f32	s0, s0
- 448              	.LVL39:
+ 449              		.loc 1 44 42 is_stmt 0 view .LVU87
+ 450 0004 BCEEC00A 		vcvt.u32.f32	s0, s0
+ 451              	.LVL39:
   44:src/tmp112.c  **** }
- 449              		.loc 1 44 42 view .LVU88
- 450 0008 10EE103A 		vmov	r3, s0	@ int
- 451 000c 98B2     		uxth	r0, r3
- 452              	.LVL40:
+ 452              		.loc 1 44 42 view .LVU88
+ 453 0008 10EE103A 		vmov	r3, s0	@ int
+ 454 000c 98B2     		uxth	r0, r3
+ 455              	.LVL40:
   44:src/tmp112.c  **** }
- 453              		.loc 1 44 42 view .LVU89
- 454 000e FFF7FEFF 		bl	TMP_data_to_celcius
- 455              	.LVL41:
+ 456              		.loc 1 44 42 view .LVU89
+ 457 000e FFF7FEFF 		bl	TMP_data_to_celcius
+ 458              	.LVL41:
   44:src/tmp112.c  **** }
- 456              		.loc 1 44 12 discriminator 1 view .LVU90
- 457 0012 BCEEC00A 		vcvt.u32.f32	s0, s0
- 458 0016 10EE103A 		vmov	r3, s0	@ int
- 459 001a 9AB2     		uxth	r2, r3
-ARM GAS  /tmp/ccGYPPVC.s 			page 11
+ 459              		.loc 1 44 12 discriminator 1 view .LVU90
+ARM GAS  /tmp/cc9OYggF.s 			page 11
 
 
- 460 001c 0321     		movs	r1, #3
- 461 001e 2046     		mov	r0, r4
- 462 0020 FFF7FEFF 		bl	TMP_write
- 463              	.LVL42:
+ 460 0012 BCEEC00A 		vcvt.u32.f32	s0, s0
+ 461 0016 10EE103A 		vmov	r3, s0	@ int
+ 462 001a 9AB2     		uxth	r2, r3
+ 463 001c 0321     		movs	r1, #3
+ 464 001e 2046     		mov	r0, r4
+ 465 0020 FFF7FEFF 		bl	TMP_write
+ 466              	.LVL42:
   45:src/tmp112.c  **** 
- 464              		.loc 1 45 1 view .LVU91
- 465 0024 10BD     		pop	{r4, pc}
+ 467              		.loc 1 45 1 view .LVU91
+ 468 0024 10BD     		pop	{r4, pc}
   45:src/tmp112.c  **** 
- 466              		.loc 1 45 1 view .LVU92
- 467              		.cfi_endproc
- 468              	.LFE333:
- 470              		.section	.text.TMP_error,"ax",%progbits
- 471              		.align	1
- 472              		.global	TMP_error
- 473              		.syntax unified
- 474              		.thumb
- 475              		.thumb_func
- 477              	TMP_error:
- 478              	.LFB339:
+ 469              		.loc 1 45 1 view .LVU92
+ 470              		.cfi_endproc
+ 471              	.LFE333:
+ 473              		.section	.text.TMP_error,"ax",%progbits
+ 474              		.align	1
+ 475              		.global	TMP_error
+ 476              		.syntax unified
+ 477              		.thumb
+ 478              		.thumb_func
+ 480              	TMP_error:
+ 481              	.LFB339:
   77:src/tmp112.c  **** 
   78:src/tmp112.c  **** void TMP_error(void) {
- 479              		.loc 1 78 22 is_stmt 1 view -0
- 480              		.cfi_startproc
- 481              		@ Volatile: function does not return.
- 482              		@ args = 0, pretend = 0, frame = 0
- 483              		@ frame_needed = 0, uses_anonymous_args = 0
- 484              		@ link register save eliminated.
- 485              	.L30:
+ 482              		.loc 1 78 22 is_stmt 1 view -0
+ 483              		.cfi_startproc
+ 484              		@ Volatile: function does not return.
+ 485              		@ args = 0, pretend = 0, frame = 0
+ 486              		@ frame_needed = 0, uses_anonymous_args = 0
+ 487              		@ link register save eliminated.
+ 488              	.L30:
   79:src/tmp112.c  **** 	while(1);
- 486              		.loc 1 79 2 view .LVU94
- 487              		.loc 1 79 7 view .LVU95
- 488 0000 FEE7     		b	.L30
- 489              		.cfi_endproc
- 490              	.LFE339:
- 492              		.section	.text.MX_I2C_Init,"ax",%progbits
- 493              		.align	1
- 494              		.global	MX_I2C_Init
- 495              		.syntax unified
- 496              		.thumb
- 497              		.thumb_func
- 499              	MX_I2C_Init:
- 500              	.LFB340:
+ 489              		.loc 1 79 2 view .LVU94
+ 490              		.loc 1 79 7 view .LVU95
+ 491 0000 FEE7     		b	.L30
+ 492              		.cfi_endproc
+ 493              	.LFE339:
+ 495              		.section	.text.MX_I2C_Init,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	MX_I2C_Init
+ 498              		.syntax unified
+ 499              		.thumb
+ 500              		.thumb_func
+ 502              	MX_I2C_Init:
+ 503              	.LFB340:
   80:src/tmp112.c  **** }
   81:src/tmp112.c  **** 
   82:src/tmp112.c  **** /**
@@ -652,281 +655,281 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
   86:src/tmp112.c  **** */
   87:src/tmp112.c  **** void MX_I2C_Init(void)
   88:src/tmp112.c  **** {
- 501              		.loc 1 88 1 view -0
- 502              		.cfi_startproc
- 503              		@ args = 0, pretend = 0, frame = 0
- 504              		@ frame_needed = 0, uses_anonymous_args = 0
- 505 0000 08B5     		push	{r3, lr}
- 506              	.LCFI13:
-ARM GAS  /tmp/ccGYPPVC.s 			page 12
+ 504              		.loc 1 88 1 view -0
+ 505              		.cfi_startproc
+ 506              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc9OYggF.s 			page 12
 
 
- 507              		.cfi_def_cfa_offset 8
- 508              		.cfi_offset 3, -8
- 509              		.cfi_offset 14, -4
+ 507              		@ frame_needed = 0, uses_anonymous_args = 0
+ 508 0000 08B5     		push	{r3, lr}
+ 509              	.LCFI13:
+ 510              		.cfi_def_cfa_offset 8
+ 511              		.cfi_offset 3, -8
+ 512              		.cfi_offset 14, -4
   89:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Instance = I2C3;
- 510              		.loc 1 89 2 view .LVU97
- 511              		.loc 1 89 29 is_stmt 0 view .LVU98
- 512 0002 1248     		ldr	r0, .L39
- 513 0004 124B     		ldr	r3, .L39+4
- 514 0006 0360     		str	r3, [r0]
+ 513              		.loc 1 89 2 view .LVU97
+ 514              		.loc 1 89 29 is_stmt 0 view .LVU98
+ 515 0002 1248     		ldr	r0, .L39
+ 516 0004 124B     		ldr	r3, .L39+4
+ 517 0006 0360     		str	r3, [r0]
   90:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.Timing = 0x40B285C2;
- 515              		.loc 1 90 2 is_stmt 1 view .LVU99
- 516              		.loc 1 90 32 is_stmt 0 view .LVU100
- 517 0008 03F53203 		add	r3, r3, #11665408
- 518 000c 03F6C253 		addw	r3, r3, #3522
- 519 0010 4360     		str	r3, [r0, #4]
+ 518              		.loc 1 90 2 is_stmt 1 view .LVU99
+ 519              		.loc 1 90 32 is_stmt 0 view .LVU100
+ 520 0008 03F53203 		add	r3, r3, #11665408
+ 521 000c 03F6C253 		addw	r3, r3, #3522
+ 522 0010 4360     		str	r3, [r0, #4]
   91:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.OwnAddress1 = 0;
- 520              		.loc 1 91 2 is_stmt 1 view .LVU101
- 521              		.loc 1 91 37 is_stmt 0 view .LVU102
- 522 0012 0023     		movs	r3, #0
- 523 0014 8360     		str	r3, [r0, #8]
+ 523              		.loc 1 91 2 is_stmt 1 view .LVU101
+ 524              		.loc 1 91 37 is_stmt 0 view .LVU102
+ 525 0012 0023     		movs	r3, #0
+ 526 0014 8360     		str	r3, [r0, #8]
   92:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
- 524              		.loc 1 92 2 is_stmt 1 view .LVU103
- 525              		.loc 1 92 40 is_stmt 0 view .LVU104
- 526 0016 0122     		movs	r2, #1
- 527 0018 C260     		str	r2, [r0, #12]
+ 527              		.loc 1 92 2 is_stmt 1 view .LVU103
+ 528              		.loc 1 92 40 is_stmt 0 view .LVU104
+ 529 0016 0122     		movs	r2, #1
+ 530 0018 C260     		str	r2, [r0, #12]
   93:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
- 528              		.loc 1 93 2 is_stmt 1 view .LVU105
- 529              		.loc 1 93 41 is_stmt 0 view .LVU106
- 530 001a 0361     		str	r3, [r0, #16]
+ 531              		.loc 1 93 2 is_stmt 1 view .LVU105
+ 532              		.loc 1 93 41 is_stmt 0 view .LVU106
+ 533 001a 0361     		str	r3, [r0, #16]
   94:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.OwnAddress2 = 0;
- 531              		.loc 1 94 2 is_stmt 1 view .LVU107
- 532              		.loc 1 94 37 is_stmt 0 view .LVU108
- 533 001c 4361     		str	r3, [r0, #20]
+ 534              		.loc 1 94 2 is_stmt 1 view .LVU107
+ 535              		.loc 1 94 37 is_stmt 0 view .LVU108
+ 536 001c 4361     		str	r3, [r0, #20]
   95:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
- 534              		.loc 1 95 2 is_stmt 1 view .LVU109
- 535              		.loc 1 95 42 is_stmt 0 view .LVU110
- 536 001e 8361     		str	r3, [r0, #24]
+ 537              		.loc 1 95 2 is_stmt 1 view .LVU109
+ 538              		.loc 1 95 42 is_stmt 0 view .LVU110
+ 539 001e 8361     		str	r3, [r0, #24]
   96:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
- 537              		.loc 1 96 2 is_stmt 1 view .LVU111
- 538              		.loc 1 96 41 is_stmt 0 view .LVU112
- 539 0020 C361     		str	r3, [r0, #28]
+ 540              		.loc 1 96 2 is_stmt 1 view .LVU111
+ 541              		.loc 1 96 41 is_stmt 0 view .LVU112
+ 542 0020 C361     		str	r3, [r0, #28]
   97:src/tmp112.c  **** 	TMP_I2C_INTERFACE.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;\
- 540              		.loc 1 97 2 is_stmt 1 view .LVU113
- 541              		.loc 1 97 39 is_stmt 0 view .LVU114
- 542 0022 0362     		str	r3, [r0, #32]
+ 543              		.loc 1 97 2 is_stmt 1 view .LVU113
+ 544              		.loc 1 97 39 is_stmt 0 view .LVU114
+ 545 0022 0362     		str	r3, [r0, #32]
   98:src/tmp112.c  **** 
   99:src/tmp112.c  **** 	if (HAL_I2C_Init(&TMP_I2C_INTERFACE) != HAL_OK)
- 543              		.loc 1 99 2 is_stmt 1 view .LVU115
- 544              		.loc 1 99 6 is_stmt 0 view .LVU116
- 545 0024 FFF7FEFF 		bl	HAL_I2C_Init
- 546              	.LVL43:
- 547              		.loc 1 99 5 discriminator 1 view .LVU117
- 548 0028 50B9     		cbnz	r0, .L36
+ 546              		.loc 1 99 2 is_stmt 1 view .LVU115
+ 547              		.loc 1 99 6 is_stmt 0 view .LVU116
+ 548 0024 FFF7FEFF 		bl	HAL_I2C_Init
+ 549              	.LVL43:
+ 550              		.loc 1 99 5 discriminator 1 view .LVU117
+ 551 0028 50B9     		cbnz	r0, .L36
  100:src/tmp112.c  **** 	{
+ARM GAS  /tmp/cc9OYggF.s 			page 13
+
+
  101:src/tmp112.c  **** 		TMP_error();
  102:src/tmp112.c  **** 	}
  103:src/tmp112.c  **** 	if (HAL_I2CEx_ConfigAnalogFilter(&TMP_I2C_INTERFACE, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
-ARM GAS  /tmp/ccGYPPVC.s 			page 13
-
-
- 549              		.loc 1 103 2 is_stmt 1 view .LVU118
- 550              		.loc 1 103 6 is_stmt 0 view .LVU119
- 551 002a 0021     		movs	r1, #0
- 552 002c 0748     		ldr	r0, .L39
- 553 002e FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
- 554              	.LVL44:
- 555              		.loc 1 103 5 discriminator 1 view .LVU120
- 556 0032 38B9     		cbnz	r0, .L37
+ 552              		.loc 1 103 2 is_stmt 1 view .LVU118
+ 553              		.loc 1 103 6 is_stmt 0 view .LVU119
+ 554 002a 0021     		movs	r1, #0
+ 555 002c 0748     		ldr	r0, .L39
+ 556 002e FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 557              	.LVL44:
+ 558              		.loc 1 103 5 discriminator 1 view .LVU120
+ 559 0032 38B9     		cbnz	r0, .L37
  104:src/tmp112.c  **** 	{
  105:src/tmp112.c  **** 		TMP_error();
  106:src/tmp112.c  **** 	}
  107:src/tmp112.c  **** 	if (HAL_I2CEx_ConfigDigitalFilter(&TMP_I2C_INTERFACE, 0) != HAL_OK)
- 557              		.loc 1 107 2 is_stmt 1 view .LVU121
- 558              		.loc 1 107 6 is_stmt 0 view .LVU122
- 559 0034 0021     		movs	r1, #0
- 560 0036 0548     		ldr	r0, .L39
- 561 0038 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
- 562              	.LVL45:
- 563              		.loc 1 107 5 discriminator 1 view .LVU123
- 564 003c 20B9     		cbnz	r0, .L38
+ 560              		.loc 1 107 2 is_stmt 1 view .LVU121
+ 561              		.loc 1 107 6 is_stmt 0 view .LVU122
+ 562 0034 0021     		movs	r1, #0
+ 563 0036 0548     		ldr	r0, .L39
+ 564 0038 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 565              	.LVL45:
+ 566              		.loc 1 107 5 discriminator 1 view .LVU123
+ 567 003c 20B9     		cbnz	r0, .L38
  108:src/tmp112.c  **** 	{
  109:src/tmp112.c  **** 		TMP_error();
  110:src/tmp112.c  **** 	}
  111:src/tmp112.c  **** }
- 565              		.loc 1 111 1 view .LVU124
- 566 003e 08BD     		pop	{r3, pc}
- 567              	.L36:
+ 568              		.loc 1 111 1 view .LVU124
+ 569 003e 08BD     		pop	{r3, pc}
+ 570              	.L36:
  101:src/tmp112.c  **** 	}
- 568              		.loc 1 101 3 is_stmt 1 view .LVU125
- 569 0040 FFF7FEFF 		bl	TMP_error
- 570              	.LVL46:
- 571              	.L37:
+ 571              		.loc 1 101 3 is_stmt 1 view .LVU125
+ 572 0040 FFF7FEFF 		bl	TMP_error
+ 573              	.LVL46:
+ 574              	.L37:
  105:src/tmp112.c  **** 	}
- 572              		.loc 1 105 3 view .LVU126
- 573 0044 FFF7FEFF 		bl	TMP_error
- 574              	.LVL47:
- 575              	.L38:
+ 575              		.loc 1 105 3 view .LVU126
+ 576 0044 FFF7FEFF 		bl	TMP_error
+ 577              	.LVL47:
+ 578              	.L38:
  109:src/tmp112.c  **** 	}
- 576              		.loc 1 109 3 view .LVU127
- 577 0048 FFF7FEFF 		bl	TMP_error
- 578              	.LVL48:
- 579              	.L40:
- 580              		.align	2
- 581              	.L39:
- 582 004c 00000000 		.word	hi2c1
- 583 0050 00780040 		.word	1073772544
- 584              		.cfi_endproc
- 585              	.LFE340:
- 587              		.section	.text.TMP_init,"ax",%progbits
- 588              		.align	1
- 589              		.global	TMP_init
- 590              		.syntax unified
- 591              		.thumb
- 592              		.thumb_func
- 594              	TMP_init:
- 595              	.LFB329:
+ 579              		.loc 1 109 3 view .LVU127
+ 580 0048 FFF7FEFF 		bl	TMP_error
+ 581              	.LVL48:
+ 582              	.L40:
+ 583              		.align	2
+ 584              	.L39:
+ 585 004c 00000000 		.word	TMP_I2C_INTERFACE
+ 586 0050 00780040 		.word	1073772544
+ 587              		.cfi_endproc
+ 588              	.LFE340:
+ 590              		.section	.text.TMP_init,"ax",%progbits
+ 591              		.align	1
+ 592              		.global	TMP_init
+ 593              		.syntax unified
+ 594              		.thumb
+ 595              		.thumb_func
+ARM GAS  /tmp/cc9OYggF.s 			page 14
+
+
+ 597              	TMP_init:
+ 598              	.LFB329:
   10:src/tmp112.c  **** 	MX_I2C_Init();
-ARM GAS  /tmp/ccGYPPVC.s 			page 14
-
-
- 596              		.loc 1 10 17 view -0
- 597              		.cfi_startproc
- 598              		@ args = 0, pretend = 0, frame = 0
- 599              		@ frame_needed = 0, uses_anonymous_args = 0
- 600 0000 38B5     		push	{r3, r4, r5, lr}
- 601              	.LCFI14:
- 602              		.cfi_def_cfa_offset 16
- 603              		.cfi_offset 3, -16
- 604              		.cfi_offset 4, -12
- 605              		.cfi_offset 5, -8
- 606              		.cfi_offset 14, -4
+ 599              		.loc 1 10 17 view -0
+ 600              		.cfi_startproc
+ 601              		@ args = 0, pretend = 0, frame = 0
+ 602              		@ frame_needed = 0, uses_anonymous_args = 0
+ 603 0000 38B5     		push	{r3, r4, r5, lr}
+ 604              	.LCFI14:
+ 605              		.cfi_def_cfa_offset 16
+ 606              		.cfi_offset 3, -16
+ 607              		.cfi_offset 4, -12
+ 608              		.cfi_offset 5, -8
+ 609              		.cfi_offset 14, -4
   11:src/tmp112.c  **** 
- 607              		.loc 1 11 2 view .LVU129
- 608 0002 FFF7FEFF 		bl	MX_I2C_Init
- 609              	.LVL49:
+ 610              		.loc 1 11 2 view .LVU129
+ 611 0002 FFF7FEFF 		bl	MX_I2C_Init
+ 612              	.LVL49:
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 610              		.loc 1 13 5 view .LVU130
- 611              	.LBB4:
+ 613              		.loc 1 13 5 view .LVU130
+ 614              	.LBB4:
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 612              		.loc 1 13 10 view .LVU131
+ 615              		.loc 1 13 10 view .LVU131
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 613              		.loc 1 13 18 is_stmt 0 view .LVU132
- 614 0006 0025     		movs	r5, #0
+ 616              		.loc 1 13 18 is_stmt 0 view .LVU132
+ 617 0006 0025     		movs	r5, #0
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 615              		.loc 1 13 5 view .LVU133
- 616 0008 1BE0     		b	.L42
- 617              	.LVL50:
- 618              	.L43:
+ 618              		.loc 1 13 5 view .LVU133
+ 619 0008 1BE0     		b	.L42
+ 620              	.LVL50:
+ 621              	.L43:
   14:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_POLARITY_MASK);
- 619              		.loc 1 14 9 is_stmt 1 view .LVU134
- 620 000a 05F14804 		add	r4, r5, #72
- 621 000e E4B2     		uxtb	r4, r4
- 622 0010 4FF40061 		mov	r1, #2048
- 623 0014 2046     		mov	r0, r4
- 624 0016 FFF7FEFF 		bl	TMP_setConfig
- 625              	.LVL51:
+ 622              		.loc 1 14 9 is_stmt 1 view .LVU134
+ 623 000a 05F14804 		add	r4, r5, #72
+ 624 000e E4B2     		uxtb	r4, r4
+ 625 0010 4FF40061 		mov	r1, #2048
+ 626 0014 2046     		mov	r0, r4
+ 627 0016 FFF7FEFF 		bl	TMP_setConfig
+ 628              	.LVL51:
   15:src/tmp112.c  ****         TMP_setTLow(TMP_ADDR(i), 60);
- 626              		.loc 1 15 9 view .LVU135
- 627 001a 4FF48061 		mov	r1, #1024
- 628 001e 2046     		mov	r0, r4
- 629 0020 FFF7FEFF 		bl	TMP_setConfig
- 630              	.LVL52:
+ 629              		.loc 1 15 9 view .LVU135
+ 630 001a 4FF48061 		mov	r1, #1024
+ 631 001e 2046     		mov	r0, r4
+ 632 0020 FFF7FEFF 		bl	TMP_setConfig
+ 633              	.LVL52:
   16:src/tmp112.c  ****         TMP_setTHigh(TMP_ADDR(i), 80);
- 631              		.loc 1 16 9 view .LVU136
- 632 0024 9FED080A 		vldr.32	s0, .L45
- 633 0028 2046     		mov	r0, r4
- 634 002a FFF7FEFF 		bl	TMP_setTLow
- 635              	.LVL53:
+ 634              		.loc 1 16 9 view .LVU136
+ 635 0024 9FED080A 		vldr.32	s0, .L45
+ 636 0028 2046     		mov	r0, r4
+ 637 002a FFF7FEFF 		bl	TMP_setTLow
+ 638              	.LVL53:
   17:src/tmp112.c  ****         TMP_getTemperatureSingle(TMP_ADDR(i));
- 636              		.loc 1 17 9 view .LVU137
- 637 002e 9FED070A 		vldr.32	s0, .L45+4
- 638 0032 2046     		mov	r0, r4
- 639 0034 FFF7FEFF 		bl	TMP_setTHigh
- 640              	.LVL54:
+ 639              		.loc 1 17 9 view .LVU137
+ 640 002e 9FED070A 		vldr.32	s0, .L45+4
+ 641 0032 2046     		mov	r0, r4
+ 642 0034 FFF7FEFF 		bl	TMP_setTHigh
+ 643              	.LVL54:
+ARM GAS  /tmp/cc9OYggF.s 			page 15
+
+
   18:src/tmp112.c  ****     }
- 641              		.loc 1 18 9 view .LVU138
- 642 0038 2046     		mov	r0, r4
-ARM GAS  /tmp/ccGYPPVC.s 			page 15
-
-
- 643 003a FFF7FEFF 		bl	TMP_getTemperatureSingle
- 644              	.LVL55:
+ 644              		.loc 1 18 9 view .LVU138
+ 645 0038 2046     		mov	r0, r4
+ 646 003a FFF7FEFF 		bl	TMP_getTemperatureSingle
+ 647              	.LVL55:
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 645              		.loc 1 13 47 discriminator 3 view .LVU139
- 646 003e 0135     		adds	r5, r5, #1
- 647              	.LVL56:
+ 648              		.loc 1 13 47 discriminator 3 view .LVU139
+ 649 003e 0135     		adds	r5, r5, #1
+ 650              	.LVL56:
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 648              		.loc 1 13 47 is_stmt 0 discriminator 3 view .LVU140
- 649 0040 EDB2     		uxtb	r5, r5
- 650              	.LVL57:
- 651              	.L42:
+ 651              		.loc 1 13 47 is_stmt 0 discriminator 3 view .LVU140
+ 652 0040 EDB2     		uxtb	r5, r5
+ 653              	.LVL57:
+ 654              	.L42:
   13:src/tmp112.c  ****         TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
- 652              		.loc 1 13 27 is_stmt 1 discriminator 1 view .LVU141
- 653 0042 032D     		cmp	r5, #3
- 654 0044 E1D9     		bls	.L43
- 655              	.LBE4:
+ 655              		.loc 1 13 27 is_stmt 1 discriminator 1 view .LVU141
+ 656 0042 032D     		cmp	r5, #3
+ 657 0044 E1D9     		bls	.L43
+ 658              	.LBE4:
   20:src/tmp112.c  **** 
- 656              		.loc 1 20 1 is_stmt 0 view .LVU142
- 657 0046 38BD     		pop	{r3, r4, r5, pc}
- 658              	.LVL58:
- 659              	.L46:
+ 659              		.loc 1 20 1 is_stmt 0 view .LVU142
+ 660 0046 38BD     		pop	{r3, r4, r5, pc}
+ 661              	.LVL58:
+ 662              	.L46:
   20:src/tmp112.c  **** 
- 660              		.loc 1 20 1 view .LVU143
- 661              		.align	2
- 662              	.L45:
- 663 0048 00007042 		.word	1114636288
- 664 004c 0000A042 		.word	1117782016
- 665              		.cfi_endproc
- 666              	.LFE329:
- 668              		.section	.text.HAL_I2C_MspInit,"ax",%progbits
- 669              		.align	1
- 670              		.global	HAL_I2C_MspInit
- 671              		.syntax unified
- 672              		.thumb
- 673              		.thumb_func
- 675              	HAL_I2C_MspInit:
- 676              	.LVL59:
- 677              	.LFB341:
+ 663              		.loc 1 20 1 view .LVU143
+ 664              		.align	2
+ 665              	.L45:
+ 666 0048 00007042 		.word	1114636288
+ 667 004c 0000A042 		.word	1117782016
+ 668              		.cfi_endproc
+ 669              	.LFE329:
+ 671              		.section	.text.HAL_I2C_MspInit,"ax",%progbits
+ 672              		.align	1
+ 673              		.global	HAL_I2C_MspInit
+ 674              		.syntax unified
+ 675              		.thumb
+ 676              		.thumb_func
+ 678              	HAL_I2C_MspInit:
+ 679              	.LVL59:
+ 680              	.LFB341:
  112:src/tmp112.c  **** 
  113:src/tmp112.c  **** void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
  114:src/tmp112.c  **** {
- 678              		.loc 1 114 1 is_stmt 1 view -0
- 679              		.cfi_startproc
- 680              		@ args = 0, pretend = 0, frame = 112
- 681              		@ frame_needed = 0, uses_anonymous_args = 0
- 682              		.loc 1 114 1 is_stmt 0 view .LVU145
- 683 0000 10B5     		push	{r4, lr}
- 684              	.LCFI15:
- 685              		.cfi_def_cfa_offset 8
- 686              		.cfi_offset 4, -8
- 687              		.cfi_offset 14, -4
- 688 0002 9CB0     		sub	sp, sp, #112
- 689              	.LCFI16:
- 690              		.cfi_def_cfa_offset 120
- 691 0004 0446     		mov	r4, r0
+ 681              		.loc 1 114 1 is_stmt 1 view -0
+ 682              		.cfi_startproc
+ 683              		@ args = 0, pretend = 0, frame = 112
+ 684              		@ frame_needed = 0, uses_anonymous_args = 0
+ 685              		.loc 1 114 1 is_stmt 0 view .LVU145
+ 686 0000 10B5     		push	{r4, lr}
+ 687              	.LCFI15:
+ 688              		.cfi_def_cfa_offset 8
+ 689              		.cfi_offset 4, -8
+ 690              		.cfi_offset 14, -4
+ 691 0002 9CB0     		sub	sp, sp, #112
+ 692              	.LCFI16:
+ 693              		.cfi_def_cfa_offset 120
+ARM GAS  /tmp/cc9OYggF.s 			page 16
+
+
+ 694 0004 0446     		mov	r4, r0
  115:src/tmp112.c  ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 692              		.loc 1 115 3 is_stmt 1 view .LVU146
-ARM GAS  /tmp/ccGYPPVC.s 			page 16
-
-
- 693              		.loc 1 115 20 is_stmt 0 view .LVU147
- 694 0006 0021     		movs	r1, #0
- 695 0008 1791     		str	r1, [sp, #92]
- 696 000a 1891     		str	r1, [sp, #96]
- 697 000c 1991     		str	r1, [sp, #100]
- 698 000e 1A91     		str	r1, [sp, #104]
- 699 0010 1B91     		str	r1, [sp, #108]
+ 695              		.loc 1 115 3 is_stmt 1 view .LVU146
+ 696              		.loc 1 115 20 is_stmt 0 view .LVU147
+ 697 0006 0021     		movs	r1, #0
+ 698 0008 1791     		str	r1, [sp, #92]
+ 699 000a 1891     		str	r1, [sp, #96]
+ 700 000c 1991     		str	r1, [sp, #100]
+ 701 000e 1A91     		str	r1, [sp, #104]
+ 702 0010 1B91     		str	r1, [sp, #108]
  116:src/tmp112.c  ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 700              		.loc 1 116 3 is_stmt 1 view .LVU148
- 701              		.loc 1 116 28 is_stmt 0 view .LVU149
- 702 0012 5422     		movs	r2, #84
- 703 0014 02A8     		add	r0, sp, #8
- 704              	.LVL60:
- 705              		.loc 1 116 28 view .LVU150
- 706 0016 FFF7FEFF 		bl	memset
- 707              	.LVL61:
+ 703              		.loc 1 116 3 is_stmt 1 view .LVU148
+ 704              		.loc 1 116 28 is_stmt 0 view .LVU149
+ 705 0012 5422     		movs	r2, #84
+ 706 0014 02A8     		add	r0, sp, #8
+ 707              	.LVL60:
+ 708              		.loc 1 116 28 view .LVU150
+ 709 0016 FFF7FEFF 		bl	memset
+ 710              	.LVL61:
  117:src/tmp112.c  ****   if(i2cHandle->Instance==I2C3)
- 708              		.loc 1 117 3 is_stmt 1 view .LVU151
- 709              		.loc 1 117 15 is_stmt 0 view .LVU152
- 710 001a 2268     		ldr	r2, [r4]
- 711              		.loc 1 117 5 view .LVU153
- 712 001c 174B     		ldr	r3, .L53
- 713 001e 9A42     		cmp	r2, r3
- 714 0020 01D0     		beq	.L51
- 715              	.LVL62:
- 716              	.L47:
+ 711              		.loc 1 117 3 is_stmt 1 view .LVU151
+ 712              		.loc 1 117 15 is_stmt 0 view .LVU152
+ 713 001a 2268     		ldr	r2, [r4]
+ 714              		.loc 1 117 5 view .LVU153
+ 715 001c 174B     		ldr	r3, .L53
+ 716 001e 9A42     		cmp	r2, r3
+ 717 0020 01D0     		beq	.L51
+ 718              	.LVL62:
+ 719              	.L47:
  118:src/tmp112.c  ****   {
  119:src/tmp112.c  ****     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C3;
  120:src/tmp112.c  ****     PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
@@ -945,276 +948,276 @@ ARM GAS  /tmp/ccGYPPVC.s 			page 1
  133:src/tmp112.c  ****     __HAL_RCC_I2C3_CLK_ENABLE();
  134:src/tmp112.c  ****   }
  135:src/tmp112.c  **** }
- 717              		.loc 1 135 1 view .LVU154
- 718 0022 1CB0     		add	sp, sp, #112
- 719              	.LCFI17:
- 720              		.cfi_remember_state
- 721              		.cfi_def_cfa_offset 8
- 722              		@ sp needed
- 723 0024 10BD     		pop	{r4, pc}
- 724              	.LVL63:
- 725              	.L51:
- 726              	.LCFI18:
- 727              		.cfi_restore_state
- 119:src/tmp112.c  ****     PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
- 728              		.loc 1 119 5 is_stmt 1 view .LVU155
-ARM GAS  /tmp/ccGYPPVC.s 			page 17
+ 720              		.loc 1 135 1 view .LVU154
+ 721 0022 1CB0     		add	sp, sp, #112
+ 722              	.LCFI17:
+ 723              		.cfi_remember_state
+ 724              		.cfi_def_cfa_offset 8
+ 725              		@ sp needed
+ 726 0024 10BD     		pop	{r4, pc}
+ 727              	.LVL63:
+ 728              	.L51:
+ 729              	.LCFI18:
+ARM GAS  /tmp/cc9OYggF.s 			page 17
 
 
+ 730              		.cfi_restore_state
  119:src/tmp112.c  ****     PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
- 729              		.loc 1 119 40 is_stmt 0 view .LVU156
- 730 0026 4FF48073 		mov	r3, #256
- 731 002a 0293     		str	r3, [sp, #8]
+ 731              		.loc 1 119 5 is_stmt 1 view .LVU155
+ 119:src/tmp112.c  ****     PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
+ 732              		.loc 1 119 40 is_stmt 0 view .LVU156
+ 733 0026 4FF48073 		mov	r3, #256
+ 734 002a 0293     		str	r3, [sp, #8]
  120:src/tmp112.c  ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
- 732              		.loc 1 120 5 is_stmt 1 view .LVU157
+ 735              		.loc 1 120 5 is_stmt 1 view .LVU157
  121:src/tmp112.c  ****     {
- 733              		.loc 1 121 5 view .LVU158
+ 736              		.loc 1 121 5 view .LVU158
  121:src/tmp112.c  ****     {
- 734              		.loc 1 121 9 is_stmt 0 view .LVU159
- 735 002c 02A8     		add	r0, sp, #8
- 736 002e FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
- 737              	.LVL64:
+ 737              		.loc 1 121 9 is_stmt 0 view .LVU159
+ 738 002c 02A8     		add	r0, sp, #8
+ 739 002e FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 740              	.LVL64:
  121:src/tmp112.c  ****     {
- 738              		.loc 1 121 8 discriminator 1 view .LVU160
- 739 0032 08BB     		cbnz	r0, .L52
+ 741              		.loc 1 121 8 discriminator 1 view .LVU160
+ 742 0032 08BB     		cbnz	r0, .L52
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 740              		.loc 1 126 5 is_stmt 1 view .LVU161
- 741              	.LBB5:
+ 743              		.loc 1 126 5 is_stmt 1 view .LVU161
+ 744              	.LBB5:
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 742              		.loc 1 126 5 view .LVU162
+ 745              		.loc 1 126 5 view .LVU162
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 743              		.loc 1 126 5 view .LVU163
- 744 0034 124C     		ldr	r4, .L53+4
- 745              	.LVL65:
+ 746              		.loc 1 126 5 view .LVU163
+ 747 0034 124C     		ldr	r4, .L53+4
+ 748              	.LVL65:
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 746              		.loc 1 126 5 is_stmt 0 view .LVU164
- 747 0036 E36C     		ldr	r3, [r4, #76]
- 748 0038 43F00403 		orr	r3, r3, #4
- 749 003c E364     		str	r3, [r4, #76]
+ 749              		.loc 1 126 5 is_stmt 0 view .LVU164
+ 750 0036 E36C     		ldr	r3, [r4, #76]
+ 751 0038 43F00403 		orr	r3, r3, #4
+ 752 003c E364     		str	r3, [r4, #76]
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 750              		.loc 1 126 5 is_stmt 1 view .LVU165
- 751 003e E36C     		ldr	r3, [r4, #76]
- 752 0040 03F00403 		and	r3, r3, #4
- 753 0044 0093     		str	r3, [sp]
+ 753              		.loc 1 126 5 is_stmt 1 view .LVU165
+ 754 003e E36C     		ldr	r3, [r4, #76]
+ 755 0040 03F00403 		and	r3, r3, #4
+ 756 0044 0093     		str	r3, [sp]
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 754              		.loc 1 126 5 view .LVU166
- 755 0046 009B     		ldr	r3, [sp]
- 756              	.LBE5:
+ 757              		.loc 1 126 5 view .LVU166
+ 758 0046 009B     		ldr	r3, [sp]
+ 759              	.LBE5:
  126:src/tmp112.c  ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 757              		.loc 1 126 5 view .LVU167
+ 760              		.loc 1 126 5 view .LVU167
  127:src/tmp112.c  ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
- 758              		.loc 1 127 5 view .LVU168
+ 761              		.loc 1 127 5 view .LVU168
  127:src/tmp112.c  ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
- 759              		.loc 1 127 25 is_stmt 0 view .LVU169
- 760 0048 4FF44073 		mov	r3, #768
- 761 004c 1793     		str	r3, [sp, #92]
+ 762              		.loc 1 127 25 is_stmt 0 view .LVU169
+ 763 0048 4FF44073 		mov	r3, #768
+ 764 004c 1793     		str	r3, [sp, #92]
  128:src/tmp112.c  ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 762              		.loc 1 128 5 is_stmt 1 view .LVU170
+ 765              		.loc 1 128 5 is_stmt 1 view .LVU170
  128:src/tmp112.c  ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 763              		.loc 1 128 26 is_stmt 0 view .LVU171
- 764 004e 1223     		movs	r3, #18
- 765 0050 1893     		str	r3, [sp, #96]
+ 766              		.loc 1 128 26 is_stmt 0 view .LVU171
+ 767 004e 1223     		movs	r3, #18
+ 768 0050 1893     		str	r3, [sp, #96]
  129:src/tmp112.c  ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 766              		.loc 1 129 5 is_stmt 1 view .LVU172
- 129:src/tmp112.c  ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 767              		.loc 1 129 26 is_stmt 0 view .LVU173
-ARM GAS  /tmp/ccGYPPVC.s 			page 18
+ARM GAS  /tmp/cc9OYggF.s 			page 18
 
 
- 768 0052 0023     		movs	r3, #0
- 769 0054 1993     		str	r3, [sp, #100]
+ 769              		.loc 1 129 5 is_stmt 1 view .LVU172
+ 129:src/tmp112.c  ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 770              		.loc 1 129 26 is_stmt 0 view .LVU173
+ 771 0052 0023     		movs	r3, #0
+ 772 0054 1993     		str	r3, [sp, #100]
  130:src/tmp112.c  ****     GPIO_InitStruct.Alternate = GPIO_AF8_I2C3;
- 770              		.loc 1 130 5 is_stmt 1 view .LVU174
+ 773              		.loc 1 130 5 is_stmt 1 view .LVU174
  130:src/tmp112.c  ****     GPIO_InitStruct.Alternate = GPIO_AF8_I2C3;
- 771              		.loc 1 130 27 is_stmt 0 view .LVU175
- 772 0056 1A93     		str	r3, [sp, #104]
+ 774              		.loc 1 130 27 is_stmt 0 view .LVU175
+ 775 0056 1A93     		str	r3, [sp, #104]
  131:src/tmp112.c  ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
- 773              		.loc 1 131 5 is_stmt 1 view .LVU176
+ 776              		.loc 1 131 5 is_stmt 1 view .LVU176
  131:src/tmp112.c  ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
- 774              		.loc 1 131 31 is_stmt 0 view .LVU177
- 775 0058 0823     		movs	r3, #8
- 776 005a 1B93     		str	r3, [sp, #108]
+ 777              		.loc 1 131 31 is_stmt 0 view .LVU177
+ 778 0058 0823     		movs	r3, #8
+ 779 005a 1B93     		str	r3, [sp, #108]
  132:src/tmp112.c  ****     __HAL_RCC_I2C3_CLK_ENABLE();
- 777              		.loc 1 132 5 is_stmt 1 view .LVU178
- 778 005c 17A9     		add	r1, sp, #92
- 779 005e 0948     		ldr	r0, .L53+8
- 780 0060 FFF7FEFF 		bl	HAL_GPIO_Init
- 781              	.LVL66:
+ 780              		.loc 1 132 5 is_stmt 1 view .LVU178
+ 781 005c 17A9     		add	r1, sp, #92
+ 782 005e 0948     		ldr	r0, .L53+8
+ 783 0060 FFF7FEFF 		bl	HAL_GPIO_Init
+ 784              	.LVL66:
  133:src/tmp112.c  ****   }
- 782              		.loc 1 133 5 view .LVU179
- 783              	.LBB6:
+ 785              		.loc 1 133 5 view .LVU179
+ 786              	.LBB6:
  133:src/tmp112.c  ****   }
- 784              		.loc 1 133 5 view .LVU180
+ 787              		.loc 1 133 5 view .LVU180
  133:src/tmp112.c  ****   }
- 785              		.loc 1 133 5 view .LVU181
- 786 0064 A36D     		ldr	r3, [r4, #88]
- 787 0066 43F08043 		orr	r3, r3, #1073741824
- 788 006a A365     		str	r3, [r4, #88]
+ 788              		.loc 1 133 5 view .LVU181
+ 789 0064 A36D     		ldr	r3, [r4, #88]
+ 790 0066 43F08043 		orr	r3, r3, #1073741824
+ 791 006a A365     		str	r3, [r4, #88]
  133:src/tmp112.c  ****   }
- 789              		.loc 1 133 5 view .LVU182
- 790 006c A36D     		ldr	r3, [r4, #88]
- 791 006e 03F08043 		and	r3, r3, #1073741824
- 792 0072 0193     		str	r3, [sp, #4]
+ 792              		.loc 1 133 5 view .LVU182
+ 793 006c A36D     		ldr	r3, [r4, #88]
+ 794 006e 03F08043 		and	r3, r3, #1073741824
+ 795 0072 0193     		str	r3, [sp, #4]
  133:src/tmp112.c  ****   }
- 793              		.loc 1 133 5 view .LVU183
- 794 0074 019B     		ldr	r3, [sp, #4]
- 795              	.LBE6:
+ 796              		.loc 1 133 5 view .LVU183
+ 797 0074 019B     		ldr	r3, [sp, #4]
+ 798              	.LBE6:
  133:src/tmp112.c  ****   }
- 796              		.loc 1 133 5 discriminator 1 view .LVU184
- 797              		.loc 1 135 1 is_stmt 0 view .LVU185
- 798 0076 D4E7     		b	.L47
- 799              	.LVL67:
- 800              	.L52:
+ 799              		.loc 1 133 5 discriminator 1 view .LVU184
+ 800              		.loc 1 135 1 is_stmt 0 view .LVU185
+ 801 0076 D4E7     		b	.L47
+ 802              	.LVL67:
+ 803              	.L52:
  123:src/tmp112.c  ****     }
- 801              		.loc 1 123 7 is_stmt 1 view .LVU186
- 802 0078 FFF7FEFF 		bl	TMP_error
- 803              	.LVL68:
- 804              	.L54:
- 805              		.align	2
- 806              	.L53:
- 807 007c 00780040 		.word	1073772544
- 808 0080 00100240 		.word	1073876992
- 809 0084 00080048 		.word	1207961600
- 810              		.cfi_endproc
- 811              	.LFE341:
- 813              		.section	.text.HAL_I2C_MspDeInit,"ax",%progbits
-ARM GAS  /tmp/ccGYPPVC.s 			page 19
+ 804              		.loc 1 123 7 is_stmt 1 view .LVU186
+ 805 0078 FFF7FEFF 		bl	TMP_error
+ 806              	.LVL68:
+ 807              	.L54:
+ 808              		.align	2
+ 809              	.L53:
+ 810 007c 00780040 		.word	1073772544
+ 811 0080 00100240 		.word	1073876992
+ 812 0084 00080048 		.word	1207961600
+ARM GAS  /tmp/cc9OYggF.s 			page 19
 
 
- 814              		.align	1
- 815              		.global	HAL_I2C_MspDeInit
- 816              		.syntax unified
- 817              		.thumb
- 818              		.thumb_func
- 820              	HAL_I2C_MspDeInit:
- 821              	.LVL69:
- 822              	.LFB342:
+ 813              		.cfi_endproc
+ 814              	.LFE341:
+ 816              		.section	.text.HAL_I2C_MspDeInit,"ax",%progbits
+ 817              		.align	1
+ 818              		.global	HAL_I2C_MspDeInit
+ 819              		.syntax unified
+ 820              		.thumb
+ 821              		.thumb_func
+ 823              	HAL_I2C_MspDeInit:
+ 824              	.LVL69:
+ 825              	.LFB342:
  136:src/tmp112.c  **** 
  137:src/tmp112.c  **** void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
  138:src/tmp112.c  **** {
- 823              		.loc 1 138 1 view -0
- 824              		.cfi_startproc
- 825              		@ args = 0, pretend = 0, frame = 0
- 826              		@ frame_needed = 0, uses_anonymous_args = 0
+ 826              		.loc 1 138 1 view -0
+ 827              		.cfi_startproc
+ 828              		@ args = 0, pretend = 0, frame = 0
+ 829              		@ frame_needed = 0, uses_anonymous_args = 0
  139:src/tmp112.c  **** 
  140:src/tmp112.c  ****   if(i2cHandle->Instance==I2C3)
- 827              		.loc 1 140 3 view .LVU188
- 828              		.loc 1 140 15 is_stmt 0 view .LVU189
- 829 0000 0268     		ldr	r2, [r0]
- 830              		.loc 1 140 5 view .LVU190
- 831 0002 0B4B     		ldr	r3, .L62
- 832 0004 9A42     		cmp	r2, r3
- 833 0006 00D0     		beq	.L61
- 834 0008 7047     		bx	lr
- 835              	.L61:
+ 830              		.loc 1 140 3 view .LVU188
+ 831              		.loc 1 140 15 is_stmt 0 view .LVU189
+ 832 0000 0268     		ldr	r2, [r0]
+ 833              		.loc 1 140 5 view .LVU190
+ 834 0002 0B4B     		ldr	r3, .L62
+ 835 0004 9A42     		cmp	r2, r3
+ 836 0006 00D0     		beq	.L61
+ 837 0008 7047     		bx	lr
+ 838              	.L61:
  138:src/tmp112.c  **** 
- 836              		.loc 1 138 1 view .LVU191
- 837 000a 10B5     		push	{r4, lr}
- 838              	.LCFI19:
- 839              		.cfi_def_cfa_offset 8
- 840              		.cfi_offset 4, -8
- 841              		.cfi_offset 14, -4
+ 839              		.loc 1 138 1 view .LVU191
+ 840 000a 10B5     		push	{r4, lr}
+ 841              	.LCFI19:
+ 842              		.cfi_def_cfa_offset 8
+ 843              		.cfi_offset 4, -8
+ 844              		.cfi_offset 14, -4
  141:src/tmp112.c  ****   {
  142:src/tmp112.c  ****     __HAL_RCC_I2C3_CLK_DISABLE();
- 842              		.loc 1 142 5 is_stmt 1 view .LVU192
- 843 000c 094A     		ldr	r2, .L62+4
- 844 000e 936D     		ldr	r3, [r2, #88]
- 845 0010 23F08043 		bic	r3, r3, #1073741824
- 846 0014 9365     		str	r3, [r2, #88]
+ 845              		.loc 1 142 5 is_stmt 1 view .LVU192
+ 846 000c 094A     		ldr	r2, .L62+4
+ 847 000e 936D     		ldr	r3, [r2, #88]
+ 848 0010 23F08043 		bic	r3, r3, #1073741824
+ 849 0014 9365     		str	r3, [r2, #88]
  143:src/tmp112.c  ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_8);
- 847              		.loc 1 143 5 view .LVU193
- 848 0016 084C     		ldr	r4, .L62+8
- 849 0018 4FF48071 		mov	r1, #256
- 850 001c 2046     		mov	r0, r4
- 851              	.LVL70:
- 852              		.loc 1 143 5 is_stmt 0 view .LVU194
- 853 001e FFF7FEFF 		bl	HAL_GPIO_DeInit
- 854              	.LVL71:
+ 850              		.loc 1 143 5 view .LVU193
+ 851 0016 084C     		ldr	r4, .L62+8
+ 852 0018 4FF48071 		mov	r1, #256
+ 853 001c 2046     		mov	r0, r4
+ 854              	.LVL70:
+ 855              		.loc 1 143 5 is_stmt 0 view .LVU194
+ 856 001e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 857              	.LVL71:
  144:src/tmp112.c  ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_9);
- 855              		.loc 1 144 5 is_stmt 1 view .LVU195
- 856 0022 4FF40071 		mov	r1, #512
- 857 0026 2046     		mov	r0, r4
- 858 0028 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 859              	.LVL72:
+ 858              		.loc 1 144 5 is_stmt 1 view .LVU195
+ 859 0022 4FF40071 		mov	r1, #512
+ 860 0026 2046     		mov	r0, r4
+ 861 0028 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ARM GAS  /tmp/cc9OYggF.s 			page 20
+
+
+ 862              	.LVL72:
  145:src/tmp112.c  ****   }
  146:src/tmp112.c  **** }
-ARM GAS  /tmp/ccGYPPVC.s 			page 20
-
-
- 860              		.loc 1 146 1 is_stmt 0 view .LVU196
- 861 002c 10BD     		pop	{r4, pc}
- 862              	.L63:
- 863 002e 00BF     		.align	2
- 864              	.L62:
- 865 0030 00780040 		.word	1073772544
- 866 0034 00100240 		.word	1073876992
- 867 0038 00080048 		.word	1207961600
- 868              		.cfi_endproc
- 869              	.LFE342:
- 871              		.global	hi2c1
- 872              		.section	.bss.hi2c1,"aw",%nobits
- 873              		.align	2
- 876              	hi2c1:
- 877 0000 00000000 		.space	84
- 877      00000000 
- 877      00000000 
- 877      00000000 
- 877      00000000 
- 878              		.text
- 879              	.Letext0:
- 880              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 881              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 882              		.file 4 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
- 883              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
- 884              		.file 6 "platform/HAL/inc/stm32g4xx_hal_rcc_ex.h"
- 885              		.file 7 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
- 886              		.file 8 "platform/HAL/inc/stm32g4xx_hal_dma.h"
- 887              		.file 9 "platform/HAL/inc/stm32g4xx_hal_i2c.h"
- 888              		.file 10 "platform/HAL/inc/stm32g4xx_hal_i2c_ex.h"
- 889              		.file 11 "inc/tmp112.h"
- 890              		.file 12 "<built-in>"
-ARM GAS  /tmp/ccGYPPVC.s 			page 21
+ 863              		.loc 1 146 1 is_stmt 0 view .LVU196
+ 864 002c 10BD     		pop	{r4, pc}
+ 865              	.L63:
+ 866 002e 00BF     		.align	2
+ 867              	.L62:
+ 868 0030 00780040 		.word	1073772544
+ 869 0034 00100240 		.word	1073876992
+ 870 0038 00080048 		.word	1207961600
+ 871              		.cfi_endproc
+ 872              	.LFE342:
+ 874              		.global	TMP_I2C_INTERFACE
+ 875              		.section	.bss.TMP_I2C_INTERFACE,"aw",%nobits
+ 876              		.align	2
+ 879              	TMP_I2C_INTERFACE:
+ 880 0000 00000000 		.space	84
+ 880      00000000 
+ 880      00000000 
+ 880      00000000 
+ 880      00000000 
+ 881              		.text
+ 882              	.Letext0:
+ 883              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 884              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 885              		.file 4 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 886              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 887              		.file 6 "platform/HAL/inc/stm32g4xx_hal_rcc_ex.h"
+ 888              		.file 7 "platform/HAL/inc/stm32g4xx_hal_gpio.h"
+ 889              		.file 8 "platform/HAL/inc/stm32g4xx_hal_dma.h"
+ 890              		.file 9 "platform/HAL/inc/stm32g4xx_hal_i2c.h"
+ 891              		.file 10 "platform/HAL/inc/stm32g4xx_hal_i2c_ex.h"
+ 892              		.file 11 "inc/tmp112.h"
+ 893              		.file 12 "<built-in>"
+ARM GAS  /tmp/cc9OYggF.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 tmp112.c
-     /tmp/ccGYPPVC.s:21     .text.TMP_write:00000000 $t
-     /tmp/ccGYPPVC.s:27     .text.TMP_write:00000000 TMP_write
-     /tmp/ccGYPPVC.s:93     .text.TMP_write:00000038 $d
-     /tmp/ccGYPPVC.s:876    .bss.hi2c1:00000000 hi2c1
-     /tmp/ccGYPPVC.s:98     .text.TMP_setConfig:00000000 $t
-     /tmp/ccGYPPVC.s:104    .text.TMP_setConfig:00000000 TMP_setConfig
-     /tmp/ccGYPPVC.s:131    .text.TMP_read:00000000 $t
-     /tmp/ccGYPPVC.s:137    .text.TMP_read:00000000 TMP_read
-     /tmp/ccGYPPVC.s:205    .text.TMP_read:00000040 $d
-     /tmp/ccGYPPVC.s:210    .text.TMP_celcius_to_data:00000000 $t
-     /tmp/ccGYPPVC.s:216    .text.TMP_celcius_to_data:00000000 TMP_celcius_to_data
-     /tmp/ccGYPPVC.s:239    .text.TMP_data_to_celcius:00000000 $t
-     /tmp/ccGYPPVC.s:245    .text.TMP_data_to_celcius:00000000 TMP_data_to_celcius
-     /tmp/ccGYPPVC.s:265    .text.TMP_data_to_celcius:00000014 $d
-     /tmp/ccGYPPVC.s:270    .text.TMP_getTemperatureSingle:00000000 $t
-     /tmp/ccGYPPVC.s:276    .text.TMP_getTemperatureSingle:00000000 TMP_getTemperatureSingle
-     /tmp/ccGYPPVC.s:311    .text.TMP_getTemperature:00000000 $t
-     /tmp/ccGYPPVC.s:317    .text.TMP_getTemperature:00000000 TMP_getTemperature
-     /tmp/ccGYPPVC.s:379    .text.TMP_setTLow:00000000 $t
-     /tmp/ccGYPPVC.s:385    .text.TMP_setTLow:00000000 TMP_setTLow
-     /tmp/ccGYPPVC.s:425    .text.TMP_setTHigh:00000000 $t
-     /tmp/ccGYPPVC.s:431    .text.TMP_setTHigh:00000000 TMP_setTHigh
-     /tmp/ccGYPPVC.s:471    .text.TMP_error:00000000 $t
-     /tmp/ccGYPPVC.s:477    .text.TMP_error:00000000 TMP_error
-     /tmp/ccGYPPVC.s:493    .text.MX_I2C_Init:00000000 $t
-     /tmp/ccGYPPVC.s:499    .text.MX_I2C_Init:00000000 MX_I2C_Init
-     /tmp/ccGYPPVC.s:582    .text.MX_I2C_Init:0000004c $d
-     /tmp/ccGYPPVC.s:588    .text.TMP_init:00000000 $t
-     /tmp/ccGYPPVC.s:594    .text.TMP_init:00000000 TMP_init
-     /tmp/ccGYPPVC.s:663    .text.TMP_init:00000048 $d
-     /tmp/ccGYPPVC.s:669    .text.HAL_I2C_MspInit:00000000 $t
-     /tmp/ccGYPPVC.s:675    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-     /tmp/ccGYPPVC.s:807    .text.HAL_I2C_MspInit:0000007c $d
-     /tmp/ccGYPPVC.s:814    .text.HAL_I2C_MspDeInit:00000000 $t
-     /tmp/ccGYPPVC.s:820    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-     /tmp/ccGYPPVC.s:865    .text.HAL_I2C_MspDeInit:00000030 $d
-     /tmp/ccGYPPVC.s:873    .bss.hi2c1:00000000 $d
+     /tmp/cc9OYggF.s:21     .text.TMP_write:00000000 $t
+     /tmp/cc9OYggF.s:27     .text.TMP_write:00000000 TMP_write
+     /tmp/cc9OYggF.s:93     .text.TMP_write:00000038 $d
+     /tmp/cc9OYggF.s:879    .bss.TMP_I2C_INTERFACE:00000000 TMP_I2C_INTERFACE
+     /tmp/cc9OYggF.s:98     .text.TMP_setConfig:00000000 $t
+     /tmp/cc9OYggF.s:104    .text.TMP_setConfig:00000000 TMP_setConfig
+     /tmp/cc9OYggF.s:131    .text.TMP_read:00000000 $t
+     /tmp/cc9OYggF.s:137    .text.TMP_read:00000000 TMP_read
+     /tmp/cc9OYggF.s:205    .text.TMP_read:00000040 $d
+     /tmp/cc9OYggF.s:210    .text.TMP_celcius_to_data:00000000 $t
+     /tmp/cc9OYggF.s:216    .text.TMP_celcius_to_data:00000000 TMP_celcius_to_data
+     /tmp/cc9OYggF.s:239    .text.TMP_data_to_celcius:00000000 $t
+     /tmp/cc9OYggF.s:245    .text.TMP_data_to_celcius:00000000 TMP_data_to_celcius
+     /tmp/cc9OYggF.s:265    .text.TMP_data_to_celcius:00000014 $d
+     /tmp/cc9OYggF.s:270    .text.TMP_getTemperatureSingle:00000000 $t
+     /tmp/cc9OYggF.s:276    .text.TMP_getTemperatureSingle:00000000 TMP_getTemperatureSingle
+     /tmp/cc9OYggF.s:307    .text.TMP_getTemperature:00000000 $t
+     /tmp/cc9OYggF.s:313    .text.TMP_getTemperature:00000000 TMP_getTemperature
+     /tmp/cc9OYggF.s:382    .text.TMP_setTLow:00000000 $t
+     /tmp/cc9OYggF.s:388    .text.TMP_setTLow:00000000 TMP_setTLow
+     /tmp/cc9OYggF.s:428    .text.TMP_setTHigh:00000000 $t
+     /tmp/cc9OYggF.s:434    .text.TMP_setTHigh:00000000 TMP_setTHigh
+     /tmp/cc9OYggF.s:474    .text.TMP_error:00000000 $t
+     /tmp/cc9OYggF.s:480    .text.TMP_error:00000000 TMP_error
+     /tmp/cc9OYggF.s:496    .text.MX_I2C_Init:00000000 $t
+     /tmp/cc9OYggF.s:502    .text.MX_I2C_Init:00000000 MX_I2C_Init
+     /tmp/cc9OYggF.s:585    .text.MX_I2C_Init:0000004c $d
+     /tmp/cc9OYggF.s:591    .text.TMP_init:00000000 $t
+     /tmp/cc9OYggF.s:597    .text.TMP_init:00000000 TMP_init
+     /tmp/cc9OYggF.s:666    .text.TMP_init:00000048 $d
+     /tmp/cc9OYggF.s:672    .text.HAL_I2C_MspInit:00000000 $t
+     /tmp/cc9OYggF.s:678    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+     /tmp/cc9OYggF.s:810    .text.HAL_I2C_MspInit:0000007c $d
+     /tmp/cc9OYggF.s:817    .text.HAL_I2C_MspDeInit:00000000 $t
+     /tmp/cc9OYggF.s:823    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+     /tmp/cc9OYggF.s:868    .text.HAL_I2C_MspDeInit:00000030 $d
+     /tmp/cc9OYggF.s:876    .bss.TMP_I2C_INTERFACE:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write

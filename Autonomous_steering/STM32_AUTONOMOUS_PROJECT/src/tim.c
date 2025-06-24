@@ -1,3 +1,8 @@
+/**
+ * @file tim.c
+ * @brief Source file for TIM functions
+ * used as a saftety timer for main code
+ */
 #include "tim.h"
 
 TIM_HandleTypeDef TIM_TIMER_INTERFACE;

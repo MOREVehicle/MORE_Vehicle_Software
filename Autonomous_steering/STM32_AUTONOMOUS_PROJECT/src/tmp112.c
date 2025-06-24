@@ -19,7 +19,7 @@ void TMP_init() {
     }
 }
 
-int16_t TMP_getTemperature(void) {
+float TMP_getTemperature(void) {
     uint16_t average = 0;
 
     for (uint8_t i = 0; i < TMP_ADDR_AMOUNT; i++) {
@@ -31,7 +31,7 @@ int16_t TMP_getTemperature(void) {
 }
 
 
-int16_t TMP_getTemperatureSingle(uint8_t address) {
+float TMP_getTemperatureSingle(uint8_t address) {
 	int16_t temperature = (uint16_t)(TMP_read(address, TMP_TEMPERATURE) >> 4);
     return TMP_data_to_celcius(temperature);
 }

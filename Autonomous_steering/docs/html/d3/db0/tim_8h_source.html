@@ -119,9 +119,9 @@ $(function(){initNavTree('d3/db0/tim_8h_source.html','../../'); initResizable(tr
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stm32g4xx_hal_tim.h&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">extern</span> TIM_HandleTypeDef TIM_TIMER_INTERFACE;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">extern</span> TIM_HandleTypeDef <a class="code hl_variable" href="../../db/db1/tim_8c.html#a37188e58ceedf28432372aa1c3e751c6">TIM_TIMER_INTERFACE</a>;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t TIM_interuptflag;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint8_t <a class="code hl_variable" href="../../db/db1/tim_8c.html#a829671833c8ddfa7c739aa7f76c03342">TIM_interuptflag</a>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/db0/tim_8h.html#a8aaa1c9e353fec4aaf953b5c329d358a">TIM_init</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
@@ -130,7 +130,9 @@ $(function(){initNavTree('d3/db0/tim_8h_source.html','../../'); initResizable(tr
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif </span></div>
-<div class="ttc" id="atim_8h_html_a8aaa1c9e353fec4aaf953b5c329d358a"><div class="ttname"><a href="../../d3/db0/tim_8h.html#a8aaa1c9e353fec4aaf953b5c329d358a">TIM_init</a></div><div class="ttdeci">void TIM_init(void)</div><div class="ttdoc">settings for 100ms timer, used for escaping from fault situation, in cause of unresponsive angle sens...</div><div class="ttdef"><b>Definition</b> tim.c:9</div></div>
+<div class="ttc" id="atim_8c_html_a37188e58ceedf28432372aa1c3e751c6"><div class="ttname"><a href="../../db/db1/tim_8c.html#a37188e58ceedf28432372aa1c3e751c6">TIM_TIMER_INTERFACE</a></div><div class="ttdeci">TIM_HandleTypeDef TIM_TIMER_INTERFACE</div><div class="ttdoc">used TIM interface</div><div class="ttdef"><b>Definition</b> tim.c:8</div></div>
+<div class="ttc" id="atim_8c_html_a829671833c8ddfa7c739aa7f76c03342"><div class="ttname"><a href="../../db/db1/tim_8c.html#a829671833c8ddfa7c739aa7f76c03342">TIM_interuptflag</a></div><div class="ttdeci">volatile uint8_t TIM_interuptflag</div><div class="ttdoc">global variable used to check if interrupt occured</div><div class="ttdef"><b>Definition</b> tim.c:9</div></div>
+<div class="ttc" id="atim_8h_html_a8aaa1c9e353fec4aaf953b5c329d358a"><div class="ttname"><a href="../../d3/db0/tim_8h.html#a8aaa1c9e353fec4aaf953b5c329d358a">TIM_init</a></div><div class="ttdeci">void TIM_init(void)</div><div class="ttdoc">settings for 100ms timer, used for escaping from fault situation, in cause of unresponsive angle sens...</div><div class="ttdef"><b>Definition</b> tim.c:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

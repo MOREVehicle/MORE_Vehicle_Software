@@ -89,7 +89,6 @@ extern "C" {
 #define TMP_ADDR(x)                 ((uint8_t)(TMP_ADDR_DEFAULT + x))
 
 /** @brief used i2c channel on mcu.*/
-#define TMP_I2C_INTERFACE      hi2c1
 extern I2C_HandleTypeDef 	   TMP_I2C_INTERFACE;
 
 /**
@@ -104,13 +103,13 @@ void TMP_init(void);
  * Reads the 16-bit temperature value from the TMP112 and converts it to Celsius.
  * @return Temperature in Celsius as a 16-bit signed integer.
  */
-int16_t TMP_getTemperatureSingle(uint8_t address);
+float TMP_getTemperatureSingle(uint8_t address);
 
 /**
  * @brief Reads all the temperature sensors
  * @return Average temperature of all sensors
  */
-int16_t TMP_getTemperature();
+float TMP_getTemperature();
 
 /**
  * @brief basic function to write to TMP112 

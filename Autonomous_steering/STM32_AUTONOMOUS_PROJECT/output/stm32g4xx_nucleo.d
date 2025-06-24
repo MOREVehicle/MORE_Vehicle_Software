@@ -20,6 +20,7 @@ output/stm32g4xx_nucleo.o: platform/BSP/stm32g4xx_nucleo.c \
  platform/HAL/inc/stm32g4xx_ll_adc.h \
  platform/HAL/inc/stm32g4xx_hal_adc_ex.h \
  platform/HAL/inc/stm32g4xx_hal_exti.h \
+ platform/HAL/inc/stm32g4xx_hal_fdcan.h \
  platform/HAL/inc/stm32g4xx_hal_flash.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ex.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h \
@@ -60,6 +61,7 @@ platform/HAL/inc/stm32g4xx_hal.h:
 platform/HAL/inc/stm32g4xx_ll_adc.h:
 platform/HAL/inc/stm32g4xx_hal_adc_ex.h:
 platform/HAL/inc/stm32g4xx_hal_exti.h:
+platform/HAL/inc/stm32g4xx_hal_fdcan.h:
 platform/HAL/inc/stm32g4xx_hal_flash.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ex.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h:

@@ -9,8 +9,7 @@ main loop of the steering box
 {\ttfamily \#include "{}tmp112.\+h"{}}\newline
 {\ttfamily \#include "{}adc.\+h"{}}\newline
 {\ttfamily \#include "{}tim.\+h"{}}\newline
-Include dependency graph for main.\+c\+:
-\nopagebreak
+Include dependency graph for main.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,10 +25,9 @@ Include dependency graph for main.\+c\+:
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{main_8c_aa8d6c07f6accf6a2bc30b65aa56f014c}{system\+Clock\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em sets up nucleo clock to 170MHZ \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
-\item 
-\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920} 
-void {\bfseries System\+Clock\+\_\+\+Config} (void)
 \end{DoxyCompactItemize}
 
 
@@ -51,7 +49,7 @@ int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 Might wanna add initialisation checks.
 \end{DoxyNote}
 \begin{DoxyWarning}{Warning}
-I believe this should be determined by some central cpu of the car if so comment the line
+I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters softfault
 \end{DoxyWarning}
 Here is the call graph for this function\+:
 \nopagebreak
@@ -59,5 +57,26 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d0/d29/main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_aa8d6c07f6accf6a2bc30b65aa56f014c}\index{main.c@{main.c}!systemClock\_init@{systemClock\_init}}
+\index{systemClock\_init@{systemClock\_init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{systemClock\_init()}{systemClock\_init()}}
+{\footnotesize\ttfamily \label{main_8c_aa8d6c07f6accf6a2bc30b65aa56f014c} 
+void system\+Clock\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+sets up nucleo clock to 170MHZ 
+
+\begin{DoxyWarning}{Warning}
+currently 64MHZ. change it. 
+\end{DoxyWarning}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{d0/d29/main_8c_aa8d6c07f6accf6a2bc30b65aa56f014c_icgraph}
 \end{center}
 \end{figure}

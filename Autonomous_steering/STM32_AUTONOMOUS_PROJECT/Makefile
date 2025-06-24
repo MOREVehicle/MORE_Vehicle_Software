@@ -53,6 +53,7 @@ C_DEFS =  \
 -DSTM32G474xx \
 -DHAL_ADC_MODULE_ENABLED \
 -DHAL_TIM_MODULE_ENABLED \
+-DHAL_FDCAN_MODULE_ENABLED \
 -DHAL_I2C_MODULE_ENABLED
 
 PREFIX = arm-none-eabi-
@@ -96,7 +97,7 @@ all: build flash
 
 build: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
 
-flash: $(BUILD_DIR)/STM32_AUTONOMOUS_PROJECT.elf
+flash: $(BUILD_DIR)/$(TARGET).elf
 	pkill openocd || true
 	openocd -f interface/stlink.cfg -f target/stm32g4x.cfg \
 		-c "program $< verify reset exit"

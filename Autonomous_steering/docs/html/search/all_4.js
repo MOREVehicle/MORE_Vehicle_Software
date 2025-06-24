@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5fsbrk_0',['_sbrk',['../dc/d91/sysmem_8c.html#a68125648bcce70b6bb3aa0be50e99700',1,'sysmem.c']]]
+  ['systemclock_5finit_0',['systemClock_init',['../d0/d29/main_8c.html#aa8d6c07f6accf6a2bc30b65aa56f014c',1,'main.c']]]
 ];

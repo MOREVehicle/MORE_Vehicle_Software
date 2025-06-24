@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccWT14SS.s 			page 1
+ARM GAS  /tmp/ccj5C3hL.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -28,16 +28,21 @@ ARM GAS  /tmp/ccWT14SS.s 			page 1
   25              		.thumb_func
   27              	TIM_init:
   28              	.LFB329:
-   1:src/tim.c     **** #include "tim.h"
-   2:src/tim.c     **** 
-   3:src/tim.c     **** TIM_HandleTypeDef TIM_TIMER_INTERFACE;
-   4:src/tim.c     **** volatile uint8_t TIM_interuptflag;
-   5:src/tim.c     **** 
-   6:src/tim.c     **** /**
-   7:src/tim.c     ****  * @brief settings for 100ms timer, used for escaping from fault situation, in cause of unresponsiv
-   8:src/tim.c     **** */
-   9:src/tim.c     **** void TIM_init(void) {
-  29              		.loc 1 9 21 view -0
+   1:src/tim.c     **** /**
+   2:src/tim.c     ****  * @file tim.c
+   3:src/tim.c     ****  * @brief Source file for TIM functions
+   4:src/tim.c     ****  * used as a saftety timer for main code
+   5:src/tim.c     ****  */
+   6:src/tim.c     **** #include "tim.h"
+   7:src/tim.c     **** 
+   8:src/tim.c     **** TIM_HandleTypeDef TIM_TIMER_INTERFACE;
+   9:src/tim.c     **** volatile uint8_t TIM_interuptflag;
+  10:src/tim.c     **** 
+  11:src/tim.c     **** /**
+  12:src/tim.c     ****  * @brief settings for 100ms timer, used for escaping from fault situation, in cause of unresponsiv
+  13:src/tim.c     **** */
+  14:src/tim.c     **** void TIM_init(void) {
+  29              		.loc 1 14 21 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 8
   32              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -50,237 +55,229 @@ ARM GAS  /tmp/ccWT14SS.s 			page 1
   39 0002 83B0     		sub	sp, sp, #12
   40              	.LCFI1:
   41              		.cfi_def_cfa_offset 24
-  10:src/tim.c     ****     __HAL_RCC_TIM2_CLK_ENABLE();
-  42              		.loc 1 10 5 view .LVU1
+  15:src/tim.c     ****     __HAL_RCC_TIM2_CLK_ENABLE();
+  42              		.loc 1 15 5 view .LVU1
   43              	.LBB2:
-  44              		.loc 1 10 5 view .LVU2
-  45              		.loc 1 10 5 view .LVU3
-  46 0004 124B     		ldr	r3, .L3
+ARM GAS  /tmp/ccj5C3hL.s 			page 2
+
+
+  44              		.loc 1 15 5 view .LVU2
+  45              		.loc 1 15 5 view .LVU3
+  46 0004 134B     		ldr	r3, .L3
   47 0006 9A6D     		ldr	r2, [r3, #88]
   48 0008 42F00102 		orr	r2, r2, #1
-ARM GAS  /tmp/ccWT14SS.s 			page 2
-
-
   49 000c 9A65     		str	r2, [r3, #88]
-  50              		.loc 1 10 5 view .LVU4
+  50              		.loc 1 15 5 view .LVU4
   51 000e 9B6D     		ldr	r3, [r3, #88]
   52 0010 03F00103 		and	r3, r3, #1
   53 0014 0193     		str	r3, [sp, #4]
-  54              		.loc 1 10 5 view .LVU5
+  54              		.loc 1 15 5 view .LVU5
   55 0016 019B     		ldr	r3, [sp, #4]
   56              	.LBE2:
-  57              		.loc 1 10 5 view .LVU6
-  11:src/tim.c     **** 
-  12:src/tim.c     ****     // TIM_TIMER_INTERFACE.Instance = TIM2;
-  13:src/tim.c     ****     // TIM_TIMER_INTERFACE.Init.Prescaler = 8499;
-  14:src/tim.c     ****     // TIM_TIMER_INTERFACE.Init.CounterMode = TIM_COUNTERMODE_UP;
-  15:src/tim.c     ****     // TIM_TIMER_INTERFACE.Init.Period = 999;
-  16:src/tim.c     ****     // TIM_TIMER_INTERFACE.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  17:src/tim.c     ****     // TIM_TIMER_INTERFACE.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  18:src/tim.c     **** 
-  19:src/tim.c     ****     TIM_TIMER_INTERFACE.Instance = TIM2;
-  58              		.loc 1 19 5 view .LVU7
-  59              		.loc 1 19 34 is_stmt 0 view .LVU8
-  60 0018 0E4C     		ldr	r4, .L3+4
+  57              		.loc 1 15 5 view .LVU6
+  16:src/tim.c     **** 
+  17:src/tim.c     ****     TIM_TIMER_INTERFACE.Instance = TIM2;
+  58              		.loc 1 17 5 view .LVU7
+  59              		.loc 1 17 34 is_stmt 0 view .LVU8
+  60 0018 0F4C     		ldr	r4, .L3+4
   61 001a 4FF08043 		mov	r3, #1073741824
   62 001e 2360     		str	r3, [r4]
-  20:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.Prescaler = 63;                    // 64 MHz / (63+1) = 1 MHz
-  63              		.loc 1 20 5 is_stmt 1 view .LVU9
-  64              		.loc 1 20 40 is_stmt 0 view .LVU10
-  65 0020 3F23     		movs	r3, #63
-  66 0022 6360     		str	r3, [r4, #4]
-  21:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.CounterMode = TIM_COUNTERMODE_UP;
-  67              		.loc 1 21 5 is_stmt 1 view .LVU11
-  68              		.loc 1 21 42 is_stmt 0 view .LVU12
-  69 0024 0025     		movs	r5, #0
-  70 0026 A560     		str	r5, [r4, #8]
-  22:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.Period = 999999;                   // 1 sec = 1,000,000 ticks
-  71              		.loc 1 22 5 is_stmt 1 view .LVU13
-  72              		.loc 1 22 37 is_stmt 0 view .LVU14
-  73 0028 0B4B     		ldr	r3, .L3+8
-  74 002a E360     		str	r3, [r4, #12]
-  23:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  75              		.loc 1 23 5 is_stmt 1 view .LVU15
-  76              		.loc 1 23 44 is_stmt 0 view .LVU16
-  77 002c 2561     		str	r5, [r4, #16]
-  24:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  78              		.loc 1 24 5 is_stmt 1 view .LVU17
-  79              		.loc 1 24 48 is_stmt 0 view .LVU18
-  80 002e A561     		str	r5, [r4, #24]
-  25:src/tim.c     **** 
-  26:src/tim.c     ****     HAL_TIM_Base_Init(&TIM_TIMER_INTERFACE);
-  81              		.loc 1 26 5 is_stmt 1 view .LVU19
-  82 0030 2046     		mov	r0, r4
-  83 0032 FFF7FEFF 		bl	HAL_TIM_Base_Init
+  18:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.Prescaler = 8499;
+  63              		.loc 1 18 5 is_stmt 1 view .LVU9
+  64              		.loc 1 18 40 is_stmt 0 view .LVU10
+  65 0020 42F23313 		movw	r3, #8499
+  66 0024 6360     		str	r3, [r4, #4]
+  19:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.CounterMode = TIM_COUNTERMODE_UP;
+  67              		.loc 1 19 5 is_stmt 1 view .LVU11
+  68              		.loc 1 19 42 is_stmt 0 view .LVU12
+  69 0026 0025     		movs	r5, #0
+  70 0028 A560     		str	r5, [r4, #8]
+  20:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.Period = 999;
+  71              		.loc 1 20 5 is_stmt 1 view .LVU13
+  72              		.loc 1 20 37 is_stmt 0 view .LVU14
+  73 002a 40F2E733 		movw	r3, #999
+  74 002e E360     		str	r3, [r4, #12]
+  21:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  75              		.loc 1 21 5 is_stmt 1 view .LVU15
+  76              		.loc 1 21 44 is_stmt 0 view .LVU16
+  77 0030 2561     		str	r5, [r4, #16]
+  22:src/tim.c     ****     TIM_TIMER_INTERFACE.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  78              		.loc 1 22 5 is_stmt 1 view .LVU17
+  79              		.loc 1 22 48 is_stmt 0 view .LVU18
+  80 0032 A561     		str	r5, [r4, #24]
+  23:src/tim.c     **** 
+  24:src/tim.c     ****     HAL_TIM_Base_Init(&TIM_TIMER_INTERFACE);
+  81              		.loc 1 24 5 is_stmt 1 view .LVU19
+  82 0034 2046     		mov	r0, r4
+  83 0036 FFF7FEFF 		bl	HAL_TIM_Base_Init
   84              	.LVL0:
-  27:src/tim.c     ****     HAL_TIM_Base_Start_IT(&TIM_TIMER_INTERFACE);
-  85              		.loc 1 27 5 view .LVU20
-  86 0036 2046     		mov	r0, r4
-  87 0038 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+  25:src/tim.c     ****     HAL_TIM_Base_Start_IT(&TIM_TIMER_INTERFACE);
+  85              		.loc 1 25 5 view .LVU20
+  86 003a 2046     		mov	r0, r4
+  87 003c FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
   88              	.LVL1:
-ARM GAS  /tmp/ccWT14SS.s 			page 3
+  26:src/tim.c     **** 
+  27:src/tim.c     ****     HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
+ARM GAS  /tmp/ccj5C3hL.s 			page 3
 
 
-  28:src/tim.c     **** 
-  29:src/tim.c     ****     HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
-  89              		.loc 1 29 5 view .LVU21
-  90 003c 2A46     		mov	r2, r5
-  91 003e 2946     		mov	r1, r5
-  92 0040 1C20     		movs	r0, #28
-  93 0042 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  89              		.loc 1 27 5 view .LVU21
+  90 0040 2A46     		mov	r2, r5
+  91 0042 2946     		mov	r1, r5
+  92 0044 1C20     		movs	r0, #28
+  93 0046 FFF7FEFF 		bl	HAL_NVIC_SetPriority
   94              	.LVL2:
-  30:src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
-  95              		.loc 1 30 5 view .LVU22
-  96 0046 1C20     		movs	r0, #28
-  97 0048 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+  28:src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
+  95              		.loc 1 28 5 view .LVU22
+  96 004a 1C20     		movs	r0, #28
+  97 004c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
   98              	.LVL3:
-  31:src/tim.c     **** }
-  99              		.loc 1 31 1 is_stmt 0 view .LVU23
- 100 004c 03B0     		add	sp, sp, #12
+  29:src/tim.c     **** }
+  99              		.loc 1 29 1 is_stmt 0 view .LVU23
+ 100 0050 03B0     		add	sp, sp, #12
  101              	.LCFI2:
  102              		.cfi_def_cfa_offset 12
  103              		@ sp needed
- 104 004e 30BD     		pop	{r4, r5, pc}
+ 104 0052 30BD     		pop	{r4, r5, pc}
  105              	.L4:
  106              		.align	2
  107              	.L3:
- 108 0050 00100240 		.word	1073876992
- 109 0054 00000000 		.word	TIM_TIMER_INTERFACE
- 110 0058 3F420F00 		.word	999999
- 111              		.cfi_endproc
- 112              	.LFE329:
- 114              		.section	.text.TIM2_IRQHandler,"ax",%progbits
- 115              		.align	1
- 116              		.global	TIM2_IRQHandler
- 117              		.syntax unified
- 118              		.thumb
- 119              		.thumb_func
- 121              	TIM2_IRQHandler:
- 122              	.LFB330:
-  32:src/tim.c     **** 
-  33:src/tim.c     **** /**
-  34:src/tim.c     ****  * @brief setup IRQ for Timer
-  35:src/tim.c     **** */
-  36:src/tim.c     **** void TIM2_IRQHandler(void) {
- 123              		.loc 1 36 28 is_stmt 1 view -0
- 124              		.cfi_startproc
- 125              		@ args = 0, pretend = 0, frame = 0
- 126              		@ frame_needed = 0, uses_anonymous_args = 0
- 127 0000 08B5     		push	{r3, lr}
- 128              	.LCFI3:
- 129              		.cfi_def_cfa_offset 8
- 130              		.cfi_offset 3, -8
- 131              		.cfi_offset 14, -4
-  37:src/tim.c     ****     HAL_TIM_IRQHandler(&TIM_TIMER_INTERFACE);
- 132              		.loc 1 37 5 view .LVU25
- 133 0002 0248     		ldr	r0, .L7
- 134 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
- 135              	.LVL4:
-  38:src/tim.c     **** }
- 136              		.loc 1 38 1 is_stmt 0 view .LVU26
-ARM GAS  /tmp/ccWT14SS.s 			page 4
+ 108 0054 00100240 		.word	1073876992
+ 109 0058 00000000 		.word	TIM_TIMER_INTERFACE
+ 110              		.cfi_endproc
+ 111              	.LFE329:
+ 113              		.section	.text.TIM2_IRQHandler,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	TIM2_IRQHandler
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 120              	TIM2_IRQHandler:
+ 121              	.LFB330:
+  30:src/tim.c     **** 
+  31:src/tim.c     **** /**
+  32:src/tim.c     ****  * @brief setup IRQ for Timer
+  33:src/tim.c     **** */
+  34:src/tim.c     **** void TIM2_IRQHandler(void) {
+ 122              		.loc 1 34 28 is_stmt 1 view -0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 08B5     		push	{r3, lr}
+ 127              	.LCFI3:
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 3, -8
+ 130              		.cfi_offset 14, -4
+  35:src/tim.c     ****     HAL_TIM_IRQHandler(&TIM_TIMER_INTERFACE);
+ 131              		.loc 1 35 5 view .LVU25
+ 132 0002 0248     		ldr	r0, .L7
+ 133 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 134              	.LVL4:
+  36:src/tim.c     **** }
+ 135              		.loc 1 36 1 is_stmt 0 view .LVU26
+ 136 0008 08BD     		pop	{r3, pc}
+ 137              	.L8:
+ 138 000a 00BF     		.align	2
+ARM GAS  /tmp/ccj5C3hL.s 			page 4
 
 
- 137 0008 08BD     		pop	{r3, pc}
- 138              	.L8:
- 139 000a 00BF     		.align	2
- 140              	.L7:
- 141 000c 00000000 		.word	TIM_TIMER_INTERFACE
- 142              		.cfi_endproc
- 143              	.LFE330:
- 145              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
- 146              		.align	1
- 147              		.global	HAL_TIM_PeriodElapsedCallback
- 148              		.syntax unified
- 149              		.thumb
- 150              		.thumb_func
- 152              	HAL_TIM_PeriodElapsedCallback:
- 153              	.LVL5:
- 154              	.LFB331:
-  39:src/tim.c     **** 
-  40:src/tim.c     **** /**
-  41:src/tim.c     ****  * @brief Interrupt for saftety timer which ensures the systems shutsdown after some time, if the a
-  42:src/tim.c     ****  * It just sets a flag on, the CAN_error function in main then handles the situationo
-  43:src/tim.c     **** */
-  44:src/tim.c     **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
- 155              		.loc 1 44 61 is_stmt 1 view -0
- 156              		.cfi_startproc
- 157              		@ args = 0, pretend = 0, frame = 0
- 158              		@ frame_needed = 0, uses_anonymous_args = 0
- 159              		@ link register save eliminated.
-  45:src/tim.c     ****     if (htim->Instance == TIM2) {
- 160              		.loc 1 45 5 view .LVU28
- 161              		.loc 1 45 13 is_stmt 0 view .LVU29
- 162 0000 0368     		ldr	r3, [r0]
- 163              		.loc 1 45 8 view .LVU30
- 164 0002 B3F1804F 		cmp	r3, #1073741824
- 165 0006 00D0     		beq	.L11
- 166              	.L9:
-  46:src/tim.c     ****         TIM_interuptflag = 1;
-  47:src/tim.c     ****     }
-  48:src/tim.c     **** }
- 167              		.loc 1 48 1 view .LVU31
- 168 0008 7047     		bx	lr
- 169              	.L11:
-  46:src/tim.c     ****         TIM_interuptflag = 1;
- 170              		.loc 1 46 9 is_stmt 1 view .LVU32
-  46:src/tim.c     ****         TIM_interuptflag = 1;
- 171              		.loc 1 46 26 is_stmt 0 view .LVU33
- 172 000a 024B     		ldr	r3, .L12
- 173 000c 0122     		movs	r2, #1
- 174 000e 1A70     		strb	r2, [r3]
- 175              		.loc 1 48 1 view .LVU34
- 176 0010 FAE7     		b	.L9
- 177              	.L13:
- 178 0012 00BF     		.align	2
- 179              	.L12:
- 180 0014 00000000 		.word	TIM_interuptflag
- 181              		.cfi_endproc
- 182              	.LFE331:
- 184              		.global	TIM_interuptflag
-ARM GAS  /tmp/ccWT14SS.s 			page 5
+ 139              	.L7:
+ 140 000c 00000000 		.word	TIM_TIMER_INTERFACE
+ 141              		.cfi_endproc
+ 142              	.LFE330:
+ 144              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	HAL_TIM_PeriodElapsedCallback
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	HAL_TIM_PeriodElapsedCallback:
+ 152              	.LVL5:
+ 153              	.LFB331:
+  37:src/tim.c     **** 
+  38:src/tim.c     **** /**
+  39:src/tim.c     ****  * @brief Interrupt for saftety timer which ensures the systems shutsdown after some time, if the a
+  40:src/tim.c     ****  * It just sets a flag on, the CAN_error function in main then handles the situationo
+  41:src/tim.c     **** */
+  42:src/tim.c     **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+ 154              		.loc 1 42 61 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+  43:src/tim.c     ****     if (htim->Instance == TIM2) {
+ 159              		.loc 1 43 5 view .LVU28
+ 160              		.loc 1 43 13 is_stmt 0 view .LVU29
+ 161 0000 0368     		ldr	r3, [r0]
+ 162              		.loc 1 43 8 view .LVU30
+ 163 0002 B3F1804F 		cmp	r3, #1073741824
+ 164 0006 00D0     		beq	.L11
+ 165              	.L9:
+  44:src/tim.c     ****         TIM_interuptflag = 1;
+  45:src/tim.c     ****     }
+  46:src/tim.c     **** }
+ 166              		.loc 1 46 1 view .LVU31
+ 167 0008 7047     		bx	lr
+ 168              	.L11:
+  44:src/tim.c     ****         TIM_interuptflag = 1;
+ 169              		.loc 1 44 9 is_stmt 1 view .LVU32
+  44:src/tim.c     ****         TIM_interuptflag = 1;
+ 170              		.loc 1 44 26 is_stmt 0 view .LVU33
+ 171 000a 024B     		ldr	r3, .L12
+ 172 000c 0122     		movs	r2, #1
+ 173 000e 1A70     		strb	r2, [r3]
+ 174              		.loc 1 46 1 view .LVU34
+ 175 0010 FAE7     		b	.L9
+ 176              	.L13:
+ 177 0012 00BF     		.align	2
+ 178              	.L12:
+ 179 0014 00000000 		.word	TIM_interuptflag
+ 180              		.cfi_endproc
+ 181              	.LFE331:
+ 183              		.global	TIM_interuptflag
+ 184              		.section	.bss.TIM_interuptflag,"aw",%nobits
+ 187              	TIM_interuptflag:
+ 188 0000 00       		.space	1
+ARM GAS  /tmp/ccj5C3hL.s 			page 5
 
 
- 185              		.section	.bss.TIM_interuptflag,"aw",%nobits
- 188              	TIM_interuptflag:
- 189 0000 00       		.space	1
- 190              		.global	TIM_TIMER_INTERFACE
- 191              		.section	.bss.TIM_TIMER_INTERFACE,"aw",%nobits
- 192              		.align	2
- 195              	TIM_TIMER_INTERFACE:
- 196 0000 00000000 		.space	76
- 196      00000000 
- 196      00000000 
- 196      00000000 
- 196      00000000 
- 197              		.text
- 198              	.Letext0:
- 199              		.file 2 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
- 200              		.file 3 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 201              		.file 4 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 202              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
- 203              		.file 6 "platform/HAL/inc/stm32g4xx_hal_dma.h"
- 204              		.file 7 "platform/HAL/inc/stm32g4xx_hal_tim.h"
- 205              		.file 8 "inc/tim.h"
- 206              		.file 9 "platform/HAL/inc/stm32g4xx_hal_cortex.h"
-ARM GAS  /tmp/ccWT14SS.s 			page 6
+ 189              		.global	TIM_TIMER_INTERFACE
+ 190              		.section	.bss.TIM_TIMER_INTERFACE,"aw",%nobits
+ 191              		.align	2
+ 194              	TIM_TIMER_INTERFACE:
+ 195 0000 00000000 		.space	76
+ 195      00000000 
+ 195      00000000 
+ 195      00000000 
+ 195      00000000 
+ 196              		.text
+ 197              	.Letext0:
+ 198              		.file 2 "platform/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 199              		.file 3 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 200              		.file 4 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 201              		.file 5 "platform/HAL/inc/stm32g4xx_hal_def.h"
+ 202              		.file 6 "platform/HAL/inc/stm32g4xx_hal_dma.h"
+ 203              		.file 7 "platform/HAL/inc/stm32g4xx_hal_tim.h"
+ 204              		.file 8 "inc/tim.h"
+ 205              		.file 9 "platform/HAL/inc/stm32g4xx_hal_cortex.h"
+ARM GAS  /tmp/ccj5C3hL.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 tim.c
-     /tmp/ccWT14SS.s:21     .text.TIM_init:00000000 $t
-     /tmp/ccWT14SS.s:27     .text.TIM_init:00000000 TIM_init
-     /tmp/ccWT14SS.s:108    .text.TIM_init:00000050 $d
-     /tmp/ccWT14SS.s:195    .bss.TIM_TIMER_INTERFACE:00000000 TIM_TIMER_INTERFACE
-     /tmp/ccWT14SS.s:115    .text.TIM2_IRQHandler:00000000 $t
-     /tmp/ccWT14SS.s:121    .text.TIM2_IRQHandler:00000000 TIM2_IRQHandler
-     /tmp/ccWT14SS.s:141    .text.TIM2_IRQHandler:0000000c $d
-     /tmp/ccWT14SS.s:146    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-     /tmp/ccWT14SS.s:152    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/ccWT14SS.s:180    .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
-     /tmp/ccWT14SS.s:188    .bss.TIM_interuptflag:00000000 TIM_interuptflag
-     /tmp/ccWT14SS.s:189    .bss.TIM_interuptflag:00000000 $d
-     /tmp/ccWT14SS.s:192    .bss.TIM_TIMER_INTERFACE:00000000 $d
+     /tmp/ccj5C3hL.s:21     .text.TIM_init:00000000 $t
+     /tmp/ccj5C3hL.s:27     .text.TIM_init:00000000 TIM_init
+     /tmp/ccj5C3hL.s:108    .text.TIM_init:00000054 $d
+     /tmp/ccj5C3hL.s:194    .bss.TIM_TIMER_INTERFACE:00000000 TIM_TIMER_INTERFACE
+     /tmp/ccj5C3hL.s:114    .text.TIM2_IRQHandler:00000000 $t
+     /tmp/ccj5C3hL.s:120    .text.TIM2_IRQHandler:00000000 TIM2_IRQHandler
+     /tmp/ccj5C3hL.s:140    .text.TIM2_IRQHandler:0000000c $d
+     /tmp/ccj5C3hL.s:145    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+     /tmp/ccj5C3hL.s:151    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/ccj5C3hL.s:179    .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
+     /tmp/ccj5C3hL.s:187    .bss.TIM_interuptflag:00000000 TIM_interuptflag
+     /tmp/ccj5C3hL.s:188    .bss.TIM_interuptflag:00000000 $d
+     /tmp/ccj5C3hL.s:191    .bss.TIM_TIMER_INTERFACE:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_Base_Init

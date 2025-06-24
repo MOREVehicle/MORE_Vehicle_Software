@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="357,50,338,83,333,81,352,47"/>
 <area shape="rect" id="Node000006" href="$de/de3/tmp112_8h.html" title="Driver for TMP112 Temperature Sensor." alt="" coords="184,96,259,123"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="330,51,259,90,256,86,327,46"/>
-<area shape="rect" id="Node000008" href="$d7/d19/adc_8h_source.html" title=" " alt="" coords="459,96,512,123"/>
+<area shape="rect" id="Node000008" href="$d7/d19/adc_8h.html" title="Header file for library definitions used to calculate current from shunt resistor." alt="" coords="459,96,512,123"/>
 <area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="398,46,456,85,453,89,395,51"/>
 <area shape="rect" id="Node000010" href="$d3/db0/tim_8h.html" title="file sets up safety timer used in the main code" alt="" coords="384,96,435,123"/>
 <area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="379,47,398,81,393,83,374,50"/>

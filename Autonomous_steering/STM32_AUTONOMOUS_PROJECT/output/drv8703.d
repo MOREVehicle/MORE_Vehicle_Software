@@ -19,6 +19,7 @@ output/drv8703.o: src/drv8703.c inc/drv8703.h \
  platform/HAL/inc/stm32g4xx_ll_adc.h \
  platform/HAL/inc/stm32g4xx_hal_adc_ex.h \
  platform/HAL/inc/stm32g4xx_hal_exti.h \
+ platform/HAL/inc/stm32g4xx_hal_fdcan.h \
  platform/HAL/inc/stm32g4xx_hal_flash.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ex.h \
  platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h \
@@ -57,6 +58,7 @@ platform/HAL/inc/stm32g4xx_hal.h:
 platform/HAL/inc/stm32g4xx_ll_adc.h:
 platform/HAL/inc/stm32g4xx_hal_adc_ex.h:
 platform/HAL/inc/stm32g4xx_hal_exti.h:
+platform/HAL/inc/stm32g4xx_hal_fdcan.h:
 platform/HAL/inc/stm32g4xx_hal_flash.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ex.h:
 platform/HAL/inc/stm32g4xx_hal_flash_ramfunc.h:

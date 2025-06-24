@@ -21,8 +21,10 @@ void DRV_init(void) {
 
 	char pData[6] = {0};
 	DRV_read(DRV_MAIN, (unsigned char *)pData);                 // dummy read
-	DRV_readRegister((unsigned char *)pData, 0xFF);             // read all registers
 	DRV_modify_set(DRV_MAIN, DRV_MAIN_CLR_FLT_MASK);            // clear lock
+
+    DRV_write(DRV_IDRIVE_WD, DRV_IDRIVE_WD_IDRIVE_MASK(0b101)); // sets correct IDRIVE current
+    DRV_write(DRV_CONFIG, DRV_CONFIG_GAIN_CS_MASK(0b11));       // gain current
 }
 
 /**
@@ -85,7 +87,7 @@ bool DRV_modify_set(uint8_t address, uint8_t data) {
 
 	success = DRV_read(address, &reg);
     if (success) {
-        reg &= ~data;
+        reg |= data;
         success = DRV_write(address, reg);
     }
     return success;
@@ -192,7 +194,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle) {
         */
         GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;
         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
         GPIO_InitStruct.Alternate = GPIO_AF6_SPI3;
         HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
