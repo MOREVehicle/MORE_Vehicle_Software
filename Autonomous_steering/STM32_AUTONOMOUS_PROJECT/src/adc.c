@@ -63,7 +63,10 @@ uint32_t ADC_read(void) {
 }
 
 float ADC_calculateCurrent(uint32_t raw) {
-    float current = ((raw - ADC_OFFSET) / ADC_RESOLUTION * ADC_V_REF) / (ADC_A_V * ADC_R_SENSE);
+    // float current = ((raw - ADC_OFFSET) / ADC_RESOLUTION * ADC_V_REF) / (ADC_A_V * ADC_R_SENSE);
+    float voltage = raw * (ADC_R2 / (ADC_R1 + ADC_R2));
+    float shunt = ADC_A_V * ADC_R_SENSE;
+    float current = (voltage - ADC_OFFSET * ADC_A_V) / shunt;
     return (current >= 0) ? current : 0;
 }
 

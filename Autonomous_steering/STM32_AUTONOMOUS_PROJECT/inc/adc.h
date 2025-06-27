@@ -16,9 +16,11 @@ extern "C" {
 extern ADC_HandleTypeDef ADC_INTERFACE;
 
 #define ADC_RESOLUTION  4096.0f
-#define ADC_OFFSET      235.0f//90.0f
+#define ADC_OFFSET      0//235.0f//90.0f
 #define ADC_V_REF       3.3f
-#define ADC_A_V         70.0f//39.4f
+#define ADC_A_V         78.0f//39.4f
+#define ADC_R1          4700.0f
+#define ADC_R2          10000.0f
 #define ADC_R_SENSE     0.00067f
 
 /**

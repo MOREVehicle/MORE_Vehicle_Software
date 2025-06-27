@@ -82,11 +82,10 @@ extern "C" {
  * number is refering to what sensor is used 
  */
 #define TMP_ADDR_AMOUNT             4
-#define TMP_ADDR_HIGHSIDE_LEFT      0
-#define TMP_ADDR_HIGHSIDE_RIGHT     1
-#define TMP_ADDR_LOWSIDE_LEFT       2
-#define TMP_ADDR_LOWSIDE_RIGHT      3
-#define TMP_ADDR(x)                 ((uint8_t)(TMP_ADDR_DEFAULT + x))
+#define TMP_ADDR_HIGHSIDE_LEFT      TMP_ADDR_DEFAULT + 0
+#define TMP_ADDR_HIGHSIDE_RIGHT     TMP_ADDR_DEFAULT + 1
+#define TMP_ADDR_LOWSIDE_LEFT       TMP_ADDR_DEFAULT + 2
+#define TMP_ADDR_LOWSIDE_RIGHT      TMP_ADDR_DEFAULT + 3
 
 /** @brief used i2c channel on mcu.*/
 extern I2C_HandleTypeDef 	   TMP_I2C_INTERFACE;
@@ -101,6 +100,7 @@ void TMP_init(void);
 /**
  * @brief Reads the current temperature from the TMP112 sensor.
  * Reads the 16-bit temperature value from the TMP112 and converts it to Celsius.
+ * @param TMP_ADDR_X, the true value conversion happens inside the funciton.
  * @return Temperature in Celsius as a 16-bit signed integer.
  */
 float TMP_getTemperatureSingle(uint8_t address);

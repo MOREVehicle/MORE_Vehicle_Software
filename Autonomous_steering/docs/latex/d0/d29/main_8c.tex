@@ -10,8 +10,7 @@ main loop of the steering box
 {\ttfamily \#include "{}tmp112.\+h"{}}\newline
 {\ttfamily \#include "{}adc.\+h"{}}\newline
 {\ttfamily \#include "{}tim.\+h"{}}\newline
-Include dependency graph for main.\+c\+:
-\nopagebreak
+Include dependency graph for main.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -53,10 +52,9 @@ int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 Might wanna add initialisation checks.
 \end{DoxyNote}
 \begin{DoxyWarning}{Warning}
-I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters softfault
+I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters hardfault
 \end{DoxyWarning}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -74,18 +72,16 @@ void systemclock\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyPa
 sets up nucleo clock to 170MHZ 
 
 \begin{DoxyWarning}{Warning}
-currently 64MHZ. change it. 
+currently 64MHZ. change it. if you want to utilize full speed of nucleo 
 \end{DoxyWarning}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d0/d29/main_8c_a0458ab0d732d1cf26d43fbbc66f8768e_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

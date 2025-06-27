@@ -146,16 +146,15 @@ $(function(){initNavTree('de/de3/tmp112_8h_source.html','../../',''); });
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="../../de/de3/tmp112_8h.html#af0cebf64091b4307f36e7a5494d40e34">   84</a></span><span class="preprocessor">#define TMP_ADDR_AMOUNT             4</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#define TMP_ADDR_HIGHSIDE_LEFT      0</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#define TMP_ADDR_HIGHSIDE_RIGHT     1</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#define TMP_ADDR_LOWSIDE_LEFT       2</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#define TMP_ADDR_LOWSIDE_RIGHT      3</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#define TMP_ADDR(x)                 ((uint8_t)(TMP_ADDR_DEFAULT + x))</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">extern</span> I2C_HandleTypeDef       <a class="code hl_variable" href="../../dd/dd0/tmp112_8c.html#ae5b77e75ce770bc2b7fbb9fd11ffbc85">TMP_I2C_INTERFACE</a>;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../de/de3/tmp112_8h.html#a82091535043d8c73cd57a2cf319c48ff">TMP_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#define TMP_ADDR_HIGHSIDE_LEFT      TMP_ADDR_DEFAULT + 0</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#define TMP_ADDR_HIGHSIDE_RIGHT     TMP_ADDR_DEFAULT + 1</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#define TMP_ADDR_LOWSIDE_LEFT       TMP_ADDR_DEFAULT + 2</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#define TMP_ADDR_LOWSIDE_RIGHT      TMP_ADDR_DEFAULT + 3</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">extern</span> I2C_HandleTypeDef       <a class="code hl_variable" href="../../dd/dd0/tmp112_8c.html#ae5b77e75ce770bc2b7fbb9fd11ffbc85">TMP_I2C_INTERFACE</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../de/de3/tmp112_8h.html#a82091535043d8c73cd57a2cf319c48ff">TMP_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span></div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordtype">float</span> <a class="code hl_function" href="../../de/de3/tmp112_8h.html#ae6ed7570ef58742cf0c2e08b3aa73d17">TMP_getTemperatureSingle</a>(uint8_t address);</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span></div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">float</span> <a class="code hl_function" href="../../de/de3/tmp112_8h.html#a60bb3e3c5a56689e33e21939f6fb9a4b">TMP_getTemperature</a>();</div>

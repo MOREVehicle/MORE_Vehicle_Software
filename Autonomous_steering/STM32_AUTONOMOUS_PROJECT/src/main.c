@@ -42,7 +42,7 @@ int main () {
 
             int16_t angle = CAN_getAngle();
             uint16_t angle_speed = CAN_getAngleSpeed();
-            float temperature = TMP_getTemperature(); 
+            float temperature = TMP_getTemperature();  // should probably read the two from the currently active bank instead.
             float current     = ADC_readCurrent();
             
             CAN_format(CAN_message, angle, angle_speed, temperature, current);
@@ -53,7 +53,7 @@ int main () {
         }
         if (CAN_MAIN_BUS_FLAG) {
             /*
-             *@warning random size for data
+             *@warning random size for data, should be based on DBC
             */
             uint8_t data[8] = {0};
             CAN_read(&CAN_MAIN_BUS, data, sizeof(data));
@@ -67,7 +67,7 @@ int main () {
             TIM_interuptflag = 0;
             CAN_error();
             /**
-             * @warning I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters softfault
+             * @warning I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters hardfault
             */
             break;
         }
@@ -78,7 +78,7 @@ int main () {
 
 /**
  * @brief sets up nucleo clock to 170MHZ 
- * @warning currently 64MHZ. change it.
+ * @warning currently 64MHZ. change it. if you want to utilize full speed of nucleo
  */
 void systemclock_init(void) {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};

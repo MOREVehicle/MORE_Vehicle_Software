@@ -184,14 +184,13 @@ Macros</h2></td></tr>
 <tr class="memitem:afb740195560188d80cf626cc21f3506b" id="r_afb740195560188d80cf626cc21f3506b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb740195560188d80cf626cc21f3506b">TMP_DATA_2_MASK</a>(x)</td></tr>
 <tr class="memitem:af0cebf64091b4307f36e7a5494d40e34" id="r_af0cebf64091b4307f36e7a5494d40e34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0cebf64091b4307f36e7a5494d40e34">TMP_ADDR_AMOUNT</a>&#160;&#160;&#160;4</td></tr>
 <tr class="memitem:a7f821f361f8ce77ec313cccf394ccc78" id="r_a7f821f361f8ce77ec313cccf394ccc78"><td class="memItemLeft" align="right" valign="top"><a id="a7f821f361f8ce77ec313cccf394ccc78" name="a7f821f361f8ce77ec313cccf394ccc78"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_HIGHSIDE_LEFT</b>&#160;&#160;&#160;0</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_HIGHSIDE_LEFT</b>&#160;&#160;&#160;TMP_ADDR_DEFAULT + 0</td></tr>
 <tr class="memitem:aef137f5b5b21477bfbcf0daaabf40292" id="r_aef137f5b5b21477bfbcf0daaabf40292"><td class="memItemLeft" align="right" valign="top"><a id="aef137f5b5b21477bfbcf0daaabf40292" name="aef137f5b5b21477bfbcf0daaabf40292"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_HIGHSIDE_RIGHT</b>&#160;&#160;&#160;1</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_HIGHSIDE_RIGHT</b>&#160;&#160;&#160;TMP_ADDR_DEFAULT + 1</td></tr>
 <tr class="memitem:aad93feb5c2ca68a0c18b8dbf3cde984d" id="r_aad93feb5c2ca68a0c18b8dbf3cde984d"><td class="memItemLeft" align="right" valign="top"><a id="aad93feb5c2ca68a0c18b8dbf3cde984d" name="aad93feb5c2ca68a0c18b8dbf3cde984d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_LOWSIDE_LEFT</b>&#160;&#160;&#160;2</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_LOWSIDE_LEFT</b>&#160;&#160;&#160;TMP_ADDR_DEFAULT + 2</td></tr>
 <tr class="memitem:a94cb46716acb4ecd79e5f943d370feac" id="r_a94cb46716acb4ecd79e5f943d370feac"><td class="memItemLeft" align="right" valign="top"><a id="a94cb46716acb4ecd79e5f943d370feac" name="a94cb46716acb4ecd79e5f943d370feac"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_LOWSIDE_RIGHT</b>&#160;&#160;&#160;3</td></tr>
-<tr class="memitem:a15575023760783d175cbe27775a318a7" id="r_a15575023760783d175cbe27775a318a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15575023760783d175cbe27775a318a7">TMP_ADDR</a>(x)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_ADDR_LOWSIDE_RIGHT</b>&#160;&#160;&#160;TMP_ADDR_DEFAULT + 3</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -231,24 +230,6 @@ I2C_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_I2C_
 <div class="textblock"><p>Driver for TMP112 Temperature Sensor. </p>
 <p>This file provides functions to interact with the TMP112 temperature sensor over I2C, including reading temperature values and configuring sensor settings. Everything is MSB to LSB </p>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
-<a id="a15575023760783d175cbe27775a318a7" name="a15575023760783d175cbe27775a318a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15575023760783d175cbe27775a318a7">&#9670;&#160;</a></span>TMP_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TMP_ADDR</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((uint8_t)(TMP_ADDR_DEFAULT + x))</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="af0cebf64091b4307f36e7a5494d40e34" name="af0cebf64091b4307f36e7a5494d40e34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0cebf64091b4307f36e7a5494d40e34">&#9670;&#160;</a></span>TMP_ADDR_AMOUNT</h2>
 
@@ -612,6 +593,12 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Reads the current temperature from the TMP112 sensor. Reads the 16-bit temperature value from the TMP112 and converts it to Celsius. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">TMP_ADDR_X,the</td><td>true value conversion happens inside the funciton. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Temperature in Celsius as a 16-bit signed integer. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>

@@ -178,7 +178,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section note"><dt>Note</dt><dd>Might wanna add initialisation checks.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters softfault</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>I believe the error should be send to a central processor which should decide what to do but for now it sends message and enters hardfault</dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -275,7 +275,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>sets up nucleo clock to 170MHZ </p>
-<dl class="section warning"><dt>Warning</dt><dd>currently 64MHZ. change it. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>currently 64MHZ. change it. if you want to utilize full speed of nucleo </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

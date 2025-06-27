@@ -96,8 +96,7 @@ Performs a reset of any existing calibration and starts a new calibration cycle.
 
 Initiates a full calibration sequence for the LWS sensor.
 
-This function first sends a reset calibration command and then initiates a new calibration. Delays are inserted to allow the sensor time to process each step. Here is the call graph for this function\+:
-\nopagebreak
+This function first sends a reset calibration command and then initiates a new calibration. Delays are inserted to allow the sensor time to process each step. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -119,16 +118,14 @@ This function is executed in case of error occurrence.
 {\em None} & \\
 \hline
 \end{DoxyRetVals}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=243pt]{d1/dd9/group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -153,8 +150,7 @@ formats the data accordinly
 \begin{DoxyWarning}{Warning}
 currently format is hardcoded according to the proposed dbc in the this repository ../../\+MORE\+\_\+\+AUTONOMOUS\+\_\+\+CAN.dbc 
 \end{DoxyWarning}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -193,8 +189,7 @@ Sends the steering wheel angle sensor data via CAN.
 {\em Angle} & value. \\
 \hline
 \end{DoxyRetVals}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -233,8 +228,7 @@ Sends the steering wheel angle speed data via CAN using the rxdata.
 {\em speed.} & \\
 \hline
 \end{DoxyRetVals}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -271,16 +265,14 @@ Initializes the CAN peripheral.
 \begin{DoxyNote}{Note}
 Configures nominal and data timing parameters and enables reception filters. 
 \end{DoxyNote}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=334pt]{d1/dd9/group__CAN__Exported__Functions_gace7de72cc97ae2a35d63c3a4a4772a31_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -331,8 +323,7 @@ This function assumes {\ttfamily CAN\+\_\+\+Data} is populated externally.
 \begin{DoxyNote}{Note}
 This function simply copies bytes from a global buffer {\ttfamily CAN\+\_\+\+Data} to the provided {\ttfamily data} buffer. It does not interact with the FDCAN peripheral directly. Ensure {\ttfamily CAN\+\_\+\+Data} is filled elsewhere using {\ttfamily HAL\+\_\+\+FDCAN\+\_\+\+Get\+Rx\+Message} or another appropriate function. 
 \end{DoxyNote}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -383,16 +374,14 @@ Configures and sends a 32-\/byte CAN FD frame. Calls Error\+\_\+\+Handler on fai
 \begin{DoxyNote}{Note}
 This function configures the FDCAN\+\_\+\+Tx\+Header\+Type\+Def with standard settings for CAN FD, including 32-\/byte data length, bit rate switching, and FD frame format. It adds the message to the transmission FIFO queue. The {\ttfamily \doxylink{group__CAN__Exported__Functions_gafd83ef52c27e2d5c3ff0357daf2544d6}{CAN\+\_\+error()}} function is called if transmission fails. 
 \end{DoxyNote}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=243pt]{d1/dd9/group__CAN__Exported__Functions_gab7edfcbfee2552e9eb7c9d33103e380e_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -420,16 +409,14 @@ This function sends a command to the sensor via CAN to perform calibration-\/rel
 {\em ccw\+\_\+value} & The calibration command word (only bits 0–2 are used). \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d1/dd9/group__CAN__Exported__Functions_gae7d5cd88b0bb9bca27f626ea37f5b2a7_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

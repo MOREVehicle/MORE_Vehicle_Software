@@ -50,16 +50,15 @@
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00080\ }
 \DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_AMOUNT\ \ \ \ \ \ \ \ \ \ \ \ \ 4}}
-\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_HIGHSIDE\_LEFT\ \ \ \ \ \ 0}}
-\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_HIGHSIDE\_RIGHT\ \ \ \ \ 1}}
-\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_LOWSIDE\_LEFT\ \ \ \ \ \ \ 2}}
-\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_LOWSIDE\_RIGHT\ \ \ \ \ \ 3}}
-\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ TMP\_ADDR(x)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8\_t)(TMP\_ADDR\_DEFAULT\ +\ x))}}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ I2C\_HandleTypeDef\ \ \ \ \ \ \ \mbox{\hyperlink{tmp112_8c_ae5b77e75ce770bc2b7fbb9fd11ffbc85}{TMP\_I2C\_INTERFACE}};}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}{TMP\_init}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_HIGHSIDE\_LEFT\ \ \ \ \ \ TMP\_ADDR\_DEFAULT\ +\ 0}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_HIGHSIDE\_RIGHT\ \ \ \ \ TMP\_ADDR\_DEFAULT\ +\ 1}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_LOWSIDE\_LEFT\ \ \ \ \ \ \ TMP\_ADDR\_DEFAULT\ +\ 2}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ TMP\_ADDR\_LOWSIDE\_RIGHT\ \ \ \ \ \ TMP\_ADDR\_DEFAULT\ +\ 3}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ I2C\_HandleTypeDef\ \ \ \ \ \ \ \mbox{\hyperlink{tmp112_8c_ae5b77e75ce770bc2b7fbb9fd11ffbc85}{TMP\_I2C\_INTERFACE}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tmp112_8h_a82091535043d8c73cd57a2cf319c48ff}{TMP\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00099\ }
 \DoxyCodeLine{00106\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{tmp112_8h_ae6ed7570ef58742cf0c2e08b3aa73d17}{TMP\_getTemperatureSingle}}(uint8\_t\ address);}
 \DoxyCodeLine{00107\ }
 \DoxyCodeLine{00112\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{tmp112_8h_a60bb3e3c5a56689e33e21939f6fb9a4b}{TMP\_getTemperature}}();}

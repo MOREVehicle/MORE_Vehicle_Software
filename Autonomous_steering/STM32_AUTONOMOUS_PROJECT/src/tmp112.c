@@ -10,12 +10,12 @@ I2C_HandleTypeDef 	TMP_I2C_INTERFACE;
 void TMP_init() {
 	MX_I2C_Init();
 
-    for (uint8_t i = 0; i < TMP_ADDR_AMOUNT; i++) {
-        TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_FAULT_QUEUE_MASK(1));
-        TMP_setConfig(TMP_ADDR(i), TMP_CONFIG_POLARITY_MASK);
-        TMP_setTLow(TMP_ADDR(i), 60);
-        TMP_setTHigh(TMP_ADDR(i), 80);
-        TMP_getTemperatureSingle(TMP_ADDR(i));
+    for (uint8_t i = TMP_ADDR_DEFAULT; i < TMP_ADDR_AMOUNT + TMP_ADDR_DEFAULT; i++) {
+        TMP_setConfig(i, TMP_CONFIG_FAULT_QUEUE_MASK(1));
+        TMP_setConfig(i, TMP_CONFIG_POLARITY_MASK);
+        TMP_setTLow(i, 60);
+        TMP_setTHigh(i, 80);
+        TMP_getTemperatureSingle(i);
     }
 }
 
@@ -23,7 +23,7 @@ float TMP_getTemperature(void) {
     uint16_t average = 0;
 
     for (uint8_t i = 0; i < TMP_ADDR_AMOUNT; i++) {
-        average += TMP_getTemperatureSingle(TMP_ADDR(i));
+        average += TMP_getTemperatureSingle(i + TMP_ADDR_DEFAULT);
     }
 
     average /= TMP_ADDR_AMOUNT;
@@ -32,7 +32,7 @@ float TMP_getTemperature(void) {
 
 
 float TMP_getTemperatureSingle(uint8_t address) {
-	int16_t temperature = (uint16_t)(TMP_read(address, TMP_TEMPERATURE) >> 4);
+	int16_t temperature = TMP_read(address, TMP_TEMPERATURE) >> 4;
     return TMP_data_to_celcius(temperature);
 }
 
