@@ -16,6 +16,12 @@
 # 	- BSP 
 # 	- CMSIS (optional?)
 # 	- HAL (optional)
+#
+# use in terminal: 
+# 	- make build, to build into machine code.
+# 	- make flash, to flash onto MCU.
+# 	- make debug, start debugging with openocd.
+# 	- make, for build and flash.
 ######
 
 TARGET = STM32_AUTONOMOUS_PROJECT
